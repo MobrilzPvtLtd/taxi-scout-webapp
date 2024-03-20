@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+#payment-form {
+  /* z-index: 9999999999999 !important; */
+  margin-top: 200px !important;
+  border: #f6f9fc solid 1px;
+  border-radius: var(--radius);
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 30px 50px -20px rgb(50 50 93 / 25%),
+    0 30px 60px -30px rgb(0 0 0 / 30%);
+     height: 30vh;
+  /* width: 25vw; */
+  /* transform: translate(50% , 50%); */
+  background-color: rgba(240, 248, 255, 0.356);
+ /* display: flex; */
+/* flex-direction: column; */
+/* justify-content: center; */
+/* align-items: center; */
+}
+#navbar_sticky{
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+#main_component{
+  padding-top: 6vw;
+  position: relative;
+  z-index: 1;
+}
+#messages {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New";
+  display: none; /* hide initially, then show once the first message arrives */
+  background-color: #0a253c;
+  color: #00d924;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: var(--radius);
+  font-size: 0.7em;
+}
+
+#payment-form button{
+  background-color: #000;
+  width: 15vw;
+}
+
+#driver-searching{
+  background-color: #faf6ae;
+  height: 35vh;
+  position: relative;
+  width: 25vw;
+  margin-top: 20px;
+  box-shadow: #000 0px 1px 20px 0px;
+  border-radius: 10px;
+
+}
+
+#search-box{
+  height: 32vh;
+  width: 25vw;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+  background-color: #faf6ae;
+  /* box-shadow: #000 0px 10px 10px 0px; */
+  padding-bottom: 20px;
+  border-radius: 10px;
+
+
+}
+
+#driver-details{
+  height: 32vh;
+  width: 25vw;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+  background-color: #faf6ae;
+  /* box-shadow: #000 0px 10px 10px 0px; */
+  padding-bottom: 20px;
+  border-radius: 10px;
+}
+
+
+/* driver detail box starts*/
+/* Styles for the booking container */
+.booking-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Styles for the details box */
+.details-box {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Heading styles */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+/* Paragraph styles */
+p {
+  margin-bottom: 8px;
+}
+
+/* Button styles (if any) */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #2980b9;
+}
+
+#profilePicture{
+  font-size: 20px;
+  position: relative;
+  margin-left: 20px;
+}
+
+#locationButton{
+  margin-top: 1vw !important;
+  width: 40px !important;
+  height: 30px !important;
+  /* padding: 20px; */
+  /* background-color: #000 !important; */
+}

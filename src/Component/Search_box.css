@@ -1,0 +1,294 @@
+
+element.style {
+}
+@media screen and (min-width: 1136px){
+.css-gDjFiv {
+    max-width: 50%;
+}
+.css-gDjFiv {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+
+.css-eTHFdK {
+    color: rgb(0, 0, 0);
+    background-color: rgb(238, 238, 238);
+    /* background-color: blue; */
+    padding: 40px 24px;
+}
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+#box{
+    height: 25vw;
+    width: 50vh;
+    background-color: rgba(236, 236, 230, 0.26);
+    position: relative;
+    left: 5%;
+    box-shadow: #000000 0px 1px 1px 2px;
+    border-radius: 20px;  
+}
+
+#main-box{
+    /* background-color: rgba(255, 255, 0, 0.603) ;  */
+}
+}
+
+element.style {
+}
+@media screen and (min-width: 1136px){
+.css-gaoOZL {
+    padding: 48px;
+}
+}
+
+@media screen and (min-width: 600px){
+.css-gaoOZL {
+    padding: 32px;
+}}
+
+
+@media screen and (min-width: 320px){
+.css-gaoOZL {
+    padding: 24px;
+}
+.css-gaoOZL {
+    background-color: #ffffffc5;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+
+.css-kmDgkF:first-child {
+    margin-right: 24px;
+}
+.css-kmDgkF {
+    margin-top: 19px;
+}
+
+.css-impRdV {
+    display: -webkit-inline-box;
+    display: -moz-inline-box;
+    display: -ms-inline-flexbox;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border-left-width: 0;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-style: none;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    outline: none;
+    box-shadow: none;
+    text-decoration: none;
+    -webkit-appearance: none;
+    -webkit-transition-property: background;
+    -moz-transition-property: background;
+    transition-property: background;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0, 0, 1, 1);
+    cursor: pointer;
+    margin-left: 0;
+    margin-top: 12px;
+    margin-right: 0;
+    margin-bottom: 0;
+    font-family: UberMoveText, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    padding-left: 25px;
+    padding-right: 25px;
+    color: #FFFFFF;
+    background-color: #000000;
+}
+
+.css-cyrLeC {
+    display: -webkit-inline-box;
+    display: -moz-inline-box;
+    display: -ms-inline-flexbox;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border-left-width: 0;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-style: none;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    outline: none;
+    box-shadow: none;
+    text-decoration: none;
+    -webkit-appearance: none;
+    -webkit-transition-property: background;
+    -moz-transition-property: background;
+    transition-property: background;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0, 0, 1, 1);
+    cursor: pointer;
+    margin-left: 0;
+    margin-top: 12px;
+    margin-right: 0;
+    margin-bottom: 0;
+    font-family: UberMoveText, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    padding-left: 25px;
+    padding-right: 25px;
+    color: #000000;
+    background-color: #EEEEEE;
+}
+
+.css-jzIGNN{
+    font-size: 42px;
+    font-weight: 700;
+}
+
+#outline{
+    height: 4px;
+    width: 50px;
+    background-color: #000000;
+    position: relative;
+    left: 44%;
+}
+
+}
+@media screen and (min-width: 600px){
+.css-iulhGS {
+    background-color: #ffffffc5;
+    direction: ltr;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 8;
+    grid-column: 1 / 9;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    grid-row: 1 / 2;
+}
+
+}
+@media screen and (min-width: 320px){
+.css-iulhGS {
+    background-color: #ffffffc5;
+    direction: ltr;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 4;
+    grid-column: 1 / 5;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    grid-row: 1 / 2;
+}
+.css-iulhGS {
+    box-sizing: border-box;
+    opacity: 1;
+    position: relative;
+    visibility: visible;
+}
+.css-jxCaGu {
+    box-sizing: border-box;
+    direction: ltr;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 12;
+    grid-column: 1 / 13;
+    grid-row: 3;
+    max-width: 1280px;
+    opacity: 1;
+    position: relative;
+    visibility: visible;
+}
+.css-cHaEgw {
+    opacity: 1;
+    order: 1;
+    visibility: visible;
+    z-index: 0;
+    top: none;
+    position: static;
+}
+.css-haFmDf {
+    align-content: start;
+    width: 100%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    direction: ltr;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.css-eTHFdK {
+    color: rgb(0, 0, 0);
+    background-color: #ffffffc5;
+    padding: 40px 24px;
+}
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+}
+
+
+
+

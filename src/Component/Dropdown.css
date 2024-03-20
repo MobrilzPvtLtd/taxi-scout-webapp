@@ -1,0 +1,92 @@
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    /* display: none; */
+    /* visibility: hidden; */
+    opacity: 0;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    transform: translate(-30px , 20px);
+    transition: transform .9s ease-in-out;
+    border-radius: 10px;
+
+  }
+  .dropdown-content2 {
+    /* display: none; */
+    /* visibility: hidden; */
+    opacity: 0;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 9999999;
+    transform: translate(-30px , 20px);
+    transition: transform .9s ease-in-out;
+    border-radius: 10px;
+
+  }
+  
+  .dropdown-container:hover .dropdown-content {
+    transform: translate(-30px , 35px);
+
+    /* display: block; */
+    /* visibility: visible; */
+    opacity: 1;
+  }
+  .dropdown-container:hover .dropdown-content2 {
+    transform: translate(-30px , 35px);
+
+    /* display: block; */
+    /* visibility: visible; */
+    opacity: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    transition: all .3s ease-in-out;
+  }
+  
+  .dropdown-content a:hover {
+    /* background-color: #f0f0f0; */
+    background-color: black;
+    color: white;
+    padding: 3px 18px;
+    border-radius: 15px;
+    /* background-color: #333333; */
+
+  }
+  .dropdown-content2 a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    transition: all .3s ease-in-out;
+  }
+  
+  .dropdown-content2 a:hover {
+    background-color: black;
+    color: white;
+    padding: 3px 16px;
+    border-radius: 15px;
+  }
+  #nav_items{
+    font-weight: 500;
+    font-size: 18px;
+  }
+  .dropdown-button{
+    cursor: pointer;
+    transition: transform .3s ease-in-out;
+
+  }
+  .dropdown-button:hover{
+    transform: scale(1.2);
+  }

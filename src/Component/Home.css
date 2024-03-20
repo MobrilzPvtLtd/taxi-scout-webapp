@@ -1,0 +1,9 @@
+body{
+    background-image: url(../Images/map.png);
+}
+
+#googlemap{
+ position: relative;
+ padding-left: 120px;
+
+}

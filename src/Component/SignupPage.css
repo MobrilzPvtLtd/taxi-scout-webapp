@@ -1,0 +1,80 @@
+body{
+  /* background-image: url(../Images/map.png) */
+}
+
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh !important;
+    width: 35vw !important;
+  background-image: url(../Images/map.png);
+
+  }
+  
+  /* .signup-form {
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 30vw;
+    right: 40px;
+    position: absolute;
+    top: 22%;
+    background-color: #fffcfc42 !important;
+    
+  } */
+  
+  .signup-form h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] ,
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc7a;
+    border-radius: 4px;
+    outline: none;
+    background-color: #ffffffc0;
+  }
+  
+  #signup-btn {
+    background-color: #000;
+    color: #fff;
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    padding: 10px 40px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 70%;
+    transition: background-color 0.3s;
+  }
+  
+  #signup-btn:hover {
+    background-color: #fff;
+    color: #000;
+  }
+  
+  #form{
+  
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+      grid-gap: 20px; /* Adjust the spacing between columns */
+      width: 30vw;
+
+  }
+  #countrySelect{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc7a;
+    border-radius: 4px;
+    outline: none;
+    background-color: #ffffffc0;
+  }

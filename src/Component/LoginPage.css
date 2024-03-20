@@ -1,0 +1,54 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+  background-image: url(../Images/map.png);
+  }
+  
+  .login-form {
+    background-color: #f1f1ee49;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 400px;
+    position: absolute;
+    top: 20%;
+    right:40px;
+  }
+  
+  .login-form h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+  }
+  
+  #login-btn {
+    background-color: #000;
+    color: #fff;
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    font-weight: 700;
+    padding: 10px 40px;
+    cursor: pointer;
+    width: 50%;
+    transition: background-color 0.3s;
+  }
+  
+  #login-btn:hover {
+    background-color: #fff;
+    color: #000;
+  }
+  

@@ -1,0 +1,361 @@
+/* about us css starts */
+.heading001{
+    color: blue;
+}
+.title_main{
+    margin-top: 1vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+}
+.line001{
+ height: 2px;
+ width: 5vw;
+ background-color: black;
+}
+.text001{
+    font-size: 21px;
+    font-weight: 900;
+    line-height: 33px;
+    color: #517988;
+    font-style: italic;
+}
+.text002{
+    text-align: justify;
+    line-height: 33px;
+    font-size: 19px;
+    font-weight: 600;
+}
+/* about us css ends */
+
+/* our partner css starts */
+.partner001{
+    display: flex;
+    border-radius: 20px;
+    box-shadow:  0 0 5px -2px black;
+}
+.left001{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 125px;
+}
+.phead001{
+    text-align: left;
+    font-size: 39px;
+}
+.phead002{
+    text-align: left;
+    font-size: 75px;
+    color: #ddddddb8;
+}
+.right001{
+    width: 50%;
+}
+.logos{
+    display: grid;
+    grid-template-columns: repeat(2 , 1fr);
+    gap: 75px;
+}
+
+.logo001 , .logo002 , .logo003 , .logo004 , .logo005 , .logo006{
+    height: 4vw;
+    width: 10vw;
+}
+/* our partner css ends */
+
+/* gallary css starts */
+.gallary001{
+    text-align: left;
+}
+.gheading{
+    font-size: 43px;
+}
+.gtext001{
+    font-size: 16px;
+    color: #616161;
+
+}
+.gtext002{
+    font-size: 16px;
+    font-weight: 600;
+    color: #898989;
+}
+/* gallary css ends */
+
+
+
+/* contact css starts */
+.contactmain {
+    background-color: #719cf800;
+    display: flex;
+    flex-direction: column;
+    gap: 75px;
+}
+.cheading001{
+    color: #000000;
+    font-size: 54px;
+}
+.c-box-main {
+    display: flex;
+    gap: 25px;
+    padding-bottom: 50px;
+    justify-content: center;
+}
+.c-box001 {
+    width: 25vw;
+    height: 21vw;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    gap: 37px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    align-items: center;
+    
+}
+.ctext001{
+    color: #000000;
+    font-size: 21px;
+    font-weight: 600;
+    
+}
+.cimage{
+    background-color: #fff;
+    height: 6vw;
+    width: 6vw;
+    border-radius: 60px;
+    transform: translate(0px, -25px);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+.ctitle{
+    font-size: 31px;
+    font-weight: 600;
+    color: #000000;
+}
+.ctext {
+    font-size: 19px;
+    padding: 0px 50px;
+}
+.btn001{
+    height: 3vw;
+    width: 18vw;
+    font-size: 28px;
+    background-color: #fff;
+    border: none;
+    border-radius: 35px;
+}
+.btn001:hover {
+    border:3px solid #ffffff;
+}
+/* contact css ends */
+
+
+/* our team  css starts */
+
+.ourteam-main{
+    background-color: #ffffff;
+    display: flex;
+    box-shadow: 0px 0px 5px #000;
+    margin-top: 50px;
+    border-radius: 15px;
+
+}
+.ourteam001{
+    width: 50%;
+}
+.ourteam002{
+    width: 50%;
+}
+.ourcontent001{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    text-align: left;
+    padding: 150px 0px;
+}
+.ourheading h2{
+    font-size: 52px;
+    color: #001465;
+}
+.ourtext{
+    font-size: 24px;
+}
+button.obtn001 {
+    width: 10vw;
+    height: 3vw;
+    font-size: x-large;
+    color: white;
+    font-weight: 600;
+    border-radius: 30px;
+    border: none;
+    background-color: #FFBA48 !important ;
+    box-shadow: 0 0 5px -1px black !important;
+}
+#blog-btn001{
+    background-color: #fff200 !important;
+    box-shadow: 0 0 5px -2px;
+    transition: transform .3s ease-in-out;
+}
+#blog-btn001:hover{
+    background-color: #000 !important;
+    color: #fff;
+    transform: scale(1.04);
+}
+#black_underline{
+    height: 2px;
+    width: 10vw;
+    background-color: #000;
+}
+/* our team  css ends */
+
+/* blogs css starts */
+.blog-main {
+   height: 100vh;
+   width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.blog-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4vw;
+    position: relative;
+    width: 20vw;
+    height: 30vw;
+    box-shadow: 0px 0px 5px;
+    border-radius: 20px;
+    background-color: #ffffff;
+}
+
+
+.blog-image{
+    width: 20vw;
+    height: 8vw;
+
+}
+.blog-image img{
+    
+    border-radius: 20px 20px 0px 0px;
+    
+}
+.blog-box001{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 1vw;
+    margin-top: 1vw;
+}
+.blog-title {
+    background-color: #c6c6c6;
+    border-radius: 26px;
+    width: 7vw;
+    height: auto;
+    font-size: 21px;
+    font-weight: 500;
+}
+.blog-heading {
+    font-size: 27px;
+    font-weight: 600;
+    text-align: left;
+    width: 19vw;
+}
+.blog-text001 {
+    background-color: #ccc;
+    width: 6vw;
+    height: auto;
+    font-size: 16px;
+    border-radius: 16px;
+}
+.blog-text {
+    display: flex;
+    gap: 10px;
+    width: 19vw;
+}
+.blog-btn001 {
+    width: 8vw;
+    border: none;
+    border-radius: 29px;
+    font-size: 24px;
+}
+/* blogs css ends */
+
+
+
+/* faq css starts */
+
+.faq-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.faq-head{
+    font-size: 36px;
+    font-weight: 500;
+    color: #001465;
+}
+.faq-title {
+    font-size: 28px;
+    font-weight: 500;
+    color: #001c8fa1;
+}
+.faq-text{
+    font-size: 24px;
+    font-weight: 500;
+    color: #001c8fa1;
+}
+.faq-img {
+    background-color: #001465;
+    width: 10vw;
+    height: 10vw;
+    border-radius: 100px;
+}
+.f-line {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.faq-line{
+    background-color: #818181a1;
+    width: 70vw;
+    height: 2px;
+    margin-top: -50px;
+}
+.f-acor {
+    display: flex;
+    gap: 100px;
+    padding: 50px 0px;
+    background-color: #fff;
+    z-index: 1;
+    position: relative;
+    margin-top: -48px;
+}
+.accordion1 ,.accordion12{
+    width: 50%;
+}
+h2.f-heading001 {
+    padding-bottom: 15px;
+}
+/* faq css ends */
+.p-main {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 35px;
+}
+.div1{
+    font-size: 36px;
+    font-weight: 600;
+}
+.div2{
+    font-size: 24px;
+    font-weight: 500;
+    text-align: left;
+}
