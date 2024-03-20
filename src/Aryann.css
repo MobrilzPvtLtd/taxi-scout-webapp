@@ -34,7 +34,7 @@
 .partner001{
     display: flex;
     border-radius: 20px;
-    box-shadow:  0 0 5px -2px black;
+    /* box-shadow:  0 0 5px -2px black; */
 }
 .left001{
     width: 50%;
@@ -49,7 +49,7 @@
 .phead002{
     text-align: left;
     font-size: 75px;
-    color: #ddddddb8;
+    color: #00000094;
 }
 .right001{
     width: 50%;
@@ -92,7 +92,7 @@
     background-color: #719cf800;
     display: flex;
     flex-direction: column;
-    gap: 75px;
+    gap: 25px;
 }
 .cheading001{
     color: #000000;
@@ -106,11 +106,11 @@
 }
 .c-box001 {
     width: 25vw;
-    height: 21vw;
+    height: 18vw;
     background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
-    gap: 37px;
+    gap: 15px;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     align-items: center;
@@ -120,6 +120,7 @@
     color: #000000;
     font-size: 21px;
     font-weight: 600;
+    padding-bottom: 50px;
     
 }
 .cimage{
@@ -129,6 +130,8 @@
     border-radius: 60px;
     transform: translate(0px, -25px);
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
 }
 .ctitle{
     font-size: 31px;
@@ -156,7 +159,7 @@
 /* our team  css starts */
 
 .ourteam-main{
-    background-color: #ffffff;
+    background-color: #f7f7f7;
     display: flex;
     box-shadow: 0px 0px 5px #000;
     margin-top: 50px;

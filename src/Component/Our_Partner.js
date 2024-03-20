@@ -9,7 +9,7 @@ import netflix from "../Images/netflix-logo-black-png.png"
 
 const Our_Partner = () => {
   return (
-    <div className="bg-[#fff] h-[30vw] flex justify-center items-center container partner001 mt-10">
+    <div className="h-[30vw] flex justify-center items-center container partner001 mt-10">
       <div className="left001">
         <div>
           <h2 className="phead001 font-bold">Our Partners</h2>

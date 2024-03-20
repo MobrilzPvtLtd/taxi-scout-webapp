@@ -1,4 +1,5 @@
 import React from 'react'
+import driverimg from "../Images/driver_profile.png"
 
 const Contact = () => {
   return (
@@ -7,19 +8,25 @@ const Contact = () => {
         <div><p className='ctext001'>Get in touch and let us know how we can help</p></div>
         <div className='c-box-main'>
             <div className='c-box001'>
-                <div className='cimage'></div>
+                <div className='cimage'>
+                    <img className='h-[100px] ' src={driverimg}></img>
+                </div>
                 <div className='ctitle'>sales</div>
                 <div className='ctext'>Get in touch and let us know how we can help</div>
                 <button className='btn001'>contact us &rarr;</button>
             </div>
             <div className='c-box001'>
-                <div className='cimage'></div>
+                <div className='cimage'>
+                <img className='h-[100px]' src={driverimg}></img>
+                </div>
                 <div className='ctitle'>sales</div>
                 <div className='ctext'>Get in touch and let us know how we can help</div>
                 <button className='btn001'>contact us &rarr;</button>
             </div>
             <div className='c-box001'>
-                <div className='cimage'></div>
+                <div className='cimage'>
+                <img className='h-[100px] ' src={driverimg}></img>
+                </div>
                 <div className='ctitle'>sales</div>
                 <div className='ctext'>Get in touch and let us know how we can help</div>
                 <button className='btn001'>contact us &rarr;</button>

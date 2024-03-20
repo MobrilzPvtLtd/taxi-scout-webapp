@@ -1,5 +1,5 @@
 import React from 'react'
-
+import teamimg from "../Images/taxi-app-concept-illustration_52683-36028.avif"
 const Our_Team = () => {
   return (
     <div className='ourteam-main container'>
@@ -10,7 +10,9 @@ const Our_Team = () => {
                 <button className='obtn001 bg-[#fffa9a]  '>Learn More</button>
             </div>
         </div>
-        <div className='ourteam002'></div>
+        <div className='ourteam002'>
+          <img className='h-[650px]' src={teamimg}></img>
+        </div>
     </div>
   )
 }
