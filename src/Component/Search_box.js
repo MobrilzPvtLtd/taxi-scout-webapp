@@ -32,7 +32,6 @@ function Search_box() {
     setCarFetchFunc(true);
   };
 
-
   // console.log("source and destination" , source ,  destination)
   const google = window.google;
 
@@ -46,9 +45,9 @@ function Search_box() {
 
   const [isChecked, setIsChecked] = useState(false);
   const [address, setAddress] = useState("");
-  useEffect(()=>{
-// setSource(address)
-  }, [])
+  useEffect(() => {
+    // setSource(address)
+  }, []);
 
   const [options, setOptions] = useState({
     option1: null,
@@ -67,7 +66,7 @@ function Search_box() {
   return (
     <div id="box">
       {/* upper box */}
-    
+
       <div id="upper-box">
         <img
           src={taxi}
@@ -95,13 +94,13 @@ function Search_box() {
         </div>
         <div class="search-input ">
           {/* <div className="flex justify-center"> */}
-        {/* <InputButton ></InputButton> */}
+          {/* <InputButton ></InputButton> */}
           <InputItem type="source" />
-          
-            <LocationButton   setAddress = {setAddress}   />
-            {/* </div> */}
+
+          <LocationButton setAddress={setAddress} />
+          {/* </div> */}
           {/* <LocationButton onClick ={(()=> set(address))} /> */}
-           {/* <div className="flex justify-center mr-9"> */}
+          {/* <div className="flex justify-center mr-9"> */}
 
           <InputItem type="destination" />
           {/* <InputButton/> */}
@@ -115,7 +114,7 @@ function Search_box() {
             width: "220px",
             fontSize: "28px",
             marginTop: "20px",
-            marginRight : "25px"
+            marginRight: "25px",
           }}
           onClick={() => calculateDistance()}
         >
@@ -172,7 +171,7 @@ function Search_box() {
           option2={options.option2}
           option3={options.option3}
           option4={options.option4}
-          distance = {distance}
+          distance={distance}
           // token = {token}
         />
       ) : null}

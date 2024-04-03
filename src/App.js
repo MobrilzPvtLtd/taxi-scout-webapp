@@ -37,6 +37,8 @@ import Privacy_Policy from './Component/Privacy_Policy';
 import Our_Partner from './Component/Our_Partner';
 import "./Aryann.css"
 import About_us from './Component/About_us';
+import Home_search_box from './Component/Home_search_box';
+import Landing from './Component/Landing';
 // import firebase from 'firebase'
 
 function App() {
@@ -79,6 +81,7 @@ function App() {
       <Route path='/driver' element =  {<DriverSearchBox/>} />
       {/* <Route path='/about' element =  {<About/>} /> */}
       <Route path='/about' element =  {<About_us/>} />
+      <Route path='/home2' element = {<Landing/>}/>
       <Route path='/contact' element =  {<Contact/>} />
       <Route path='/faq' element =  {<Faq/>} />
       <Route path='/howitworks' element =  {<How_It_Works/>} />
