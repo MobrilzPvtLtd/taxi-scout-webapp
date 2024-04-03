@@ -62,7 +62,9 @@ if (userType === "user"){
 }
 
   return (
-    <div className="container">
+    <div>
+    <div id='banner_img_home'></div>
+    <div className="container login001">
       <div className="login-container">
         <h1>Login</h1>
         <div className="login-options">
@@ -76,7 +78,7 @@ if (userType === "user"){
         {(userType==='user')?
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <input type="text" placeholder="mobile"  
+            <input type="number" placeholder="mobile"  
             name="mobile"
             value={credentials.mobile}   onChange={handleChange} required />
           </div>
@@ -90,6 +92,8 @@ if (userType === "user"){
        </span>}
       </div>
     </div>
+    </div>
+    // </div>
   );
 };
 

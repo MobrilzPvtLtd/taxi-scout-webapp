@@ -71,7 +71,7 @@ function App() {
       <Route path='/home' element =  {<Home/>} />
       {/* <Route path='/SIgnup' element =  {<SIgnup/>} /> */}
       <Route path='/signup' element =  {<SignupPage/>} />
-      <Route path='/' element =  {<LoginPage/>} />
+      <Route path='/login' element =  {<LoginPage/>} />
       
       <Route path='/registor' element =  {<Registor/>} />
       <Route path='/payment' element =  {<Payment/>} />
@@ -81,7 +81,7 @@ function App() {
       <Route path='/driver' element =  {<DriverSearchBox/>} />
       {/* <Route path='/about' element =  {<About/>} /> */}
       <Route path='/about' element =  {<About_us/>} />
-      <Route path='/home2' element = {<Landing/>}/>
+      <Route path='/' element = {<Landing/>}/>
       <Route path='/contact' element =  {<Contact/>} />
       <Route path='/faq' element =  {<Faq/>} />
       <Route path='/howitworks' element =  {<How_It_Works/>} />

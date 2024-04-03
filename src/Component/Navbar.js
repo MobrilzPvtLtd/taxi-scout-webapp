@@ -29,7 +29,7 @@ const Navbar = (props) => {
   const handleClick = () => {
     // e.preventDefault();
     localStorage.removeItem("token");
-    history("/");
+    history("/login");
   };
 
   // hearder menu content
@@ -91,7 +91,7 @@ const Navbar = (props) => {
             </div>
             <div id="nav_items" className="flex justify-around gap-5 items-center">
               <div className="dropdown-button">
-                <Link to="/taxi-scout">Home</Link>
+                <Link to="/">Home</Link>
               </div>
               <div className="dropdown-container">
                 <div onMouseEnter={handleDropdown}  onClick={handleDropdown} className="dropdown-button">
@@ -127,7 +127,7 @@ const Navbar = (props) => {
 
             {!localStorage.getItem("token") ? (
               <div className="d-flex">
-                {currentPage !== "/" && (
+                {currentPage !== "/home" && (
                   <Link className="nav-link" to="/">
                     <div className="mx-1">
                       <LoginButton
