@@ -2,6 +2,7 @@ import React from "react";
 import InputItem from "./InputItem";
 import LocationButton from "./LocationButton";
 import { useNavigate } from "react-router-dom";
+import banner from "../Images/3adb4519-1285-4d49-89ac-fae6820278d2.avif"
 
 const Landing = () => {
   const history = useNavigate();
@@ -10,6 +11,9 @@ const Landing = () => {
   };
   return (
     <div className="home2">
+        <div id="banner_img_home" className="">
+        <img  src={banner}></img>
+      </div>
       <div id="main-box001">
         <div class="css-hPnljU">
           <h2 class="css-jzIGNN">Request a ride now</h2>
@@ -43,9 +47,6 @@ const Landing = () => {
         >
           Search
         </button>
-      </div>
-      <div className="home-image001">
-        <img src=""></img>
       </div>
     </div>
   );
