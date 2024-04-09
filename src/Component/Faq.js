@@ -1,6 +1,81 @@
-import React from 'react'
+import React, { useState } from "react";
+import accImg from "../Images/driver_profile.png"
 
 const Faq = () => {
+  const [visible, setVisible] = useState(false);
+  const accord = () => {
+    if (visible == false) {
+      setVisible(true);
+      setVisible2(false);
+      setVisible3(false);
+    } else {
+      setVisible(false);
+    }
+  };
+
+  const [visible2, setVisible2] = useState(false);
+  const accord2 = () => {
+    if (visible2 == false) {
+      setVisible(false);
+      setVisible2(true);
+      setVisible3(false);
+    } else {
+      setVisible2(false);
+    }
+  };
+
+  const [visible3, setVisible3] = useState(false);
+  const accord3 = () => {
+    if (visible3 == false) {
+      setVisible(false);
+      setVisible2(false);
+      setVisible3(true);
+      setVisible4(false);
+      setVisible5(false);
+      setVisible6(false);
+    } else {
+      setVisible3(false);
+    }
+  };
+  const [visible4, setVisible4] = useState(false);
+  const accord4 = () => {
+    if (visible4 == false) {
+      setVisible(false);
+      setVisible2(false);
+      setVisible3(false);
+      setVisible4(true);
+      setVisible5(false);
+      setVisible6(false);
+    } else {
+      setVisible4(false);
+    }
+  };
+  const [visible5, setVisible5] = useState(false);
+  const accord5 = () => {
+    if (visible5 == false) {
+      setVisible(false);
+      setVisible2(false);
+      setVisible3(false);
+      setVisible4(false);
+      setVisible5(true);
+      setVisible6(false);
+    } else {
+      setVisible5(false);
+    }
+  };
+  const [visible6, setVisible6] = useState(false);
+  const accord6 = () => {
+    if (visible6 == false) {
+      setVisible(false);
+      setVisible2(false);
+      setVisible3(false);
+      setVisible4(false);
+      setVisible5(false);
+      setVisible6(true);
+    } else {
+      setVisible6(false);
+    }
+  };
   return (
     <div>
       <div className="faq-main">
@@ -10,215 +85,130 @@ const Faq = () => {
           Far far away, behind the word mountains, far from the countries
           Vokalia and Consonantia, there live the blind texts.
         </div>
-        <div className="faq-img"></div>
+        <div className="faq-img">
+          <img src={accImg}></img>
+        </div>
       </div>
       <div className="f-line">
         <div className="faq-line"></div>
       </div>
-      <div className="f-acor container">
-            <div className="accordion1">
-                <h2 className="f-heading001">FAQ'S heading</h2>
-        <div class="accordion" id="accordionExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-              <button
-                class="accordion-button"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseOne"
-                aria-expanded="true"
-                aria-controls="collapseOne"
-              >
-                Accordion Item #1
+      <div className="accord-main container ">
+        <div className="accord-1 container">
+          <div className="accord">
+            <div className="accord-001">
+              <div className="accord-head">accordion 1</div>
+              <button onClick={accord} id="accord-btn">
+                {" "}
+                &#129174;{" "}
               </button>
-            </h2>
-            <div
-              id="collapseOne"
-              class="accordion-collapse collapse show"
-              aria-labelledby="headingOne"
-              data-bs-parent="#accordionExample"
-            >
-              <div class="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is
-                shown by default, until the collapse plugin adds the appropriate
-                classes that we use to style each element. These classes control
-                the overall appearance, as well as the showing and hiding via
-                CSS transitions. You can modify any of this with custom CSS or
-                overriding our default variables. It's also worth noting that
-                just about any HTML can go within the{" "}
-                <code>.accordion-body</code>, though the transition does limit
-                overflow.
-              </div>
             </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseTwo"
-                aria-expanded="false"
-                aria-controls="collapseTwo"
-              >
-                Accordion Item #2
-              </button>
-            </h2>
-            <div
-              id="collapseTwo"
-              class="accordion-collapse collapse"
-              aria-labelledby="headingTwo"
-              data-bs-parent="#accordionExample"
-            >
-              <div class="accordion-body">
-                <strong>This is the second item's accordion body.</strong> It is
-                hidden by default, until the collapse plugin adds the
+            {visible == true ? (
+              <div className="accord-text">
+                It is hidden by default, until the collapse plugin adds the
                 appropriate classes that we use to style each element. These
                 classes control the overall appearance, as well as the showing
                 and hiding via CSS transitions. You can modify any of this with
-                custom CSS or overriding our default variables. It's also worth
-                noting that just about any HTML can go within the{" "}
-                <code>.accordion-body</code>, though the transition does limit
-                overflow.
+                custom CSS or overriding our default variables.
               </div>
-            </div>
+            ) : null}
           </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingThree">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseThree"
-                aria-expanded="false"
-                aria-controls="collapseThree"
-              >
-                Accordion Item #3
+          <div className="accord">
+            <div className="accord-001">
+              <div className="accord-head">accordion 2</div>
+              <button onClick={accord2} id="accord-btn">
+                {" "}
+                &#129174;{" "}
               </button>
-            </h2>
-            <div
-              id="collapseThree"
-              class="accordion-collapse collapse"
-              aria-labelledby="headingThree"
-              data-bs-parent="#accordionExample"
-            >
-              <div class="accordion-body">
-                <strong>This is the third item's accordion body.</strong> It is
-                hidden by default, until the collapse plugin adds the
+            </div>
+            {visible2 == true ? (
+              <div className="accord-text">
+                It is hidden by default, until the collapse plugin adds the
                 appropriate classes that we use to style each element. These
                 classes control the overall appearance, as well as the showing
                 and hiding via CSS transitions. You can modify any of this with
-                custom CSS or overriding our default variables. It's also worth
-                noting that just about any HTML can go within the{" "}
-                <code>.accordion-body</code>, though the transition does limit
-                overflow.
+                custom CSS or overriding our default variables.
               </div>
+            ) : null}
+          </div>
+          <div className="accord">
+            <div className="accord-001">
+              <div className="accord-head">accordion 3</div>
+              <button onClick={accord3} id="accord-btn">
+                {" "}
+                &#129174;{" "}
+              </button>
             </div>
+            {visible3 == true ? (
+              <div className="accord-text">
+                It is hidden by default, until the collapse plugin adds the
+                appropriate classes that we use to style each element. These
+                classes control the overall appearance, as well as the showing
+                and hiding via CSS transitions. You can modify any of this with
+                custom CSS or overriding our default variables.
+              </div>
+            ) : null}
           </div>
         </div>
-        </div>
-        <div className="accordion12">
-            <h2 className="f-heading001">FAQ'S heading</h2>
-        <div class="accordion" id="accordionExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingFour">
-              <button
-                class="accordion-button"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseFour"
-                aria-expanded="true"
-                aria-controls="collapseFour"
-              >
-                Accordion Item #4
+
+        <div className="accord-2 container">
+          <div className="accord">
+            <div className="accord-001">
+              <div className="accord-head">accordion 4</div>
+              <button onClick={accord4} id="accord-btn">
+                {" "}
+                &#129174;{" "}
               </button>
-            </h2>
-            <div
-              id="collapseFour"
-              class="accordion-collapse collapse show"
-              aria-labelledby="headingFour"
-              data-bs-parent="#accordionExample"
-            >
-              <div class="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is
-                shown by default, until the collapse plugin adds the appropriate
-                classes that we use to style each element. These classes control
-                the overall appearance, as well as the showing and hiding via
-                CSS transitions. You can modify any of this with custom CSS or
-                overriding our default variables. It's also worth noting that
-                just about any HTML can go within the{" "}
-                <code>.accordion-body</code>, though the transition does limit
-                overflow.
-              </div>
             </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingFive">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseFive"
-                aria-expanded="false"
-                aria-controls="collapseFive"
-              >
-                Accordion Item #5
-              </button>
-            </h2>
-            <div
-              id="collapseFive"
-              data-bs-parent="#accordionExample"
-            >
-              <div class="accordion-body">
-                <strong>This is the second item's accordion body.</strong> It is
-                hidden by default, until the collapse plugin adds the
+            {visible4== true ? (
+              <div className="accord-text">
+                It is hidden by default, until the collapse plugin adds the
                 appropriate classes that we use to style each element. These
                 classes control the overall appearance, as well as the showing
                 and hiding via CSS transitions. You can modify any of this with
-                custom CSS or overriding our default variables. It's also worth
-                noting that just about any HTML can go within the{" "}
-                <code>.accordion-body</code>, though the transition does limit
-                overflow.
+                custom CSS or overriding our default variables.
               </div>
-            </div>
+            ) : null}
           </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingSix">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseSix"
-                aria-expanded="false"
-                aria-controls="collapseSix"
-              >
-                Accordion Item #6
+          <div className="accord">
+            <div className="accord-001">
+              <div className="accord-head">accordion 5</div>
+              <button onClick={accord5} id="accord-btn">
+                {" "}
+                &#129174;{" "}
               </button>
-            </h2>
-            <div
-              id="collapseSix"
-              class="accordion-collapse collapse"
-              aria-labelledby="headingSix"
-              data-bs-parent="#accordionExample"
-            >
-              <div class="accordion-body">
-                <strong>This is the third item's accordion body.</strong> It is
-                hidden by default, until the collapse plugin adds the
+            </div>
+            {visible5 == true ? (
+              <div className="accord-text">
+                It is hidden by default, until the collapse plugin adds the
                 appropriate classes that we use to style each element. These
                 classes control the overall appearance, as well as the showing
                 and hiding via CSS transitions. You can modify any of this with
-                custom CSS or overriding our default variables. It's also worth
-                noting that just about any HTML can go within the{" "}
-                <code>.accordion-body</code>, though the transition does limit
-                overflow.
+                custom CSS or overriding our default variables.
               </div>
-            </div>
+            ) : null}
           </div>
-        </div>
+          <div className="accord">
+            <div className="accord-001">
+              <div className="accord-head">accordion 6</div>
+              <button onClick={accord6} id="accord-btn">
+                {" "}
+                &#129174;{" "}
+              </button>
+            </div>
+            {visible6 == true ? (
+              <div className="accord-text">
+                It is hidden by default, until the collapse plugin adds the
+                appropriate classes that we use to style each element. These
+                classes control the overall appearance, as well as the showing
+                and hiding via CSS transitions. You can modify any of this with
+                custom CSS or overriding our default variables.
+              </div>
+            ) : null}
+          </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Faq
+export default Faq;
