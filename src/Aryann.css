@@ -73,13 +73,16 @@
 .gheading{
     font-size: 43px;
 }
-.gtext001{
-    font-size: 16px;
-    color: #616161;
+    .gtext001 {
+        font-size: 28px;
+        color: #616161;
+        padding: 15px 0px;
+        font-weight: 700;
+    }
 
-}
+
 .gtext002{
-    font-size: 16px;
+    font-size: 21px;
     font-weight: 600;
     color: #898989;
 }
@@ -516,4 +519,43 @@ button.price-btn007 {
 .faq-img img {
     width: 7vw;
     height: 15vh;
+}
+.gall-main{
+    padding: 25px 0px;
+}
+.gall-1 {
+    display: flex;
+    gap: 15px;
+    padding-top: 15px;
+}
+.g-image1 img, .g-image3 img,.g-image5 img {
+    width: 100vw;
+    height: 25vh;
+}
+.g-image2 img, .g-image4 img, .g-image6 img {
+    height: 25vh;
+    width: 70vw;
+}
+.works-main {
+    display: flex;
+    gap: 150px;
+    height: 20vw;
+    width: 50vw;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+}
+.work-left{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.work-box{
+    background-color: #fff;
+    padding: 10px;
+}
+.work-right{
+    background-color: #fff;
+    width: 25vw;
+    height: 15vw;
 }

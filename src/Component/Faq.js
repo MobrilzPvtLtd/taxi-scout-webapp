@@ -85,9 +85,9 @@ const Faq = () => {
           Far far away, behind the word mountains, far from the countries
           Vokalia and Consonantia, there live the blind texts.
         </div>
-        <div className="faq-img">
+        <ankitNeProjectBanyaHai className="faq-img">
           <img src={accImg}></img>
-        </div>
+        </ankitNeProjectBanyaHai>
       </div>
       <div className="f-line">
         <div className="faq-line"></div>
