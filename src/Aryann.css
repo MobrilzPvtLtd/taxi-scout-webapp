@@ -543,7 +543,6 @@ button.price-btn007 {
     width: 50vw;
     align-items: center;
     justify-content: center;
-    background-color: red;
 }
 .work-left{
     display: flex;
@@ -551,11 +550,28 @@ button.price-btn007 {
     gap: 15px;
 }
 .work-box{
-    background-color: #fff;
     padding: 10px;
 }
 .work-right{
-    background-color: #fff;
     width: 25vw;
     height: 15vw;
+    /* border: 5px solid #000; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff200d9;
+    padding: 25px;
+    border-radius: 25px
+}
+button.work-box {
+    background-color: #fff317 !important;
+    font-weight: 700;
+}
+button.work-box:hover {
+    background-color: #000 !important;
+}
+.text-box {
+    font-size: 28px;
+    font-weight: 700;
+    color: #000;
 }

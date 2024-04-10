@@ -34,20 +34,20 @@ const How_It_Works = () => {
     <div>
       <div className="works-main container">
         <div className="work-left">
-          <button onClick={work} className="work-box">box heading 1</button>
-          <button onClick={work2} className="work-box">box heading 2</button>
-          <button onClick={work3} className="work-box">box heading 3</button>
-          <button onClick={work4} className="work-box">box heading 4</button>
+          <button onClick={work} className="work-box">Type of trip</button>
+          <button onClick={work2} className="work-box">Enter your details</button>
+          <button onClick={work3} className="work-box">Choose your taxi</button>
+          <button onClick={work4} className="work-box">Make payment</button>
         </div>
         <div className="work-right">
           {(visible == 1)?(
-          <div className="text-box">hariom</div>):null}
+          <div className="text-box">Choose your trip One way, Round Trip, Airport Cabs</div>):null}
           {(visible == 2)?(
-          <div className="text-box">hello bhai</div>):null}
+          <div className="text-box">Submit your details regarding your trip like date, time and location</div>):null}
           {(visible == 3)?(
-          <div className="text-box">1234567890</div>):null}
+          <div className="text-box">Choose which type of cab you want for your trip Audi, BMW etc</div>):null}
           {(visible == 4)?(
-          <div className="text-box">abc</div>):null}
+          <div className="text-box">Pay before or after trip. We accept multiple payment mode Cash, Credit Card, Debit Card, Netbanking</div>):null}
         </div>
       </div>
     </div>
