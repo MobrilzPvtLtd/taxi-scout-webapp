@@ -92,16 +92,104 @@
 
 /* contact css starts */
 .contactmain {
+    position: relative;
     background-color: #719cf800;
+    background-image: url(./Images/taxi_inscription_words_163389_1920x1080.jpg);         
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    height: 90vh;
+    width: 100%;
+    background-position: left;
+    margin-top: -25px;
+}
+.cu_overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.5;
+}
+.cu_parent{
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+}
+.cheading001{
+    color: #ffffff;
+    font-size: 54px;
+    padding-top: 25px;
+}
+.cutext001{
+    color: #fff;
+    font-size: 19px;
+}
+.cu{
+
+    display: flex;
+    gap: 150px;
+    padding-top: 50px;
+}
+.cu01 {
+    /* background-color: green; */
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
-.cheading001{
-    color: #000000;
-    font-size: 54px;
+.cu_icon_box{
+    display: flex;
+    gap: 15px;
 }
-.c-box-main {
+.cu_icon {
+    background-color: #fff;
+    width: 2vw;
+    height: 2vw;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cu_icon_box_heading{
+    color: #fff200;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: left;
+}
+.cu_link{
+    color: #fff200;
+}
+.cu_icon_box_para{
+    color:#fff;
+    text-align: left;
+}
+.cu02{
+    /* background-color: #000; */
+}
+select#inputState {
+    background-color: rgb(255 255 255 / 90%);
+    padding: 10px 10px;
+    border: 1px solid #ffffff6b;
+}
+#inputZip {
+    width: 80%;
+}
+#inputEmail4 {
+    border: 1px solid #ffffff6b;
+}
+.cu_icon_box_para{
+    font-size: 19px  ;
+}
+button#btn_cu {
+    border: 1px solid #000000;
+    background-color: #fff !important;
+    color: #000;
+}
+button#btn_cu:hover{
+    background-color: #000 !important;
+    color: #fff;
+}
+/* .c-box-main {
     display: flex;
     gap: 25px;
     padding-bottom: 50px;
@@ -155,14 +243,13 @@
 }
 .btn001:hover {
     border:3px solid #ffffff;
-}
+} */
 /* contact css ends */
 
 
 /* our team  css starts */
 
 .ourteam-main{
-    background-color: #f7f7f7;
     display: flex;
     box-shadow: 0px 0px 5px #000;
     margin-top: 50px;
@@ -180,7 +267,7 @@
     flex-direction: column;
     gap: 25px;
     text-align: left;
-    padding: 150px 0px;
+    padding: 75px 0px;
 }
 .ourheading h2{
     font-size: 52px;
@@ -501,6 +588,7 @@ button.price-btn007 {
 .accord-main {
     display: flex;
     gap: 175px;
+    padding-bottom: 100px;
 }
 .accord{
     display: flex;
@@ -511,7 +599,7 @@ button.price-btn007 {
 }
 .accord-001{
     display: flex;
-    gap: 165px;
+    gap: 1px;
     background-color: #fff;
     padding: 10px 25px;
     width: 20vw;
@@ -616,3 +704,7 @@ button.work-box:hover {
     color: #000;
 }
 
+.ourteam002 img{
+    border-radius: 15px 0px 0px 15px;
+    margin-left: -12px;
+}

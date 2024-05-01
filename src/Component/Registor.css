@@ -33,7 +33,7 @@
     /* border: 1px solid #ccc; */
     border-radius: 4px;
     outline: none;
-    background-color: rgba(255, 255, 255, 0.418);
+    background-color: rgb(255 255 255 / 90%);
     color: black;
     font-weight: 600;
   }
