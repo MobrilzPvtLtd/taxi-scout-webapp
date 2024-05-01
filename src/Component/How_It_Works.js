@@ -1,38 +1,40 @@
 import React, { useState } from "react";
 
 const How_It_Works = () => {
-  const [visible, setVisible] = useState(0)
+  const [visible, setVisible] = useState(1)
   const work = () => {
     if (visible == 0 || visible == 2 || visible == 3  || visible == 4){
       setVisible(1)
      }else{
-        setVisible(0)
+        setVisible(1)
       }
     }
     const work2 = () => {
       if (visible == 0 || visible == 1 || visible == 3  || visible == 4){
         setVisible(2)
        }else{
-          setVisible(0)
+          setVisible(2)
         }
       }
       const work3 = () => {
         if (visible == 0 || visible == 1 || visible == 2  || visible == 4){
           setVisible(3)
          }else{
-            setVisible(0)
+            setVisible(3)
           }
         }
         const work4 = () => {
           if (visible == 0 || visible == 1 || visible == 3  || visible == 2){
             setVisible(4)
            }else{
-              setVisible(0)
+              setVisible(4)
             }
           }
   return (
-    <div>
+    <div id="how_it_works">
       <div className="works-main container">
+      <h1 className="mt-10 text-[50px] font-bold text-white ">How it Works ?</h1> 
+        <div className="flex gap-5">
         <div className="work-left">
           <button onClick={work} className="work-box">Type of trip</button>
           <button onClick={work2} className="work-box">Enter your details</button>
@@ -48,6 +50,7 @@ const How_It_Works = () => {
           <div className="text-box">Choose which type of cab you want for your trip Audi, BMW etc</div>):null}
           {(visible == 4)?(
           <div className="text-box">Pay before or after trip. We accept multiple payment mode Cash, Credit Card, Debit Card, Netbanking</div>):null}
+        </div>
         </div>
       </div>
     </div>

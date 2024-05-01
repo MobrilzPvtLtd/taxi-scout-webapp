@@ -36,7 +36,7 @@ function CarListOption({ option1, option2, option3, option4, carFetchFunc , dist
 
   let url = "https://www.mobrilz.digital/admin/public/";
 
-  let token = localStorage.token;
+  let token = sessionStorage.token;
 
   const [data, setData] = useState([]);
 
@@ -213,7 +213,7 @@ function CarListOption({ option1, option2, option3, option4, carFetchFunc , dist
       if (response.ok) {
         const DATA = await response.json();
         const convertedData = [DATA.data];
-        localStorage.setItem("id", convertedData[0].id);
+        sessionStorage.setItem("id", convertedData[0].id);
         cancelRqstBtn(convertedData);
         setCancelId(convertedData.id);
         setDriver(convertedData);
@@ -254,7 +254,7 @@ function CarListOption({ option1, option2, option3, option4, carFetchFunc , dist
   const [searchingDriver, setSearchingDriver] = useState(null);
   const [proceed, setProceed] = useState(null);
   const cancelRequest = async () => {
-    let rqstId = localStorage.id;
+    let rqstId = sessionStorage.id;
     try {
       var response = await fetch(`${url}api/v1/request/cancel`, {
         method: "POST",

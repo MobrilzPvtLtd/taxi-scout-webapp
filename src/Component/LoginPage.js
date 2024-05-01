@@ -5,7 +5,7 @@ import CarListOption from './CarListOption';
 
 function LoginPage() {
 
-  const [userType, setUserType] = useState(''); // Default userType is user
+  const [userType, setUserType] = useState('user'); // Default userType is user
 
   const handleLogin = () => {
     // Perform login logic based on userType
@@ -47,7 +47,7 @@ if (userType === "user"){
     // console.log(json);
     if (response.ok){
       // Save the auth token and redirect
-      localStorage.setItem('token', json.access_token); 
+      sessionStorage.setItem('token', json.access_token); 
       history("/home");
   }
   else{

@@ -5,7 +5,7 @@ import React, { useState } from 'react'
  function CreateRentalRequest() {
     let result;
   let url = "https://www.mobrilz.digital/admin/public/"
- let token = localStorage.token ;
+ let token = sessionStorage.token ;
  const [noDriverFound , setNoDriverFound] = useState(false);
     const [tripReqError , setTripReqError] = useState(false)
     const [internet, setInternet] = useState(true); // Assuming internet is initially true

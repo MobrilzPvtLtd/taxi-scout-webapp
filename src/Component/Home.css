@@ -1,5 +1,9 @@
 body{
-    background-image: url(../Images/map.png);
+    /* background-image: url(../Images/toushif-alam-JZyBmdOpkpI-unsplash.jpg); */
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #fffa93;
 }
 
 #googlemap{

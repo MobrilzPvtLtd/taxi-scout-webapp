@@ -9,11 +9,7 @@ function SignupPage() {
   const [selectedState, setSelectedState] = useState('');
   const [countries, setCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("");
-  const handleSignUp = () => {
-    // Perform sign-up logic based on userType
-    console.log(`Signing up as ${userType}`);
-    // Add your sign-up functionality here
-  };
+
   //   sign up api
 
   const [credentials, setCredentials] = useState({
@@ -183,11 +179,12 @@ function SignupPage() {
   };
 
   return (
-    <>
+    < >
+    <div id="signup_page_main">
       {userType === "user" ? (
-        <div className="container">
-          <div className="signup-container">
-            <h1>Sign Up</h1>
+        <div  className="container">
+          <div id="sign_up_page_form" className="signup-container">
+            <h1 className="text-white">Sign Up</h1>
             <div className="signup-options">
               <div
                 className={`option ${userType === "user" ? "active" : ""}`}
@@ -248,9 +245,9 @@ function SignupPage() {
           </div>
         </div>
       ) : (
-        <div className="container">
-          <div className="signup-container">
-            <h1>Sign Up</h1>
+        <div  className="container">
+          <div id="sign_up_page_form" className="signup-container">
+            <h1 className="text-white">Sign Up</h1>
             <div className="signup-options">
               <div
                 className={`option ${userType === "user" ? "active" : ""}`}
@@ -412,6 +409,7 @@ function SignupPage() {
           </div>
         </div>
       )}
+      </div>
     </>
   );
 }

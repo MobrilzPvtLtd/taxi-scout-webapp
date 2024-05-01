@@ -14,7 +14,7 @@ const Pricing = () => {
             <div className='p-point2'><li>unlimited projects</li></div>
             <div className='p-point3'>
               <div className='p-point03'><li>extended free trial</li></div>
-              <div className='p-point003'>FOR EARLY USERS</div>
+              {/* <div className='p-point003'>FOR EARLY USERS</div> */}
             </div>
           </div>
           <button className='price-btn007'> Get Started</button>
@@ -27,7 +27,7 @@ const Pricing = () => {
             <div className='p-point2'><li>unlimited projects</li></div>
             <div className='p-point3'>
               <div className='p-point03'><li>extended free trial</li></div>
-              <div className='p-point003'>FOR EARLY USERS</div>
+              {/* <div className='p-point003'>FOR EARLY USERS</div> */}
             </div>
           </div>
           <button className='price-btn007'> Get Started</button>
@@ -40,7 +40,7 @@ const Pricing = () => {
             <div className='p-point2'><li>unlimited projects</li></div>
             <div className='p-point3'>
               <div className='p-point03'><li>extended free trial</li></div>
-              <div className='p-point003'>FOR EARLY USERS</div>
+              {/* <div className='p-point003'>FOR EARLY USERS</div> */}
             </div>
           </div>
           <button className='price-btn007'> Get Started</button>

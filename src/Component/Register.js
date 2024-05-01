@@ -20,7 +20,7 @@ function Registor() {
     const json = await response.json()
     console.log(json);
   
-      localStorage.setItem('token', json.authtoken); 
+    sessionStorage.setItem('token', json.authtoken); 
       history("/home");
 
 

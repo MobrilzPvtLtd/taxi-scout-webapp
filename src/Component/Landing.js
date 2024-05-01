@@ -10,13 +10,13 @@ const Landing = () => {
     history("/login");
   };
   return (
-      <div className="home2">
+      <div id="landing_page" className="home2">
         <div id="banner_img_home" className="">
         {/* <img  src={banner}></img> */}
       </div>
       <div id="main-box001">
         <div class="css-hPnljU">
-          <h2 class="css-jzIGNN001">Request a ride now</h2>
+          <h2 class="css-jzIGNN001 text-[30px] mb-3">Request a ride now</h2>
         </div>
         <div class="search-input ">
           {/* <div className="flex justify-center"> */}
@@ -33,6 +33,7 @@ const Landing = () => {
           {/* <InputButton/> */}
           {/* </div> */}
         </div>
+        <a href="/login">
         <button
           style={{
             backgroundColor: "black",
@@ -43,10 +44,11 @@ const Landing = () => {
             marginTop: "20px",
             marginRight: "25px",
           }}
-          onClick={handleSubmit}
+          // onClick={handleSubmit}
         >
           Search
         </button>
+        </a>
       </div>
     </div>
   );

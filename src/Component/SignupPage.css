@@ -1,5 +1,8 @@
 body{
-  /* background-image: url(../Images/map.png) */
+  /* background-image: url(../Images/3adb4519-1285-4d49-89ac-fae6820278d2.avif); */
+  background-size:cover;
+  background-position: 10% -2.5% !important;
+  background-repeat: no-repeat !important; 
 }
 
 .signup-container {
@@ -8,8 +11,28 @@ body{
     align-items: center;
     height: 80vh !important;
     width: 35vw !important;
-  background-image: url(../Images/map.png);
+  /* background-image: url(../Images/map.png); */
 
+
+  }
+  #sign_up_page_form{
+
+    box-shadow: 0 0 20px -10px black;
+background-color: #000000a9 !important;
+border-radius: 10px;
+position: absolute;
+z-index: 100;
+right: 30px;
+top: 100px;
+  }
+  #signup_page_main{
+    background-image: url(../Images/3adb4519-1285-4d49-89ac-fae6820278d2.avif);
+    background-size:cover;
+    /* background-position: 10% -2.5% !important; */
+    background-repeat: no-repeat !important; 
+    /* width: 100vw; */
+    height: 91vh;
+    margin-top: -35px;
   }
   
   /* .signup-form {

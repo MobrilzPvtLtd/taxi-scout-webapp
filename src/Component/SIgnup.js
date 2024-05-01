@@ -18,7 +18,7 @@ const SIgnup = () => {
     console.log(json);
     // if (json.success){
       // Save the auth token and redirect
-      localStorage.setItem('token', json.authtoken); 
+      sessionStorage.setItem('token', json.authtoken); 
       history("/home");
 
   // }

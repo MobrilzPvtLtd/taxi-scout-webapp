@@ -47,7 +47,7 @@ if (userType === "user"){
       // console.log(json);
       if (response.ok){
         // Save the auth token and redirect
-        localStorage.setItem('token', json.access_token); 
+        sessionStorage.setItem('token', json.access_token); 
         history("/home");
     }
     else{

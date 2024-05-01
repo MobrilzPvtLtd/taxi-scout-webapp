@@ -146,7 +146,7 @@
     padding: 0px 50px;
 }
 .btn001{
-    height: 3vw;
+    height: 4vw;
     width: 18vw;
     font-size: 28px;
     background-color: #fff;
@@ -201,7 +201,8 @@ button.obtn001 {
     box-shadow: 0 0 5px -1px black !important;
 }
 #blog-btn001{
-    background-color: #fff200 !important;
+    background-color: #000 !important;
+    color: white !important;
     box-shadow: 0 0 5px -2px;
     transition: transform .3s ease-in-out;
 }
@@ -417,8 +418,10 @@ button.price-btn007 {
     box-shadow: 0px 0px 18px -8px #000 !important;
 }
 .price-btn007{
-    background-color:#fffa9a !important ;
+    background-color:#000 !important ;
     transition: transform .4s ease-in-out;
+    color: white;
+    font-weight: 500;
 
 }
 .price-btn007:hover{
@@ -438,12 +441,18 @@ button.price-btn007 {
     padding-bottom: 25px;
 }
 #main-box001 {
+    padding: 1vw;
     position: absolute;
-    width: 25vw;
-    /* padding: 100px 0px 0px 100px; */
     z-index: 1;
     top: 250px;
     left: 100px;
+    width: 25vw;
+    height: 20vw;
+    background-color: rgba(0, 0, 0, 0.623);
+    top: 120px;
+    right: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 200px -10px black;
 }
 .home-image001 img {
     /* height: 100vh; */
@@ -459,9 +468,10 @@ button.price-btn007 {
     width: 100%;
     height: 100%;
 } */
-#banner_img_home {background-image: url(./Images/3adb4519-1285-4d49-89ac-fae6820278d2.avif);
+#banner_img_home {
+    background-image: url(./Images/3adb4519-1285-4d49-89ac-fae6820278d2.avif);
     background-size:cover;
-    background-position: center;
+    background-position: 10% 10%;
     background-repeat: no-repeat !important; 
     height: 91.9vh;
     width: 100%;
@@ -471,10 +481,16 @@ button.price-btn007 {
     margin-top: -25px;
 } */
 .login001{
+    width: 20vw;
+    height: 20vw;
+    background-color: rgba(0, 0, 0, 0.623);
     position: absolute;
     z-index: 1;
-    top: 200px;
-    left: -500px;
+    top: 120px;
+    right: 50px;
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0 0 200px -10px black;
 }
 .login-container h1{
     color: #fff;
@@ -536,35 +552,59 @@ button.price-btn007 {
     height: 25vh;
     width: 70vw;
 }
-.works-main {
-    display: flex;
-    gap: 150px;
-    height: 20vw;
-    width: 50vw;
-    align-items: center;
-    justify-content: center;
-}
-.work-left{
+#how_it_works{
+    margin-top: -25px;
+    width: 100%;
+    height: 89.3vh;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    background-image: url(./Images/lexi-anderson-G8wPrJyNqWQ-unsplash.jpg);
+    background-position: center;
+
+    /* background-color: #e9b21c ; */
+}
+.works-main {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    height: 30vw;
+    width: 50vw;
+    align-items: center;
+    justify-content: start;
+    background-color: rgba(0, 0, 0, 0.63);
+    border-radius: 10px;
+    box-shadow: 0 0 150px -20px black;
+}
+.work-left{
+    /* height: 50%; */
+    display: flex;
+    flex-direction: column;
+    /* gap: 35px; */
+    justify-content: space-between;
+    align-items: center;
 }
 .work-box{
     padding: 10px;
 }
 .work-right{
-    width: 25vw;
+    width: 30vw;
     height: 15vw;
     /* border: 5px solid #000; */
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #fff200d9;
+    background-color: rgba(255, 255, 255, 0.938);
     padding: 25px;
-    border-radius: 25px
+    border-radius: 25px;
+    box-shadow: 0 0 50px -20px black;
+
+    
 }
 button.work-box {
-    background-color: #fff317 !important;
+    background-color: rgba(255, 255, 255, 0.938);
+width: 15vw;
     font-weight: 700;
 }
 button.work-box:hover {
@@ -575,3 +615,4 @@ button.work-box:hover {
     font-weight: 700;
     color: #000;
 }
+

@@ -30,11 +30,17 @@
   input[type="number"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     border-radius: 4px;
     outline: none;
+    background-color: rgba(255, 255, 255, 0.418);
+    color: black;
+    font-weight: 600;
   }
-  
+  input::placeholder{
+    color: black;
+    font-weight: 500;
+  }
   button {
     background-color: #007bff;
     color: #fff;

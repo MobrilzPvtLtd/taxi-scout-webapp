@@ -19,17 +19,17 @@ export const ContextProvider = ({ children }) => {
   const [fetchedUserData, setFetchedUserData] = useState([]);
   const [fetchedUserData2, setFetchedUserData2] = useState([]);
   let url = "https://www.mobrilz.digital/admin/public/";
-  let token = localStorage.token;
+  let token = sessionStorage.token;
 
 
   const setMode = (e) => {
     setCurrentMode(e.target.value);
-    localStorage.setItem('themeMode', e.target.value);
+    sessionStorage.setItem('themeMode', e.target.value);
   };
 
   const setColor = (color) => {
     setCurrentColor(color);
-    localStorage.setItem('colorMode', color);
+    sessionStorage.setItem('colorMode', color);
   };
 
   const handleClick = (clicked) => setIsClicked({ ...initialState, [clicked]: true });

@@ -1,6 +1,6 @@
 {
-  "name": "tax-project",
-  "homepage": "https://mobrilz.in/taxi-scout",
+  "name": "taxi-scout",
+  "homepage": "https://mobrilz.in/taxi-scout/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -51,5 +51,19 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.3.5"
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "demo.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aryannMobrilz/taxi-scout-webapp.git"
+  },
+  "keywords": [
+    "taxi-scout"
+  ],
+  "author": "Aryann Walia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aryannMobrilz/taxi-scout-webapp/issues"
   }
 }

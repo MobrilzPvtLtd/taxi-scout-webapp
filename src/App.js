@@ -43,7 +43,7 @@ import Landing from './Component/Landing';
 
 function App() {
 
-  let token = localStorage.token ;
+  let token = sessionStorage.token ;
   const [source, setSource]= useState([])
   const [destination, setDestination]= useState([])
   const stripePromise = loadStripe('pk_test_51BTUDGJAJfZb9HEBwDg86TN1KNprHjkfipXmEDMb0gSCassK5T3ZfxsAbcgKVmAIXF7oZ6ItlZZbXO6idTHE67IM007EwQ4uN3');

@@ -28,7 +28,7 @@ const Navbar = (props) => {
 
   const handleClick = () => {
     // e.preventDefault();
-    localStorage.removeItem("token");
+    sessionStorage.removeItem("token");
     history("/login");
   };
 
@@ -56,12 +56,13 @@ const Navbar = (props) => {
   const[opacityValue2 , setOpacityValue2 ] = useState("");
   const[visibilityValue2 , setVisibilityValue2 ] = useState("");
   const handleDropdown =()=>{
-    setOpacityValue('1')
+   
     // setVisibilityValue('visible')
     // setOpacityValue2('0')
     if(opacityValue == 1  ){
       setOpacityValue('0')
     }
+    else{ setOpacityValue('1')}
     dropdownDiv.style.opacity = opacityValue ;
   
     console.log("aryann walia")
@@ -85,7 +86,7 @@ const Navbar = (props) => {
         <div class="container">
           <div className="flex justify-between">
             <div className="">
-              <a href="/taxi-scout" class="logo">
+              <a href="/" class="logo">
                 <img src={logo} width={100} height={100} alt="logo" />
               </a>
             </div>
@@ -120,15 +121,15 @@ const Navbar = (props) => {
                   <Link to="/faq">FAQ</Link>
                   <Link to="/privacypolicy">Privacy Policy</Link>
                   <Link to="/termofuse">Terms of Use</Link>
-                  <Link to="/termofservices">Term of Services</Link>
+                  <Link to="/termofservices">Terms of Services</Link>
                 </div>
               </div>
             </div>
 
-            {!localStorage.getItem("token") ? (
+            {!sessionStorage.getItem("token") ? (
               <div className="d-flex">
                 {currentPage !== "/home" && (
-                  <Link className="nav-link" to="/">
+                  <Link className="nav-link" to="/login">
                     <div className="mx-1">
                       <LoginButton
                         className="btn btn-primary log-btn"
