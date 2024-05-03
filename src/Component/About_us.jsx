@@ -1,5 +1,5 @@
 import React from 'react'
-import img from "../Images/blogs.jpg"
+import img from "../Images/serve_globally2.jpg"
 
 
 const About_us = () => {
@@ -7,10 +7,10 @@ const About_us = () => {
     <div>
     <div className="title_box">
       <div className="title_main container">
-        <div>
+        <div className='flex flex-col items-center'>
           <h1 className='font-bold'>About Us</h1>
-        </div>
         <div className="line001"></div>
+        </div>
         <div>
           <p className="text001"> Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
 
@@ -19,8 +19,8 @@ Separated they live in Bookmarksgrove right at the coast of the Semantics, a lar
       </div>
       <div className="main2 container">
         <div><h2 className='text-[30px] pt-5 pb-5 font-bold' > Who We Are</h2></div>
-        <div className='about_us_content flex gap-5'>
-        <div className='w-[50%]'><p className="text002">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+        <div className='about_us_content flex gap-5 pb-5'>
+        <div className='w-[50%]'><p className="text-[1.5rem] text-justify">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
 
 Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
 
@@ -32,7 +32,7 @@ Even the all-powerful Pointing has no control about the blind texts it is an alm
 
 
 </p></div>
-<div className='w-[50%] flex flex-col justify-center'><img className="h-[20vw]" src={img} ></img></div></div>
+<div className='w-[50%] flex flex-col justify-center'><img className="" src={img} ></img></div></div>
       </div>
     </div>
   </div>
