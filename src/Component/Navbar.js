@@ -61,6 +61,12 @@ const Navbar = (props) => {
 
   const handleMouseEnter1 = () => {
     dropdownDiv.style.opacity = 1;
+    
+    
+     setTimeout(()=>{
+    dropdownDiv.style.opacity = 0;
+
+    },3000)
   };
 
   const handleMouseLeave1 = () => {
@@ -71,7 +77,13 @@ const Navbar = (props) => {
   };
   const handleMouseEnter2 = () => {
     dropdownDiv2.style.opacity = 1;
+    setTimeout(()=>{
+      dropdownDiv2.style.opacity = 0;
+  
+      },3000)
   };
+ 
+
 
   const handleMouseLeave2 = () => {
     // setOpacityValue(0)
@@ -127,7 +139,7 @@ const Navbar = (props) => {
                 <div className="dropdownbtn2" onMouseEnter={handleMouseEnter2} >
                  Contact
                 </div>
-                <div className="dropdown-content2 flex flex-col items-start gap-1" onMouseLeave={handleMouseLeave2}>
+                <div className="dropdown-content2 flex flex-col items-start gap-1"  onMouseLeave={handleMouseLeave2}>
                   <Link to="/contact">Contact Us</Link>
                   <Link to="/faq">FAQ</Link>
                   <Link to="/privacypolicy">Privacy Policy</Link>
