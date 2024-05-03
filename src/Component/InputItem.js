@@ -16,8 +16,8 @@ function InputItem(type, getData) {
 
   useEffect(() => {
     type.type == "source"
-      ? setPlaceholder(source.label || "Pickup Location")
-      : setPlaceholder("Dropoff Location");
+      ? setPlaceholder((source.label)?(`${(source.label)?.slice(0,40)}...`) : "Pickup Location")
+      : setPlaceholder((destination.label) || "Dropoff Location");
   }, [source]);
   const [currentLocation, setCurrentLocation] = useState("");
   const [address, setAddress] = useState("");

@@ -93,15 +93,12 @@ function Search_box() {
           <h2 class="css-jzIGNN">Request a ride now</h2>
         </div>
         <div class="search-input ">
-          {/* <div className="flex justify-center"> */}
-          {/* <InputButton ></InputButton> */}
-          <InputItem type="source" />
-
-          <LocationButton setAddress={setAddress} />
-          {/* </div> */}
-          {/* <LocationButton onClick ={(()=> set(address))} /> */}
-          {/* <div className="flex justify-center mr-9"> */}
-
+        <div className="relative">
+              <InputItem type="source" />
+              <div id="current_location">
+                <LocationButton setAddress={setAddress} />
+              </div>
+            </div>
           <InputItem type="destination" />
           {/* <InputButton/> */}
           {/* </div> */}
@@ -121,7 +118,7 @@ function Search_box() {
           Search
         </button>
 
-        <h2 className="text-[20px] mt-3 font-bold">Prefrences : </h2>
+        <h2 className="text-[20px] mt-[4vw] font-bold">Prefrences : </h2>
 
         <div className="mt-1 d-flex justify-center gap-4">
           <div className="d-flex gap-3 text-[16px] font-[600]">

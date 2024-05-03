@@ -50,7 +50,7 @@ function App() {
 
 
 
-  
+  console.log("current path name" , window.location.pathname)
 
   return (
     <Elements stripe={stripePromise} >
@@ -98,6 +98,8 @@ function App() {
 
 
       </Routes>
+      {/* {(window.location.pathname =="/taxi-scout")?
+      <Landing/> : null} */}
       </div>
       </LATLNG_State> 
      </BrowserRouter>

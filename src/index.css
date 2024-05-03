@@ -158,8 +158,11 @@ p {
 
 #locationButton{
   margin-top: 1vw !important;
-  width: 40px !important;
-  height: 30px !important;
+  /* width: 40px !important;
+  height: 30px !important; */
   /* padding: 20px; */
-  /* background-color: #000 !important; */
+  background-color: transparent !important;
+}
+#locationButton:hover{
+  background-color: #000 !important;
 }

@@ -61,7 +61,7 @@ const LocationButton = ({ setAddress }) => {
 
     setAddress(address1);
 
-    console.log("cilck one ", address1.geometry.location.lat);
+ 
   };
   return (
     <button id="locationButton" type="button" onClick={handleOnClick}>

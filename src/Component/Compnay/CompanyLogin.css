@@ -79,7 +79,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    transition: all 0.3s, color 0.3s;
     background-color: #fff !important;
     color: #000;
   }
@@ -87,6 +87,7 @@
   button:hover {
     background-color: #000 !important;
     color: #fff;
+    transform: scale(1.1);
   }
   
   .signup-container {

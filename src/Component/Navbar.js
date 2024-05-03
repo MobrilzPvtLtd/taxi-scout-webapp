@@ -84,11 +84,11 @@ const Navbar = (props) => {
     <div id="navbar_sticky" className="">
       <header class="bg-dark">
         <div class="container">
-          <div className="flex justify-between">
+          <div className="flex justify-between items-center">
             <div className="">
-              <a href="/" class="logo">
+              <Link to="/" class="logo">
                 <img src={logo} width={100} height={100} alt="logo" />
-              </a>
+              </Link>
             </div>
             <div id="nav_items" className="flex justify-around gap-5 items-center">
               <div className="dropdown-button">
