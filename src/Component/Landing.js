@@ -8,6 +8,8 @@ import { SourceContext } from "../Context/SourceContext";
 import { DestinationContext } from "../Context/DestinationContext";
 import CarListOption from "./CarListOption";
 import bg_1 from "../Images/bg_1.jpg";
+import bg_2 from "../Images/bg_2.jpg";
+import bg_3 from "../Images/OIG4.LOjK9uqO7Lj.OtzgY5XW.jpg";
 
 const Landing = () => {
   const [distance, setDistance] = useState();
@@ -105,29 +107,42 @@ const Landing = () => {
       <br></br>
       <br></br>
       <br></br>
-      <div className="flex justify-center items-center gap-[5vw] ml-[-5vw] bg-white pt-5">
+      <div className="flex justify-around items-center px-5 bg-white pt-5">
         <div className="bg_home_right">
-          <img src={bg_1}></img>
+          <img src={bg_2}></img>
         </div>
         <div className="w-50">
           <h1 className="text-[3rem] font-bold">
-            Be your own driver, choose <br></br> your own hours, and earn <br></br> what you need.
+            Be your own driver, choose <br></br> your own hours, and earn{" "}
+            <br></br> what you need.
           </h1>
-          <p className="px-10 text-xl">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unk</p>
-          <button type="button" className="egFkwj mt-2">Click me</button>
+          <p className="px-20 text-xl">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unk
+          </p>
+          <button type="button" className="egFkwj mt-2">
+            Click me
+          </button>
         </div>
       </div>
-      <div className="flex justify-center items-center gap-[5vw] ml-[-5vw] bg-white pt-5">
-        
+      <div className="flex justify-around items-center ] ml-[-5vw] bg-white pt-5 pb-5">
         <div className="w-50">
           <h1 className="text-[3rem] font-bold">
-            Be your own driver, choose <br></br> your own hours, and earn <br></br> what you need.
+            Taxi Scout 24 extends its<br></br> services worldwide,<br></br>{" "}
+            catering to diverse locations.
           </h1>
-          <p className="px-10 text-xl">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unk</p>
-          <button type="button" className="egFkwj mt-2">Click me</button>
+          <p className="px-20 text-xl">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unk
+          </p>
+          <button type="button" className="egFkwj mt-2">
+            Click me
+          </button>
         </div>
         <div className="bg_home_right">
-          <img src={bg_1}></img>
+          <img src={bg_3} width={700}></img>
         </div>
       </div>
     </>

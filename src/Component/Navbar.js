@@ -45,41 +45,51 @@ const Navbar = (props) => {
   const [selectedOption, setSelectedOption] = useState("");
 
   // Function to handle changes in the dropdown selection
-  const handleSelectChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
+  // const handleSelectChange = (event) => {
+  //   setSelectedOption(event.target.value);
+  // };
+  const dropdownbtn1 = document.querySelector(".dropdownbtn1")
+  const dropdownbtn2 = document.querySelector(".dropdownbtn2")
   const dropdownDiv = document.querySelector(".dropdown-content")
   const dropdownDiv2 = document.querySelector(".dropdown-content2")
 
-  const[opacityValue , setOpacityValue ] = useState("");
-  const[visibilityValue , setVisibilityValue ] = useState("");
-  const[opacityValue2 , setOpacityValue2 ] = useState("");
-  const[visibilityValue2 , setVisibilityValue2 ] = useState("");
-  const handleDropdown =()=>{
-   
-    // setVisibilityValue('visible')
-    // setOpacityValue2('0')
-    if(opacityValue == 1  ){
-      setOpacityValue('0')
-    }
-    else{ setOpacityValue('1')}
-    dropdownDiv.style.opacity = opacityValue ;
-  
-    console.log("aryann walia")
-  }
-  const handleDropdown2 =()=>{
-    setOpacityValue2('1')
-    // setOpacityValue('0')
-    if(opacityValue2 == 1){
-      setOpacityValue2('0')
-    }
-    dropdownDiv2.style.opacity = opacityValue2 ;
-    // if( dropdownDiv.style.opacity == 1){
-    //   dropdownDiv.style.opacity = "0";
-    // }
-    // else{dropdownDiv.style.opacity = "1";}
-    console.log("aryann walia2")
-  }
+  // const[opacityValue , setOpacityValue ] = useState("");
+  // const[visibilityValue , setVisibilityValue ] = useState("");
+  // const[opacityValue2 , setOpacityValue2 ] = useState("");
+  // const[visibilityValue2 , setVisibilityValue2 ] = useState("");
+  // const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter1 = () => {
+    dropdownDiv.style.opacity = 1;
+  };
+
+  const handleMouseLeave1 = () => {
+    // setOpacityValue(0)
+    dropdownDiv.style.opacity = 0;
+
+
+  };
+  const handleMouseEnter2 = () => {
+    dropdownDiv2.style.opacity = 1;
+  };
+
+  const handleMouseLeave2 = () => {
+    // setOpacityValue(0)
+    dropdownDiv2.style.opacity = 0;
+
+
+  };
+ 
+  // const handleDropdown2 =()=>{
+  //   setOpacityValue2('1')
+  //   // setOpacityValue('0')
+  //   if(opacityValue2 == 1){
+  //     setOpacityValue2('0')
+  //   }
+  //   dropdownDiv2.style.opacity = opacityValue2 ;
+
+  //   console.log("aryann walia2")
+  // }
   return (
     <div id="navbar_sticky" className="">
       <header class="bg-dark">
@@ -94,11 +104,12 @@ const Navbar = (props) => {
               <div className="dropdown-button">
                 <Link to="/">Home</Link>
               </div>
-              <div className="dropdown-container">
-                <div onMouseEnter={handleDropdown}  onClick={handleDropdown} className="dropdown-button">
+              <div className="dropdown-container" >
+                <div 
+             className="dropdownbtn1" onMouseEnter={handleMouseEnter1} >
                   About
                 </div>
-                <div className="dropdown-content flex flex-col items-start gap-1">
+                <div className="dropdown-content flex flex-col items-start gap-1" onMouseLeave={handleMouseLeave1}>
                   <Link to="/about">About Us</Link>
                   <Link to="/ourpartners">Our Partners</Link>
                   <Link to="/pricing">Pricing</Link>
@@ -112,11 +123,11 @@ const Navbar = (props) => {
               <div className="dropdown-button">
                 <Link to="/blogs">Blogs</Link>
               </div>
-              <div className="dropdown-container">
-                <div onMouseEnter={handleDropdown2}  onClick={handleDropdown2} className="dropdown-button">
+              <div className="dropdown-container" >
+                <div className="dropdownbtn2" onMouseEnter={handleMouseEnter2} >
                  Contact
                 </div>
-                <div className="dropdown-content2 flex flex-col items-start gap-1">
+                <div className="dropdown-content2 flex flex-col items-start gap-1" onMouseLeave={handleMouseLeave2}>
                   <Link to="/contact">Contact Us</Link>
                   <Link to="/faq">FAQ</Link>
                   <Link to="/privacypolicy">Privacy Policy</Link>

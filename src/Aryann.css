@@ -567,9 +567,8 @@ button.price-btn007 {
 .home2 {
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    gap: 15rem;
     margin-left: -5vw;
 }
 .login001{
