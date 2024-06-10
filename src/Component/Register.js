@@ -1,3 +1,5 @@
+
+
 import React, { useState } from 'react';
 import './Registor.css'; // Import your CSS file for styling
 import { Link, useNavigate } from 'react-router-dom'

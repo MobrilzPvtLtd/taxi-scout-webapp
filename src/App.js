@@ -39,6 +39,7 @@ import "./Aryann.css"
 import About_us from './Component/About_us';
 import Home_search_box from './Component/Home_search_box';
 import Landing from './Component/Landing';
+import OtpVerify from './Component/OtpVerify';
 // import firebase from 'firebase'
 
 function App() {
@@ -93,6 +94,7 @@ function App() {
       <Route path='/termofservices' element =  {<Term_Of_Services/>} />
       <Route path='/privacypolicy' element =  {<Privacy_Policy/>} />
       <Route path='/ourpartners' element =  {<Our_Partner/>} />
+      <Route path='/OtpVerify' element =  {<OtpVerify/>} />
       
       
 

@@ -63,6 +63,7 @@
   
   .form-group {
     margin-bottom: 15px;
+    margin-top: 15px;
   }
   
   input[type='email'],
@@ -83,6 +84,9 @@
     background-color: #fff !important;
     color: #000;
   }
+  .cc001{
+    color: #fff;
+  }
   
   button:hover {
     background-color: #000 !important;
@@ -91,7 +95,7 @@
   }
   
   .signup-container {
-    margin-top: 50px;
+    margin-top: 0px;
     float: right;
     width: 300px;
     height: 500px;
