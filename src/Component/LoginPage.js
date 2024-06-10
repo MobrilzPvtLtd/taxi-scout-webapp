@@ -16,7 +16,7 @@ function LoginPage() {
 
   // api call
 
-  const [credentials, setCredentials] = useState({mobile : ""});
+  const [credentials, setCredentials] = useState({email : ""},{password : ""});
   const [token, setToken] = useState([])
   let history = useNavigate();
 
@@ -34,7 +34,7 @@ if (userType === "user"){
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({mobile: credentials.mobile})
+        body: JSON.stringify({email : credentials.email , password : credentials.password})
       }); 
     
 
@@ -78,9 +78,14 @@ if (userType === "user"){
         {(userType==='user')?
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <input type="number" placeholder="mobile"  
-            name="mobile"
-            value={credentials.mobile}   onChange={handleChange} required />
+            <input type="email" placeholder="email"  
+            name="email"
+            value={credentials.email}   onChange={handleChange} required />
+          </div>
+          <div className="form-group">
+            <input type="password" placeholder="password"  
+            name="password"
+            value={credentials.password}   onChange={handleChange} required />
           </div>
           {/* <div className="form-group">
             <input type="password" placeholder="Password" required />

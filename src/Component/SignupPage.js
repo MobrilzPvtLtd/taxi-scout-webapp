@@ -43,7 +43,10 @@ function SignupPage() {
           name: credentials.name,
           mobile: credentials.mobile,
           email: credentials.email,
-          country: credentials.country,
+          password: credentials.password,
+          password_confirmation: credentials.cpassword,
+          profile_picture : credentials.profile
+          // country: credentials.country,
           //  password: credentials.password , cpassword : credentials.cpassword
         }),
       }
@@ -220,22 +223,43 @@ function SignupPage() {
                   required
                 />
               </div>
-              <div className="form-group">
-                <input
-                  type="text"
-                  name="country"
-                  placeholder="+41"
-                  value={credentials.country}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
+          
               <div className="form-group">
                 <input
                   type="number"
                   name="mobile"
                   placeholder="Mobile Number"
                   value={credentials.mobile}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="password"
+                  value={credentials.password}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="password"
+                  name="cpassword"
+                  placeholder="Confirm Password"
+                  value={credentials.cpassword}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="file"
+                  name="profile"
+                  placeholder="select"
+                  value={credentials.profile}
                   onChange={handleChange}
                   required
                 />
