@@ -356,7 +356,7 @@ function CarListOption({ option1, option2, option3, option4, carFetchFunc , dist
   useEffect(() => {
     const dataKoSet = () => {
       setFinalData(
-        aryann.map((item) => {
+        aryann?.map((item) => {
           if (
             (!option1 || item.smoking === 1) &&
             (!option2 || item.drinking === 1) &&
@@ -486,7 +486,7 @@ function CarListOption({ option1, option2, option3, option4, carFetchFunc , dist
                 ) : 
                  (
                       <ul>
-                        {fetchedUserData.map((driver1) => (
+                        {fetchedUserData?.map((driver1) => (
                           <div id="driver-details" className="mt-5">
                             <div
                             //  key={driver.metaRequest.data.id}

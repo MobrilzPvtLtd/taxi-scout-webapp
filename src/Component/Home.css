@@ -8,6 +8,35 @@ body{
 
 #googlemap{
  position: relative;
- padding-left: 120px;
+ margin-left: 120px;
 
+}
+.reotp-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+}
+button.re-btn {
+    width: 6vw;
+    background-color: transparent !important;
+    color: #fff;
+}
+button.re-btn:hover {
+    width: 6vw;
+    background-color: transparent !important;
+    color: #fff;
+    
+}
+button.re-btn1 {
+    width: 6vw;
+    background-color: transparent !important;
+    color: #8f8f8f;
+    
+}
+button.re-btn1:hover {
+    width: 6vw;
+    background-color: transparent !important;
+    color: #8f8f8f;
+    transform: scale(1) !important;
 }

@@ -31,6 +31,10 @@ const [otp_visible ,setOtp_visible] = useState(false)
 
     cname: "",
   });
+
+
+
+
   let history = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -60,7 +64,7 @@ const [otp_visible ,setOtp_visible] = useState(false)
 
     if (response.ok) {
       // alert("Check Your Email");
-      sessionStorage.setItem(`email `, ` ${credentials.email}`);
+      localStorage.setItem(`email`, `${credentials.email}`);
       // navigate("/otpverify");
       setOtp_visible(true)
     } else {
@@ -274,9 +278,9 @@ const [otp_visible ,setOtp_visible] = useState(false)
                     onChange={handleCountryChange}
                   >
                     <option value="">Select a country:</option>
-                    {countries.map((country) => (
+                    {countries.map((country ,index) => (
                       <option
-                        key={country.dial_code}
+                        key={index}
                         name="country"
                         value={country.dial_code}
                       >
@@ -385,9 +389,9 @@ const [otp_visible ,setOtp_visible] = useState(false)
                     onChange={handleCountryChange}
                   >
                     <option value="">Select a country:</option>
-                    {countries.map((country) => (
+                    {countries.map((country ,index) => (
                       <option
-                        key={country.code}
+                        key={index}
                         name="country"
                         value={country.id}
                       >
@@ -412,9 +416,9 @@ const [otp_visible ,setOtp_visible] = useState(false)
                     onChange={handleStateChange}
                   >
                     <option value="">Select an Area:</option>
-                    {STATE.map((state) => (
+                    {STATE.map((state ,index) => (
                       <option
-                        key={state.id}
+                        key={index}
                         name="service_location_id"
                         value={state.id}
                       >
