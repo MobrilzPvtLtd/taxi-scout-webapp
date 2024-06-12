@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {  useNavigate } from 'react-router';
 
-const OtpVerify = () => {
+const OtpVerify_Login = () => {
     const navigate = useNavigate();
     const [otp, setOtp] = useState('');
     const [email, setEmail] = useState('');
@@ -37,7 +37,7 @@ console.log("session value" ,email)
   const handleSubmit = async(e) => {
     e.preventDefault();
 
-    const response = await fetch('https://www.mobrilz.digital/admin/public/api/v1/validate-email-otp',{
+    const response = await fetch('https://www.mobrilz.digital/admin/public/api/v1/user/login/validate-otp',{
         method: "POST",
         headers:{
             'Content-Type':'application/json'
@@ -48,12 +48,14 @@ console.log("session value" ,email)
         })
     })
 
-    console.log("response" , response)
+    const json =await response.json();
+    console.log("login ka response" , json)
     // Here you would typically make an API call to verify the OTP
     // For demonstration, let's assume the OTP is 123456
     if (response.ok) {
       setMessage('OTP Verified Successfully!');
-      navigate('/login')
+      navigate('/home')
+      sessionStorage.setItem('token', json.access_token); 
     } else {
       setMessage('Invalid OTP. Please try again.');
     }
@@ -74,7 +76,7 @@ console.log("session value" ,email)
    if (response.ok) {
     setMessage('An OTP has been resent to your email. Please check for the 6-digit code');
     setTimer(30)
-   
+  
   } else {
     setMessage('Server Error');
   }
@@ -106,4 +108,4 @@ console.log("session value" ,email)
   );
 };
 
-export default OtpVerify
+export default OtpVerify_Login

@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import './LoginPage.css'; // Import your CSS file for styling
 import { useNavigate } from 'react-router-dom'
 import CarListOption from './CarListOption';
+import OtpVerify_Login from './OtpVerify_Login';
 
 function LoginPage() {
+  const [otp_visible ,setOtp_visible] = useState(false)
 
-  const [userType, setUserType] = useState('user'); // Default userType is user
+  const [userType, setUserType] = useState('user');
+   // Default userType is user
 
   const handleLogin = () => {
     // Perform login logic based on userType
@@ -42,13 +45,16 @@ if (userType === "user"){
 
     const json = await response.json()
 
+
     setToken(json.access_token)
 
-    // console.log(json);
+    console.log("hariom",json);
     if (response.ok){
       // Save the auth token and redirect
-      sessionStorage.setItem('token', json.access_token); 
-      history("/home");
+      
+      // history("/home");
+      setOtp_visible(true)
+
   }
   else{
       alert("Invalid credentials");
@@ -65,6 +71,11 @@ if (userType === "user"){
     <div>
     <div id='banner_img_home'></div>
     <div className="container login001">
+    {(otp_visible== true)?(
+        <div id="otp_verify">
+          <OtpVerify_Login />
+        </div>
+        ):(
       <div className="login-container">
         <h1>Login</h1>
         <div className="login-options">
@@ -95,7 +106,7 @@ if (userType === "user"){
        
          <a href='https://www.mobrilz.digital/admin/public/login'> <button type="submit">Login as {userType}</button></a>
        </span>}
-      </div>
+      </div>)}
     </div>
     </div>
     // </div>

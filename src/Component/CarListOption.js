@@ -376,12 +376,12 @@ function CarListOption({ option1, option2, option3, option4, carFetchFunc , dist
   []
  ]);
 
-  const abcd = finalData.filter((element) => element !== undefined);
+  const abcd = finalData?.filter((element) => element !== undefined);
 
   useEffect(() => {
 
     
-      if (abcd.length > 0) {
+      if (abcd?.length > 0) {
         
         setCars(true);
      
