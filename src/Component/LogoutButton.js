@@ -29,7 +29,7 @@ const StyledButton = styled.button`
 function LogoutButton({ onClick }) {
   return (
     <StyledButton  onClick={onClick}>
-      Logout
+     User Profile
     </StyledButton>
   );
 }

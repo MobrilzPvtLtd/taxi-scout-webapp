@@ -163,7 +163,7 @@ function Search_box() {
 
       {distance ? (
         <CarListOption
-          carFetchFunc={carFetchFunc}
+          carFetchFunc={calculateDistance}
           option1={options.option1}
           option2={options.option2}
           option3={options.option3}

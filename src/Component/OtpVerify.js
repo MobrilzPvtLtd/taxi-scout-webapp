@@ -4,7 +4,7 @@ import {  useNavigate } from 'react-router';
 const OtpVerify = () => {
     const navigate = useNavigate();
     const [otp, setOtp] = useState('');
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState(sessionStorage.getItem("email"));
   const [message, setMessage] = useState('');
   const [state, setState] = useState({
     email:"",
@@ -29,10 +29,10 @@ const OtpVerify = () => {
   };
 // const value = sessionStorage.getItem("email")
 useEffect(()=>{
-  const value = localStorage.getItem("email")
+  const value = sessionStorage.getItem("email")
   console.log("session inside" , value)
   setEmail(value)
-  },[handleChange])
+  },[])
 console.log("session value" ,email)
   const handleSubmit = async(e) => {
     e.preventDefault();

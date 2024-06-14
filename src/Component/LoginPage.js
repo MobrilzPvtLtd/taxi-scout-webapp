@@ -51,7 +51,7 @@ if (userType === "user"){
     console.log("hariom",json);
     if (response.ok){
       // Save the auth token and redirect
-      
+      sessionStorage.setItem("email" , credentials.email)
       // history("/home");
       setOtp_visible(true)
 

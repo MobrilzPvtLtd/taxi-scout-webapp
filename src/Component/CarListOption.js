@@ -350,9 +350,7 @@ function CarListOption({ option1, option2, option3, option4, carFetchFunc , dist
 
   const [finalData, setFinalData] = useState(aryann);
   const [fullData, setFullData] = useState([]);
-  // const[completeData , setCompleteData] = useState( );
   let completeData;
-  // console.log("carFetchFunc", carFetchFunc);
   useEffect(() => {
     const dataKoSet = () => {
       setFinalData(
@@ -371,9 +369,7 @@ function CarListOption({ option1, option2, option3, option4, carFetchFunc , dist
 
     dataKoSet();
 
-    // setFullData(completeData)
-}, [option1, option2, option3, option4 , 
-  []
+},[option1, option2, option3, option4 , carFetchFunc , distance
  ]);
 
   const abcd = finalData?.filter((element) => element !== undefined);
@@ -389,7 +385,6 @@ function CarListOption({ option1, option2, option3, option4, carFetchFunc , dist
       } else{
        
         setCars(false);
-        console.log("bhai me zero hu");
     
   
       }

@@ -1,70 +1,56 @@
-import React , {useEffect , useState} from 'react';
-// import { MdOutlineCancel } from 'react-icons/md';
+import React, { useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import img from "./IMG_5392.JPG"
+import logout_img from "./log-out.png"
+import user_img from "./user.png"
+import edit_img from "./edit.png"
 
-import { Button } from '.';
-// import { userProfileData } from '../data/dummy';
-import { useStateContext } from '../Context/ContextProvider';
-// import avatar from '../data/avatar.jpg';
 const UserProfile = () => {
+  const history = useNavigate()
+  const userProfile_dropdown = ()=>{
+    alert("hello brother")
+  }
+  
+  const menuToggle=(e)=> {
+    e.preventDefault();
+    
+  }
+  useEffect(()=>{
 
-  const { currentColor } = useStateContext();
- 
-
+    
+    const menuButton = document.querySelector(".profile"); 
+    menuButton.addEventListener("click", () => {
+      const toggleMenu = document.querySelector(".menu");
+      toggleMenu.classList.toggle("active");
+    });
+    },[menuToggle])
+const handleLogout = (e)=>{
+e.preventDefault();
+    sessionStorage.removeItem("token");
+    history("/login");
+}
   return (
-    <div id='user_profile' className="nav-item absolute right-1 top-16 bg-[#042634] p-8 rounded-lg w-96">
-      <div className="flex justify-between items-center">
-        <p className="font-semibold text-lg text-gray-200">User Profile</p>
-        <Button
-          // icon={<MdOutlineCancel />}
-          color="rgb(153, 171, 180)"
-          bgHoverColor="light-gray"
-          size="2xl"
-          borderRadius="50%"
-        />
+    <div class="action">
+      <div class="profile" onClick={menuToggle} >
+        <img className='profile' src={img} />
       </div>
-      <div className="flex gap-5 items-center mt-6 border-color border-b-1 pb-6">
-        <img
-          className="rounded-full h-24 w-24"
-          // src={avatar}
-          alt="user-profile"
-
-        />
-        <div>
-          <p className="font-semibold text-xl text-gray-200"> Aryann Walia </p>
-          <p className="text-gray-500 text-sm text-gray-400">  Administrator   </p>
-          <p className="text-gray-500 text-sm font-semibold text-gray-400"> aryann@mobrilz.com </p>
-        </div>
+      <div class="menu">
+      <ul>
+          <li>
+            <img src={user_img} /><Link to="#">My profile</Link>
+          </li>
+          <li>
+            <img src={edit_img} /><Link to="#">Edit profile</Link>
+          </li>
+          
+          
+          <li>
+            <img src={logout_img}/><Link to="#" onClick={handleLogout}>Logout</Link>
+          </li>
+        </ul>
       </div>
-      <div>
-        {fetchedUserData2.map((item, index) => (
-          <div key={index} className="flex gap-5 border-b-1 border-color p-4 hover:bg-light-gray cursor-pointer  hover:bg-[#42464D]">
-            <button
-              type="button"
-              style={{ color: item.iconColor, backgroundColor: item.iconBg }}
-              className=" text-xl rounded-lg p-3 hover:bg-light-gray"
-            >
-              {item.icon}
-            </button>
+         </div>
+  )
+}
 
-            <div>
-              <p className="font-semibold text-gray-200 ">{item.title}</p>
-              <p className="text-gray-500 text-sm text-gray-400"> {item.desc} </p>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div id='user_profile_logout' className="mt-5">
-        <Button
-          color="white"
-         
-          text="Logout"
-          borderRadius="10px"
-          width="full"
-        />
-      </div>
-    </div>
-
-  );
-};
-
-export default UserProfile;
+export default UserProfile

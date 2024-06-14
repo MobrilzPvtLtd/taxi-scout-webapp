@@ -10,8 +10,10 @@ import { useStateContext } from '../Context/ContextProvider';
 import taxi from "../Images/taxi.png";
 import "./MainPage.css";
 import "./Dropdown.css";
+import UserProfile from "./UserProfile";
 
 const Navbar = (props) => {
+  const [userProfileClick , setUserProfileClick] = useState(false)
   // const { fetchedUserData2 , setFetchedUserData2 } = useStateContext();
 
   const location = useLocation();
@@ -28,8 +30,10 @@ const Navbar = (props) => {
 
   const handleClick = () => {
     // e.preventDefault();
-    sessionStorage.removeItem("token");
-    history("/login");
+    // sessionStorage.removeItem("token");
+    // history("/login");
+
+ 
   };
 
   // hearder menu content
@@ -171,13 +175,11 @@ const Navbar = (props) => {
                 )}
               </div>
             ) : (
-        
-              <LogoutButton onClick={handleClick} className="btn btn-primary">
-                {" "}
-                logout{" "}
-              </LogoutButton>
-          
-            )}
+           
+               
+        <UserProfile/> 
+       
+                   )}
 
             {/* <Link to="/sign" ><button className='btn btnn-primary' > page</button></Link>  */}
           </div>
