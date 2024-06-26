@@ -40,6 +40,8 @@ import About_us from './Component/About_us';
 import Home_search_box from './Component/Home_search_box';
 import Landing from './Component/Landing';
 import OtpVerify from './Component/OtpVerify';
+import EditProfilePage from './Component/EditProfilePage';
+import ChatPopup from './Component/chatPopup';
 // import firebase from 'firebase'
 
 function App() {
@@ -53,6 +55,21 @@ function App() {
 
   console.log("current path name" , window.location.pathname)
 
+  const [user, setUser] = useState({
+    name: 'John Doe',
+    email: 'john@example.com',
+    avatar: 'https://via.placeholder.com/100'
+  });
+
+  const updateUser = (updatedUser) => {
+    setUser(updatedUser);
+  };
+
+ const [showPopup, setShowPopup] = useState(false);
+
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
   return (
     <Elements stripe={stripePromise} >
     <SourceContext.Provider value={{source, setSource}}>
@@ -65,6 +82,10 @@ function App() {
      <BrowserRouter>
      <LATLNG_State>
       <Navbar />
+      <div className="chat-box" onClick={togglePopup}>
+        <div className="chat-header">Chat with us!</div>
+      </div>
+      {showPopup && <ChatPopup />}
      {/* <MainPage/> */}
       <div id='main_component'>
       <Routes>
@@ -95,6 +116,7 @@ function App() {
       <Route path='/privacypolicy' element =  {<Privacy_Policy/>} />
       <Route path='/ourpartners' element =  {<Our_Partner/>} />
       <Route path='/OtpVerify' element =  {<OtpVerify/>} />
+      <Route path='/edit-profile' element =  {<EditProfilePage />} />
       
       
 
@@ -102,6 +124,7 @@ function App() {
       </Routes>
       {/* {(window.location.pathname =="/taxi-scout")?
       <Landing/> : null} */}
+     
       </div>
       </LATLNG_State> 
      </BrowserRouter>

@@ -1,0 +1,69 @@
+.App {
+    text-align: center;
+  }
+  
+  .taxi-scheduler {
+    margin: 20px auto;
+    width: 300px;
+    padding: 20px;
+    border: 1px solid hsl(0, 0%, 80%);
+    border-radius: 10px !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+  }
+  
+  .taxi-scheduler h2 {
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 20px;
+  }
+  
+  .taxi-scheduler form div {
+    margin-bottom: 10px;
+    text-align: center;
+ width: max-content !important;
+ height: max-content;
+ padding: 0 5px;
+  }
+  
+  .taxi-scheduler label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .taxi-scheduler input,
+  .taxi-scheduler .react-datepicker-wrapper {
+    width: 100%;
+  }
+  
+  .taxi-scheduler .schedule_main_btn {
+    margin-top: 10px;
+    padding: 10px;
+    width: 10vw;
+    border: none;
+    color: black;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .taxi-scheduler .schedule_main_btn:hover {color: white;
+  }
+
+  .taxi-scheduler [type=button]:nth-child(2) {
+    cursor: pointer;
+    position: absolute;
+    left:0.5vw;
+    /* top: 10px; */
+  }
+  .taxi-scheduler [type=button]:nth-child(3) {
+    cursor: pointer;
+    position: absolute;
+    right:5vw;
+    /* top: 10px; */
+
+  }
+  

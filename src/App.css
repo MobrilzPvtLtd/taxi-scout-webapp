@@ -57,3 +57,24 @@
   right: 10px;
   background-color: aquamarine;
 }
+
+.chat-box {
+  width: 200px;
+  height: 50px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999999 !important;
+}
+
+.chat-header {
+  padding: 10px;
+}

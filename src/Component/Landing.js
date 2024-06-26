@@ -12,10 +12,12 @@ import bg_2 from "../Images/bg_2.jpg";
 import bg_3 from "../Images/OIG4.LOjK9uqO7Lj.OtzgY5XW.jpg";
 import bg_4 from "../Images/serve_globally.jpg";
 import bg_5 from "../Images/serve_globally2.jpg";
+import ChatPopup from "./chatPopup";
 
 const Landing = () => {
   const [distance, setDistance] = useState();
   const [carFetchFunc, setCarFetchFunc] = useState(null);
+
   const [options, setOptions] = useState({
     option1: null,
     option2: null,
@@ -46,18 +48,19 @@ const Landing = () => {
   const handleRedirect = () => {
     token != null || undefined ? history("/home") : history("/login");
   };
+
+  
   return (
     <>
       <div id="landing_page" className="home2">
         <div id="box">
-          <div id="upper-box" className="flex flex-col justify-center">
+          <div id="upper-box">
             <img
               src={taxi}
               style={{
                 height: "50px",
                 width: "50px",
-                position: "relative",
-                left: "210px",
+            
               }}
             />
             <span
@@ -70,7 +73,7 @@ const Landing = () => {
           </div>
 
           {/* main box */}
-
+         
           <div id="main-box2">
             <div class="css-hPnljU">
               <h2 class="css-jzIGNN">Request a ride now</h2>

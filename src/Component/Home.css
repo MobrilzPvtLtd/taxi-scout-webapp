@@ -8,7 +8,9 @@ body{
 
 #googlemap{
  position: relative;
- margin-left: 120px;
+ /* margin-left: 120px; */
+ z-index: 1;
+ right: 2vw;
 
 }
 .reotp-main {
@@ -39,4 +41,16 @@ button.re-btn1:hover {
     background-color: transparent !important;
     color: #8f8f8f;
     transform: scale(1) !important;
+}
+.home_main{
+    display: flex;
+    gap: 4vw;
+    justify-content: space-around;
+    position: relative;
+    padding: 1vw;
+
+}
+#search_box{
+    position: relative;
+    z-index: 2;
 }

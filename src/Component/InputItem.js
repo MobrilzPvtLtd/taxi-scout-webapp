@@ -16,8 +16,8 @@ function InputItem(type, getData) {
 
   useEffect(() => {
     type.type == "source"
-      ? setPlaceholder((source.label)?(`${(source.label)?.slice(0,40)}...`) : "Pickup Location")
-      : setPlaceholder((destination.label) || "Dropoff Location");
+      ? setPlaceholder((source.label)?(`${(source?.label)?.slice(0,40)}...`) : "Pickup Location")
+      : setPlaceholder((destination?.label) || "Dropoff Location");
   }, [source]);
   const [currentLocation, setCurrentLocation] = useState("");
   const [address, setAddress] = useState("");
@@ -56,17 +56,17 @@ function InputItem(type, getData) {
       if (status === "OK" && place.geometry && place.geometry.location) {
         if (type == "source") {
           setSource({
-            lat: place.geometry.location.lat(),
-            lng: place.geometry.location.lng(),
-            name: place.formatted_address,
-            label: place.name,
+            lat: place?.geometry?.location.lat(),
+            lng: place?.geometry?.location.lng(),
+            name: place?.formatted_address,
+            label: place?.name,
           });
         } else {
           setDestination({
-            lat: place.geometry.location.lat(),
-            lng: place.geometry.location.lng(),
-            name: place.formatted_address,
-            label: place.name,
+            lat: place?.geometry?.location.lat(),
+            lng: place?.geometry?.location.lng(),
+            name: place?.formatted_address,
+            label: place?.name,
           });
         }
       }

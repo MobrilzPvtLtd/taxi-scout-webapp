@@ -10,6 +10,7 @@ import taxi from "../Images/taxi.png";
 import LocationButton from "./LocationButton";
 import CurrentLocation from "./CurrentLocation";
 import InputButton from "./InputButton";
+import TaxiScheduler from "./TaxiScheduler";
 // import {Loader, LoaderOptions ,google} from 'google-maps';
 
 function Search_box() {
@@ -21,6 +22,7 @@ function Search_box() {
   const [credentials, setCredentials] = useState("");
   const [parsedResponse, serParsedResponse] = useState([]);
   const [carFetchFunc, setCarFetchFunc] = useState(null);
+  const [taxi_schedule_form, setTaxi_schedule_form] = useState(false);
 
   const calculateDistance = () => {
     const distance =
@@ -62,7 +64,12 @@ function Search_box() {
       [option]: !options[option],
     });
   };
-
+  // const handle_schedule_taxi = () => {
+  //   setTaxi_schedule_form(true);
+  // };
+  // const handle_taxi_schedule_cancel = () => {
+  //   setTaxi_schedule_form(false);
+  // };
   return (
     <div id="box">
       {/* upper box */}
@@ -73,8 +80,6 @@ function Search_box() {
           style={{
             height: "50px",
             width: "50px",
-            position: "relative",
-            left: "210px",
           }}
         />
         <span
@@ -93,30 +98,49 @@ function Search_box() {
           <h2 class="css-jzIGNN">Request a ride now</h2>
         </div>
         <div class="search-input ">
-        <div className="relative">
-              <InputItem type="source" />
-              <div id="current_location">
-                <LocationButton setAddress={setAddress} />
-              </div>
+          <div className="relative">
+            <InputItem type="source" />
+            <div id="current_location">
+              <LocationButton setAddress={setAddress} />
             </div>
+          </div>
           <InputItem type="destination" />
           {/* <InputButton/> */}
           {/* </div> */}
         </div>
-        <button
-          style={{
-            backgroundColor: "black",
-            borderRadius: "10px",
-            height: "70px",
-            width: "220px",
-            fontSize: "28px",
-            marginTop: "20px",
-            marginRight: "25px",
-          }}
-          onClick={() => calculateDistance()}
-        >
-          Search
-        </button>
+        <div className="flex flex-col items-center">
+          <button
+            style={{
+              backgroundColor: "black",
+              borderRadius: "10px",
+              height: "70px",
+              width: "220px",
+              fontSize: "28px",
+              marginTop: "20px",
+              marginRight: "25px",
+            }}
+            onClick={() => calculateDistance()}
+          >
+            Search
+          </button>
+          {/* <button id="schedule_ride_btn" onClick={handle_schedule_taxi}>
+            Schedule a ride{" "}
+          </button>
+          {taxi_schedule_form == true ? (
+            <div id="taxi_scheduler">
+              <div id="taxi_scheduler_overley"></div>
+              <div id="taxi_scheduler_overley_lifter">
+                <button
+                  id="taxi_schedule_cancel"
+                  onClick={handle_taxi_schedule_cancel}
+                >
+                  X
+                </button>
+                <TaxiScheduler />
+              </div>
+            </div>
+          ) : null} */}
+        </div>
 
         <h2 className="text-[20px] mt-[4vw] font-bold">Prefrences : </h2>
 

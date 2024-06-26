@@ -53,10 +53,10 @@ const LocationButton = ({ setAddress }) => {
 
   const handleOnClick = () => {
     setSource({
-      lat: address1.geometry.location.lat,
-      lng: address1.geometry.location.lng,
-      name: address1.formatted_address,
-      label: address1.formatted_address
+      lat: address1?.geometry?.location.lat,
+      lng: address1?.geometry?.location.lng,
+      name: address1?.formatted_address,
+      label: address1?.formatted_address
     });
 
     setAddress(address1);

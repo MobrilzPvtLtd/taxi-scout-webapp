@@ -53,13 +53,13 @@ const Home = ( createRequest , parsedResponse) => {
   return (
 
     <main>
-      <div className='d-flex' >
+      <div className='home_main' >
       
       
-        
+      <div id='search_box' >
          <Search_box createRequest = {createRequest} parsedResponse = {parsedResponse} />
-       
-      <div id='googlemap'>
+         </div>
+      <div id='googlemap' >
          <GoogleMapSection />
          </div>
       </div>
