@@ -63,16 +63,17 @@
   height: 50px;
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  right: 60px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #007bff;
-  color: white;
+  background-color: #fbbf13;
+  color: black;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 999999 !important;
+  font-weight: 600;
 }
 
 .chat-header {

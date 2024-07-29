@@ -1,22 +1,23 @@
 .chat-popup {
     width: 300px;
-    height: 400px;
+    height: max-content;
     position: fixed;
-    bottom: 150px;
+    bottom: 100px;
     right: 20px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
+    border-radius: 10px;
+    background-color: #ffffffad;
     display: block; /* Initially hidden */
     z-index: 9999999 !important;
   }
   
   .popup-header {
     padding: 10px;
-    background-color: #007bff;
-    color: white;
+    background-color: #fbbf13;
+    color: black;
     text-align: center;
     border-radius: 5px 5px 0 0;
+    font-weight: 600;
   }
   
   .chat-messages {
@@ -29,22 +30,25 @@
     margin-bottom: 10px;
   }
   
-  input[type="text"] {
+  input#chat_input[type="text"] {
     width: calc(100% - 20px);
     padding: 10px;
     margin: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    
   }
+ 
   
-  button {
+  /* button#chat_with_us {
     width: calc(100% - 20px);
     padding: 10px;
     margin: 10px;
-    background-color: #007bff;
-    color: white;
+    background-color: #fbbf13;
+    color: black;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
+    font-weight: 600;
+  } */
   

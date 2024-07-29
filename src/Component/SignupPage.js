@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./SignupPage.css"; // Import your CSS file for styling
 import { useNavigate } from "react-router-dom";
 import { createRenderer } from "react-dom/test-utils";
@@ -12,8 +12,22 @@ function SignupPage() {
   const [selectedCountry, setSelectedCountry] = useState("");
   const [dialCode, setDialCode] = useState("");
   const navigate = useNavigate();
-const [otp_visible ,setOtp_visible] = useState(false)
+  const [otp_visible, setOtp_visible] = useState(false);
   //   sign up api
+
+  const fileInputRef = useRef(null);
+
+  const handleButtonClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      console.log("Selected file:", file);
+      // Handle the file upload here
+    }
+  };
 
   const [credentials, setCredentials] = useState({
     name: "",
@@ -30,10 +44,8 @@ const [otp_visible ,setOtp_visible] = useState(false)
     area: { STATE },
 
     cname: "",
+    contact_name: "",
   });
-
-
-
 
   let history = useNavigate();
   const handleSubmit = async (e) => {
@@ -66,7 +78,7 @@ const [otp_visible ,setOtp_visible] = useState(false)
       // alert("Check Your Email");
       localStorage.setItem(`email`, `${credentials.email}`);
       // navigate("/otpverify");
-      setOtp_visible(true)
+      setOtp_visible(true);
     } else {
       alert(json.message);
       console.log(json.message);
@@ -121,6 +133,8 @@ const [otp_visible ,setOtp_visible] = useState(false)
 
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
+    
+   
     // setSelectedCountry(e.target.value);
   };
 
@@ -189,143 +203,166 @@ const [otp_visible ,setOtp_visible] = useState(false)
   return (
     <>
       <div id="signup_page_main">
-      {(otp_visible== true)?(
-        <div id="otp_verify">
-          <OtpVerify />
-        </div>
-        ):(
+        {otp_visible == true ? (
+          <div id="otp_verify">
+            <OtpVerify />
+          </div>
+        ) : (
           <div>
-        {userType === "user" ? (
-          <div className="container">
-            <div id="sign_up_page_form" className="signup-container">
-              <h1 className="text-white">Sign Up</h1>
-              <div className="signup-options">
-                <div
-                  className={`option ${userType === "user" ? "active" : ""}`}
-                  onClick={() => setUserType("user")}
-                >
-                  User
-                </div>
-                <div
-                  className={`option ${userType === "company" ? "active" : ""}`}
-                  onClick={() => setUserType("company")}
-                >
-                  Company
-                </div>
-              </div>
-              <form className="w-[15vw]" onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="name"
-                    value={credentials.name}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={credentials.email}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
+            {userType === "user" ? (
+              <div className="container">
+                <div id="sign_up_page_form" className="signup-container">
+                  <h1 className="text-white">Sign Up</h1>
+                  <div className="signup-options flex gap-3">
+                    <div
+                      className={`option ${
+                        userType === "user" ? "active" : ""
+                      }`}
+                      onClick={() => setUserType("user")}
+                    >
+                      User
+                    </div>
+                    <div
+                      className={`option ${
+                        userType === "company" ? "active" : ""
+                      }`}
+                      onClick={() => setUserType("company")}
+                    >
+                      Company
+                    </div>
+                  </div>
+                  <form className="w-fit" onSubmit={handleSubmit}>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="name"
+                        value={credentials.name}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        value={credentials.email}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
 
-                <div className="form-group">
-                  <input
-                    type="number"
-                    name="mobile"
-                    placeholder="Mobile Number"
-                    value={credentials.mobile}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="password"
-                    value={credentials.password}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="password"
-                    name="cpassword"
-                    placeholder="Confirm Password"
-                    value={credentials.cpassword}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div>
-                  {/* <label
+                    <div className="form-group">
+                      <input
+                        type="number"
+                        name="mobile"
+                        placeholder="Mobile Number"
+                        value={credentials.mobile}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="password"
+                        name="password"
+                        placeholder="password"
+                        value={credentials.password}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="password"
+                        name="cpassword"
+                        placeholder="Confirm Password"
+                        value={credentials.cpassword}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <div>
+                      {/* <label
                     htmlFor="countrySelect"
                     className="text-[20px] font-bold cc001"
                   >
                     Select a country:
                   </label> */}
-                  <select
-                    id="countrySelect"
-                    value={selectedCountry}
-                    onChange={handleCountryChange}
-                  >
-                    <option value="">Select a country:</option>
-                    {countries.map((country ,index) => (
-                      <option
-                        key={index}
-                        name="country"
-                        value={country.dial_code}
+                      <select
+                        id="countrySelect"
+                        value={selectedCountry}
+                        onChange={handleCountryChange}
                       >
-                        {country.name}
-                      </option>
-                    ))}
-                  </select>
-                  {/* {selectedCountry && (
+                        <option value="">Select a country:</option>
+                        {countries.map((country, index) => (
+                          <option
+                            key={index}
+                            name="country"
+                            value={country.dial_code}
+                          >
+                            {country.name}
+                          </option>
+                        ))}
+                      </select>
+                      {/* {selectedCountry && (
                     <p>Selected Country Code: {selectedCountry}</p>
                   )} */}
-                </div>
-                <div className="form-group cc001">
-                  <input
-                    type="file"
-                    name="profile"
-                    placeholder="select"
-                    value={credentials.profile}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <button type="submit">Sign Up as {userType}</button>
-              </form>
-            </div>
-          </div>
-        ) : (
-          <div className="container">
-            <div id="sign_up_page_form" className="signup-container">
-              <h1 className="text-white">Sign Up</h1>
-              <div className="signup-options">
-                <div
-                  className={`option ${userType === "user" ? "active" : ""}`}
-                  onClick={() => setUserType("user")}
-                >
-                  User
-                </div>
-                <div
-                  className={`option ${userType === "company" ? "active" : ""}`}
-                  onClick={() => setUserType("company")}
-                >
-                  Company
+                    </div>
+                    <div className="form-group cc001">
+                      <input
+                        type="file"
+                        name="profile"
+                        placeholder="select"
+                        value={credentials.profile}
+                        ref={fileInputRef}
+                        style={{ display: "none" }}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <button
+                      id="upload_profile"
+                      className="mb-3"
+                      onClick={handleButtonClick}
+                    >
+                      Upload your profile pic
+                    </button>
+                    <button id="signup_btn" type="submit" onClick={handleSubmit} >
+                      Sign Up as {userType}
+                    </button>
+                  </form>
                 </div>
               </div>
-              <form id="form" onSubmit={handleSubmitCompany}>
-                {/* <div className="form-group">
+            ) : (
+              <div className="container">
+                <div id="sign_up_page_form" className="signup-container">
+                  <h1 className="text-white">Sign Up</h1>
+                  <div className="signup-options flex gap-3">
+                    <div
+                      className={`option ${
+                        userType === "user" ? "active" : ""
+                      }`}
+                      onClick={() => setUserType("user")}
+                    >
+                      User
+                    </div>
+                    <div
+                      className={`option ${
+                        userType === "company" ? "active" : ""
+                      }`}
+                      onClick={() => setUserType("company")}
+                    >
+                      Company
+                    </div>
+                  </div>
+                  <form
+                    id="form"
+                    className="company_form"
+                    onSubmit={handleSubmitCompany}
+                  >
+                    {/* <div className="form-group">
                 <input
                   type="text"
                   name="company role"
@@ -335,100 +372,106 @@ const [otp_visible ,setOtp_visible] = useState(false)
                   required
                 />
               </div> */}
-                <div className="form-group">
-                  <input
-                    type="text"
-                    name="cname"
-                    placeholder="company Name"
-                    value={credentials.cname}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={credentials.email}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="password"
-                    value={credentials.password}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="password"
-                    name="cpassword"
-                    placeholder="Confirm password"
-                    value={credentials.cpassword}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="cname"
+                        placeholder="company Name"
+                        value={credentials.cname}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="contact_name"
+                        placeholder="Contact Person"
+                        value={credentials.contact_name}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        value={credentials.email}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="password"
+                        name="password"
+                        placeholder="password"
+                        value={credentials.password}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="password"
+                        name="cpassword"
+                        placeholder="Confirm password"
+                        value={credentials.cpassword}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
 
-                <div>
-                  {/* <label
+                    <div className="form-group">
+                      {/* <label
                     htmlFor="countrySelect"
                     className="text-[20px] font-bold cc001"
                   >
                     Select a country:
                   </label> */}
-                  <select
-                    id="countrySelect"
-                    value={selectedCountry}
-                    onChange={handleCountryChange}
-                  >
-                    <option value="">Select a country:</option>
-                    {countries.map((country ,index) => (
-                      <option
-                        key={index}
-                        name="country"
-                        value={country.id}
+                      <select
+                        id="countrySelect"
+                        value={selectedCountry}
+                        onChange={handleCountryChange}
                       >
-                        {country.name}
-                      </option>
-                    ))}
-                  </select>
-                  {/* {selectedCountry && (
+                        <option value="">Select a country:</option>
+                        {countries.map((country, index) => (
+                          <option key={index} name="country" value={country.id}>
+                            {country.name}
+                          </option>
+                        ))}
+                      </select>
+                      {/* {selectedCountry && (
                     <p>Selected Country Code: {selectedCountry}</p>
                   )} */}
-                </div>
-                <div className="flex flex-col">
-                  {/* <label
+                    </div>
+                    <div className="flex flex-col form-group">
+                      {/* <label
                     htmlFor="countrySelect"
                     className="text-[20px] font-bold cc001"
                   >
                     Select an Area:
                   </label> */}
-                  <select
-                    id="countrySelect"
-                    value={selectedState}
-                    onChange={handleStateChange}
-                  >
-                    <option value="">Select an Area:</option>
-                    {STATE.map((state ,index) => (
-                      <option
-                        key={index}
-                        name="service_location_id"
-                        value={state.id}
+                      <select
+                        id="countrySelect"
+                        value={selectedState}
+                        onChange={handleStateChange}
                       >
-                        {state.name}
-                      </option>
-                    ))}
-                  </select>
-                  {selectedState && <p>Selected State: {selectedState}</p>}
-                </div>
-                {/* <div className="form-group">
+                        <option value="">Select an Area:</option>
+                        {STATE.map((state, index) => (
+                          <option
+                            key={index}
+                            name="service_location_id"
+                            value={state.id}
+                          >
+                            {state.name}
+                          </option>
+                        ))}
+                      </select>
+                      {selectedState && <p>Selected State: {selectedState}</p>}
+                    </div>
+                    {/* <div className="form-group">
                 <input
                   type="text"
                   name="country"
@@ -438,76 +481,91 @@ const [otp_visible ,setOtp_visible] = useState(false)
                   required
                 />
               </div> */}
-                <div className="form-group">
-                  <input
-                    type="text"
-                    name="address"
-                    placeholder="address"
-                    value={credentials.address}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    name="state"
-                    placeholder="state"
-                    value={credentials.state}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    name="city"
-                    placeholder="city"
-                    value={credentials.city}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="number"
-                    name="mobile"
-                    placeholder="Mobile Number"
-                    value={credentials.mobile}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="number"
-                    name="postal"
-                    placeholder="postal code"
-                    value={credentials.postal}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="form-group cc001 ">
-                  <label for="profilePicture" className="text-[20px] font-bold cc001">
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="address"
+                        placeholder="address"
+                        value={credentials.address}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="state"
+                        placeholder="state"
+                        value={credentials.state}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="city"
+                        placeholder="city"
+                        value={credentials.city}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="number"
+                        name="mobile"
+                        placeholder="Mobile Number"
+                        value={credentials.mobile}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="number"
+                        name="postal"
+                        placeholder="postal code"
+                        value={credentials.postal}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <div className="form-group cc001 ">
+                      {/* <label for="profilePicture" className="text-[20px] font-bold cc001">
                     Company Logo:
-                  </label>
-                  <input
-                    type="file"
-                    id="profilePicture"
-                    name="profilePicture"
-                    value={credentials.profile}
-                    onChange={handleChange}
-                    accept="image/*"
-                  />
+                  </label> */}
+                      {/* <div className="form-group cc001"> */}
+                      <input
+                        type="file"
+                        name="profile"
+                        placeholder="select"
+                        value={credentials.profile}
+                        ref={fileInputRef}
+                        style={{ display: "none" }}
+                        onChange={handleChange}
+                        required
+                      />
+                      {/* </div> */}
+                      <button
+                        id="upload_profile_btn"
+                        className="mb-3"
+                        onClick={handleButtonClick}
+                      >
+                        Upload your profile pic
+                      </button>
+                    </div>
+                    <div className="form-group cc001">
+                      <button id="signup_btn_company" type="submit">
+                        Sign Up as {userType}
+                      </button>
+                    </div>
+                  </form>
                 </div>
-                <button type="submit">Sign Up as {userType}</button>
-              </form>
-            </div>
+              </div>
+            )}
           </div>
         )}
-        </div>)}
-        
       </div>
     </>
   );

@@ -54,12 +54,13 @@ const ChatPopup = () => {
         ))}
       </div>
       <input
+      id='chat_input'
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="Type a message..."
       />
-      <button onClick={sendMessage}>Send</button>
+      <button  onClick={sendMessage}>Send</button>
     </div>
   );
 };
