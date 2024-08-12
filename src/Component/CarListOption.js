@@ -41,7 +41,8 @@ function CarListOption({
   const { source, setSource } = useContext(SourceContext);
   const { destination, setDestination } = useContext(DestinationContext);
 
-  let url = "https://www.mobrilz.digital/admin/public/";
+
+let url = "https://admin.taxiscout24.com/";
 
   let token = sessionStorage.token;
 
@@ -330,7 +331,7 @@ function CarListOption({
     };
 
     dataKoSet();
-  }, [option1, option2, option3, option4, carFetchFunc, distance ]);
+  }, [option1, option2, option3, option4, carFetchFunc, distance ,[] ]);
 
   const abcd = finalData?.filter((element) => element !== undefined);
 
@@ -391,9 +392,9 @@ function CarListOption({
             payment_opt: "1",
             pick_address: source.name,
             drop_address: destination.name,
-            request_eta_amount: data.total,
-            is_later: "1",
-            trip_start_time:  formatDate(scheduledTime)
+            // request_eta_amount: data.total,
+            // is_later: "1",
+            // trip_start_time:  formatDate(scheduledTime)
           }),
         },
         { signal }

@@ -3,7 +3,8 @@ import "./EditProfilePage.css";
 import axios from 'axios';
 
 const EditProfilePage = () => {
-  let url = "https://www.mobrilz.digital/admin/public/";
+  // let url = "https://www.mobrilz.digital/admin/public/";
+  let url = "https://admin.taxiscout24.com/";
 
   let token = sessionStorage.token;
   const [fetchedUserData, setFetchedUserData] = useState([]);

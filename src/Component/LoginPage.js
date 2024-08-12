@@ -15,7 +15,7 @@ function LoginPage() {
     console.log(`Logging in as ${userType}`);
     // Add your login functionality here
   };
-
+let url = "https://admin.taxiscout24.com/"
 
   // api call
 
@@ -32,7 +32,7 @@ function LoginPage() {
 
 if (userType === "user"){
 
-    const response = await fetch(" https://www.mobrilz.digital/admin/public/api/v1/user/login", {
+    const response = await fetch(` ${url}api/v1/user/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -62,8 +62,7 @@ if (userType === "user"){
   }
 
   else if (userType === "company"){
-      history("https://www.mobrilz.digital/admin/public/login")
-      console.log("bhai ye finally chl gya")
+      history(`${url}`)
   }
 }
 
@@ -104,7 +103,7 @@ if (userType === "user"){
           <button type="submit">Login as {userType}</button>
         </form>: <span>
        
-         <a href='https://www.mobrilz.digital/admin/public/login'> <button type="submit">Login as {userType}</button></a>
+         <a href='https://admin.taxiscout24.com/'> <button type="submit">Login as {userType}</button></a>
        </span>}
       </div>)}
     </div>

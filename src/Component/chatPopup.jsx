@@ -32,8 +32,42 @@ const ChatPopup = () => {
     });
     return () => unsubscribe();
   }, []);
+  let rqstId = sessionStorage.id;
+  let token = sessionStorage.token;
+  const sendMessage = async (e) => {
 
-  const sendMessage = async () => {
+
+
+
+      e.preventDefault();
+  
+      const response = await fetch(
+        " https://www.mobrilz.digital/admin/public/api/v1/request/send",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "authorization" : `Bearer ${token}`
+
+          },
+          body: JSON.stringify({
+            message: input,
+            request_id: rqstId,
+            
+          }),
+        }
+      );
+  
+      const json = await response.json();
+     
+  
+     
+   
+
+
+
+
+
     if (input.trim()) {
       await addDoc(collection(db, 'messages'), {
         text: input,

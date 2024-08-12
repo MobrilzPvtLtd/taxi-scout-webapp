@@ -24,7 +24,7 @@ const LocationButton = ({ setAddress }) => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyAhZQSz7cUgNdkv1V05EjT26V_UtKSH5y4`
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyAynI4jJElJS-AjRInLezNojiqrYMbHolQ`
       );
       // const address = response.data.results[0].formatted_address;
       const address2002 = response.data.results[0];

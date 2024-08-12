@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {  useNavigate } from 'react-router';
 
 const OtpVerify_Login = () => {
+  let url = "https://admin.taxiscout24.com/"
     const navigate = useNavigate();
     const [otp, setOtp] = useState('');
     const [email, setEmail] = useState(sessionStorage.getItem("email"));
@@ -37,7 +38,7 @@ console.log("session value" ,email)
   const handleSubmit = async(e) => {
     e.preventDefault();
 
-    const response = await fetch('https://www.mobrilz.digital/admin/public/api/v1/user/login/validate-otp',{
+    const response = await fetch(`${url}api/v1/user/login/validate-otp`,{
         method: "POST",
         headers:{
             'Content-Type':'application/json'
@@ -62,7 +63,7 @@ console.log("session value" ,email)
   };
 
   const handleResend = async(e)=>{
-    const response = await fetch('https://www.mobrilz.digital/admin/public/api/v1/send-mail-otp',{
+    const response = await fetch(`${url}api/v1/send-mail-otp`,{
       method: "POST",
       headers:{
           'Content-Type':'application/json'

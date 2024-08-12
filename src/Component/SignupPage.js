@@ -5,6 +5,8 @@ import { createRenderer } from "react-dom/test-utils";
 import OtpVerify from "./OtpVerify";
 
 function SignupPage() {
+
+  let url = "https://admin.taxiscout24.com/"
   const [userType, setUserType] = useState("user"); // Default userType is user
   const [STATE, setSTATE] = useState("");
   const [selectedState, setSelectedState] = useState("");
@@ -52,7 +54,7 @@ function SignupPage() {
     e.preventDefault();
 
     const response = await fetch(
-      " https://www.mobrilz.digital/admin/public/api/v1/user/register",
+      `${url}api/v1/user/register`,
       {
         method: "POST",
         headers: {
@@ -91,7 +93,7 @@ function SignupPage() {
     e.preventDefault();
 
     const response = await fetch(
-      " https://www.mobrilz.digital/admin/public/api/v1/compnayregister",
+       `${url}api/v1/compnayregister`,
       {
         method: "POST",
         headers: {
@@ -144,7 +146,7 @@ function SignupPage() {
     const countryMethod = async () => {
       try {
         let response = await fetch(
-          " https://www.mobrilz.digital/admin/public/api/v1/countries",
+          `${url}api/v1/countries`,
           {
             method: "GET",
 
@@ -176,7 +178,7 @@ function SignupPage() {
     const stateMethod = async () => {
       try {
         let response = await fetch(
-          " https://www.mobrilz.digital/admin/public/api/v1/servicelocation",
+          `${url}api/v1/servicelocation`,
           {
             method: "GET",
 
