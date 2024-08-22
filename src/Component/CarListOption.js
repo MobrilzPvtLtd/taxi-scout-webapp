@@ -29,6 +29,10 @@ import driver_gif from "../Images/waiting_time.gif";
 
 import driver_profile from "../Images/driver_profile.png";
 import taxi from "../Images/taxi.png";
+import { collection, onSnapshot } from "firebase/firestore";
+import { ref, query, orderByChild, equalTo, onValue } from "firebase/database";
+import { database } from "./Firebase"; // Import the initialized 
+import BookingRequested from "./BookingRequested";
 
 function CarListOption({
   option1,
@@ -45,6 +49,11 @@ function CarListOption({
 let url = "https://admin.taxiscout24.com/";
 
   let token = sessionStorage.token;
+  const [driverData, setDriverData] = useState(null);
+  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [rideStarted , setRideStarted] = useState(true)
 
   const [data, setData] = useState([]);
   const [checkDriver , setCheckDriver] = useState(0)
@@ -95,9 +104,9 @@ let url = "https://admin.taxiscout24.com/";
  
     carFetch();
   
-}, [ option1 , option2 , option3 , option4]);
+}, [ option1 , option2 , option3 , option4 ]);
 // alert(distance)
-console.log("car fetch data" , aryann)
+// console.log("car fetch data" , aryann)
   //   carFetch ends here
 
   const navigate = useNavigate();
@@ -239,12 +248,12 @@ console.log("car fetch data" , aryann)
     ) {
       setNoDriverFound(false);
       // setSearchingDriver(false);
-      console.log("the key is " , fetchedUserData2.onTripRequest)
+      // console.log("the key is " , fetchedUserData.map((item)=>{return item.onTripRequest}))
     }
   }, [checkDriver , fetchedUserData]);
 
 
-console.log("create rqst data" , driver)
+// console.log("create rqst data" , driver)
   const cancelRqstBtn = (id) => {
     return id;
   };
@@ -303,6 +312,7 @@ console.log("create rqst data" , driver)
     // handleReloadClick()
     setDriver(null);
     setFetchedUserData2(null);
+    setFetchedUserData(null);
 
   };
 
@@ -333,6 +343,7 @@ console.log("create rqst data" , driver)
     setSearchingDriver(false);
     setDriver(null);
     setFetchedUserData2(null);
+    setFetchedUserData(null);
 
 
     
@@ -369,10 +380,14 @@ console.log("create rqst data" , driver)
   useEffect(() => {
     if (abcd?.length > 0) {
       setCars(true);
-    } else {
+    } 
+    else if(fetchedUserData2?.onTripRequest?.data?.is_driver_started == 1){
+      setRideStarted(true)
+    }
+    else {
       setCars(false);
     }
-  }, [option1, option2, option3, option4, abcd]);
+  }, [option1, option2, option3, option4, abcd , checkDriver]);
 
 
 
@@ -453,8 +468,77 @@ console.log("create rqst data" , driver)
     }
   };
 
+
+  // firebase real time data fetching starts here
+
+
+
+
+const [isActive , setIsActive] = useState(null)
+const [cancelled_by_user , setCancelled_by_user] = useState(null)
+const [is_cancelled , setIs_cancelled] = useState(null)
+const [is_completed , setIs_completed] = useState(null)
+const [trip_arrived , setTrip_arrived] = useState(null)
+const [trip_start , setTrip_start] = useState(null)
+
+  useEffect(() => {
+    if (fetchedUserData2) {
+      // Extract driver ID from userRequestData
+      const driverId = fetchedUserData2?.onTripRequest?.data?.driverDetail?.data?.id;
+      const userId = fetchedUserData2?.id;
+      let rqstId = sessionStorage.id;
+      
+      if (driverId) {
+        // Create a reference to the specific driver's data in the Realtime Database
+        const driverRef = ref(database, `drivers/${driverId}`);
+        
+        // Listen for real-time updates
+        const unsubscribe = onValue(driverRef, (snapshot) => {
+          const data = snapshot.val();
+          setDriverData(data);
+        });
+       
+        
+        // Clean up the listener when the component unmounts
+        return () => unsubscribe()  ;
+      }
+      else if(rqstId){
+        const userRef = ref(database, `requests/${rqstId}`);
+        const unsubscribe = onValue(userRef, (snapshot) => {
+          const data = snapshot.val();
+          if (data) {
+            setUserData(data);
+            setIsActive(data.active || false); 
+            setCancelled_by_user(data.cancelled_by_user || false); 
+            setIs_cancelled(data.is_cancelled || false); 
+            setIs_completed(data.is_completed || false); 
+            setTrip_arrived(data.trip_arrived || false) 
+            setTrip_start(data.trip_start || false)
+          } else {
+            setUserData(null);
+            setIsActive(false);
+          }
+        });
+        // Clean up the listener when the component unmounts
+        return () => unsubscribe()  ;
+      }
+    }
+  }, [fetchedUserData2]);
+  console.log("firebase data" , fetchedUserData2)
+
+  // if (loading) {
+  //   return <p>Loading...</p>;
+  // }
+
+  // if (error) {
+  //   return <p>{error}</p>;
+  // }
+
+ 
+
   return (
     <>
+        {rideStarted ? <BookingRequested/>:
       <div className="mt-5 pt-7 ">
         <h2 className="text-[22px] font-bold">Recommended</h2>
         {/* panga starts */}
@@ -700,6 +784,7 @@ Select Date
         ) : null}
         {(fetchedUserData2?.onTripRequest?.is_trip_start == 1)?<div className="fixed w-1/2 bg-red-500 h-1/2">YOur driver has been started</div> : null}
       </div>
+      }
       {/* select section ends */}
     </>
   );

@@ -42,6 +42,7 @@ import Landing from './Component/Landing';
 import OtpVerify from './Component/OtpVerify';
 import EditProfilePage from './Component/EditProfilePage';
 import ChatPopup from './Component/chatPopup';
+import BookingCompleted from './Component/BookingCompleted';
 // import firebase from 'firebase'
 
 function App() {
@@ -118,6 +119,9 @@ function App() {
       <Route path='/OtpVerify' element =  {<OtpVerify/>} />
       <Route path='/edit-profile' element =  {<EditProfilePage />} />
       
+      <Route path='/booking-completed' element =  {<BookingCompleted/>} />
+      
+     
       
 
 

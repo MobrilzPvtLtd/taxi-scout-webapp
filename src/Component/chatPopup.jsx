@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { initializeApp } from 'firebase/app';
+// import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc, query, orderBy, onSnapshot } from 'firebase/firestore';
 import './chatPopup.css';
+import { database } from "./Firebase"; 
 
 const firebaseConfig = {
     apiKey: "AIzaSyBkkm67QjmV5HoB2HMiwtyL4Xd1lHGEtt0",
@@ -14,15 +15,15 @@ const firebaseConfig = {
     measurementId: "G-5PRGCFGS4K"
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+// const app = initializeApp(firebaseConfig);
+// const db = getFirestore(app);
 
 const ChatPopup = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
 
   useEffect(() => {
-    const q = query(collection(db, 'messages'), orderBy('timestamp', 'asc'));
+    const q = query(collection(database, 'messages'), orderBy('timestamp', 'asc'));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       let messages = [];
       querySnapshot.forEach((doc) => {
@@ -69,7 +70,7 @@ const ChatPopup = () => {
 
 
     if (input.trim()) {
-      await addDoc(collection(db, 'messages'), {
+      await addDoc(collection(database, 'messages'), {
         text: input,
         timestamp: new Date(),
       });
