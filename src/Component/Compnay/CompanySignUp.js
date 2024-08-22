@@ -20,7 +20,7 @@ const [credentials, setCredentials] = useState({
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (userType === "user"){
-    const response = await fetch(" https://www.mobrilz.digital/admin/public/api/v1/user/register", {
+    const response = await fetch("https://admin.taxiscout24.com/api/v1/user/register", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

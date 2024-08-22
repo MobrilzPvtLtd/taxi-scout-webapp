@@ -5,7 +5,7 @@ function Functions() {
   
     const internet = true;
   //base url
-    let url = "'https://www.mobrilz.digital/admin/public/';"
+    let url = "'https://admin.taxiscout24.com/';"
 
     // map key
     let mapkey = 'AIzaSyAhZQSz7cUgNdkv1V05EjT26V_UtKSH5y4';

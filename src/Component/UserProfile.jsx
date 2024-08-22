@@ -6,7 +6,7 @@ import user_img from "./user.png";
 import edit_img from "./edit.png";
 
 const UserProfile = () => {
-  let url = "https://www.mobrilz.digital/admin/public/";
+  let url = "https://admin.taxiscout24.com/";
 
   let token = sessionStorage.token;
   const [fetchedUserData, setFetchedUserData] = useState([]);

@@ -21,11 +21,13 @@ const LocationButton = ({ setAddress }) => {
   const [address1, setAddress1] = useState(null);
 
   const reverseGeocode = async (lat, lng) => {
+    
     setLoading(true);
     try {
       const response = await axios.get(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyAynI4jJElJS-AjRInLezNojiqrYMbHolQ`
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyAL0hd3a2l1k1uLSAxQNN511PWkguNxzE4`
       );
+      console.log("response" , response)
       // const address = response.data.results[0].formatted_address;
       const address2002 = response.data.results[0];
       const address2 = response.data.results[0].geometry.location;
@@ -39,13 +41,36 @@ const LocationButton = ({ setAddress }) => {
     }
   };
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(success, error);
+  //   } else {
+  //     console.error("Geolocation is not supported by your browser");
+  //   }
+  // }, []);
+  useEffect(()=>{
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success, error);
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          console.log('Latitude:', position.coords.latitude);
+          console.log('Longitude:', position.coords.longitude);
+        },
+        (error) => {
+          console.error('Geolocation error:', error.message);
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 5000,
+          maximumAge: 0,
+        }
+      );
     } else {
-      console.error("Geolocation is not supported by your browser");
+      console.error("Geolocation is not supported by this browser.");
     }
-  }, []);
+
+  },[])
+  
 
   if (loading) {
     return <p>Loading your current address...</p>;

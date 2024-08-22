@@ -18,7 +18,7 @@ export const ContextProvider = ({ children }) => {
   const [isClicked, setIsClicked] = useState(initialState);
   const [fetchedUserData, setFetchedUserData] = useState([]);
   const [fetchedUserData2, setFetchedUserData2] = useState([]);
-  let url = "https://www.mobrilz.digital/admin/public/";
+  let url = "https://admin.taxiscout24.com/";
   let token = sessionStorage.token;
 
 

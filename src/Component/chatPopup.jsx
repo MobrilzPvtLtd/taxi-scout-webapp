@@ -42,7 +42,7 @@ const ChatPopup = () => {
       e.preventDefault();
   
       const response = await fetch(
-        " https://www.mobrilz.digital/admin/public/api/v1/request/send",
+        "https://admin.taxiscout24.com/api/v1/request/send",
         {
           method: "POST",
           headers: {

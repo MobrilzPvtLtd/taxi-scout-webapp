@@ -47,6 +47,7 @@ let url = "https://admin.taxiscout24.com/";
   let token = sessionStorage.token;
 
   const [data, setData] = useState([]);
+  const [checkDriver , setCheckDriver] = useState(0)
 
   const [activeIndex, setActiveIndex] = useState();
   const [selectedCar, setSelectedCar] = useState();
@@ -60,8 +61,6 @@ let url = "https://admin.taxiscout24.com/";
   const [nodriverFound, setNoDriverFound] = useState(null);
 
   useEffect(() => {
-    carFetch();
-  }, []);
 
   const carFetch = async (e) => {
     try {
@@ -83,15 +82,22 @@ let url = "https://admin.taxiscout24.com/";
 
       let parsedResponse = await response.json();
 
-      setAryann(parsedResponse.data);
-
+      
       if (response.status === 200) {
+        setAryann(parsedResponse.data);
         setDemo(true);
       }
     } catch (err) {
       console.error(err);
     }
   };
+
+ 
+    carFetch();
+  
+}, [ option1 , option2 , option3 , option4]);
+// alert(distance)
+console.log("car fetch data" , aryann)
   //   carFetch ends here
 
   const navigate = useNavigate();
@@ -101,12 +107,14 @@ let url = "https://admin.taxiscout24.com/";
   };
 
   // user data
+  const [driver, setDriver] = useState([]);
 
+  const [id, setId] = useState(false);
   const [fetchedUserData, setFetchedUserData] = useState([]);
   const [fetchedUserData2, setFetchedUserData2] = useState([]);
   // let fetchedUserData = [];
 
-  // useEffect(()=>{
+  useEffect(()=>{
 
   const userData = async () => {
     try {
@@ -133,31 +141,22 @@ let url = "https://admin.taxiscout24.com/";
       console.error("Error creating request:", error);
     }
   };
+  userData();
+},[checkDriver])
 
-  const [key, setKey] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setKey((prevKey) => prevKey + 1); // Update the key to trigger re-render
-      userData();
-    }, 5000); // 5000 milliseconds = 5 seconds
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setKey((prevKey) => prevKey + 1); // Update the key to trigger re-render
+  //     userData();
+  //   }, 5000); // 5000 milliseconds = 5 seconds
 
-    return () => clearInterval(interval); // Cleanup function to clear the interval
-  }, []); // Empty dependency array to run the effect only once
+  //   return () => clearInterval(interval); // Cleanup function to clear the interval
+  // }, []); // Empty dependency array to run the effect only once
   // },[])
   // create driver request
-  useEffect(() => {
-    if (
-      fetchedUserData2?.onTripRequest !== undefined &&
-      fetchedUserData2?.onTripRequest !== null
-    ) {
-      setNoDriverFound(false);
-      // console.log("the key is " , fetchedUserData2.onTripRequest)
-    }
-  }, [fetchedUserData]);
+ 
   // console.log("driver ki ontrip request" , fetchedUserData)
-  const [driver, setDriver] = useState([]);
-  const [id, setId] = useState(false);
   const [click, setClick] = useState(false);
   const [create, setCreate] = useState([]);
   const [cancelId, setCancelId] = useState("");
@@ -166,7 +165,20 @@ let url = "https://admin.taxiscout24.com/";
   // useEffect(() => {
   const abortController = new AbortController();
   const { signal } = abortController;
+  useEffect(()=>{
+
+    if(checkDriver < 300){
+     const timerID = setInterval(()=>{
+    setCheckDriver( checkDriver => checkDriver + 1)
+    // console.log("timer ki value " , timer)
+      }, 1000);
+    
+    return ()=> clearInterval(timerID);
+    } 
+    },[checkDriver])
   const createRequest = async () => {
+  setCheckDriver(1)
+    
     try {
       let URL = ` ${url}api/v1/request/create`;
       let response = await fetch(
@@ -220,7 +232,19 @@ let url = "https://admin.taxiscout24.com/";
       // }
     }
   };
+  useEffect(() => {
+    if (
+      (fetchedUserData2?.onTripRequest) !== undefined &&
+      (fetchedUserData2?.onTripRequest) !== null
+    ) {
+      setNoDriverFound(false);
+      // setSearchingDriver(false);
+      console.log("the key is " , fetchedUserData2.onTripRequest)
+    }
+  }, [checkDriver , fetchedUserData]);
 
+
+console.log("create rqst data" , driver)
   const cancelRqstBtn = (id) => {
     return id;
   };
@@ -277,6 +301,9 @@ let url = "https://admin.taxiscout24.com/";
     setSearchingDriver(false);
     setDriverFound(false);
     // handleReloadClick()
+    setDriver(null);
+    setFetchedUserData2(null);
+
   };
 
   function handleOnChange(e) {
@@ -289,11 +316,12 @@ let url = "https://admin.taxiscout24.com/";
     // setDisplay(true);
     // userData();
 
-    userData();
 
-    setTimeout(() => {
-      setSearchingDriver(false);
-    }, 300000);
+    
+
+    // setTimeout(() => {
+    //   setSearchingDriver(false);
+    // }, 300000);
 
   }
 
@@ -303,6 +331,9 @@ let url = "https://admin.taxiscout24.com/";
     cancelRequest();
     setDisplay(false);
     setSearchingDriver(false);
+    setDriver(null);
+    setFetchedUserData2(null);
+
 
     
   };
@@ -331,7 +362,7 @@ let url = "https://admin.taxiscout24.com/";
     };
 
     dataKoSet();
-  }, [option1, option2, option3, option4, carFetchFunc, distance ,[] ]);
+  }, [checkDriver]);
 
   const abcd = finalData?.filter((element) => element !== undefined);
 
@@ -465,9 +496,22 @@ let url = "https://admin.taxiscout24.com/";
         {/* panga ends */}
 
         {/* select section starts */}
+        <div className="flex justify-center  mt-4 bottom-5 bg-[#faf6ae]  items-center">
+              <span className="text-[18px] w-[400px] mb-2 font-bold text-md underline">
+                Schedule Your Request For
+              </span>
+
+              <span
+                className="mb-2 w-1/2 text-[16px] font-bold underline cursor-pointer transition-all hover:scale-110"
+                // handleOnClick={(()=>setCreate(true)) }
+                onClick={()=>{setSchedule(true)}}
+              >
+Select Date
+              </span>
+            </div>
         {selectedCar?.name ? (
           <div>
-            <div className="flex justify-center  mt-4 bottom-5 bg-[#faf6ae] p-3 shadow-xl rounded w-full  border-[1px] items-center">
+            <div className="flex justify-center  mt-4 bottom-5 bg-[#faf6ae] p-3 shadow-xl rounded w-full items-center">
               <h2 className="text-[20px] w-[400px]  mb-2 font-bold text-md">
                 Make Request For
               </h2>
@@ -480,19 +524,7 @@ let url = "https://admin.taxiscout24.com/";
                 {selectedCar.name}
               </button>
             </div>
-            <div className="flex justify-center  mt-4 bottom-5 bg-[#faf6ae] p-3 shadow-xl rounded w-full  border-[1px] items-center">
-              <h2 className="text-[20px] w-[400px]  mb-2 font-bold text-md">
-                Schedule Your Request For
-              </h2>
-
-              <button
-                className="p-3 bg-black text-white rounded-lg text-[18px] font-bold px-3"
-                // handleOnClick={(()=>setCreate(true)) }
-                onClick={()=>{setSchedule(true)}}
-              >
-Select Date
-              </button>
-            </div>
+            
         {(schedule == true)? ( 
         <div id="taxi_scheduler">
           <div id="taxi_scheduler_overley"></div>
@@ -534,7 +566,7 @@ Select Date
               <div>
 
 
-                {nodriverFound === true ? (
+                {nodriverFound === true || driver?.is_trip_start === null ? (
                   <div>
                  
                     <div id="driver-searching">
@@ -572,8 +604,8 @@ Select Date
                                   height={100}
                                   width={100}
                                   src={
-                                    driver1.onTripRequest.data.driverDetail.data
-                                      .profile_picture
+                                    driver1?.onTripRequest?.data?.driverDetail?.data
+                                      ?.profile_picture
                                   }
                                 />
                               </div>
@@ -581,15 +613,15 @@ Select Date
                                 <p className="mr-14  text-[18px] font-bold">
                                   <strong>Name: </strong>
                                   {
-                                    driver1.onTripRequest.data.driverDetail.data
-                                      .name
+                                    driver1?.onTripRequest?.data?.driverDetail?.data
+                                      ?.name
                                   }
 
                                   <br></br>
                                   <strong>Mobile:</strong>
                                   {
-                                    driver1.onTripRequest.data.driverDetail.data
-                                      .mobile
+                                    driver1?.onTripRequest?.data?.driverDetail?.data
+                                      ?.mobile
                                   }
                                 </p>
                               </div>
@@ -606,8 +638,8 @@ Select Date
                                   width={100}
                                   height={100}
                                   src={
-                                    driver1.onTripRequest.data.driverDetail.data
-                                      .vehicle_type_icon
+                                    driver1?.onTripRequest?.data?.driverDetail?.data
+                                      ?.vehicle_type_icon
                                   }
                                 />
                               </div>
@@ -615,7 +647,7 @@ Select Date
                                 <p className="  text-[18px] font-bold">
                                   <strong>Car Name:</strong>
                                   {
-                                    driver1.onTripRequest.data.driverDetail.data
+                                    driver1?.onTripRequest?.data?.driverDetail?.data
                                       .vehicle_type_name
                                   }
                                 </p>
@@ -661,11 +693,12 @@ Select Date
                   </ul>
                 )}
               </div>
-            ) : null}
+            ) : null} 
             {/* driver details section ends */}
             {/* request box ends */}
           </div>
         ) : null}
+        {(fetchedUserData2?.onTripRequest?.is_trip_start == 1)?<div className="fixed w-1/2 bg-red-500 h-1/2">YOur driver has been started</div> : null}
       </div>
       {/* select section ends */}
     </>

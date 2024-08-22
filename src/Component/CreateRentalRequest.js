@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 
  function CreateRentalRequest() {
     let result;
-  let url = "https://www.mobrilz.digital/admin/public/"
+  let url = "https://admin.taxiscout24.com/"
  let token = sessionStorage.token ;
  const [noDriverFound , setNoDriverFound] = useState(false);
     const [tripReqError , setTripReqError] = useState(false)

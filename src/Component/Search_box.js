@@ -25,6 +25,7 @@ function Search_box() {
   const [taxi_schedule_form, setTaxi_schedule_form] = useState(false);
 
   const calculateDistance = () => {
+    
     const distance =
       window.google.maps.geometry.spherical.computeDistanceBetween(
         { lat: source.lat, lng: source.lng },

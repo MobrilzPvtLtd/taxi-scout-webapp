@@ -28,7 +28,7 @@ function CompanyLogin() {
 
 if (userType === "user"){
 
-      const response = await fetch(" https://www.mobrilz.digital/admin/public/api/v1/user/login", {
+      const response = await fetch("https://admin.taxiscout24.com/api/v1/user/login", {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
