@@ -3,18 +3,18 @@ import React from "react";
 import "./BookingCompleted.css"; 
 import { FaCheckCircle } from "react-icons/fa";
 
-const BookingRequested = ({pickup ,drop_address , driver_name ,car_name ,car_pic , otp ,handleOnCancel})  => {
-  const handleCancel =()=>{
-    handleOnCancel();
-  }
+const DriverArrived = ({pickup ,drop_address , driver_name ,car_name ,car_pic , otp , handleOnCancel})  => {
+    const handleCancel = ()=>{
+        handleOnCancel();
+    }
   return (
     <div className="booking-completed-container">
       <div className="icon-wrapper">
         <FaCheckCircle className="check-icon" />
       </div>
-      <h1 className="title">Booking Confirmed!</h1>
+      <h1 className="title">Driver Arrived!</h1>
       <p className="subtitle">
-        Thank you for your booking. Your driver is on the way!
+        Your driver is arrived . Share you OTP to start ride.
       </p>
 
       <div className="booking-details">
@@ -35,4 +35,4 @@ const BookingRequested = ({pickup ,drop_address , driver_name ,car_name ,car_pic
 };
 
 
-export default BookingRequested;
+export default DriverArrived;

@@ -50,7 +50,9 @@ const LocationButton = ({ setAddress }) => {
   // }, []);
   useEffect(()=>{
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(success, error);
+      navigator.geolocation.getCurrentPosition(success, error ,{
+        timeout: 10000 
+      });
       navigator.geolocation.getCurrentPosition(
         (position) => {
           console.log('Latitude:', position.coords.latitude);

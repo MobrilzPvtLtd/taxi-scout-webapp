@@ -25,6 +25,21 @@
     height: 300px;
     overflow-y: auto;
   }
+  .user-message {
+    background-color: #d1ffd1;
+    align-self: flex-end;
+    width: fit-content;
+    padding: 0 20px;
+    border-radius: 10px;
+  }
+  
+  .driver-message {
+    background-color: #ffe0e0;
+    align-self: flex-start;
+    width: fit-content;
+    padding: 0 20px;
+    border-radius: 10px;
+  }
   
   .chat-message {
     margin-bottom: 10px;

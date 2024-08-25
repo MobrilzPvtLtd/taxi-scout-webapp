@@ -5,10 +5,10 @@ import Payment from "./Payment";
 import { useTimer } from "react-timer-hook";
 import LATLNG from "../Context/LATLNG";
 import LATLNG_State from "../Context/LATLNG_State";
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import "./TaxiScheduler.css"
-import { format } from 'date-fns';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import "./TaxiScheduler.css";
+import { format } from "date-fns";
 import {
   Await,
   BrowserRouter,
@@ -31,8 +31,11 @@ import driver_profile from "../Images/driver_profile.png";
 import taxi from "../Images/taxi.png";
 import { collection, onSnapshot } from "firebase/firestore";
 import { ref, query, orderByChild, equalTo, onValue } from "firebase/database";
-import { database } from "./Firebase"; // Import the initialized 
+import { database } from "./Firebase"; // Import the initialized
 import BookingRequested from "./BookingRequested";
+import DriverArrived from "./DriverArrived";
+import TripStarted from "./TripStarted";
+import BookingCompleted from "./BookingCompleted";
 
 function CarListOption({
   option1,
@@ -45,22 +48,21 @@ function CarListOption({
   const { source, setSource } = useContext(SourceContext);
   const { destination, setDestination } = useContext(DestinationContext);
 
-
-let url = "https://admin.taxiscout24.com/";
+  let url = "https://admin.taxiscout24.com/";
 
   let token = sessionStorage.token;
   const [driverData, setDriverData] = useState(null);
-  const [userData, setUserData] = useState(null);
+  const [userData1, setUserData1] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [rideStarted , setRideStarted] = useState(true)
+  const [rideStarted, setRideStarted] = useState(false);
 
   const [data, setData] = useState([]);
-  const [checkDriver , setCheckDriver] = useState(0)
+  const [checkDriver, setCheckDriver] = useState(0);
 
   const [activeIndex, setActiveIndex] = useState();
   const [selectedCar, setSelectedCar] = useState();
-  const [schedule , setSchedule] = useState(false);
+  const [schedule, setSchedule] = useState(false);
 
   // car Fetch starts here
   const context = useContext(LATLNG);
@@ -70,43 +72,39 @@ let url = "https://admin.taxiscout24.com/";
   const [nodriverFound, setNoDriverFound] = useState(null);
 
   useEffect(() => {
+    const carFetch = async (e) => {
+      try {
+        let response = await fetch(` ${url}api/v1/request/eta`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            pick_lat: source.lat,
+            pick_lng: source.lng,
+            drop_lat: destination.lat,
+            drop_lng: destination.lng,
+            ride_type: "1",
+            transport_type: "taxi",
+          }),
+        });
 
-  const carFetch = async (e) => {
-    try {
-      let response = await fetch(` ${url}api/v1/request/eta`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          pick_lat: source.lat,
-          pick_lng: source.lng,
-          drop_lat: destination.lat,
-          drop_lng: destination.lng,
-          ride_type: "1",
-          transport_type: "taxi"
-        }),
-      });
+        let parsedResponse = await response.json();
 
-      let parsedResponse = await response.json();
-
-      
-      if (response.status === 200) {
-        setAryann(parsedResponse.data);
-        setDemo(true);
+        if (response.status === 200) {
+          setAryann(parsedResponse.data);
+          setDemo(true);
+        }
+      } catch (err) {
+        console.error(err);
       }
-    } catch (err) {
-      console.error(err);
-    }
-  };
+    };
 
- 
     carFetch();
-  
-}, [ option1 , option2 , option3 , option4 ]);
-// alert(distance)
-// console.log("car fetch data" , aryann)
+  }, [option1, option2, option3, option4]);
+  // alert(distance)
+  // console.log("car fetch data" , aryann)
   //   carFetch ends here
 
   const navigate = useNavigate();
@@ -122,37 +120,38 @@ let url = "https://admin.taxiscout24.com/";
   const [fetchedUserData, setFetchedUserData] = useState([]);
   const [fetchedUserData2, setFetchedUserData2] = useState([]);
   // let fetchedUserData = [];
+  useEffect(() => {
+    const userData = async () => {
+      try {
+        let response = await fetch(` ${url}api/v1/user`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+        });
 
-  useEffect(()=>{
+        if (response.ok) {
+          const DATA = await response.json();
+          const convertedData = [DATA.data];
 
-  const userData = async () => {
-    try {
-      let response = await fetch(` ${url}api/v1/user`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `Bearer ${token}`,
-        },
-      });
+          setFetchedUserData(convertedData);
+          // if((convertedData[0].onTripRequest != null || convertedData[0].onTripRequest != undefined ) && convertedData[0].onTripRequest.data.is_completed == 0){
+          setFetchedUserData2(convertedData[0]);
 
-      if (response.ok) {
-        const DATA = await response.json();
-        const convertedData = [DATA.data];
+          // }
 
-        setFetchedUserData(convertedData);
-        setFetchedUserData2(convertedData[0]);
-
-        setId(true);
-      } else {
-        console.error(`HTTP error! Status: ${response.status}`);
+          setId(true);
+        } else {
+          console.error(`HTTP error! Status: ${response.status}`);
+        }
+      } catch (error) {
+        console.error("Error creating request:", error);
       }
-    } catch (error) {
-      console.error("Error creating request:", error);
-    }
-  };
-  userData();
-},[checkDriver])
+    };
 
+    userData();
+  }, [fetchedUserData]);
 
   // useEffect(() => {
   //   const interval = setInterval(() => {
@@ -164,30 +163,30 @@ let url = "https://admin.taxiscout24.com/";
   // }, []); // Empty dependency array to run the effect only once
   // },[])
   // create driver request
- 
+
   // console.log("driver ki ontrip request" , fetchedUserData)
   const [click, setClick] = useState(false);
-  const [create, setCreate] = useState([]);
+  const [create, setCreate] = useState(false);
   const [cancelId, setCancelId] = useState("");
   const [isHidden, setIsHidden] = useState(false);
 
   // useEffect(() => {
   const abortController = new AbortController();
   const { signal } = abortController;
-  useEffect(()=>{
-
-    if(checkDriver < 300){
-     const timerID = setInterval(()=>{
-    setCheckDriver( checkDriver => checkDriver + 1)
-    // console.log("timer ki value " , timer)
+  useEffect(() => {
+    if (checkDriver < 300) {
+      const timerID = setInterval(() => {
+        setCheckDriver((checkDriver) => checkDriver + 1);
+        // console.log("timer ki value " , timer)
       }, 1000);
-    
-    return ()=> clearInterval(timerID);
-    } 
-    },[checkDriver])
+
+      return () => clearInterval(timerID);
+    }
+  }, [checkDriver]);
   const createRequest = async () => {
-  setCheckDriver(1)
-    
+    setCheckDriver(1);
+    setCreate(true)
+
     try {
       let URL = ` ${url}api/v1/request/create`;
       let response = await fetch(
@@ -215,6 +214,7 @@ let url = "https://admin.taxiscout24.com/";
       );
       // userData();
       // if (!signal.aborted) {
+        
       if (response.ok) {
         const DATA = await response.json();
         const convertedData = [DATA.data];
@@ -243,17 +243,16 @@ let url = "https://admin.taxiscout24.com/";
   };
   useEffect(() => {
     if (
-      (fetchedUserData2?.onTripRequest) !== undefined &&
-      (fetchedUserData2?.onTripRequest) !== null
+      fetchedUserData2?.onTripRequest !== undefined &&
+      fetchedUserData2?.onTripRequest !== null
     ) {
       setNoDriverFound(false);
       // setSearchingDriver(false);
       // console.log("the key is " , fetchedUserData.map((item)=>{return item.onTripRequest}))
     }
-  }, [checkDriver , fetchedUserData]);
+  }, [checkDriver, fetchedUserData]);
 
-
-// console.log("create rqst data" , driver)
+  // console.log("create rqst data" , driver)
   const cancelRqstBtn = (id) => {
     return id;
   };
@@ -286,12 +285,12 @@ let url = "https://admin.taxiscout24.com/";
         }),
       });
       if (response.status === 200) {
-        setUserCancelled(true); 
+        setUserCancelled(true);
+        window.location.reload();
 
         setResult("success");
       } else {
         console.error(await response.text());
-       
 
         setResult("failed");
       }
@@ -303,17 +302,17 @@ let url = "https://admin.taxiscout24.com/";
   const handleReloadClick = () => {
     window.location.reload();
   };
-  const handleOnCancel = (e) => {
-    e.preventDefault();
+  const handleOnCancel = () => {
+    // e.preventDefault();
     cancelRequest();
     setClick(false);
     setSearchingDriver(false);
     setDriverFound(false);
     // handleReloadClick()
     setDriver(null);
-    setFetchedUserData2(null);
-    setFetchedUserData(null);
-
+    window.location.reload()
+    // setFetchedUserData2(null);
+    // setFetchedUserData(null);
   };
 
   function handleOnChange(e) {
@@ -326,27 +325,20 @@ let url = "https://admin.taxiscout24.com/";
     // setDisplay(true);
     // userData();
 
-
-    
-
     // setTimeout(() => {
     //   setSearchingDriver(false);
     // }, 300000);
-
   }
-
- 
 
   const handleOnCancel2 = () => {
     cancelRequest();
-    setDisplay(false);
-    setSearchingDriver(false);
-    setDriver(null);
-    setFetchedUserData2(null);
-    setFetchedUserData(null);
 
-
-    
+    setBooking(false);
+    // setSearchingDriver(false);
+    // setDriver(null);
+    window.location.reload()
+    // setFetchedUserData2(null);
+    // setFetchedUserData(null);
   };
 
   // timer
@@ -380,22 +372,15 @@ let url = "https://admin.taxiscout24.com/";
   useEffect(() => {
     if (abcd?.length > 0) {
       setCars(true);
-    } 
-    else if(fetchedUserData2?.onTripRequest?.data?.is_driver_started == 1){
-      setRideStarted(true)
-    }
-    else {
+    } else if (fetchedUserData2?.onTripRequest?.data?.is_driver_started == 1) {
+      setRideStarted(true);
+    } else {
       setCars(false);
     }
-  }, [option1, option2, option3, option4, abcd , checkDriver]);
-
-
-
+  }, [option1, option2, option3, option4, abcd, checkDriver]);
 
   const [scheduledTime, setScheduledTime] = useState(new Date());
 
-  
- 
   const handle_taxi_schedule_cancel = () => {
     setSchedule(false);
   };
@@ -404,17 +389,14 @@ let url = "https://admin.taxiscout24.com/";
   };
 
   const formatDate = (date) => {
-    if (!date) return '';
-    return format(date, 'yyyy-MM-dd HH:mm:ss');
+    if (!date) return "";
+    return format(date, "yyyy-MM-dd HH:mm:ss");
   };
- 
+
   const handle_schedule_taxi = (e) => {
     e.preventDefault();
-  
-    console.log(
-      formatDate(scheduledTime)
-    );
 
+    console.log(formatDate(scheduledTime));
   };
   const createRequest_schedule = async (e) => {
     e.preventDefault();
@@ -438,354 +420,327 @@ let url = "https://admin.taxiscout24.com/";
             payment_opt: "1",
             pick_address: source.name,
             drop_address: destination.name,
-            // request_eta_amount: data.total,
-            // is_later: "1",
-            // trip_start_time:  formatDate(scheduledTime)
+            request_eta_amount: data.total,
+            is_later: "1",
+            trip_start_time:  formatDate(scheduledTime)
           }),
         },
         { signal }
       );
       if (response.ok) {
+        setSchedule(false)
+        alert("Your Ride Has Been successfully Scheduled")
         const DATA = await response.json();
         const convertedData = [DATA.data];
-        sessionStorage.setItem("id", convertedData[0].id);
         cancelRqstBtn(convertedData);
         setCancelId(convertedData.id);
         setDriver(convertedData);
-        
       } else {
         console.error(`HTTP error! Status: ${response.message}`);
         alert(
           `Error : ${response.message} , please hit on Cancel to make a new request`
         );
       }
-   
     } catch (error) {
-     
       console.error("Error creating request:", error);
-
-      
     }
   };
 
-
   // firebase real time data fetching starts here
 
-
-
-
-const [isActive , setIsActive] = useState(null)
-const [cancelled_by_user , setCancelled_by_user] = useState(null)
-const [is_cancelled , setIs_cancelled] = useState(null)
-const [is_completed , setIs_completed] = useState(null)
-const [trip_arrived , setTrip_arrived] = useState(null)
-const [trip_start , setTrip_start] = useState(null)
+  const [isActive, setIsActive] = useState(null);
+  const [displayComp, setDisplayComp] = useState(null);
+  const [booking, setBooking] = useState(false);
 
   useEffect(() => {
     if (fetchedUserData2) {
-      // Extract driver ID from userRequestData
-      const driverId = fetchedUserData2?.onTripRequest?.data?.driverDetail?.data?.id;
-      const userId = fetchedUserData2?.id;
-      let rqstId = sessionStorage.id;
-      
-      if (driverId) {
-        // Create a reference to the specific driver's data in the Realtime Database
-        const driverRef = ref(database, `drivers/${driverId}`);
-        
-        // Listen for real-time updates
-        const unsubscribe = onValue(driverRef, (snapshot) => {
-          const data = snapshot.val();
-          setDriverData(data);
-        });
-       
-        
-        // Clean up the listener when the component unmounts
-        return () => unsubscribe()  ;
-      }
-      else if(rqstId){
-        const userRef = ref(database, `requests/${rqstId}`);
-        const unsubscribe = onValue(userRef, (snapshot) => {
-          const data = snapshot.val();
-          if (data) {
-            setUserData(data);
-            setIsActive(data.active || false); 
-            setCancelled_by_user(data.cancelled_by_user || false); 
-            setIs_cancelled(data.is_cancelled || false); 
-            setIs_completed(data.is_completed || false); 
-            setTrip_arrived(data.trip_arrived || false) 
-            setTrip_start(data.trip_start || false)
-          } else {
-            setUserData(null);
-            setIsActive(false);
+      if (fetchedUserData2?.onTripRequest ) {
+        setBooking(true);
+        setDisplayComp(1);
+        if (fetchedUserData2?.onTripRequest?.data.is_driver_arrived) {
+          setDisplayComp(2);
+          if (fetchedUserData2?.onTripRequest?.data.is_trip_start) {
+            setDisplayComp(3);
+            if (fetchedUserData2?.onTripRequest?.data.is_completed) {
+              setDisplayComp(4);
+            }
           }
-        });
-        // Clean up the listener when the component unmounts
-        return () => unsubscribe()  ;
+        } else {
+          // setUserData(null);
+          // setIsActive(false);
+        }
       }
     }
   }, [fetchedUserData2]);
-  console.log("firebase data" , fetchedUserData2)
-
-  // if (loading) {
-  //   return <p>Loading...</p>;
-  // }
+  console.log("firebase data", driver);
+  const resetValue = (val) => {
+    setDisplayComp(null);
+    setFetchedUserData(null);
+    console.log("props data", fetchedUserData2);
+    window.location.reload();
+  };
 
   // if (error) {
   //   return <p>{error}</p>;
   // }
 
- 
-
   return (
     <>
-        {rideStarted ? <BookingRequested/>:
-      <div className="mt-5 pt-7 ">
-        <h2 className="text-[22px] font-bold">Recommended</h2>
-        {/* panga starts */}
-        {cars == true ? (
-          <div>
-            {abcd?.map((item, index, arr) => (
-              <div>
-                <div
-                  className={`cursor-pointer p-2 px-4 rounded-md border-black ${
-                    activeIndex === index ? "border-[3px]" : null
-                  }`}
-                  onClick={() => {
-                    setActiveIndex(index);
-                    setSelectedCar(item);
-                  }}
-                >
-                  <div className="flex items-center justify-between mt-5">
-                    <div className="flex items-center gap-5">
-                      <img src={item.icon} width={100} height={100} />
-                      <div>
-                        <h2 className="text-[18px] font-semibold">
-                          {item.name}
-                        </h2>
-                        <p>{item.description}</p>
+      {create == false ? (
+        <div className="mt-5 pt-7 ">
+          <h2 className="text-[22px] font-bold">Recommended</h2>
+          {/* panga starts */}
+          {cars == true ? (
+            <div>
+              {abcd?.map((item, index, arr) => (
+                <div>
+                  <div
+                    className={`cursor-pointer p-2 px-4 rounded-md border-black ${
+                      activeIndex === index ? "border-[3px]" : null
+                    }`}
+                    onClick={() => {
+                      setActiveIndex(index);
+                      setSelectedCar(item);
+                    }}
+                  >
+                    <div className="flex items-center justify-between mt-5">
+                      <div className="flex items-center gap-5">
+                        <img src={item.icon} width={100} height={100} />
+                        <div>
+                          <h2 className="text-[18px] font-semibold">
+                            {item.name}
+                          </h2>
+                          <p>{item.description}</p>
+                        </div>
                       </div>
+                      <h2 className="font-semibold text-[18px]">
+                        ₹{item.ride_fare.toFixed(2)}
+                      </h2>
                     </div>
-                    <h2 className="font-semibold text-[18px]">
-                      ₹{item.ride_fare.toFixed(2)}
-                    </h2>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="text-[18px] font-semibold">No Car Found</div>
-        )}
-
-        {/* panga ends */}
-
-        {/* select section starts */}
-        <div className="flex justify-center  mt-4 bottom-5 bg-[#faf6ae]  items-center">
-              <span className="text-[18px] w-[400px] mb-2 font-bold text-md underline">
-                Schedule Your Request For
-              </span>
-
-              <span
-                className="mb-2 w-1/2 text-[16px] font-bold underline cursor-pointer transition-all hover:scale-110"
-                // handleOnClick={(()=>setCreate(true)) }
-                onClick={()=>{setSchedule(true)}}
-              >
-Select Date
-              </span>
+              ))}
             </div>
-        {selectedCar?.name ? (
-          <div>
-            <div className="flex justify-center  mt-4 bottom-5 bg-[#faf6ae] p-3 shadow-xl rounded w-full items-center">
-              <h2 className="text-[20px] w-[400px]  mb-2 font-bold text-md">
-                Make Request For
-              </h2>
+          ) : (
+            <div className="text-[18px] font-semibold">No Car Found</div>
+          )}
 
-              <button
-                className="p-3 bg-black text-white rounded-lg text-[18px] font-bold px-3"
-                // handleOnClick={(()=>setCreate(true)) }
-                onClick={handleOnChange}
-              >
-                {selectedCar.name}
-              </button>
-            </div>
-            
-        {(schedule == true)? ( 
-        <div id="taxi_scheduler">
-          <div id="taxi_scheduler_overley"></div>
-          <div id="taxi_scheduler_overley_lifter">
-            <button
-              id="taxi_schedule_cancel"
-              onClick={handle_taxi_schedule_cancel}
+          {/* panga ends */}
+
+          {/* select section starts */}
+          <div className="flex justify-center  mt-4 bottom-5 bg-[#faf6ae]  items-center">
+            <span className="text-[18px] w-[400px] mb-2 font-bold text-md underline">
+              Schedule Your Request For
+            </span>
+
+            <span
+              className="mb-2 w-1/2 text-[16px] font-bold underline cursor-pointer transition-all hover:scale-110"
+              // handleOnClick={(()=>setCreate(true)) }
+              onClick={() => {
+                setSchedule(true);
+              }}
             >
-              X
-            </button>
-            <div className="taxi-scheduler">
-                  <h2>Schedule a Taxi Ride</h2>
-                  <form onSubmit={createRequest_schedule}>
-                    
-                    <div className="flex flex-col justify-center items-center w-100">
-                      <label htmlFor="scheduledTime">Scheduled Time:</label>
-                      <DatePicker
-                        selected={scheduledTime}
-                        onChange={handleDateChange}
-                        showTimeSelect
-                        timeFormat="HH:mm"
-                        timeInterval4es={15}
-                         dateFormat="yyyy-MM-dd HH:mm:ss"
-                        minDate={new Date()}
-                        closeOnScroll={(e) => e.target === document}
-                        required
-                      />
-                      
+              Select Date
+            </span>
+          </div>
+          {selectedCar?.name ? (
+            <div>
+              <div className="flex justify-center  mt-4 bottom-5 bg-[#faf6ae] p-3 shadow-xl rounded w-full items-center">
+                <h2 className="text-[20px] w-[400px]  mb-2 font-bold text-md">
+                  Make Request For
+                </h2>
+
+                <button
+                  className="p-3 bg-black text-white rounded-lg text-[18px] font-bold px-3"
+                  onClick={handleOnChange}
+                >
+                  {selectedCar.name}
+                </button>
+              </div>
+
+              {schedule == true ? (
+                <div id="taxi_scheduler">
+                  <div id="taxi_scheduler_overley"></div>
+                  <div id="taxi_scheduler_overley_lifter">
+                    <button
+                      id="taxi_schedule_cancel"
+                      onClick={handle_taxi_schedule_cancel}
+                    >
+                      X
+                    </button>
+                    <div className="taxi-scheduler">
+                      <h2>Schedule a Taxi Ride</h2>
+                      <form onSubmit={createRequest_schedule}>
+                        <div className="flex flex-col justify-center items-center w-100">
+                          <label htmlFor="scheduledTime">Scheduled Time:</label>
+                          <DatePicker
+                            selected={scheduledTime}
+                            onChange={handleDateChange}
+                            showTimeSelect
+                            timeFormat="HH:mm"
+                            timeInterval4es={15}
+                            dateFormat="yyyy-MM-dd HH:mm:ss"
+                            minDate={new Date()}
+                            closeOnScroll={(e) => e.target === document}
+                            required
+                          />
+                        </div>
+                        <button className="schedule_main_btn" type="submit">
+                          Schedule Ride
+                        </button>
+                      </form>
                     </div>
-                    <button className='schedule_main_btn' type="submit">Schedule Ride</button>
-                  </form>
+                  </div>
                 </div>
+              ) : null}
+            </div>
+          ) : null}
+        </div>
+      ) : (
+        <div>
+          <div>
+            {fetchedUserData2?.onTripRequest?.data == null ? (
+            <div>
+              <div id="driver-searching">
+                <h2 className="text-[28px] font-bold">Available Drivers</h2>
+                <div id="search-box" className=" flex flex-col">
+                  <p className="text-[22px] ">Searching for driver...</p>
+                  <img width={150} height={150} src={driver_gif} />
+                  <MyTimer expiryTimestamp={time} />
+                  <button
+                    className="w-[10vw] font-bold"
+                    onClick={handleOnCancel}
+                  >
+                    Cancel Request
+                  </button>
+                </div>
+              </div>
+            </div>
+          ) : ( 
+            <div>
+              {displayComp == 1 ? (
+                <div className="relative top-5 overflow-scroll">
+                  <BookingRequested
+                    pickup={fetchedUserData2?.onTripRequest?.data.pick_address}
+                    drop_address={
+                      fetchedUserData2?.onTripRequest?.data.drop_address
+                    }
+                    driver_name={
+                      fetchedUserData2?.onTripRequest?.data.driverDetail.data.name
+                    }
+                    car_name={
+                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                        .vehicle_type_name
+                    }
+                    car_pic={
+                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                        .vehicle_type_icon
+                    }
+                    otp={fetchedUserData2?.onTripRequest?.data.ride_otp}
+                    handleOnCancel={cancelRequest}
+
+                    mobile = {
+                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                        .mobile
+                    }
+
+                  />
+                </div>
+              ) : null}
+              {displayComp == 2 ? (
+                <div className="relative top-5 overflow-scroll">
+                  <DriverArrived
+                    pickup={fetchedUserData2?.onTripRequest?.data.pick_address}
+                    drop_address={
+                      fetchedUserData2?.onTripRequest?.data.drop_address
+                    }
+                    driver_name={
+                      fetchedUserData2?.onTripRequest?.data.driverDetail.data.name
+                    }
+                    car_name={
+                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                        .vehicle_type_name
+                    }
+                    car_pic={
+                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                        .vehicle_type_icon
+                    }
+                    otp={fetchedUserData2?.onTripRequest?.data.ride_otp}
+                    handleOnCancel={cancelRequest}
+
+                    mobile = {
+                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                        .mobile
+                    }
+
+                  />
+                </div>
+              ) : null}
+              {displayComp == 3 ? (
+                <div className="relative top-5 overflow-scroll">
+                  <TripStarted
+                    pickup={fetchedUserData2?.onTripRequest?.data.pick_address}
+                    drop_address={
+                      fetchedUserData2?.onTripRequest?.data.drop_address
+                    }
+                    driver_name={
+                      fetchedUserData2?.onTripRequest?.data.driverDetail.data.name
+                    }
+                    car_name={
+                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                        .vehicle_type_name
+                    }
+                    car_pic={
+                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                        .vehicle_type_icon
+                    }
+                    otp={fetchedUserData2?.onTripRequest?.data.ride_otp}
+                    handleOnCancel={cancelRequest}
+
+                  />
+                </div>
+              ) : null}
+              {displayComp == 4 ? (
+                <div className="relative top-5 overflow-scroll">
+                  <BookingCompleted
+                    pickup={fetchedUserData2?.onTripRequest?.data.pick_address}
+                    drop_address={
+                      fetchedUserData2?.onTripRequest?.data.drop_address
+                    }
+                    driver_name={
+                      fetchedUserData2?.onTripRequest?.data.driverDetail.data.name
+                    }
+                    car_name={
+                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                        .vehicle_type_name
+                    }
+                    car_pic={
+                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                        .vehicle_type_icon
+                    }
+                    otp={fetchedUserData2?.onTripRequest?.data.ride_otp}
+                    handleOnCancel={cancelRequest}
+
+                    bill = {fetchedUserData2?.onTripRequest?.data?.requestBill}
+
+                    driverProfile = {
+                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                        .profile_picture
+                    }
+
+                    car_number = {
+                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                        .car_number
+                    }
+                  />
+                </div>
+              ) : null}
+            </div>
+            )} 
           </div>
         </div>
-         
-                  
-                ):null} 
-            {searchingDriver == true ? (
-              <div>
-
-
-                {nodriverFound === true || driver?.is_trip_start === null ? (
-                  <div>
-                 
-                    <div id="driver-searching">
-                      <h2 className="text-[28px] font-bold">
-                        Available Drivers
-                      </h2>
-                      <div id="search-box" className=" flex flex-col">
-                        <p className="text-[22px] ">Searching for driver...</p>
-                        <img width={150} height={150} src={driver_gif} />
-                        <MyTimer expiryTimestamp={time} />
-                        <button
-                          className="w-[10vw] font-bold"
-                          onClick={handleOnCancel}
-                        >
-                          Cancel Request
-                        </button>
-                      </div>
-                    </div>
-                   
-                  </div>
-                ) : (
-                  <ul>
-                    {fetchedUserData?.map((driver1 ,index) => (
-                      <div key={index} id="driver-details" className="mt-5">
-                        <div
-                       
-                        >
-                          <div>
-                            <h2 className="text-[28px] font-bold">
-                              Driver Details
-                            </h2>
-                            <div className="flex justify-around  mt-3">
-                              <div className="">
-                                <img
-                                  height={100}
-                                  width={100}
-                                  src={
-                                    driver1?.onTripRequest?.data?.driverDetail?.data
-                                      ?.profile_picture
-                                  }
-                                />
-                              </div>
-                              <div className="mt-2 text-left ">
-                                <p className="mr-14  text-[18px] font-bold">
-                                  <strong>Name: </strong>
-                                  {
-                                    driver1?.onTripRequest?.data?.driverDetail?.data
-                                      ?.name
-                                  }
-
-                                  <br></br>
-                                  <strong>Mobile:</strong>
-                                  {
-                                    driver1?.onTripRequest?.data?.driverDetail?.data
-                                      ?.mobile
-                                  }
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                          <div>
-                            <h2 className="text-[28px] font-bold">
-                              Car Detials
-                            </h2>
-                            <div className="flex justify-around mt-3">
-                              <div>
-                                <img
-                                  className=""
-                                  width={100}
-                                  height={100}
-                                  src={
-                                    driver1?.onTripRequest?.data?.driverDetail?.data
-                                      ?.vehicle_type_icon
-                                  }
-                                />
-                              </div>
-                              <div className="text-left mr-14">
-                                <p className="  text-[18px] font-bold">
-                                  <strong>Car Name:</strong>
-                                  {
-                                    driver1?.onTripRequest?.data?.driverDetail?.data
-                                      .vehicle_type_name
-                                  }
-                                </p>
-                                <p className="  text-[18px] font-bold">
-                                  <strong>Car model:</strong>
-
-                                  {driver1.onTripRequest.data.driverDetail.data
-                                    .car_make_name +
-                                    "-" +
-                                    driver1.onTripRequest.data.driverDetail.data
-                                      .car_model_name}
-                                </p>
-                              </div>
-                            </div>
-                            <br></br>
-                          </div>
-                        </div>
-                        <br></br>
-                        <h2 className="text-[24px] font-bold">
-                          Ride OTP : {driver1.onTripRequest.data.ride_otp}
-                        </h2>
-                        <br></br>
-                        <button
-                          className="w-[10vw] h-[3vw] rounded-lg font-bold"
-                          onClick={handleOnCancel2}
-                        >
-                          Cancel Request
-                        </button>{" "}
-                        <button
-                          className="p-3 mx-3 bg-black text-white rounded-lg text-[18px] font-bold px-3 w-[12vw]"
-                          onClick={handleOnClick}
-                        >
-                          Request {selectedCar.name}
-                        </button>
-                        <br></br>
-                      </div>
-                    ))}
-                    {proceed == true ? (
-                      <div>
-                        <Payment />
-                      </div>
-                    ) : null}
-                  </ul>
-                )}
-              </div>
-            ) : null} 
-            {/* driver details section ends */}
-            {/* request box ends */}
-          </div>
-        ) : null}
-        {(fetchedUserData2?.onTripRequest?.is_trip_start == 1)?<div className="fixed w-1/2 bg-red-500 h-1/2">YOur driver has been started</div> : null}
-      </div>
-      }
-      {/* select section ends */}
+      )}
+      {/* } */}
     </>
   );
 }
