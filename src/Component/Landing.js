@@ -53,7 +53,7 @@ const Landing = () => {
   return (
     <>
       <div id="landing_page" className="home2">
-        <div id="box">
+        <div id="box" className="">
           <div id="upper-box">
             <img
               src={taxi}
@@ -74,7 +74,7 @@ const Landing = () => {
 
           {/* main box */}
          
-          <div id="main-box2">
+          <div id="main-box2" className="">
             <div class="css-hPnljU">
               <h2 class="css-jzIGNN">Request a ride now</h2>
             </div>

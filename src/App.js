@@ -43,6 +43,7 @@ import OtpVerify from './Component/OtpVerify';
 import EditProfilePage from './Component/EditProfilePage';
 import ChatPopup from './Component/chatPopup';
 import BookingCompleted from './Component/BookingCompleted';
+import "./Responsive.css"
 // import firebase from 'firebase'
 
 function App() {
