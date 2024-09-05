@@ -233,9 +233,10 @@ function SignupPage() {
                       Company
                     </div>
                   </div>
-                  <form className="w-fit" onSubmit={handleSubmit}>
+                  <form className="w-fit grid grid-cols-2 gap-2 " onSubmit={handleSubmit}>
                     <div className="form-group">
                       <input
+                      className="text-lg"
                         type="text"
                         name="name"
                         placeholder="name"
@@ -285,7 +286,7 @@ function SignupPage() {
                         required
                       />
                     </div>
-                    <div>
+                    <div className="form-group">
                       {/* <label
                     htmlFor="countrySelect"
                     className="text-[20px] font-bold cc001"
@@ -312,6 +313,7 @@ function SignupPage() {
                     <p>Selected Country Code: {selectedCountry}</p>
                   )} */}
                     </div>
+                    <div className="flex w-fit">
                     <div className="form-group cc001">
                       <input
                         type="file"
@@ -324,9 +326,10 @@ function SignupPage() {
                         required
                       />
                     </div>
+                    
                     <button
                       id="upload_profile"
-                      className="mb-3"
+                      // className="mb-3"
                       onClick={handleButtonClick}
                     >
                       Upload your profile pic
@@ -334,6 +337,7 @@ function SignupPage() {
                     <button id="signup_btn" type="submit" onClick={handleSubmit} >
                       Sign Up as {userType}
                     </button>
+                    </div>
                   </form>
                 </div>
               </div>
