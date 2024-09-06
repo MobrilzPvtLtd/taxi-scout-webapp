@@ -25,6 +25,21 @@
 
       
     }
+    .form-group {
+        margin-bottom: 4px;
+        margin-top: 4px;
+    }
+    #login_btn button {
+        margin-top: 20px;
+    }
+    button#login_btn {
+        margin-top: 10px;
+    }
+    button.re-btn {
+        width: fit-content;
+        background-color: transparent !important;
+        color: #fff !important;
+    }
 }
 @media screen and (min-width: 1401px) and (max-width: 1800px) {
     .css-jzIGNN {
@@ -33,6 +48,7 @@
     } 
     #box {
         padding: 1% 1%;
+        width: 30vw;
     }
     #current_location {
         position: absolute;
@@ -63,9 +79,6 @@
        
     }
     #sign_up_page_form {
-        margin-top: 3vw;
-    }
-    #sign_up_page_form {
         box-shadow: 0 0 20px -10px black;
         background-color: #000000a9 !important;
         border-radius: 10px;
@@ -73,7 +86,7 @@
         z-index: 100;
         left: 30px;
         height: 60vh;
-        margin-top: 8vw;
+        margin-top: -2vw;
     }
     .signup-container {
         display: flex;
@@ -87,13 +100,13 @@
         font-size: 12px;
     }
     #upload_profile{
-        width: 15rem;
+        width: 15.5vw;
         font-size: 12px;
-        margin: 0 5px;
+        margin-right:5px;
 
     }
     #signup_btn{
-        width: 15rem;
+        width: 15.5vw;
         font-size: 12px;
         margin: 0 5px;
 
@@ -112,9 +125,29 @@
         margin-bottom: 2px;
         margin-top: 2px;
     }
+    button.re-btn {
+        width: fit-content;
+        background-color: transparent !important;
+        color: #fff !important;
+    }
+    #main_component {
+        padding-top: 7vw;
+        position: relative;
+        z-index: 1;
+    }
+    .home_main {
+        display: flex;
+        gap: 4vw;
+        justify-content: space-around;
+        position: relative;
+        padding-top: 2vw;
+    }
+    #googlemap {
+        width: 60vw;
+    }
 }
 
-@media screen and (min-width: 1136px) and (max-width: 1400px) {
+@media screen and (min-width: 1101px) and (max-width: 1400px) {
     body{
 font-size: 12px;
     }
@@ -122,11 +155,12 @@ font-size: 12px;
     #box {
         height: -moz-fit-content;
         height: fit-content;
-        width: 30rem;
+        padding: 1% 0 ;
+        width: 30vw;
+        background-color: rgba(236, 236, 230, 0.26);
         position: relative;
         box-shadow: #000000 0px 1px 1px 2px;
         border-radius: 20px;
-        padding-bottom: 2vw;
     }
     .home2 {
         position: relative;
@@ -170,13 +204,16 @@ font-size: 12px;
         gap: 5%;
     }
     .login001 {
-        height: 55%;
+        height: fit-content;
         width: 20%;
         display: flex;
         justify-content: center;
         align-items: center;
 
       
+    }
+    .banner_img_home{
+        height: 100vh;
     }
     .form-group {
         margin-bottom: 0px;
@@ -187,8 +224,8 @@ font-size: 12px;
         color: black !important;
         border: 1px solid white;
         font-size: 12px;
-        width: 15vw;
-        margin: 0 5px;
+        width: 16vw;
+        /* margin: 0 5px; */
     }
     #signup_btn {
         background-color: #fbbf13 !important;
@@ -227,14 +264,14 @@ font-size: 12px;
         z-index: 100;
         left: 30px;
         height: 60vh;
-        margin-top: 8vw;
+        margin-top: 2vw;
     }
     .signup-container {
         display: flex;
         justify-content: center;
         align-items: center;
         height: fit-content !important;
-        width: 35vw !important;
+        width: 37vw !important;
     }
     #upload_profile_btn{
         width: fit-content;
@@ -250,11 +287,33 @@ font-size: 12px;
     #signup_page_main{
         height: 100vh;
     }
+    #login_btn{
+        margin-top: 1vw;
+    }
+    .form-group {
+        margin-bottom: 2px;
+        margin-top: 2px;
+    }
+    button.re-btn {
+        width: fit-content;
+        background-color: transparent !important;
+        color: #fff !important;
+    }
+    .home_main {
+        display: flex;
+        gap: 4vw;
+        justify-content: space-around;
+        position: relative;
+        padding-top: 4vw;
+    }
+    #googlemap {
+        width: 60vw;
+    }
 }
 
 @media screen and (min-width: 1025px) and (max-width : 1100px){
     .home2{
-        padding-top: 1vw;
+        height: 100vh;
     }
     .bg_home_right img{
         width: 30vw;
@@ -304,5 +363,46 @@ font-size: 12px;
 
         height: 100vh;
        
+    }
+    .form-group {
+        margin-bottom: 2px;
+        margin-top: 2px;
+    }
+    #login_btn{
+        margin-top: 1vw;
+    }
+    #upload_profile{
+     width: 17.5vw;
+     font-size: 12px;  
+    }
+    #signup_btn{
+     width: 17.5vw;
+     font-size: 12px; 
+
+    }
+    #signup_page_main{
+        height: 100vh;
+    }
+    .signup-container{
+        width: 40vw;
+    }
+    #upload_profile_btn{
+        font-size: 12px ;
+        width: 17vw;
+    }
+    #signup_btn_company{
+        font-size: 12px ;
+        width: 17vw;
+
+
+    }
+    .chat-box {
+        bottom: 5px;
+        font-size: 12px;
+    }
+    button.re-btn {
+        width: fit-content;
+        background-color: transparent !important;
+        color: #fff !important;
     }
 }

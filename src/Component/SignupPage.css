@@ -9,8 +9,8 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh !important;
-    width: 35vw !important;
+    height: 80vh ;
+    width: 35vw ;
   /* background-image: url(../Images/map.png); */
 
 
@@ -23,8 +23,8 @@ border-radius: 10px;
 position: relative;
 z-index: 100;
 left: 30px;
-height: 60vh;
-/* top: 100px; */
+height: fit-content;
+top: 100px;
 margin-top: 2vw;
   }
   #signup_page_main{

@@ -67,7 +67,7 @@ if (userType === "user"){
 }
 
   return (
-    <div>
+    <div className=''>
     <div id='banner_img_home'></div>
     <div className="container login001">
     {(otp_visible== true)?(
@@ -100,7 +100,7 @@ if (userType === "user"){
           {/* <div className="form-group">
             <input type="password" placeholder="Password" required />
           </div> */}
-          <button type="submit">Login as {userType}</button>
+          <button id='login_btn' type="submit">Login as {userType}</button>
         </form>: <span>
        
          <a href='https://admin.taxiscout24.com/'> <button type="submit">Login as {userType}</button></a>

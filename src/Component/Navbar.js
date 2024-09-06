@@ -64,25 +64,25 @@ const Navbar = (props) => {
   // const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter1 = () => {
-    dropdownDiv.style.opacity = 1;
+    dropdownDiv.style.display = "block";
     
     
      setTimeout(()=>{
-    dropdownDiv.style.opacity = 0;
+    dropdownDiv.style.display = "none";
 
     },3000)
   };
 
   const handleMouseLeave1 = () => {
     // setOpacityValue(0)
-    dropdownDiv.style.opacity = 0;
+    dropdownDiv.style.display = "none";
 
 
   };
   const handleMouseEnter2 = () => {
-    dropdownDiv2.style.opacity = 1;
+    dropdownDiv2.style.display = "block";
     setTimeout(()=>{
-      dropdownDiv2.style.opacity = 0;
+      dropdownDiv2.style.display = "none";
   
       },3000)
   };
@@ -91,7 +91,7 @@ const Navbar = (props) => {
 
   const handleMouseLeave2 = () => {
     // setOpacityValue(0)
-    dropdownDiv2.style.opacity = 0;
+    dropdownDiv2.style.opacity = "none";
 
 
   };

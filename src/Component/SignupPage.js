@@ -5,8 +5,7 @@ import { createRenderer } from "react-dom/test-utils";
 import OtpVerify from "./OtpVerify";
 
 function SignupPage() {
-
-  let url = "https://admin.taxiscout24.com/"
+  let url = "https://admin.taxiscout24.com/";
   const [userType, setUserType] = useState("user"); // Default userType is user
   const [STATE, setSTATE] = useState("");
   const [selectedState, setSelectedState] = useState("");
@@ -53,25 +52,22 @@ function SignupPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(
-      `${url}api/v1/user/register`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: credentials.name,
-          mobile: credentials.mobile,
-          email: credentials.email,
-          password: credentials.password,
-          password_confirmation: credentials.cpassword,
-          profile_picture: credentials.profile,
-          country: selectedCountry,
-          //  password: credentials.password , cpassword : credentials.cpassword
-        }),
-      }
-    );
+    const response = await fetch(`${url}api/v1/user/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: credentials.name,
+        mobile: credentials.mobile,
+        email: credentials.email,
+        password: credentials.password,
+        password_confirmation: credentials.cpassword,
+        profile_picture: credentials.profile,
+        country: selectedCountry,
+        //  password: credentials.password , cpassword : credentials.cpassword
+      }),
+    });
 
     const json = await response.json();
     // console.log(json);
@@ -92,32 +88,29 @@ function SignupPage() {
   const handleSubmitCompany = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(
-       `${url}api/v1/compnayregister`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          role: " admin",
-          service_location_id: selectedState,
-          first_name: credentials.cname,
-          mobile: credentials.mobile,
-          email: credentials.email,
-          country: selectedCountry,
-          state: credentials.state,
-          city: credentials.city,
-          password: credentials.password,
-          password_confirmation: credentials.cpassword,
-          address: credentials.address,
-          postal_code: credentials.postal,
-          profile_picture: credentials.profile,
+    const response = await fetch(`${url}api/v1/compnayregister`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        role: " admin",
+        service_location_id: selectedState,
+        first_name: credentials.cname,
+        mobile: credentials.mobile,
+        email: credentials.email,
+        country: selectedCountry,
+        state: credentials.state,
+        city: credentials.city,
+        password: credentials.password,
+        password_confirmation: credentials.cpassword,
+        address: credentials.address,
+        postal_code: credentials.postal,
+        profile_picture: credentials.profile,
 
-          //  password: credentials.password , cpassword : credentials.cpassword
-        }),
-      }
-    );
+        //  password: credentials.password , cpassword : credentials.cpassword
+      }),
+    });
 
     const json = await response.json();
     // console.log(json);
@@ -135,8 +128,7 @@ function SignupPage() {
 
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
-    
-   
+
     // setSelectedCountry(e.target.value);
   };
 
@@ -145,16 +137,13 @@ function SignupPage() {
   useEffect(() => {
     const countryMethod = async () => {
       try {
-        let response = await fetch(
-          `${url}api/v1/countries`,
-          {
-            method: "GET",
+        let response = await fetch(`${url}api/v1/countries`, {
+          method: "GET",
 
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
         let data = await response.json();
         // const countriesData = data.map(({ name }) => ({
         //   name
@@ -177,16 +166,13 @@ function SignupPage() {
   useEffect(() => {
     const stateMethod = async () => {
       try {
-        let response = await fetch(
-          `${url}api/v1/servicelocation`,
-          {
-            method: "GET",
+        let response = await fetch(`${url}api/v1/servicelocation`, {
+          method: "GET",
 
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
         let data = await response.json();
         // const countriesData = data.map(({ name }) => ({
         //   name
@@ -233,10 +219,13 @@ function SignupPage() {
                       Company
                     </div>
                   </div>
-                  <form className="w-fit grid grid-cols-2 gap-2 " onSubmit={handleSubmit}>
+                  <form
+                    className="w-fit grid grid-cols-2 gap-2 "
+                    onSubmit={handleSubmit}
+                  >
                     <div className="form-group">
                       <input
-                      className="text-lg"
+                        className="text-lg"
                         type="text"
                         name="name"
                         placeholder="name"
@@ -287,12 +276,6 @@ function SignupPage() {
                       />
                     </div>
                     <div className="form-group">
-                      {/* <label
-                    htmlFor="countrySelect"
-                    className="text-[20px] font-bold cc001"
-                  >
-                    Select a country:
-                  </label> */}
                       <select
                         id="countrySelect"
                         value={selectedCountry}
@@ -309,34 +292,35 @@ function SignupPage() {
                           </option>
                         ))}
                       </select>
-                      {/* {selectedCountry && (
-                    <p>Selected Country Code: {selectedCountry}</p>
-                  )} */}
                     </div>
-                    <div className="flex w-fit">
-                    <div className="form-group cc001">
-                      <input
-                        type="file"
-                        name="profile"
-                        placeholder="select"
-                        value={credentials.profile}
-                        ref={fileInputRef}
-                        style={{ display: "none" }}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                    
-                    <button
-                      id="upload_profile"
-                      // className="mb-3"
-                      onClick={handleButtonClick}
-                    >
-                      Upload your profile pic
-                    </button>
-                    <button id="signup_btn" type="submit" onClick={handleSubmit} >
-                      Sign Up as {userType}
-                    </button>
+                    <div className="flex gap-2 relative w-fit">
+                      <div className="form-group cc001 absolute">
+                        <input
+                          type="file"
+                          name="profile"
+                          placeholder="select"
+                          value={credentials.profile}
+                          ref={fileInputRef}
+                          style={{ display: "none" }}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                      <button
+                        id="upload_profile"
+                        // className="mb-3"
+                        onClick={handleButtonClick}
+                      >
+                        Upload your profile pic
+                      </button>
+
+                      <button
+                        id="signup_btn"
+                        type="submit"
+                        onClick={handleSubmit}
+                      >
+                        Sign Up as {userType}
+                      </button>
                     </div>
                   </form>
                 </div>
