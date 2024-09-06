@@ -40,6 +40,14 @@
         background-color: transparent !important;
         color: #fff !important;
     }
+    button.re-btn1 {
+        width: fit-content;
+        background-color: transparent !important;
+        color: #fff !important;
+    }
+    .signup-container{
+        width: 37vw;
+    }
 }
 @media screen and (min-width: 1401px) and (max-width: 1800px) {
     .css-jzIGNN {
@@ -130,6 +138,11 @@
         background-color: transparent !important;
         color: #fff !important;
     }
+    button.re-btn1 {
+        width: fit-content;
+        background-color: transparent !important;
+        color: #fff !important;
+    }
     #main_component {
         padding-top: 7vw;
         position: relative;
@@ -144,6 +157,9 @@
     }
     #googlemap {
         width: 60vw;
+    }
+    #login_btn{
+        margin-top: 10px;
     }
 }
 
@@ -264,7 +280,7 @@ font-size: 12px;
         z-index: 100;
         left: 30px;
         height: 60vh;
-        margin-top: 2vw;
+        margin-top: 0vw;
     }
     .signup-container {
         display: flex;
@@ -299,6 +315,11 @@ font-size: 12px;
         background-color: transparent !important;
         color: #fff !important;
     }
+    button.re-btn1 {
+        width: fit-content;
+        background-color: transparent !important;
+        color: #fff !important;
+    }
     .home_main {
         display: flex;
         gap: 4vw;
@@ -308,6 +329,12 @@ font-size: 12px;
     }
     #googlemap {
         width: 60vw;
+    }
+    h1{
+        margin-bottom: 10px;
+    }
+    .signup-options {
+        margin-bottom: 10px;
     }
 }
 
@@ -398,11 +425,67 @@ font-size: 12px;
     }
     .chat-box {
         bottom: 5px;
-        font-size: 12px;
+        font-size: 12px
     }
     button.re-btn {
+        background-color: transparent !important;
+        color: #fff !important;
+        font-size: 10px;
+        transition: all .3 ease-in-out !important;
+        width: 10vw;
+
+    }
+    button.re-btn:hover {
+        transform: scale(0.9) !important;
+        width: 10vw;
+        background-color: #fbbf14!important;
+        font-size: 10px;
+        color: #000 !important;
+        font-weight: 600;
+
+    }
+    button.re-btn1 {
         width: fit-content;
         background-color: transparent !important;
         color: #fff !important;
+        font-size: 10px;
+        transition: all .3 ease-in-out !important;
+        width: 10vw;
+    }
+    button.re-btn1:hover {font-size: 12px;
+        transform: scale(0.9) !important;
+        width: 10vw;
+        background-color: #fbbf14 !important;
+        font-size: 10px;
+        color: #000 !important;
+        font-weight: 600;
+
+    }
+    h1{
+        margin-bottom: 5px;
+        font-size: 20px;
+    }
+    .signup-options {
+        margin-bottom: 5px;
+    }
+    .option{
+        font-size: 12px;
+        padding: 5px 20px;
+    }
+    input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
+        width: 100%;
+        padding: 5px;
+        border-radius: 4px;
+        outline: none;
+        background-color: rgb(255 255 255 / 90%);
+        color: black;
+        font-weight: 600;
+        font-size: 12px;
+    }
+    select{
+        font-size: 12px;
+    }
+    #countrySelect{
+        padding: 6px;
     }
 }

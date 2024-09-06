@@ -144,11 +144,11 @@ const Navbar = (props) => {
                  Contact
                 </div>
                 <div className="dropdown-content2 flex flex-col items-start gap-1"  onMouseLeave={handleMouseLeave2}>
-                  <Link to="/contact">Contact Us</Link>
+                  {/* <Link to="/contact">Contact Us</Link>
                   <Link to="/faq">FAQ</Link>
                   <Link to="/privacypolicy">Privacy Policy</Link>
                   <Link to="/termofuse">Terms of Use</Link>
-                  <Link to="/termofservices">Terms of Services</Link>
+                  <Link to="/termofservices">Terms of Services</Link> */}
                 </div>
               </div>
             </div>
