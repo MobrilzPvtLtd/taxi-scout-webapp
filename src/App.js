@@ -44,6 +44,7 @@ import ChatPopup from './Component/chatPopup';
 import BookingCompleted from './Component/BookingCompleted';
 import "./Responsive.css"
 import { NavbarMain } from './Component/Navbar_Main';
+import { Footer } from './Component/UI/Footer/Footer';
 // import firebase from 'firebase'
 
 function App() {
@@ -135,6 +136,7 @@ function App() {
      </BrowserRouter>
 
     </div>
+    <Footer/>
     {/* </LoadScript> */}
     </DestinationContext.Provider>
     </SourceContext.Provider>
