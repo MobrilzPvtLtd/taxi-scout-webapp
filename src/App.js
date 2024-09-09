@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
 import Home from './Component/Home';
-import Navbar from './Component/Navbar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SIgnup from './Component/SIgnup';
 import Login from './Component/Login';
@@ -44,6 +43,7 @@ import EditProfilePage from './Component/EditProfilePage';
 import ChatPopup from './Component/chatPopup';
 import BookingCompleted from './Component/BookingCompleted';
 import "./Responsive.css"
+import { NavbarMain } from './Component/Navbar_Main';
 // import firebase from 'firebase'
 
 function App() {
@@ -83,7 +83,7 @@ function App() {
     <div className="App">
      <BrowserRouter>
      <LATLNG_State>
-      <Navbar />
+      <NavbarMain/>
       <div className="chat-box" onClick={togglePopup}>
         <div className="chat-header">Chat with us!</div>
       </div>

@@ -225,7 +225,7 @@ function SignupPage() {
                   >
                     <div className="form-group">
                       <input
-                        className="text-lg"
+                        
                         type="text"
                         name="name"
                         placeholder="name"

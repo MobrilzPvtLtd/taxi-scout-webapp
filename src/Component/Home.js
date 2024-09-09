@@ -1,8 +1,6 @@
 import React from 'react'
 import Cards from './Cards'
-import NavbarHome from './NavbarHome'
 import SIgnup from './SIgnup'
-import Navbar from './Navbar'
 import Search_box from './Search_box'
 import GoogleMapSection from './GoogleMapSection'
 import './Home.css'
