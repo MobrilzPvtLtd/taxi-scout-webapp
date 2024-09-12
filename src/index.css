@@ -41,7 +41,7 @@ code {
   z-index: 10;
 } */
 #main_component{
-  padding-top: 6vh;
+  padding-top: 10vh;
   position: relative;
   /* z-index: 1; */
 }
