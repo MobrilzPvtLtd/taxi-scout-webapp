@@ -83,7 +83,8 @@ margin-top: 2vw;
     border: 1px solid #cccccc7a;
     border-radius: 4px;
     outline: none;
-    background-color: #ffffffc0;
+    background-color: rgb(255 255 255 / 90%);
+    padding: 10px 0;
     
 
   }

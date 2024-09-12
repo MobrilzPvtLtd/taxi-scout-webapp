@@ -202,10 +202,10 @@ function SignupPage() {
         ) : (
           <div>
             {userType === "user" ? (
-              <div className="container sign_up_page_main " >
+              <div className="container sign_up_page_main p-5 " >
                 <div  className="signup-container">
                   <h1 className="text-white">Sign Up</h1>
-                  <div className="signup-options flex flex-col md:flex-row gap-3">
+                  <div className="signup-options flex-row gap-3">
                     <div
                       className={`option ${
                         userType === "user" ? "active" : ""
@@ -224,7 +224,7 @@ function SignupPage() {
                     </div>
                   </div>
                  <form
-                    className=" w-fit grid grid-cols-1 md:grid-cols-2 gap-2"
+                    className=" w-fit grid grid-cols-2 gap-x-2"
                     onSubmit={handleSubmit}
                   >
                     <div className="form-group">
@@ -314,7 +314,7 @@ function SignupPage() {
                         // className="mb-3"
                         onClick={handleButtonClick}
                       >
-                        Upload your profile pic
+                        Upload profile pic
                       </button>
 
                     </div>
@@ -522,7 +522,7 @@ function SignupPage() {
                         className="mb-3"
                         onClick={handleButtonClick}
                       >
-                        Upload your profile pic
+                        Upload profile pic
                       </button>
                     </div>
                     <div className="form-group cc001">
