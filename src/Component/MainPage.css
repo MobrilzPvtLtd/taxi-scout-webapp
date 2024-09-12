@@ -52,8 +52,7 @@ h4 {
 }
 
 .container {
-  margin-inline: auto;
-  width: min(90%, 70.5rem);
+padding: 6vh;
 }
 
 .split {

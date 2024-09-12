@@ -202,10 +202,10 @@ function SignupPage() {
         ) : (
           <div>
             {userType === "user" ? (
-              <div className="container">
-                <div id="sign_up_page_form" className="signup-container">
+              <div className="container sign_up_page_main " >
+                <div  className="signup-container">
                   <h1 className="text-white">Sign Up</h1>
-                  <div className="signup-options flex gap-3">
+                  <div className="signup-options flex flex-col md:flex-row gap-3">
                     <div
                       className={`option ${
                         userType === "user" ? "active" : ""
@@ -223,8 +223,8 @@ function SignupPage() {
                       Company
                     </div>
                   </div>
-                  <form
-                    className="w-fit grid grid-cols-2 gap-2 "
+                 <form
+                    className=" w-fit grid grid-cols-1 md:grid-cols-2 gap-2"
                     onSubmit={handleSubmit}
                   >
                     <div className="form-group">
@@ -296,7 +296,7 @@ function SignupPage() {
                         ))}
                       </select>
                     </div>
-                    <div className="flex gap-2 relative w-fit">
+                    <div className="flex gap-2 relative ">
                       <div className="form-group cc001 absolute">
                         <input
                           type="file"
@@ -317,6 +317,7 @@ function SignupPage() {
                         Upload your profile pic
                       </button>
 
+                    </div>
                       <button
                         id="signup_btn"
                         type="submit"
@@ -324,13 +325,12 @@ function SignupPage() {
                       >
                         Sign Up as {userType}
                       </button>
-                    </div>
                   </form>
                 </div>
               </div>
             ) : (
-              <div className="container">
-                <div id="sign_up_page_form" className="signup-container">
+              <div className="container sign_up_page_main">
+                <div className="signup-container">
                   <h1 className="text-white">Sign Up</h1>
                   <div className="signup-options flex gap-3">
                     <div
@@ -449,16 +449,7 @@ function SignupPage() {
                       </select>
                       {/* {selectedState && <p>Selected State: {selectedState}</p>} */}
                     </div>
-                    {/* <div className="form-group">
-                <input
-                  type="text"
-                  name="country"
-                  placeholder="Country"
-                  value={credentials.country}
-                  onChange={handleChange}
-                  required
-                />
-              </div> */}
+                   
                     <div className="form-group">
                       <input
                         type="text"

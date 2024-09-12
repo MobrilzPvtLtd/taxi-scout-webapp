@@ -5,16 +5,7 @@ body{
   background-repeat: no-repeat !important; 
 }
 
-.signup-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh ;
-    width: 35vw ;
-  /* background-image: url(../Images/map.png); */
 
-
-  }
   #sign_up_page_form{
 
     box-shadow: 0 0 20px -10px black;
@@ -32,8 +23,8 @@ margin-top: 2vw;
     background-size:cover;
     /* background-position: 10% -2.5% !important; */
     background-repeat: no-repeat !important; 
-    /* width: 100vw; */
-    /* height: 91vh; */
+    width: 100vw;
+    height: 100vh;
     /* margin-top: -35px; */
     /* position: relative; */
   }
@@ -69,7 +60,7 @@ margin-top: 2vw;
     padding: 10px 40px;
     font-weight: 700;
     cursor: pointer;
-    width: 70%;
+    /* width: 70%; */
     transition: background-color 0.3s;
   }
   
@@ -81,7 +72,7 @@ margin-top: 2vw;
   #form{
   
       display: grid;
-      grid-template-columns: repeat(2, minmax(150px , 1fr)); /* Two columns with equal width */
+      grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
       grid-gap: 5px; /* Adjust the spacing between columns */
       width: 100%;
 
@@ -111,25 +102,21 @@ margin-top: 2vw;
   background-color: #fbbf13 !important;
   color: black !important;
   border: 1px solid white;
-  width: 17vw;
 }
 #upload_profile_btn{
   background-color: #fbbf13 !important;
   color: black !important;
   border: 1px solid white;
-  width: 14vw;
 }
 #signup_btn{
   background-color: #fbbf13 !important;
   color: black !important;
-  width: 17vw;
   border: 1px solid white;
   
 }
 #signup_btn_company{
   background-color: #fbbf13 !important;
   color: black !important;
-  width: 14vw;
   border: 1px solid white;
 
   

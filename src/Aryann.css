@@ -1,4 +1,5 @@
 /* about us css starts */
+
 .heading001{
     color: blue;
 }
@@ -758,4 +759,10 @@ button.work-box:hover {
 }
 .bg_home_right img{
     border-radius: 15px;
+}
+.sign_up_page_main{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
 }

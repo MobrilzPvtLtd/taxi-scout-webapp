@@ -1,7 +1,16 @@
+#main_component{
+    height: 100%;
+    width: 100%;
+}
+#signup_btn {
+    background-color: #fbbf13 !important;
+    color: black !important;
+    border: 1px solid white;
 
+}
 @media screen and (min-width: 1801px) {
-    #box {
-        padding: 2% 0;
+    #main_component{
+        padding-top: 6vh;
     }
     #current_location {
         position: absolute;
@@ -9,17 +18,16 @@
         top: .7rem;
     }
     .login-container {
-        padding: 0 20px;
         margin: 0px;
+        padding: 0px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 2%;
     }
     .login001 {
-        height: 35%;
-        width: 15%;
+        padding: 0;
+        /* width: 15%; */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -46,9 +54,7 @@
         background-color: transparent !important;
         color: #fff !important;
     }
-    .signup-container{
-        width: 37vw;
-    }
+   
     select{
         background-color: #edebea;
     }
@@ -95,43 +101,11 @@
         height: 100vh;
        
     }
-    #sign_up_page_form {
-        box-shadow: 0 0 20px -10px black;
-        background-color: #000000a9 !important;
-        border-radius: 10px;
-        position: relative;
-        /* z-index: 100; */
-        left: 30px;
-        height: 60vh;
-        margin-top: -2vw;
-    }
-    .signup-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: fit-content !important;
-        width: 35vw !important;
-    }
-    #upload_profile_btn{
-        width: fit-content;
-        font-size: 12px;
-    }
-    #upload_profile{
-        width: 15.5vw;
-        font-size: 12px;
-        margin-right:5px;
 
-    }
-    #signup_btn{
-        width: 15.5vw;
-        font-size: 12px;
-        margin: 0 5px;
-
-    }
-    #signup_btn_company{
-        width: fit-content;
-        font-size: 12px;
-    }
+   
+   
+   
+   
     .option{
         padding: 5px 10px;
     }
@@ -152,11 +126,10 @@
         background-color: transparent !important;
         color: #fff !important;
     }
-    #main_component {
+    /* #main_component {
         padding-top: 7vw;
         position: relative;
-        /* z-index: 1; */
-    }
+    } */
     .home_main {
         display: flex;
         gap: 4vw;
@@ -180,10 +153,10 @@
 
 @media screen and (min-width: 1101px) and (max-width: 1400px) {
   
-    #main_component{
+    /* #main_component{
         margin-top: 8%;
         margin-bottom: 2%;
-    }
+    } */
     #box {
         height: -moz-fit-content;
         height: fit-content;
@@ -205,11 +178,11 @@
     .bg_home_right img {
         height: 80vh;
     }
-    #main_component {
+    /* #main_component {
         padding-top: 20px;
         position: relative;
         z-index: 0;
-    }
+    } */
     #current_location {
         position: absolute;
         right: 2rem;
@@ -251,23 +224,8 @@
         margin-bottom: 0px;
         margin-top: 0px;
     }
-    #upload_profile {
-        background-color: #fbbf13 !important;
-        color: black !important;
-        border: 1px solid white;
-        font-size: 12px;
-        width: 16vw;
-        /* margin: 0 5px; */
-    }
-    #signup_btn {
-        background-color: #fbbf13 !important;
-        color: black !important;
-        border: 1px solid white;
-        font-size: 12px;
-        width: 15vw;
-        margin: 0 5px;
-
-    }
+  
+  
     input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
         width: 100%;
         padding: 10px;
@@ -288,31 +246,10 @@
         background-color: #ffffffc0;
         font-size: 12px;
     }
-    #sign_up_page_form {
-        box-shadow: 0 0 20px -10px black;
-        background-color: #000000a9 !important;
-        border-radius: 10px;
-        position: relative;
-        /* z-index: 100; */
-        left: 30px;
-        height: 60vh;
-        margin-top: 0vw;
-    }
-    .signup-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: fit-content !important;
-        width: 37vw !important;
-    }
-    #upload_profile_btn{
-        width: fit-content;
-        font-size: 12px;
-    }
-    #signup_btn_company{
-        width: fit-content;
-        font-size: 12px;
-    }
+  
+   
+  
+   
     .option{
         padding: 5px 10px;
     }
@@ -420,31 +357,14 @@
     #login_btn{
         margin-top: 1vw;
     }
-    #upload_profile{
-     width: 17.5vw;
-     font-size: 12px;  
-    }
-    #signup_btn{
-     width: 17.5vw;
-     font-size: 12px; 
-
-    }
+   
+  
     #signup_page_main{
         height: 94.5vh;
     }
-    .signup-container{
-        width: 40vw;
-    }
-    #upload_profile_btn{
-        font-size: 12px ;
-        width: 17vw;
-    }
-    #signup_btn_company{
-        font-size: 12px ;
-        width: 17vw;
-
-
-    }
+   
+   
+  
     .chat-box {
         bottom: 5px;
         font-size: 12px
@@ -510,13 +430,17 @@
     #countrySelect{
         padding: 6px;
     }
-    #sign_up_page_form{
-        top : 50px
-    }
+   
     select{
         background-color: #edebea;
     }
     #countrySelect{
         background-color: #edebea; 
+    }
+}
+@media screen and (max-width : 768) {
+    .signup-container form{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
     }
 }

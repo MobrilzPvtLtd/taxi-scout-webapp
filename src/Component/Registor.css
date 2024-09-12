@@ -1,10 +1,4 @@
-.signup-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90vh;
-  }
-  
+
   .signup-form {
     background-color: #fff;
     border-radius: 8px;

@@ -333,20 +333,24 @@ export function NavbarMain() {
           <NavList />
         </div>
         <div className="hidden gap-2 lg:flex">
+        <Link to="/signup">
           <Button
             variant="outlined"
             size="sm"
             className="w-[8rem] bg-black text-white font-semibold"
           >
-            <Link to="/signup">Sign Up</Link>{" "}
+           Sign Up{" "}
           </Button>
+          </Link>
+          <Link to="/login">
           <Button
             variant="outlined"
             size="sm"
             className="w-[8rem] bg-black text-white font-semibold"
           >
-            <Link to="/login"> Log In</Link>
+             Log In
           </Button>
+          </Link>
         </div>
         <IconButton
           variant="text"

@@ -141,8 +141,8 @@ function App() {
       </LATLNG_State> 
      </BrowserRouter>
 
-    </div>
     <Footer/>
+    </div>
     {/* </LoadScript> */}
     </DestinationContext.Provider>
     </SourceContext.Provider>
