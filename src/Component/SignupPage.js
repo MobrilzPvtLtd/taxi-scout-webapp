@@ -224,7 +224,7 @@ function SignupPage() {
                     </div>
                   </div>
                  <form
-                    className=" w-fit grid grid-cols-2 gap-x-2"
+                    className=" w-fit grid grid-cols-2 gap-x-2 "
                     onSubmit={handleSubmit}
                   >
                     <div className="form-group">

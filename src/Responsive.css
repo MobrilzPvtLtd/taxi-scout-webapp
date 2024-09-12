@@ -65,5 +65,8 @@ button{
         padding: 1vw;
         width: 100%;
     }
-    
+    .login_page_main{
+        display: flex;
+        justify-content: center;
+    }
 }
