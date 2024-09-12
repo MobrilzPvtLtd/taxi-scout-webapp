@@ -20,7 +20,7 @@ const currentYear = new Date().getFullYear();
  
 export function Footer() {
   return (
-    <footer className="relative w-full">
+    <footer className="relative w-full bg-[#41384b]">
       <div className="mx-auto w-full max-w-7xl px-8">
         <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
         <img src={logo} alt="logo" className="w-[5rem]"></img>
@@ -29,8 +29,8 @@ export function Footer() {
               <ul key={title}>
                 <Typography
                   variant="small"
-                  color="blue-gray"
-                  className="mb-3 font-medium opacity-40"
+                  color="white"
+                  className="mb-3 font-medium opacity-80"
                 >
                   {title}
                 </Typography>
@@ -39,7 +39,7 @@ export function Footer() {
                     <Typography
                       as="a"
                       href="#"
-                      color="gray"
+                      color="white"
                       className="py-1.5 font-semibold transition-colors hover:text-blue-gray-900"
                     >
                       {link}
@@ -53,7 +53,7 @@ export function Footer() {
         <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
           <Typography
             variant="small"
-            className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0"
+            className="mb-4 text-center font-normal text-white md:mb-0"
           >
             &copy; {currentYear} <a href="https://material-tailwind.com/">Taxi Scout24</a>. All
             Rights Reserved.

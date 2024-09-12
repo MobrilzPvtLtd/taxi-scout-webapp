@@ -45,6 +45,9 @@ import BookingCompleted from './Component/BookingCompleted';
 import "./Responsive.css"
 import { NavbarMain } from './Component/Navbar_Main';
 import { Footer } from './Component/UI/Footer/Footer';
+import Card from './Component/Blogs';
+import Articles from './Component/Blogs';
+import BlogDetail from './Component/BlogDetails';
 // import firebase from 'firebase'
 
 function App() {
@@ -84,7 +87,9 @@ function App() {
     <div className="App">
      <BrowserRouter>
      <LATLNG_State>
-      <NavbarMain/>
+     
+      <NavbarMain id='navbar_main_sticky'/>
+     
       <div className="chat-box" onClick={togglePopup}>
         <div className="chat-header">Chat with us!</div>
       </div>
@@ -109,19 +114,20 @@ function App() {
       <Route path='/' element = {<Landing/>}/>
       <Route path='/contact' element =  {<Contact/>} />
       <Route path='/faq' element =  {<Faq/>} />
-      <Route path='/howitworks' element =  {<How_It_Works/>} />
+      <Route path='/how-it-works' element =  {<How_It_Works/>} />
       <Route path='/pricing' element =  {<Pricing/>} />
       <Route path='/blogs' element =  {<Blogs/>} />
       <Route path='/gallery' element =  {<Gallery/>} />
-      <Route path='/ourteam' element =  {<Our_Team/>} />
-      <Route path='/termofuse' element =  {<Term_Of_Use/>} />
-      <Route path='/termofservices' element =  {<Term_Of_Services/>} />
-      <Route path='/privacypolicy' element =  {<Privacy_Policy/>} />
-      <Route path='/ourpartners' element =  {<Our_Partner/>} />
+      <Route path='/our-team' element =  {<Our_Team/>} />
+      <Route path='/term-of-use' element =  {<Term_Of_Use/>} />
+      <Route path='/term-of-services' element =  {<Term_Of_Services/>} />
+      <Route path='/privacy-policy' element =  {<Privacy_Policy/>} />
+      <Route path='/our-partner' element =  {<Our_Partner/>} />
       <Route path='/OtpVerify' element =  {<OtpVerify/>} />
       <Route path='/edit-profile' element =  {<EditProfilePage />} />
       
       <Route path='/booking-completed' element =  {<BookingCompleted/>} />
+      <Route path="/blog/:id" element={<BlogDetail/>} />
       
      
       

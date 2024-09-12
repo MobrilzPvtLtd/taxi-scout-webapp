@@ -1,6 +1,21 @@
 import React, { useState } from 'react'
-import { Link, Navigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  Stack,
+  Button,
+  Heading,
+  useColorModeValue,
+  VStack,
+  Checkbox,
+  Link,
+  Image,
+  Flex
+} from '@chakra-ui/react';
+
 
 const Login = () => {
 
@@ -31,27 +46,58 @@ const Login = () => {
   const onChange = (e)=>{
     setCredentials({...credentials, [e.target.name]: e.target.value})}   
   return (
-    <div> 
-        <h1>Taxi Scout</h1>
-       <form onSubmit={handleSubmit}>
-  <div className=" mx-auto col-10 col-md-8 col-lg-3">
-    <label for="exampleInputEmail1" className="form-label" >Phone Number</label>
-    <input type="email" className="form-control" id="email" name= "email" value={credentials.email} onChange={onChange} placeholder='Enter Your Email' aria-describedby="emailHelp"/>
-    <div id="emailHelp" className="form-text">We'll never share your Phone Number with anyone else.</div>
-  </div>
-  {/* <div className="mx-auto col-10 col-md-3 col-lg-3">
-    <label for="exampleInputPassword1" className="form-label">Password</label>
-    <input type="password" className="form-control" name= "password" value={credentials.password} onChange={onChange} placeholder='Enter Your Password' id="exampleInputPassword1"/>
-  </div>
-  <div className="mb-3 form-check">
-    <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-    <label className="form-check-label" for="exampleCheck1">Check me out</label>
-  </div> */}
- 
-  <button type="submit" className="btn btn-primary">Login</button>
-  
-</form>
-    </div>
+    <Stack minH="100vh" direction={{ base: 'column-reverse', md: 'row' }}>
+      <Flex flex={1}>
+        <Image alt="Cover image" objectFit="cover" src="https://bit.ly/2k1H1t6" />
+      </Flex>
+      <Flex p={8} flex={1} align="center" justifyContent="center">
+        <Stack spacing={4}>
+          <Stack align="center">
+            <Heading fontSize="2xl">Sign in to your account</Heading>
+          </Stack>
+          <VStack
+            as="form"
+            spacing={8}
+            boxSize={{ base: 'xs', sm: 'sm', md: 'md' }}
+            h="max-content !important"
+            bg={useColorModeValue('white', 'gray.700')}
+            rounded="lg"
+            boxShadow="lg"
+            p={{ base: 5, sm: 10 }}
+          >
+            <VStack spacing={4} w="100%">
+              <FormControl id="email">
+                <FormLabel>Email</FormLabel>
+                <Input rounded="md" type="email" />
+              </FormControl>
+              <FormControl id="password">
+                <FormLabel>Password</FormLabel>
+                <Input rounded="md" type="password" />
+              </FormControl>
+            </VStack>
+            <VStack w="100%">
+              <Stack direction="row" justifyContent="space-between" w="100%">
+                <Checkbox colorScheme="green" size="md">
+                  Remember me
+                </Checkbox>
+                <Link fontSize={{ base: 'md', sm: 'md' }}>Forgot password?</Link>
+              </Stack>
+              <Button
+                bg="green.300"
+                color="white"
+                _hover={{
+                  bg: 'green.500'
+                }}
+                rounded="md"
+                w="100%"
+              >
+                Sign in
+              </Button>
+            </VStack>
+          </VStack>
+        </Stack>
+      </Flex>
+    </Stack>
   )
 }
 

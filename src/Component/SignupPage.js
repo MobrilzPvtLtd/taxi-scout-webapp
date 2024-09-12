@@ -14,6 +14,7 @@ function SignupPage() {
   const [dialCode, setDialCode] = useState("");
   const navigate = useNavigate();
   const [otp_visible, setOtp_visible] = useState(false);
+
   //   sign up api
 
   const fileInputRef = useRef(null);
@@ -65,6 +66,7 @@ function SignupPage() {
         password_confirmation: credentials.cpassword,
         profile_picture: credentials.profile,
         country: selectedCountry,
+       
         //  password: credentials.password , cpassword : credentials.cpassword
       }),
     });
@@ -75,16 +77,15 @@ function SignupPage() {
     if (response.ok) {
       // alert("Check Your Email");
       localStorage.setItem(`email`, `${credentials.email}`);
-      // navigate("/otpverify");
       setOtp_visible(true);
     } else {
       alert(json.message);
       console.log(json.message);
     }
 
-    //   localStorage.setItem('token', json.authtoken);
-    //   history("/home");
   };
+  
+  
   const handleSubmitCompany = async (e) => {
     e.preventDefault();
 
@@ -96,7 +97,7 @@ function SignupPage() {
       body: JSON.stringify({
         role: " admin",
         service_location_id: selectedState,
-        first_name: credentials.cname,
+        company_name: credentials.cname,
         mobile: credentials.mobile,
         email: credentials.email,
         country: selectedCountry,
@@ -107,6 +108,8 @@ function SignupPage() {
         address: credentials.address,
         postal_code: credentials.postal,
         profile_picture: credentials.profile,
+        package_id : 1,
+        name : credentials.contact_name
 
         //  password: credentials.password , cpassword : credentials.cpassword
       }),
@@ -188,6 +191,7 @@ function SignupPage() {
     setSelectedState(e.target.value);
   };
 
+
   return (
     <>
       <div id="signup_page_main">
@@ -225,7 +229,6 @@ function SignupPage() {
                   >
                     <div className="form-group">
                       <input
-                        
                         type="text"
                         name="name"
                         placeholder="name"
@@ -414,12 +417,6 @@ function SignupPage() {
                     </div>
 
                     <div className="form-group">
-                      {/* <label
-                    htmlFor="countrySelect"
-                    className="text-[20px] font-bold cc001"
-                  >
-                    Select a country:
-                  </label> */}
                       <select
                         id="countrySelect"
                         value={selectedCountry}
@@ -432,17 +429,8 @@ function SignupPage() {
                           </option>
                         ))}
                       </select>
-                      {/* {selectedCountry && (
-                    <p>Selected Country Code: {selectedCountry}</p>
-                  )} */}
                     </div>
                     <div className="flex flex-col form-group">
-                      {/* <label
-                    htmlFor="countrySelect"
-                    className="text-[20px] font-bold cc001"
-                  >
-                    Select an Area:
-                  </label> */}
                       <select
                         id="countrySelect"
                         value={selectedState}
@@ -459,7 +447,7 @@ function SignupPage() {
                           </option>
                         ))}
                       </select>
-                      {selectedState && <p>Selected State: {selectedState}</p>}
+                      {/* {selectedState && <p>Selected State: {selectedState}</p>} */}
                     </div>
                     {/* <div className="form-group">
                 <input
@@ -521,6 +509,7 @@ function SignupPage() {
                         required
                       />
                     </div>
+                    
                     <div className="form-group cc001 ">
                       {/* <label for="profilePicture" className="text-[20px] font-bold cc001">
                     Company Logo:

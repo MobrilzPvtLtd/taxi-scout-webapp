@@ -1,3 +1,4 @@
+
 @media screen and (min-width: 1801px) {
     #box {
         padding: 2% 0;
@@ -99,7 +100,7 @@
         background-color: #000000a9 !important;
         border-radius: 10px;
         position: relative;
-        z-index: 100;
+        /* z-index: 100; */
         left: 30px;
         height: 60vh;
         margin-top: -2vw;
@@ -154,7 +155,7 @@
     #main_component {
         padding-top: 7vw;
         position: relative;
-        z-index: 1;
+        /* z-index: 1; */
     }
     .home_main {
         display: flex;
@@ -178,10 +179,11 @@
 }
 
 @media screen and (min-width: 1101px) and (max-width: 1400px) {
-    body{
-font-size: 12px;
+  
+    #main_component{
+        margin-top: 8%;
+        margin-bottom: 2%;
     }
-
     #box {
         height: -moz-fit-content;
         height: fit-content;
@@ -198,15 +200,15 @@ font-size: 12px;
         justify-content: space-around;
         align-items: center;
         margin-left: -5vw;
-        height: 100vh;
+        padding-top: 1vw;
     }
     .bg_home_right img {
         height: 80vh;
     }
     #main_component {
-        padding-top: 4vw;
+        padding-top: 20px;
         position: relative;
-        z-index: 1;
+        z-index: 0;
     }
     #current_location {
         position: absolute;
@@ -291,7 +293,7 @@ font-size: 12px;
         background-color: #000000a9 !important;
         border-radius: 10px;
         position: relative;
-        z-index: 100;
+        /* z-index: 100; */
         left: 30px;
         height: 60vh;
         margin-top: 0vw;

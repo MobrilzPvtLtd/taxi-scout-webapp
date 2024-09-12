@@ -18,23 +18,27 @@ import {
   XMarkIcon,
   ChevronUpIcon,
 } from "@heroicons/react/24/outline";
-import logo from "../Images/logo.png"
- 
+import logo from "../Images/logo.png";
+import { Link } from "react-router-dom";
+
 const nestedMenuItems = [
   {
-    title: "Hero",
+    title: "About Us",
   },
   {
-    title: "Features",
+    title: "Our Partners",
   },
   {
-    title: "Testimonials",
+    title: "Pricing",
   },
   {
-    title: "Ecommerce",
+    title: "Our Team",
+  },
+  {
+    title: "Gallery",
   },
 ];
- 
+
 function NavListMenu() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [openNestedMenu, setopenNestedMenu] = React.useState(false);
@@ -44,7 +48,7 @@ function NavListMenu() {
       <MenuItem>{title}</MenuItem>
     </a>
   ));
- 
+
   return (
     <React.Fragment>
       <Menu
@@ -60,7 +64,7 @@ function NavListMenu() {
               selected={isMenuOpen || isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}
             >
-              About Us
+              About
               <ChevronDownIcon
                 strokeWidth={2.5}
                 className={`hidden h-3 w-3 transition-transform lg:block ${
@@ -76,7 +80,7 @@ function NavListMenu() {
             </ListItem>
           </Typography>
         </MenuHandler>
-        <MenuList className="hidden lg:block">
+        <MenuList className="hidden lg:block relative z ">
           <Menu
             placement="right-start"
             allowHover
@@ -85,46 +89,61 @@ function NavListMenu() {
             handler={setopenNestedMenu}
           >
             <MenuHandler className="flex items-center justify-between">
-              <MenuItem>
-                Figma
-                <ChevronUpIcon
+              <Link to="/about-us">
+                {" "}
+                <MenuItem>
+                  About Us
+                  {/* <ChevronUpIcon
                   strokeWidth={2.5}
                   className={`h-3.5 w-3.5 transition-transform ${
                     isMenuOpen ? "rotate-90" : ""
                   }`}
-                />
-              </MenuItem>
+                /> */}
+                </MenuItem>
+              </Link>
             </MenuHandler>
-            <MenuList className="rounded-xl">{renderItems}</MenuList>
+            {/* <MenuList className="rounded-xl">{renderItems}</MenuList> */}
           </Menu>
-          <MenuItem>React</MenuItem>
-          <MenuItem>TailwindCSS</MenuItem>
+          <Link to="/our-partner">
+            <MenuItem>Our Partners</MenuItem>
+          </Link>
+          <Link to="/pricing">
+            <MenuItem>Pricing</MenuItem>
+          </Link>
+          <Link to="/our-team">
+            <MenuItem>Our Team</MenuItem>
+          </Link>
+          <Link to="/gallery">
+            <MenuItem>Gallery</MenuItem>
+          </Link>
         </MenuList>
       </Menu>
       <div className="block lg:hidden">
         <Collapse open={isMobileMenuOpen}>
-          <Menu
-            placement="bottom"
-            allowHover
-            offset={6}
-            open={openNestedMenu}
-            handler={setopenNestedMenu}
-          >
-            <MenuHandler className="flex items-center justify-between">
-              <MenuItem>
-                Figma
-                <ChevronUpIcon
-                  strokeWidth={2.5}
-                  className={`h-3.5 w-3.5 transition-transform ${
-                    isMenuOpen ? "rotate-90" : ""
-                  }`}
-                />
-              </MenuItem>
-            </MenuHandler>
-            <MenuList className="block rounded-xl lg:hidden">
-              {renderItems}
-            </MenuList>
-          </Menu>
+          
+            <Menu
+              placement="bottom"
+              allowHover
+              offset={6}
+              open={openNestedMenu}
+              handler={setopenNestedMenu}
+            >
+              <MenuHandler className="flex items-center justify-between">
+                <MenuItem>
+                  Contact Us
+                  <ChevronUpIcon
+                    strokeWidth={2.5}
+                    className={`h-3.5 w-3.5 transition-transform ${
+                      isMenuOpen ? "rotate-90" : ""
+                    }`}
+                  />
+                </MenuItem>
+              </MenuHandler>
+              <MenuList className="block rounded-xl lg:hidden">
+                {renderItems}
+              </MenuList>
+            </Menu>
+         
           <MenuItem>React</MenuItem>
           <MenuItem>TailwindCSS</MenuItem>
         </Collapse>
@@ -141,7 +160,7 @@ function NavListMenu2() {
       <MenuItem>{title}</MenuItem>
     </a>
   ));
- 
+
   return (
     <React.Fragment>
       <Menu
@@ -182,20 +201,31 @@ function NavListMenu2() {
             handler={setopenNestedMenu}
           >
             <MenuHandler className="flex items-center justify-between">
+              <Link to="/contact">
               <MenuItem>
-                Figma
-                <ChevronUpIcon
+                Contact Us
+                {/* <ChevronUpIcon
                   strokeWidth={2.5}
                   className={`h-3.5 w-3.5 transition-transform ${
                     isMenuOpen ? "rotate-90" : ""
                   }`}
-                />
+                /> */}
               </MenuItem>
+              </Link>
             </MenuHandler>
-            <MenuList className="rounded-xl">{renderItems}</MenuList>
+            {/* <MenuList className="rounded-xl">{renderItems}</MenuList> */}
           </Menu>
-          <MenuItem>React</MenuItem>
-          <MenuItem>TailwindCSS</MenuItem>
+          <Link to="/faq">
+          <MenuItem>FAQs</MenuItem></Link>
+          <Link to="/privacy-policy">
+          <MenuItem>Privacy Policy</MenuItem>
+          </Link>
+          <Link to="/term-of-use">
+          <MenuItem>Terms of Use</MenuItem>
+          </Link>
+          <Link to="/term-of-services">
+          <MenuItem>Term Of Service</MenuItem>
+          </Link>
         </MenuList>
       </Menu>
       <div className="block lg:hidden">
@@ -229,58 +259,66 @@ function NavListMenu2() {
     </React.Fragment>
   );
 }
- 
+
 function NavList() {
   return (
     <List className="mb-0 mt-0 p-0 lg:mb-0 lg:mt-0 lg:flex-row lg:p-1 text-gray-900">
-      <Typography
-        as="a"
-        href="#"
-        variant="small"
-        color="blue-gray"
-        className="font-medium"
-      >
-        <ListItem className="flex items-center gap-2 py-0 pr-4">Home</ListItem>
-      </Typography>
+      <Link to="/">
+        <Typography
+          as="a"
+          variant="small"
+          color="blue-gray"
+          className="font-medium"
+        >
+          <ListItem className="flex items-center gap-2 py-0 pr-4">
+            Home
+          </ListItem>
+        </Typography>
+      </Link>
       <NavListMenu />
-      <Typography
-        as="a"
-        href="#"
-        variant="small"
-        color="blue-gray"
-        className="font-medium"
-      >
-        <ListItem className="flex items-center gap-2 py-0 pr-4">How It Works</ListItem>
-      </Typography>
-      <Typography
-        as="a"
-        href="#"
-        variant="small"
-        color="blue-gray"
-        className="font-medium"
-      >
-        <ListItem className="flex items-center gap-2 py-0 pr-4">
-          Blogs
-        </ListItem>
-      </Typography>
-      
+      <Link to="/how-it-works">
+        <Typography
+          as="a"
+          href="/"
+          variant="small"
+          color="blue-gray"
+          className="font-medium"
+        >
+          <ListItem className="flex items-center gap-2 py-0 pr-4">
+            How It Works
+          </ListItem>
+        </Typography>
+      </Link>
+      <Link to="/blogs">
+        <Typography
+          as="a"
+          variant="small"
+          color="blue-gray"
+          className="font-medium"
+        >
+          <ListItem className="flex items-center gap-2 py-0 pr-4">
+            Blogs
+          </ListItem>
+        </Typography>
+      </Link>
+
       <NavListMenu2 />
     </List>
   );
 }
- 
+
 export function NavbarMain() {
   const [openNav, setOpenNav] = React.useState(false);
- 
+
   React.useEffect(() => {
     window.addEventListener(
       "resize",
-      () => window.innerWidth >= 960 && setOpenNav(false),
+      () => window.innerWidth >= 960 && setOpenNav(false)
     );
   }, []);
- 
+
   return (
-    <Navbar className=" px-4 py-2">
+    <Navbar className=" px-4 py-2" id="navbar_main_sticky">
       <div className="flex items-center justify-between text-blue-gray-900">
         {/* <Typography
           as="a"
@@ -295,9 +333,19 @@ export function NavbarMain() {
           <NavList />
         </div>
         <div className="hidden gap-2 lg:flex">
-          <Button variant="outlined" size="sm" className="w-[8rem] bg-black text-white font-semibold">Get Started </Button>
-          <Button variant="outlined" size="sm" className="w-[8rem] bg-black text-white font-semibold">
-            Log In
+          <Button
+            variant="outlined"
+            size="sm"
+            className="w-[8rem] bg-black text-white font-semibold"
+          >
+            <Link to="/signup">Sign Up</Link>{" "}
+          </Button>
+          <Button
+            variant="outlined"
+            size="sm"
+            className="w-[8rem] bg-black text-white font-semibold"
+          >
+            <Link to="/login"> Log In</Link>
           </Button>
         </div>
         <IconButton
@@ -315,11 +363,16 @@ export function NavbarMain() {
       <Collapse open={openNav}>
         <NavList />
         <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden text-gray-900">
-          <Button variant="outlined" size="sm" fullWidth className="text-gray-900">
-            Get Started
+          <Button
+            variant="outlined"
+            size="sm"
+            fullWidth
+            className="text-gray-900"
+          >
+            <Link to="/signup"> Sign Up </Link>
           </Button>
           <Button variant="outlined" size="sm" fullWidth>
-            Log In
+            <Link to="/login"> Log In</Link>
           </Button>
         </div>
       </Collapse>
