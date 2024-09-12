@@ -67,9 +67,8 @@ if (userType === "user"){
 }
 
   return (
-    <div className=''>
-    <div id='banner_img_home'></div>
-    <div className="container login001">
+    <div className='' id='banner_img_home'>
+    <div className="container login_page_main">
     {(otp_visible== true)?(
         <div id="otp_verify">
           <OtpVerify_Login />
