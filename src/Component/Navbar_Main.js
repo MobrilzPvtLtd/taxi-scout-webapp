@@ -120,30 +120,29 @@ function NavListMenu() {
       </Menu>
       <div className="block lg:hidden">
         <Collapse open={isMobileMenuOpen}>
-          
-            <Menu
-              placement="bottom"
-              allowHover
-              offset={6}
-              open={openNestedMenu}
-              handler={setopenNestedMenu}
-            >
-              <MenuHandler className="flex items-center justify-between">
-                <MenuItem>
-                  Contact Us
-                  <ChevronUpIcon
-                    strokeWidth={2.5}
-                    className={`h-3.5 w-3.5 transition-transform ${
-                      isMenuOpen ? "rotate-90" : ""
-                    }`}
-                  />
-                </MenuItem>
-              </MenuHandler>
-              <MenuList className="block rounded-xl lg:hidden">
-                {renderItems}
-              </MenuList>
-            </Menu>
-         
+          <Menu
+            placement="bottom"
+            allowHover
+            offset={6}
+            open={openNestedMenu}
+            handler={setopenNestedMenu}
+          >
+            <MenuHandler className="flex items-center justify-between">
+              <MenuItem>
+                Contact Us
+                <ChevronUpIcon
+                  strokeWidth={2.5}
+                  className={`h-3.5 w-3.5 transition-transform ${
+                    isMenuOpen ? "rotate-90" : ""
+                  }`}
+                />
+              </MenuItem>
+            </MenuHandler>
+            <MenuList className="block rounded-xl lg:hidden">
+              {renderItems}
+            </MenuList>
+          </Menu>
+
           <MenuItem>React</MenuItem>
           <MenuItem>TailwindCSS</MenuItem>
         </Collapse>
@@ -202,29 +201,30 @@ function NavListMenu2() {
           >
             <MenuHandler className="flex items-center justify-between">
               <Link to="/contact">
-              <MenuItem>
-                Contact Us
-                {/* <ChevronUpIcon
+                <MenuItem>
+                  Contact Us
+                  {/* <ChevronUpIcon
                   strokeWidth={2.5}
                   className={`h-3.5 w-3.5 transition-transform ${
                     isMenuOpen ? "rotate-90" : ""
                   }`}
                 /> */}
-              </MenuItem>
+                </MenuItem>
               </Link>
             </MenuHandler>
             {/* <MenuList className="rounded-xl">{renderItems}</MenuList> */}
           </Menu>
           <Link to="/faq">
-          <MenuItem>FAQs</MenuItem></Link>
+            <MenuItem>FAQs</MenuItem>
+          </Link>
           <Link to="/privacy-policy">
-          <MenuItem>Privacy Policy</MenuItem>
+            <MenuItem>Privacy Policy</MenuItem>
           </Link>
           <Link to="/term-of-use">
-          <MenuItem>Terms of Use</MenuItem>
+            <MenuItem>Terms of Use</MenuItem>
           </Link>
           <Link to="/term-of-services">
-          <MenuItem>Term Of Service</MenuItem>
+            <MenuItem>Term Of Service</MenuItem>
           </Link>
         </MenuList>
       </Menu>
@@ -333,28 +333,28 @@ export function NavbarMain() {
           <NavList />
         </div>
         <div className="hidden gap-2 lg:flex">
-        <Link to="/signup">
-          <Button
-            variant="outlined"
-            size="sm"
-            className="w-[8rem] bg-black text-white font-semibold"
-          >
-           Sign Up{" "}
-          </Button>
+          <Link to="/signup">
+            <Button
+              variant="outlined"
+              size="sm"
+              className="w-[8rem] bg-black text-white font-semibold"
+            >
+              Sign Up{" "}
+            </Button>
           </Link>
           <Link to="/login">
-          <Button
-            variant="outlined"
-            size="sm"
-            className="w-[8rem] bg-black text-white font-semibold"
-          >
-             Log In
-          </Button>
+            <Button
+              variant="outlined"
+              size="sm"
+              className="w-[8rem] bg-black text-white font-semibold"
+            >
+              Log In
+            </Button>
           </Link>
         </div>
         <IconButton
           variant="text"
-          className="lg:hidden"
+          className="lg:hidden w-10 h-10 flex justify-center items-center"
           onClick={() => setOpenNav(!openNav)}
         >
           {openNav ? (
@@ -367,17 +367,22 @@ export function NavbarMain() {
       <Collapse open={openNav}>
         <NavList />
         <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden text-gray-900">
-          <Button
-            variant="outlined"
-            size="sm"
-            fullWidth
-            className="text-gray-900"
-          >
-            <Link to="/signup"> Sign Up </Link>
-          </Button>
-          <Button variant="outlined" size="sm" fullWidth>
-            <Link to="/login"> Log In</Link>
-          </Button>
+          <Link to="/signup">
+            {" "}
+            <Button
+              variant="outlined"
+              size="sm"
+              fullWidth
+              className="text-gray-900"
+            >
+              Sign Up
+            </Button>
+          </Link>
+          <Link to="/login">
+            <Button variant="outlined" size="sm" fullWidth>
+              Log In
+            </Button>
+          </Link>
         </div>
       </Collapse>
     </Navbar>
