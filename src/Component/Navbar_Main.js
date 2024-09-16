@@ -328,7 +328,9 @@ export function NavbarMain() {
         >
           Material Tailwind
         </Typography> */}
+        <Link to="/">
         <img src={logo} alt="logo" className="w-[5rem]"></img>
+        </Link>
         <div className="hidden lg:block">
           <NavList />
         </div>

@@ -52,8 +52,8 @@ const Landing = () => {
   
   return (
     <>
-      <div id="landing_page" className="home2">
-        <div id="box" className="">
+      <div id="landing_page" className="home2 w-full ">
+        <div id="box" className="w-1/2">
           <div id="upper-box">
             <img
               src={taxi}
@@ -87,23 +87,14 @@ const Landing = () => {
               </div>
               <InputItem type="destination" />
             </div>
-            <button
-              style={{
-                backgroundColor: "black",
-                borderRadius: "10px",
-                height: "70px",
-                width: "220px",
-                fontSize: "28px",
-                marginTop: "20px",
-                marginRight: "25px",
-              }}
+            <button className="w-4/5 my-2 px-10 "
               onClick={handleRedirect}
             >
               Search
             </button>
           </div>
         </div>
-        <div className="bg_home_right">
+        <div className="bg_home_right w-1/2">
           <img src={bg_1}></img>
         </div>
       </div>
@@ -112,16 +103,16 @@ const Landing = () => {
       <br></br>
       <br></br>
       <br></br>
-      <div className="flex justify-around items-center px-5 bg-white pt-5">
-        <div className="bg_home_right">
-          <img src={bg_2}></img>
+      <div className="flex justify-around items-center px-2 gap-3 sm:px-5 bg-white pt-5">
+        <div className="w-50">
+          <img className="rounded-xl" src={bg_2}></img>
         </div>
         <div className="w-50">
-          <h1 className="text-[3rem] font-bold">
+          <h1 className="font-bold">
             Be your own driver, choose <br></br> your own hours, and earn{" "}
             <br></br> what you need.
           </h1>
-          <p className="px-20 text-xl">
+          <p className="px-2 text-sm sm:px-20 text-xl">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s, when an unk
@@ -133,11 +124,11 @@ const Landing = () => {
       </div>
       <div className="flex justify-around items-center ] pr-[5vw] bg-white pt-5 pb-5">
         <div className="w-50">
-          <h1 className="text-[3rem] font-bold">
+          <h1 className="font-bold">
             Taxi Scout 24 extends its<br></br> services worldwide,<br></br>{" "}
             catering to diverse locations.
           </h1>
-          <p className="px-20 text-xl">
+          <p className="px-2 text-sm sm:px-20 text-xl">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s, when an unk
@@ -146,19 +137,19 @@ const Landing = () => {
             Click me
           </button>
         </div>
-        <div className="bg_home_right">
-          <img src={bg_3} width={700}></img>
+        <div className="w-50">
+          <img src={bg_3} width={700}className="rounded-lg"></img>
         </div>
       </div>
-      <div className="flex justify-around items-center ] pl-[5vw] bg-white pt-5 pb-5">
-      <div className="bg_home_right">
-          <img src={bg_4} width={700}></img>
+      <div className="flex justify-around items-center ] pl-[5vw] bg-white pb-5">
+      <div className="w-50">
+          <img src={bg_4} width={700} className="rounded-xl"></img>
         </div>
         <div className="w-50">
-          <h1 className="text-[3rem] font-bold">
+          <h1 className="font-bold">
             We Serve in ...<br></br> 
           </h1>
-          <p className="px-20 text-xl">
+          <p className="px-2 text-sm sm:px-20 text-xl">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s, when an unk
