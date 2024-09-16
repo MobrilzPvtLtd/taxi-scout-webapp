@@ -14,23 +14,41 @@
 
 }
 @media screen and (min-width: 1401px) and (max-width: 1800px) {
+    #main_component{
+        padding-top: 6vh;
+    }
 }
 
 @media screen and (min-width: 1101px) and (max-width: 1400px) {
-  
+    #main_component{
+        padding-top: 6vh;
+    }
 }
 
 @media screen and (min-width: 1025px) and (max-width : 1100px){
-    
+    #main_component{
+        padding-top: 6vh;
+    }
 }
 @media screen and (min-width: 769px) and (max-width : 1024px){ body{
     font-size: 12px;
+}
+#main_component{
+    padding-top: 6vh;
 }
 button{
     font-size: 10px;
 }
 .signup-container{
     padding: 1vw;
+}
+.signup-container{
+    padding: 1vw;
+    width: 100%;
+}
+.login_page_main{
+    display: flex;
+    justify-content: center;
 }
 }
 @media screen and (min-width: 320px) and (max-width : 768px){
@@ -42,7 +60,7 @@ button{
         font-size: 10px;
     }
     #main_component{
-       padding-top: 8vh;
+       padding-top: 6vh;
     }
     /* .login_page_main{
     padding-top: 8vh;
@@ -68,5 +86,13 @@ button{
     .login_page_main{
         display: flex;
         justify-content: center;
+    }
+    #form{
+        display: grid ;
+        grid-template-columns: repeat(1 , 1fr);
+    }
+    .form-group {
+        margin-bottom: 2px;
+        margin-top: 2px;
     }
 }

@@ -224,7 +224,7 @@ function SignupPage() {
                     </div>
                   </div>
                  <form
-                    className=" w-fit grid grid-cols-2 gap-x-2 "
+                    className=" w-fit  grid gird-cols-1 md:grid-cols-2 gap-x-2 "
                     onSubmit={handleSubmit}
                   >
                     <div className="form-group">
@@ -519,7 +519,6 @@ function SignupPage() {
                       {/* </div> */}
                       <button
                         id="upload_profile_btn"
-                        className="mb-3"
                         onClick={handleButtonClick}
                       >
                         Upload profile pic
