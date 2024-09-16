@@ -296,7 +296,7 @@ function SignupPage() {
                         ))}
                       </select>
                     </div>
-                    <div className="flex gap-2 relative ">
+                    <div className="flex gap-2 relative my-1">
                       <div className="form-group cc001 absolute">
                         <input
                           type="file"

@@ -55,6 +55,7 @@ button{
     
     body{
         font-size: 12px;
+       
     }
     button{
         font-size: 10px;
@@ -71,6 +72,7 @@ button{
     /* padding-top: 8vh; */
     display: flex;
     justify-content: center;
+    
     }
     .chat-box{
         display: none;
@@ -81,6 +83,7 @@ button{
     }
     .signup-container{
         padding: 1vw;
+        margin-top: 2vh;
         width: 100%;
     }
     .login_page_main{
@@ -95,4 +98,9 @@ button{
         margin-bottom: 2px;
         margin-top: 2px;
     }
+    .css-jzIGNN {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
 }
