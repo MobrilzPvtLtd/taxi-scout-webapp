@@ -24,7 +24,8 @@ margin-top: 2vw;
     /* background-position: 10% -2.5% !important; */
     background-repeat: no-repeat !important; 
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
     /* margin-top: -35px; */
     /* position: relative; */
   }
