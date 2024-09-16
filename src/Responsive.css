@@ -102,5 +102,13 @@ button{
         font-size: 20px;
         font-weight: 700;
     }
+    #countrySelect {
+        width: 100%;
+        border: 1px solid #cccccc7a;
+        border-radius: 4px;
+        outline: none;
+        background-color: rgb(255 255 255 / 90%);
+        padding: 10px 0;
+    }
 
 }
