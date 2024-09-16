@@ -122,5 +122,9 @@ button{
     #main_component h1{
         font-size : 14px;
     }
-    
+    #current_location{
+        position: absolute;
+        right: 1.1rem;
+        top: .6rem;
+    }
 }
