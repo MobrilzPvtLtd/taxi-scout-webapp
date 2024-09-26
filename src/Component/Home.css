@@ -20,27 +20,30 @@ body{
     gap: 1px;
 }
 button.re-btn {
-    width: 6vw;
+    width: fit-content !important;
     background-color: transparent !important;
-    color: #fff;
+    color: #fff !important;
+    transition: all .3s ease-in-out;
 }
 button.re-btn:hover {
-    width: 6vw;
+    /* width: 6vw; */
     background-color: transparent !important;
-    color: #fff;
+    color: #fff !important;
+    transform: scale(1.1);
     
 }
 button.re-btn1 {
-    width: 6vw;
+    width: fit-content !important;
     background-color: transparent !important;
-    color: #8f8f8f;
+    color: #8f8f8f !important;
+    transition: all .3s ease-in-out;
     
 }
 button.re-btn1:hover {
-    width: 6vw;
+    /* width: 6vw; */
     background-color: transparent !important;
-    color: #8f8f8f;
-    transform: scale(1) !important;
+    color: #8f8f8f !important;
+    transform: scale(1.1) !important;
 }
 .home_main{
     display: flex;

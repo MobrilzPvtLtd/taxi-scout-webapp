@@ -87,14 +87,15 @@ console.log("session value" ,email)
       <h1>OTP Verification</h1>
       <form onSubmit={handleSubmit} style={{ display:'flex',flexDirection:'column', alignItems:'center' , gap:'10px'}}>
         <input
+        className='otp_input'
           type="text"
           name = "otp"
           value={state.otp}
           onChange={handleChange}
           placeholder="Enter OTP"
-          style={{ padding: '10px', fontSize: '16px', width: '15vw'  }}
+         
         />
-        <button type="submit" style={{ padding: '10px', fontSize: '16px' , width: '15vw' }}>
+        <button type="submit">
           Verify
         </button>
       </form>

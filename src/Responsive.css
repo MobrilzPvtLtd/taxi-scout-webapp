@@ -127,4 +127,16 @@ button{
         right: 1.1rem;
         top: .6rem;
     }
+    #otp_verify{
+    
+        position: absolute;
+        background-color: #000000a8;
+        width: fit-content;
+        height: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 15vh;
+   
+    }
 }
