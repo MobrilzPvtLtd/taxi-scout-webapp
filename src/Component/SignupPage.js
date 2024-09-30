@@ -14,6 +14,22 @@ function SignupPage() {
   const [dialCode, setDialCode] = useState("");
   const navigate = useNavigate();
   const [otp_visible, setOtp_visible] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setSelectedImage(reader.result); // Set the image as a base64 string
+      };
+      reader.readAsDataURL(file); // Read file as a data URL (base64)
+    }
+  };
+
+  const handleClick = () => {
+    document.getElementById("fileInput").click();
+  };
 
   //   sign up api
 
@@ -64,9 +80,9 @@ function SignupPage() {
         email: credentials.email,
         password: credentials.password,
         password_confirmation: credentials.cpassword,
-        profile_picture: credentials.profile,
+        profile_picture: selectedImage,
         country: selectedCountry,
-       
+
         //  password: credentials.password , cpassword : credentials.cpassword
       }),
     });
@@ -82,10 +98,8 @@ function SignupPage() {
       alert(json.message);
       console.log(json.message);
     }
-
   };
-  
-  
+
   const handleSubmitCompany = async (e) => {
     e.preventDefault();
 
@@ -101,27 +115,39 @@ function SignupPage() {
         mobile: credentials.mobile,
         email: credentials.email,
         country: selectedCountry,
-        state: credentials.state,
+        // state: credentials.state,
         city: credentials.city,
         password: credentials.password,
         password_confirmation: credentials.cpassword,
         address: credentials.address,
         postal_code: credentials.postal,
-        profile_picture: credentials.profile,
-        package_id : 1,
-        name : credentials.contact_name
+        profile_picture: selectedImage,
+        package_id: 1,
+        name: credentials.contact_name,
 
         //  password: credentials.password , cpassword : credentials.cpassword
       }),
     });
 
     const json = await response.json();
+    localStorage.setItem("email", credentials.email)
     // console.log(json);
 
     if (response.ok) {
       alert("You are Registered successfully");
+      setOtp_visible(true);
+
     } else {
-      alert(json.message);
+      let alertMessage = '';
+      let errorMessages =json.errors
+
+      Object.keys(errorMessages).forEach((key) => {
+        const messages = errorMessages[key]; // Get error messages array for this key
+        alertMessage += messages.join(' ') + '\n'; // Concatenate each message
+      });
+
+      // Displaying error messages in an alert
+      alert(alertMessage);
       console.log(json.message);
     }
 
@@ -191,7 +217,6 @@ function SignupPage() {
     setSelectedState(e.target.value);
   };
 
-
   return (
     <>
       <div id="signup_page_main">
@@ -202,8 +227,8 @@ function SignupPage() {
         ) : (
           <div>
             {userType === "user" ? (
-              <div className="container sign_up_page_main p-5 " >
-                <div  className="signup-container">
+              <div className="container sign_up_page_main p-5 ">
+                <div className="signup-container">
                   <h1 className="text-white">Sign Up</h1>
                   <div className="signup-options flex-row gap-3">
                     <div
@@ -223,7 +248,31 @@ function SignupPage() {
                       Company
                     </div>
                   </div>
-                 <form
+                  <div className="flex flex-col items-center">
+                    {selectedImage ? (
+                      <img
+                        src={selectedImage}
+                        alt="Profile"
+                        className="w-20 h-20 rounded-full object-cover mb-4"
+                      />
+                    ) : null}
+
+                    <input
+                      id="fileInput"
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={handleImageChange}
+                    />
+
+                    <button
+                      onClick={handleClick}
+                      className="px-4 py-2 bg-blue-500 text-black rounded-lg hover:bg-blue-600 transition duration-300"
+                    >
+                      Upload Logo/Profile
+                    </button>
+                  </div>
+                  <form
                     className=" w-fit  grid gird-cols-1 md:grid-cols-2 gap-x-2 "
                     onSubmit={handleSubmit}
                   >
@@ -296,7 +345,7 @@ function SignupPage() {
                         ))}
                       </select>
                     </div>
-                    <div className="flex gap-2 relative my-1 ">
+                    {/* <div className="flex gap-2 relative my-1 ">
                       <div className="form-group cc001 absolute">
                         <input
                           type="file"
@@ -316,15 +365,15 @@ function SignupPage() {
                       >
                         Upload profile pic
                       </button>
-
-                    </div>
-                      <button
-                        id="signup_btn"
-                        type="submit"
-                        onClick={handleSubmit}
-                      >
-                        Sign Up as {userType}
-                      </button>
+                    </div> */}
+                    <button
+                      id="signup_btn"
+                      className="translate-x-[50%]"
+                      type="submit"
+                      onClick={handleSubmit}
+                    >
+                      Sign Up as {userType}
+                    </button>
                   </form>
                 </div>
               </div>
@@ -350,6 +399,30 @@ function SignupPage() {
                       Company
                     </div>
                   </div>
+                  <div className="flex flex-col items-center">
+                    {selectedImage ? (
+                      <img
+                        src={selectedImage}
+                        alt="Profile"
+                        className="w-20 h-20 rounded-full object-cover mb-4"
+                      />
+                    ) : null}
+
+                    <input
+                      id="fileInput"
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={handleImageChange}
+                    />
+
+                    <button
+                      onClick={handleClick}
+                      className="px-4 py-2 bg-blue-500 text-black rounded-lg hover:bg-blue-600 transition duration-300"
+                    >
+                      Upload Logo/Profile
+                    </button>
+                  </div>
                   <form
                     id="form"
                     className="company_form"
@@ -365,6 +438,7 @@ function SignupPage() {
                   required
                 />
               </div> */}
+
                     <div className="form-group">
                       <input
                         type="text"
@@ -436,7 +510,7 @@ function SignupPage() {
                         value={selectedState}
                         onChange={handleStateChange}
                       >
-                        <option value="">Select an Area:</option>
+                        <option value="">Select Your Zone:</option>
                         {STATE.map((state, index) => (
                           <option
                             key={index}
@@ -447,9 +521,8 @@ function SignupPage() {
                           </option>
                         ))}
                       </select>
-                      {/* {selectedState && <p>Selected State: {selectedState}</p>} */}
                     </div>
-                   
+
                     <div className="form-group">
                       <input
                         type="text"
@@ -460,7 +533,7 @@ function SignupPage() {
                         required
                       />
                     </div>
-                    <div className="form-group">
+                    {/* <div className="form-group">
                       <input
                         type="text"
                         name="state"
@@ -469,8 +542,8 @@ function SignupPage() {
                         onChange={handleChange}
                         required
                       />
-                    </div>
-                    <div className="form-group">
+                    </div> */}
+                    {/* <div className="form-group">
                       <input
                         type="text"
                         name="city"
@@ -479,7 +552,7 @@ function SignupPage() {
                         onChange={handleChange}
                         required
                       />
-                    </div>
+                    </div> */}
                     <div className="form-group">
                       <input
                         type="number"
@@ -500,34 +573,12 @@ function SignupPage() {
                         required
                       />
                     </div>
-                    
-                    <div className="form-group cc001 ">
-                      {/* <label for="profilePicture" className="text-[20px] font-bold cc001">
-                    Company Logo:
-                  </label> */}
-                      {/* <div className="form-group cc001"> */}
-                      <input
-                        type="file"
-                        name="profile"
-                        placeholder="select"
-                        value={credentials.profile}
-                        ref={fileInputRef}
-                        style={{ display: "none" }}
-                        onChange={handleChange}
-                        required
-                      />
-                      {/* </div> */}
-                      <button
-                        id="upload_profile_btn"
-                        onClick={handleButtonClick}
-                      >
-                        Upload profile pic
-                      </button>
-                    </div>
-                    <div className="form-group cc001">
-                      <button id="signup_btn_company" type="submit">
-                        Sign Up as {userType}
-                      </button>
+                    <div className="flex justify-center translate-x-[50%]">
+                      <div className="form-group cc001">
+                        <button id="signup_btn_company" type="submit">
+                          Sign Up as {userType}
+                        </button>
+                      </div>
                     </div>
                   </form>
                 </div>

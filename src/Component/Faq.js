@@ -329,12 +329,7 @@ const Faq = () => {
             </div>
             {visible == true ? (
               <div className="accord-text">
-                "TaxiScout24.com is the world's first taxi software that
-                operates without commissions and fixed prices. Taxi companies
-                have full control over the rates per kilometer and the starting
-                price. Payment is made directly from the passenger to the taxi
-                driver, and TaxiScout24.com is not involved in the payment
-                process."
+                "TaxiScout24.com is the world's first taxi software that operates without commissions and fixed prices. Taxi companies have full control over the rates per kilometer and the starting price. Payment is made directly from the passenger to the taxi driver, and TaxiScout24.com is not involved in the payment process."
               </div>
             ) : null}
           </div>

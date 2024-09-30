@@ -110,7 +110,7 @@ function App() {
       <Route path='/company' element =  {<CompanyLogin/>} />
       <Route path='/driver' element =  {<DriverSearchBox/>} />
       {/* <Route path='/about' element =  {<About/>} /> */}
-      <Route path='/about' element =  {<About_us/>} />
+      <Route path='/about-us' element =  {<About_us/>} />
       <Route path='/' element = {<Landing/>}/>
       <Route path='/contact' element =  {<Contact/>} />
       <Route path='/faq' element =  {<Faq/>} />
