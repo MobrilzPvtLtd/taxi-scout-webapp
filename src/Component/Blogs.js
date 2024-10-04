@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardMedia, CardContent, Typography, CardActions, Button, Avatar, Box, Container, Stack } from '@mui/material';
 import { styled } from '@mui/system';
 import blogs_img from "../Images/blogs.jpg"
 import { useNavigate } from 'react-router-dom';
 import { id } from 'date-fns/locale';
+import axios from 'axios';
 
 const StyledCard = styled(Card)(({ theme }) => ({
   maxWidth: 345,
@@ -17,11 +18,14 @@ const StyledCard = styled(Card)(({ theme }) => ({
   },
 }));
 
-const BlogCard = ({ title, description, image, author, date ,id }) => {
+const BlogCard = ({ title, description, image, author ,id,created_at , slug}) => {
+  
   const navigate = useNavigate();
 
   const handleReadMore = () => {
-    navigate(`/blog/${id}`);
+    localStorage.setItem("slug" , slug)
+    navigate(`/blog/${slug}`);
+    
   };
   return (
     
@@ -33,62 +37,55 @@ const BlogCard = ({ title, description, image, author, date ,id }) => {
         alt={title}
       />
       <CardContent>
+        <div className='flex flex-col justify-between h-[10rem]'>
+        <div>
         <Typography gutterBottom variant="h5" component="div">
           {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {description}
         </Typography>
+        </div>
+        <div>
         <Box display="flex" alignItems="center" marginTop={2}>
           <Avatar alt={author} src={`https://ui-avatars.com/api/?name=${author}`} />
           <Box marginLeft={2}>
             <Typography variant="subtitle2">{author}</Typography>
-            <Typography variant="caption" color="text.secondary">{date}</Typography>
+            <Typography variant="caption" color="text.secondary">{created_at}</Typography>
           </Box>
         </Box>
+        </div>
+        </div>
       </CardContent>
-      <CardActions>
-        <Button size="small" color="primary" onClick={handleReadMore}>
-          Read More
-        </Button>
-      </CardActions>
     </StyledCard >
   );
 };
 
 // Demo blog list component using Stack for layout
 const BlogList = () => {
- 
-  const blogs = [
-   
-    {id: 1,
-      title: "Building UIs with Material-UI",
-      description: "Material-UI offers a set of React components that implement Google's Material Design...",
-      image: blogs_img,
-      author: "John Smith",
-      date: "August 30, 2024"
-    },
-    {id: 2,
-      title: "Building UIs with Material-UI",
-      description: "Material-UI offers a set of React components that implement Google's Material Design...",
-      image: blogs_img,
-      author: "John Smith",
-      date: "August 30, 2024"
-    },
-    {id: 3,
-      title: "Building UIs with Material-UI",
-      description: "Material-UI offers a set of React components that implement Google's Material Design...",
-      image: blogs_img,
-      author: "John Smith",
-      date: "August 30, 2024"
-    },
-  ];
+  const [blogsData , setBlogsData] = useState(null)
+  const [loading , setLoading] = useState(false)
+  let url = "https://admin.taxiscout24.com";
 
+  useEffect(()=>{
+try{
+    const handleBlogs = async()=>{
+      const response = await axios.get(`${url}/api/v1/blogs`)
+      setBlogsData(response.data.data)
+      console.log("response" , response.data.data)
+    }
+    handleBlogs()
+  }
+  catch(error){console.error(error)}
+  },[])
+  
+ 
+  
   return (
     <div className='container'>
     <Container>
       <Stack direction={{ xs: 'column', xs: 'row' }} spacing={2}>
-        {blogs.map((blog, index) => (
+        {blogsData?.map((blog, index) => (
           <BlogCard key={index} {...blog} />
         ))}
       </Stack>

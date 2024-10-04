@@ -167,3 +167,14 @@ p {
 #locationButton:hover{
   background-color: #000 !important;
 }
+.css-kqfc7p-MuiCardMedia-root {
+  display: block;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-background-position: center;
+  background-position: center;
+  width: 100%;
+  object-fit: cover;
+  height: 45%;
+}
