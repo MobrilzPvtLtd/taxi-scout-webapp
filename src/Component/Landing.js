@@ -52,20 +52,16 @@ const Landing = () => {
   
   return (
     <>
-      <div id="landing_page" className="home2 w-full ">
-        <div id="box" className="w-1/2">
+      <div  className="container flex justify-between items-center w-full gap-10 ">
+        <div  className="w-1/2 border-2 border-black rounded-lg">
           <div id="upper-box">
             <img
               src={taxi}
-              style={{
-                height: "50px",
-                width: "50px",
-            
-              }}
+              alt="taxi"
+              className="w-10 lg:w-20 object-cover rounded-lg"
             />
             <span
-              class="css-bQCKjs"
-              style={{ fontSize: "25px", fontWeight: "700" }}
+             className="text-2xl font-semibold"
             >
               Ride
             </span>
@@ -75,9 +71,8 @@ const Landing = () => {
           {/* main box */}
          
           <div id="main-box2" className="">
-            <div class="css-hPnljU">
-              <h2 class="css-jzIGNN">Request a ride now</h2>
-            </div>
+           
+              <div class="text-sm sm:text-2xl lg:text-4xl font-semibold">Request a ride now</div>
             <div class="search-input ">
               <div className="relative">
                 <InputItem type="source" />
