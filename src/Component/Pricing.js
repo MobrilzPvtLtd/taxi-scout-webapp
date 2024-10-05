@@ -1,84 +1,158 @@
-import React from 'react';
-import { Card, CardContent, Typography, CardActions, Button, Container, Grid, Box } from '@mui/material';
-import { styled } from '@mui/system';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
-// Styling for cards
-const StyledCard = styled(Card)(({ theme }) => ({
-  maxWidth: 345,
-  minHeight : 350,
-  margin: '20px auto',
-  padding: '10px',
-  borderRadius: '15px',
-  // boxShadow: theme.shadows[3],
-  transition: 'transform 0.3s ease-in-out',
-  '&:hover': {
-    transform: 'scale(1.05)',
-  },
-  display : "flex",
-  flexDirection : "column",
-  justifyContent : "space-between",
 
-}));
-
-// SubscriptionCard Component
-const SubscriptionCard = ({ title, price, description, features }) => (
-  <StyledCard>
-    <CardContent>
-      <Typography variant="h5" component="div" gutterBottom>
-        {title}
-      </Typography>
-      <Typography variant="h4" component="div" gutterBottom>
-        {price}
-      </Typography>
-      <Typography variant="body2" color="text.secondary" gutterBottom>
-        {description}
-      </Typography>
-      <Box marginTop={2}>
-        {features.map((feature, index) => (
-          <Typography key={index} variant="body2" color="text.secondary">
-            • {feature}
-          </Typography>
-        ))}
-      </Box>
-    </CardContent>
-    <CardActions>
-      <Button size="large" variant="contained" color="primary" fullWidth>
-        Subscribe
-      </Button>
-    </CardActions>
-  </StyledCard>
-);
-
-// SubscriptionPage Component
 const SubscriptionPage = () => {
-  const subscriptions = [
-    {
-      title: "Basic Plan",
-      price: "$9.99/month",
-      description: "Perfect for individuals who are just starting.",
-      features: ["Access to basic features", "Email support", "Monthly reports"],
-    },
-    {
-      title: "Pro Plan",
-      price: "$29.99/month",
-      description: "Ideal for professionals who need advanced tools.",
-      features: ["All Basic features", "Priority support", "Weekly reports", "Access to premium tools"],
-    }
-  ];
+  let url = "https://admin.taxiscout24.com";
+  const [price , setPrice] = useState();
+useEffect(()=>{
+
+  const handlePrice= async()=>{
+    const response = await axios.get(`${url}/api/v1/admin/packages`)
+    setPrice(response.data)
+console.log("our price",response.data)
+  }
+  handlePrice();
+},[])
 
   return (
-    <Container maxWidth="md" sx={{ textAlign: 'center', marginTop: '30px' }}>
-      <Typography variant="h3" component="h1" gutterBottom>
-        Choose Your Subscription
-      </Typography>
-      <Grid container spacing={4} justifyContent="center">
-        {subscriptions.map((plan, index) => (
-          <Grid item xs={12} sm={6} key={index}>
-            <SubscriptionCard {...plan} />
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+    <section class="bg-gradient-to-r from-[#fffa93] to-[#ffd91c] py-12 mt-10 h-[100vh]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <div class="text-4xl font-extrabold text-black sm:text-5xl">
+        Choose Your Plan
+      </div>
+      <p class="mt-4 text-xl text-gray-700">
+        Unlock the power of decentralized finance with our cutting-edge solutions.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {price?.map((item , index)=>(
+
+      
+      <div class="bg-white bg-opacity-10 rounded-lg shadow-lg p-6 relative overflow-hidden" key={index}>
+        <div class="absolute top-0 right-0 m-4">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
+           {item.package_name}
+          </span>
+        </div>
+        <div class="mb-8">
+          <h3 class="text-2xl font-semibold text-black">{item.package_name}</h3>
+          {/* <p class="mt-4 text-purple-200">Perfect for individuals and small teams.</p> */}
+        </div>
+        <div class="mb-8">
+          <span class="text-5xl font-extrabold text-black">${item.amount}</span>
+          <span class="text-xl font-medium text-black-300">/mo</span>
+        </div>
+        <ul class="mb-8 space-y-4 text-gray-700">
+          <li class="flex items-center">
+            <svg class="h-6 w-6 text-green-400 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>{item.number_of_drivers} Drivers</span>
+          </li>
+          <li class="flex items-center">
+            <svg class="h-6 w-6 text-green-400 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Basic reporting</span>
+          </li>
+        </ul>
+        <a href="#" class="block w-full py-3 px-6 text-center rounded-md text-black font-semibold bg-gradient-to-r from-yellow-600 to-[#ffd91c] hover:from-purple-700 hover:to-indigo-700">
+          Get Started
+        </a>
+      </div>))}
+      {/* <div class="bg-white bg-opacity-10 rounded-lg shadow-lg p-6 relative overflow-hidden">
+        <div class="absolute top-0 right-0 m-4">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+            Pro
+          </span>
+        </div>
+        <div class="mb-8">
+          <h3 class="text-2xl font-semibold text-white">Growth Pack</h3>
+          <p class="mt-4 text-purple-200">Ideal for growing businesses and enterprises.</p>
+        </div>
+        <div class="mb-8">
+          <span class="text-5xl font-extrabold text-white">$199</span>
+          <span class="text-xl font-medium text-purple-200">/mo</span>
+        </div>
+        <ul class="mb-8 space-y-4 text-purple-200">
+          <li class="flex items-center">
+            <svg class="h-6 w-6 text-green-400 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Unlimited user accounts</span>
+          </li>
+          <li class="flex items-center">
+            <svg class="h-6 w-6 text-green-400 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Unlimited transactions</span>
+          </li>
+          <li class="flex items-center">
+            <svg class="h-6 w-6 text-green-400 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Advanced analytics</span>
+          </li>
+          <li class="flex items-center">
+            <svg class="h-6 w-6 text-green-400 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Priority support</span>
+          </li>
+        </ul>
+        <a href="#" class="block w-full py-3 px-6 text-center rounded-md text-white font-medium bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700">
+          Get Started
+        </a>
+      </div> */}
+      {/* <div class="bg-white bg-opacity-10 rounded-lg shadow-lg p-6 relative overflow-hidden">
+        <div class="absolute top-0 right-0 m-4">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
+            Enterprise
+          </span>
+        </div>
+        <div class="mb-8">
+          <h3 class="text-2xl font-semibold text-white">Scale Pack</h3>
+          <p class="mt-4 text-purple-200">Tailored for large-scale deployments and custom needs.</p>
+        </div>
+        <div class="mb-8">
+          <span class="text-5xl font-extrabold text-white">Custom</span>
+        </div>
+        <ul class="mb-8 space-y-4 text-purple-200">
+          <li class="flex items-center">
+            <svg class="h-6 w-6 text-green-400 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Dedicated infrastructure</span>
+          </li>
+          <li class="flex items-center">
+            <svg class="h-6 w-6 text-green-400 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Custom integrations</span>
+          </li>
+          <li class="flex items-center">
+            <svg class="h-6 w-6 text-green-400 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Dedicated support team</span>
+          </li>
+          <li class="flex items-center">
+            <svg class="h-6 w-6 text-green-400 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Premium SLAs</span>
+          </li>
+        </ul>
+        <a href="#" class="block w-full py-3 px-6 text-center rounded-md text-white font-medium bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-yellow-700 hover:to-orange-700">
+          Contact Sales
+        </a>
+      </div> */}
+    </div>
+  </div>
+</section>
   );
 };
 

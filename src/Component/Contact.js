@@ -3,7 +3,7 @@ import driverimg from "../Images/driver_profile.png";
 
 const Contact = () => {
   return (
-    <div className="contactmain ">
+    <div className="contactmain">
       <div className="cu_overlay"></div>
       <div className="cu_parent">
       <div>

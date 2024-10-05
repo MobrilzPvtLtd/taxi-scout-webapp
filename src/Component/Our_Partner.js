@@ -15,33 +15,29 @@ useEffect(()=>{
 
   const handlePartner= async()=>{
     const response = await axios.get(`${url}/api/v1/our-partner`)
-    setPartners(response.data)
+    setPartners(response.data.data)
   }
   handlePartner();
-})
+},[])
   return (
-    <div className="h-[30vw] flex justify-center items-center container partner001 mt-10">
-      <div className="left001">
+    <div className="container h-1/2 grid grid-cols-1 mt-16 sm:grid-cols-2">
+      <div className="flex flex-col justify-center gap-10">
         <div>
-          <h2 className="phead001 font-bold">Our Partners</h2>
+          <div className="font-semibold text-2xl lg:text-4xl ">Our Partners</div>
         </div>
         <div>
-          <h1 className="phead002">
+          <div className="font-bold text-4xl lg:text-7xl ">
             Pleasure to<br></br> work with
-          </h1>
+          </div>
+        </div>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {partners?.map(({id , image})=>(
+
+          <div className="" key={id}><img className="w-full object-cover aspect-square rounded-3xl" src={image} /></div>
+          ))}
         </div>
       </div>
-      <div className="right001">
-        <div className="logos">
-          <div className="logo001"><img src={google} /></div>
-          <div className="logo002"><img src={facebook} /></div>
-          <div className="logo003"><img src={netflix} /></div>
-          <div className="logo004"><img src={lenovo} /></div>
-          <div className="logo005"><img src={airbnb} /></div>
-          <div className="logo006"><img src={dropbox} /></div>
-        </div>
-      </div>
-    </div>
   );
 };
 

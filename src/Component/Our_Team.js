@@ -1,30 +1,58 @@
-import React from "react";
-import teamimg from "../Images/miro.jpg";
-const Our_Team = () => {
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
+const Our_Teams = () => {
+  let url = "https://admin.taxiscout24.com";
+  const [team , setTeam] = useState()
+useEffect(()=>{
+
+  const handleTeam= async()=>{
+    const response = await axios.get(`${url}/api/v1/our-team`)
+    setTeam(response.data.data);
+  }
+  handleTeam();
+},[])
+  
+
   return (
-    <div className="ourteam-main container">
-      <div className="ourteam002">
-        <img className="h-[700px]" src={teamimg}></img>
-      </div>
-      <div className="ourteam001 pl-10">
-        <div className="ourcontent001">
-          <div className="ourheading font-bold">
-            <h2>CEO</h2>
+    <div className="container-xxl py-6 pb-5" id="team">
+      <div className="container">
+        <div className="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
+          <div className="col-lg-6">
+            <h1 className="display-5 mb-0">Team Members</h1>
           </div>
-          <div className="ourtext">
-            <p>
-              <b>Name:</b> Malbasic Miroslav<br/><b>Phone:</b>+41 76 348 7001<br/><b>Email:</b> malbasic@taxiscout24.com
-            </p>
-          </div>
-          <div className="ourtext">
-            <p>
-            <b>As the CEO of Taxiscout24.com, my personal commitment is to ensure that our software solutions for taxi companies maintain the highest standards of efficiency, reliability, and user-friendliness. Through our innovative technology, we support taxi companies in optimizing their operations and providing their customers with a seamless and comfortable travel experience.</b>
-            </p>
-          </div>
+         
+        </div>
+        <div className="row g-4">
+          {team?.map((member) => (
+            <div
+              key={member.id}
+              className={`col-lg-4 col-md-6 wow fadeInUp`}
+              data-wow-delay={member.delay}
+            >
+              <div className="team-item position-relative">
+                <img className="img-fluid rounded w-full h-[20rem]" src={member.image} alt="" />
+                <div className="team-text bg-white rounded-end p-4">
+                  <div className="flex flex-col gap-1 justify-center items-center">
+                    <h2 className="text-4xl">{member.name}</h2>
+                    <span>{member.title}</span>
+                    <span>{member.email}</span>
+                    <span>{member.mobile}</span>
+                  </div>
+                  <div className="relative">
+                  <FaArrowRight className="text-primary absolute" size={40} />
+                  <p className="pt-2">{member.description}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   );
 };
 
-export default Our_Team;
+export default Our_Teams;

@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import gimage1 from "../Images/Firefly a mexican woman booking a taxi in mexico 1920x1080 98531 (2).jpg"
 import gimage2 from "../Images/3adb4519-1285-4d49-89ac-fae6820278d2.avif"
+import axios from "axios";
 const Gallery = () => {
+  let url = "https://admin.taxiscout24.com";
+  const [galleryData , setGalleryData] = useState()
+useEffect(()=>{
+
+  const handleGallery= async()=>{
+    const response = await axios.get(`${url}/api/v1/gallery`)
+    setGalleryData(response.data.data);
+  }
+  handleGallery();
+},[])
   return (
+    
     <div>
       <div className="gallarymain">
         <div className="gallary001 container">
@@ -24,43 +36,14 @@ const Gallery = () => {
             </p>
           </div>
         </div>
-        <div className="gallary002"></div>
       </div>
 
-      <div className="gall-main container">
-        <div className="gall-1 container">
-          <div className="g-image1">
-            <img src={gimage2}></img>
+      <div className="container gap-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  ">
+       {galleryData?.map((item)=>(
+        <div className="" key={item.id}>
+          <img className="w-full object-cover aspect-square rounded-3xl" src={item.image} alt={item.image}/>
           </div>
-          <div className="g-image2">
-          <img src={gimage1}></img>
-          </div>
-          <div className="g-image3">
-          <img src={gimage2}></img>
-          </div>
-        </div>
-        <div className="gall-1 container">
-        <div className="g-image4">
-            <img src={gimage2}></img>
-          </div>
-          <div className="g-image5">
-          <img src={gimage1}></img>
-          </div>
-          <div className="g-image6">
-          <img src={gimage2}></img>
-          </div>
-        </div>
-        <div className="gall-1 container">
-        <div className="g-image7">
-            <img src={gimage2}></img>
-          </div>
-          <div className="g-image8">
-          <img src={gimage1}></img>
-          </div>
-          <div className="g-image9">
-          <img src={gimage2}></img>
-          </div>
-        </div>
+       ))}
       </div>
 
     </div>

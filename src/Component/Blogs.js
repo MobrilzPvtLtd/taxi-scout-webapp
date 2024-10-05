@@ -84,11 +84,13 @@ try{
   return (
     <div className='container'>
     <Container>
-      <Stack direction={{ xs: 'column', xs: 'row' }} spacing={2}>
+      {/* <Stack direction={{ xs: 'column', xs: 'row' }} spacing={2}> */}
+<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'>
         {blogsData?.map((blog, index) => (
           <BlogCard key={index} {...blog} />
         ))}
-      </Stack>
+        </div>
+      {/* </Stack> */}
     </Container>
     </div>
   );

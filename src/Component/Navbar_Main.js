@@ -129,13 +129,7 @@ function NavListMenu() {
           >
             <MenuHandler className="flex items-center justify-between">
               <MenuItem>
-                Contact Us
-                <ChevronUpIcon
-                  strokeWidth={2.5}
-                  className={`h-3.5 w-3.5 transition-transform ${
-                    isMenuOpen ? "rotate-90" : ""
-                  }`}
-                />
+                About Us
               </MenuItem>
             </MenuHandler>
             <MenuList className="block rounded-xl lg:hidden">
@@ -143,8 +137,8 @@ function NavListMenu() {
             </MenuList>
           </Menu>
 
-          <MenuItem>React</MenuItem>
-          <MenuItem>TailwindCSS</MenuItem>
+          <MenuItem>Our Partner</MenuItem>
+          <MenuItem>Pricing</MenuItem>
         </Collapse>
       </div>
     </React.Fragment>
