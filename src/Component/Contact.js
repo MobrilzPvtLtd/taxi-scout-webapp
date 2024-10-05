@@ -1,341 +1,249 @@
-import React from "react";
-import driverimg from "../Images/driver_profile.png";
+// src/ContactUs.js
+import axios from 'axios';
+import React, { useState } from 'react';
 
-const Contact = () => {
+const ContactUs = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    mobile: '',
+    country: '',
+    address: '',
+    state: '',
+    pincode: '',
+    subject: '',
+    message: '',
+  });
+
+  const [responseMessage, setResponseMessage] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  // Handle input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+  let url = "https://admin.taxiscout24.com";
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setResponseMessage(null);
+
+    try {
+      const response = await axios.post(`${url}/api/v1/contact`, formData , {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+console.log("response" , response)
+      if (response.success) {
+        setResponseMessage({ type: 'success', text: 'Your message has been sent successfully!' });
+        setFormData({
+          name: '',
+          email: '',
+          mobile: '',
+          country: '',
+          address: '',
+          state: '',
+          pincode: '',
+          subject: '',
+          message: '',
+        });
+      } else {
+        const errorData = await response.json();
+        setResponseMessage({ type: 'error', text: errorData.message || 'Something went wrong.' });
+      }
+    } catch (error) {
+      setResponseMessage({ type: 'error', text: error.message });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="contactmain">
-      <div className="cu_overlay"></div>
-      <div className="cu_parent">
-      <div>
-        <h1 className="cheading001 text-[#000]">Contact Us</h1>
-        <p className="cutext001">
-          For any inquiries, suggestions, or booking requests, we are always
-          here to assist you. You can reach us through various channels:
-        </p>
-      </div>
-      <div className="cu container">
-        <div className="cu01">
-          <div className="cu_icon_box">
-            <div className="cu_icon">
-              <i class="fa fa-map-marker" aria-hidden="true"></i>
-            </div>
-            <div className="cu_icon_box_text">
-              <div className="cu_icon_box_heading">Address</div>
-              <div className="cu_icon_box_para">
-                <a href="https://www.google.com/maps/place/Heuerweg+7,+5605+Dottikon,+Switzerland/@47.3799924,8.2367955,17z/data=!3m1!4b1!4m6!3m5!1s0x479016a53ee815d1:0x1854f2a463f62d90!8m2!3d47.3799888!4d8.2393704!16s%2Fg%2F11cs5_9hmv?entry=ttu">
-                  Heuerweg 7<br /> 5605 Dottikon
-                  <br /> Switzerland
-                </a>
-              </div>
-            </div>
+    <div id='banner_img_home' className="bg-gradient-to-r from-yellow-500 to-orange-500 flex items-center justify-end min-h-screen p-4 w-full ">
+      <div className="container bg-[#00000080]  shadow-lg rounded-lg p-8 w-full max-w-lg animate-fade-in ">
+        <h2 className="text-2xl font-bold mb-6 text-center text-white">Contact Us</h2>
+        <form onSubmit={handleSubmit} className="space-y-4 grid grid-cols-2 gap-3">
+          {/* Name Field */}
+          <div>
+            <label htmlFor="name" className="block text-sm font-semibold text-gray-100">
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              value={formData.name}
+              onChange={handleChange}
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="Your Name"
+            />
           </div>
-          <div className="cu_icon_box">
-            <div className="cu_icon">
-              <i class="fa fa-envelope" aria-hidden="true"></i>
-            </div>
-            <div className="cu_icon_box_text">
-              <div className="cu_icon_box_heading">Email</div>
-              <div className="cu_icon_box_para">
-                Simply drop us an email
-                <br /> at
-                <a className="cu_link" href="mailto:info@taxiscout24">
-                  {" "}
-                  info@taxiscout24.com
-                </a>
-                , and <br />
-                we'll promptly attend to your query.
-              </div>
-            </div>
+          <div className='mt-0'>
+            <label htmlFor="email" className="block text-sm font-semibold text-gray-100">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              value={formData.email}
+              onChange={handleChange}
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="you@example.com"
+            />
           </div>
-          <div className="cu_icon_box">
-            <div className="cu_icon">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-            </div>
-            <div className="cu_icon_box_text">
-              <div className="cu_icon_box_heading">Phone</div>
-              <div className="cu_icon_box_para">
-                You can also reach us by phone
-                <br /> at
-                <a className="cu_link" href="tel:+ 41 56 544 14 10.">
-                  {" "}
-                  + 41 56 544 14 10.
-                </a>{" "}
-                Our friendly
-                <br /> customer service team is available
-                <br /> Monday through Sunday from 8:00 am to 8:00 pm
-              </div>
-            </div>
+
+          {/* Mobile Field */}
+          <div>
+            <label htmlFor="mobile" className="block text-sm font-semibold text-gray-100">
+              Mobile
+            </label>
+            <input
+              type="tel"
+              id="mobile"
+              name="mobile"
+              required
+              pattern="[0-9]{9,15}"
+              value={formData.mobile}
+              onChange={handleChange}
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="Mobile"
+            />
           </div>
-        </div>
-        <div className="cu02">
-          <form className="">
-            <div class="form-row flex gap-2">
-              <div class="form-group col-md-6">
-                <label for="inputEmail4"></label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="inputEmail4"
-                  placeholder="Email"
-                />
-              </div>
-              <div class="form-group col-md-6">
-                <label for="inputText4"></label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="inputText4"
-                  placeholder="Full Name"
-                />
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputAddress"></label>
-              <input
-                type="text"
-                class="form-control"
-                id="inputAddress"
-                placeholder="Address line 1"
-              />
-            </div>
-            <div class="form-group">
-              <label for="inputAddress2">x</label>
-              <input
-                type="text"
-                class="form-control"
-                id="inputAddress2"
-                placeholder="Address line 2"
-              />
-            </div>
-            <div class="form-row flex gap-2">
-              <div class="form-group col-md-6">
-                <label for="inputCity"></label>
-                <input type="text" class="form-control" id="inputCity" placeholder="City" />
-              </div>
-              <div class="form-group col-md-4">
-                <label for="inputState"></label>
-                <select id="inputState" class="form-control">
-                  <option selected>State...</option>
-                  <option>...</option>
-                </select>
-              </div>
-              <div class="form-group col-md-2">
-                <label for="inputZip"></label>
-                <input type="text" class="form-control" id="inputZip" placeholder="Zip" />
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputAddress"></label>
-              <input
-                type="text"
-                class="form-control"
-                id="inputAddress"
-                placeholder="Write your Enquiry"
-              />
-            </div>
-            <button type="submit" class="btn btn-primary bg-black" id="btn_cu">
-              submit
+
+          {/* Country Field */}
+          <div>
+            <label htmlFor="country" className="block text-sm font-semibold text-gray-100">
+              Country
+            </label>
+            <input
+              type="text"
+              id="country"
+              name="country"
+              required
+              value={formData.country}
+              onChange={handleChange}
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="Country"
+            />
+          </div>
+
+          {/* Address Field */}
+          <div>
+            <label htmlFor="address" className="block text-sm font-semibold text-gray-100">
+              Address
+            </label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              required
+              value={formData.address}
+              onChange={handleChange}
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="Address"
+            />
+          </div>
+
+          {/* State Field */}
+          <div>
+            <label htmlFor="state" className="block text-sm font-semibold text-gray-100">
+              State
+            </label>
+            <input
+              type="text"
+              id="state"
+              name="state"
+              required
+              value={formData.state}
+              onChange={handleChange}
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="State"
+            />
+          </div>
+
+          {/* Pincode Field */}
+          <div>
+            <label htmlFor="pincode" className="block text-sm font-semibold text-gray-100">
+              Pincode
+            </label>
+            <input
+              type="text"
+              id="pincode"
+              name="pincode"
+              required
+              pattern="[0-9]{6}"
+              value={formData.pincode}
+              onChange={handleChange}
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="Pincode"
+            />
+          </div>
+
+          {/* Subject Field */}
+          <div>
+            <label htmlFor="subject" className="block text-sm font-semibold text-gray-100">
+              Subject
+            </label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              required
+              value={formData.subject}
+              onChange={handleChange}
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="Subject"
+            />
+          </div>
+<div className='flex flex-col justify-center items-center gap-3  w-96 '>
+          {/* Message Field */}
+          <div>
+            <label htmlFor="message" className="block text-sm font-semibold text-gray-100">
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              required
+              value={formData.message}
+              onChange={handleChange}
+              className="mt-1 block w-96 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="Message"
+            ></textarea>
+          </div>
+
+          {/* Submit Button */}
+          <div>
+            <button
+              type="submit"
+              disabled={loading}
+              className={`w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm  text-black ${
+                loading
+                  ? 'bg-indigo-300 cursor-not-allowed'
+                  : 'bg-indigo-600 hover:bg-indigo-700'
+              } focus:outline-none focus:ring-2 focus:ring-indigo-500`}
+            >
+              {loading ? 'Sending...' : 'Send Message'}
             </button>
-          </form>
-        </div>
+          </div>
+          </div>
+        </form>
+        {/* Success/Error Message */}
+        {responseMessage && (
+          <div className={`mt-4 text-center ${responseMessage.type === 'success' ? 'text-green-500' : 'text-red-500'}`}>
+            {responseMessage.text}
+          </div>
+        )}
       </div>
-
-      {/* <div>
-        <p className="ctext001">Get in touch and let us know how we can help</p>
-      </div> */}
-      {/* <div className="c-box-main">
-        <div className="c-box001">
-          <div className="cimage">
-            <img className="h-[100px] " src={driverimg}></img>
-          </div>
-          <div className="ctitle">sales</div>
-          <div className="ctext">
-            Get in touch and let us know how we can help
-          </div>
-        </div>
-        <div className="c-box001">
-          <div className="cimage">
-            <img className="h-[100px]" src={driverimg}></img>
-          </div>
-          <div className="ctitle">sales</div>
-          <div className="ctext">
-            Get in touch and let us know how we can help
-          </div>
-        </div>
-        <div className="c-box001">
-          <div className="cimage">
-            <img className="h-[100px] " src={driverimg}></img>
-          </div>
-          <div className="ctitle">sales</div>
-          <div className="ctext">
-            Get in touch and let us know how we can help
-          </div>
-        </div>
-      </div>
-      <div className="contact-form container flex gap-40 pb-10">
-      <form className="w-[25vw]">
-        <div class="form-row flex gap-2">
-          <div class="form-group col-md-6">
-            <label for="inputEmail4">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              id="inputEmail4"
-              placeholder="Email"
-            />
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputText4">Full name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputText4"
-              placeholder="Full Name"
-            />
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="inputAddress">Address</label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputAddress"
-            placeholder="1234 Main St"
-          />
-        </div> */}
-      {/* <div class="form-group">
-          <label for="inputAddress2">Address 2</label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputAddress2"
-            placeholder="Apartment, studio, or floor"
-          />
-        </div> */}
-      {/* <div class="form-row flex gap-2">
-          <div class="form-group col-md-6">
-            <label for="inputCity">City</label>
-            <input type="text" class="form-control" id="inputCity" />
-          </div>
-          <div class="form-group col-md-4">
-            <label for="inputState">State</label>
-            <select id="inputState" class="form-control">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div> */}
-      {/* <div class="form-group col-md-2">
-            <label for="inputZip">Zip</label>
-            <input type="text" class="form-control" id="inputZip" />
-          </div> */}
-      {/* </div> */}
-      {/* <div class="form-group">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck" />
-            <label class="form-check-label" for="gridCheck">
-              Check me out
-            </label>
-          </div>
-        </div> */}
-
-      {/* <div class="form-group">
-          <label for="inputAddress">Comments</label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputAddress"
-            placeholder="Write your comments"
-          />
-        </div>
-        <button type="submit" class="btn btn-primary bg-black">
-        submit
-        </button> */}
-      {/* </form>
-      <form className="w-[25vw]">
-        <div class="form-row flex gap-2">
-          <div class="form-group col-md-6">
-            <label for="inputEmail4">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              id="inputEmail4"
-              placeholder="Email"
-            />
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputText4">Full name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputText4"
-              placeholder="Full Name"
-            />
-          </div>
-        </div> */}
-      {/* <div class="form-group">
-          <label for="inputAddress">Address</label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputAddress"
-            placeholder="1234 Main St"
-          />
-        </div> */}
-      {/* <div class="form-group">
-          <label for="inputAddress2">Address 2</label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputAddress2"
-            placeholder="Apartment, studio, or floor"
-          />
-        </div> */}
-      {/* <div class="form-row flex gap-2">
-          <div class="form-group col-md-6">
-            <label for="inputCity">City</label>
-            <input type="text" class="form-control" id="inputCity" />
-          </div> */}
-      {/* <div class="form-group col-md-4">
-            <label for="inputState">State</label>
-            <select id="inputState" class="form-control">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div> */}
-      {/* <div class="form-group col-md-2">
-            <label for="inputZip">Zip</label>
-            <input type="text" class="form-control" id="inputZip" />
-          </div> */}
-      {/* </div> */}
-      {/* <div class="form-group">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck" />
-            <label class="form-check-label" for="gridCheck">
-              Check me out
-            </label>
-          </div>
-        </div> */}
-      {/* <button type="submit" class="btn btn-primary">
-          Sign in
-        </button> */}
-      {/* <div class="form-group">
-          <label for="inputAddress">Enquiry</label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputAddress"
-            placeholder="Write your Enquiry"
-          />
-        </div>
-        <button type="submit" class="btn btn-primary bg-black">
-        submit
-        </button>
-        
-      </form>
-      </div> */}
-    </div>
     </div>
   );
 };
 
-export default Contact;
+export default ContactUs;

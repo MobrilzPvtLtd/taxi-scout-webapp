@@ -27,7 +27,6 @@ const LocationButton = ({ setAddress }) => {
       const response = await axios.get(
         `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyAL0hd3a2l1k1uLSAxQNN511PWkguNxzE4`
       );
-      console.log("response" , response)
       // const address = response.data.results[0].formatted_address;
       const address2002 = response.data.results[0];
       const address2 = response.data.results[0].geometry.location;
@@ -55,8 +54,6 @@ const LocationButton = ({ setAddress }) => {
       });
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          console.log('Latitude:', position.coords.latitude);
-          console.log('Longitude:', position.coords.longitude);
         },
         (error) => {
           console.error('Geolocation error:', error.message);

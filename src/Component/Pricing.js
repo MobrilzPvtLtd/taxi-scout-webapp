@@ -16,7 +16,7 @@ console.log("our price",response.data)
 },[])
 
   return (
-    <section class="bg-gradient-to-r from-[#fffa93] to-[#ffd91c] py-12 mt-10 h-[100vh]">
+    <section class="bg-gradient-to-r from-yellow-500 to-orange-500 py-12 mt-10 h-[100vh]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-12">
       <div class="text-4xl font-extrabold text-black sm:text-5xl">
