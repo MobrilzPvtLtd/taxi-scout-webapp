@@ -82,9 +82,9 @@ try{
  
   
   return (
-    <div className='container'>
+    <div className='container mt-0'>
     <Container>
-      <h1 className='text-5xl'>Blogs</h1>
+      <div className='text-5xl font-semibold'>Blogs</div>
       {/* <Stack direction={{ xs: 'column', xs: 'row' }} spacing={2}> */}
 <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'>
         {blogsData?.map((blog, index) => (

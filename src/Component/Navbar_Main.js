@@ -312,8 +312,8 @@ export function NavbarMain() {
   }, []);
 
   return (
-    <Navbar className=" px-4 py-2" id="navbar_main_sticky">
-      <div className="flex items-center justify-between text-blue-gray-900">
+    <Navbar className=" px-4 py-4" id="navbar_main_sticky">
+      <div className="flex items-center justify-between text-blue-gray-900 relative">
         {/* <Typography
           as="a"
           href="#"
@@ -323,7 +323,7 @@ export function NavbarMain() {
           Material Tailwind
         </Typography> */}
         <Link to="/">
-        <img src={logo} alt="logo" className="w-[5rem]"></img>
+        <img src={logo} alt="logo" className="w-[8rem] translate-y-[-1rem] top-0 fixed"></img>
         </Link>
         <div className="hidden lg:block">
           <NavList />
