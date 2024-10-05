@@ -368,7 +368,7 @@ function SignupPage() {
                     </div> */}
                     <button
                       id="signup_btn"
-                      className="translate-x-[50%]"
+                      className=" md:translate-x-[50%]"
                       type="submit"
                       onClick={handleSubmit}
                     >
@@ -573,7 +573,7 @@ function SignupPage() {
                         required
                       />
                     </div>
-                    <div className="flex justify-center translate-x-[50%]">
+                    <div className="flex justify-center md:translate-x-[50%]">
                       <div className="form-group cc001">
                         <button id="signup_btn_company" type="submit">
                           Sign Up as {userType}
