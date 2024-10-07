@@ -72,7 +72,7 @@ function Search_box() {
   //   setTaxi_schedule_form(false);
   // };
   return (
-    <div className="border-2 border-black rounded-lg">
+    <div className="container md:border-2 border-black rounded-lg">
       {/* upper box */}
 
       <div className="flex flex-col justify-center items-center">
@@ -93,7 +93,7 @@ function Search_box() {
 
       <div >
         <div >
-          <h2 className="text-4xl font-semibold">Request a ride now</h2>
+          <h2 className="text-2xl font-semibold">Request a ride now</h2>
         </div>
         <div >
           <div className="relative">

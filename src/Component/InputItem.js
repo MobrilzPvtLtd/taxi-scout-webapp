@@ -83,7 +83,7 @@ function InputItem(type, getData) {
   };
 
   return (
-    <div className="d-flex gap-[-25px]">
+    <div className="">
       <GooglePlacesAutocomplete
         // apiKey={process.env.REACT_PUBLIC_GOOGLE_API_KEY}
         //  className = "inputData"
@@ -108,8 +108,8 @@ function InputItem(type, getData) {
               ...provided,
               backgroundColor: "#f6f6f6",
               border: "none",
-              padding: "20px",
-              margin: "10px 25px",
+              padding: "10px 0",
+              margin: "10px 5px",
               borderRadius: "10px",
             }),
           },

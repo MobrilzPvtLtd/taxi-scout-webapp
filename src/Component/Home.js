@@ -41,8 +41,8 @@ const Home = (createRequest, parsedResponse) => {
   SignupButton();
   return (
 
-      <div className="container flex gap-5 justify-center">
-        <div>
+      <div className="container mt-10 flex gap-5 justify-center md:mt-0">
+        <div className="h-fit">
         <Search_box
           createRequest={createRequest}
           parsedResponse={parsedResponse}
