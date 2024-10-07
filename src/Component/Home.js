@@ -40,19 +40,17 @@ const Home = (createRequest, parsedResponse) => {
 
   SignupButton();
   return (
-    <main>
-      <div className="flex gap-5 mt-10 justify-center">
-        <div id="search_box">
-          <Search_box
-            createRequest={createRequest}
-            parsedResponse={parsedResponse}
-          />
+
+      <div className="container flex gap-5 justify-center">
+        <div>
+        <Search_box
+          createRequest={createRequest}
+          parsedResponse={parsedResponse}
+        />
         </div>
-        <div id="googlemap">
-          <GoogleMapSection />
-        </div>
+
+        <GoogleMapSection />
       </div>
-    </main>
   );
 };
 

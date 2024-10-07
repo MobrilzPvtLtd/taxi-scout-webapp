@@ -72,36 +72,33 @@ function Search_box() {
   //   setTaxi_schedule_form(false);
   // };
   return (
-    <div id="box">
+    <div className="border-2 border-black rounded-lg">
       {/* upper box */}
 
-      <div id="upper-box">
+      <div className="flex flex-col justify-center items-center">
         <img
           src={taxi}
-          style={{
-            height: "50px",
-            width: "50px",
-          }}
+          alt="taxi"
+          className="w-10"
         />
         <span
-          class="css-bQCKjs"
-          style={{ fontSize: "25px", fontWeight: "700" }}
+          className="text-xl font-semibold"
         >
           Ride
         </span>
-        <div id="outline"></div>
+        <div className="bg-black h-1 w-10"></div>
       </div>
 
       {/* main box */}
 
-      <div id="main-box">
-        <div class="css-hPnljU">
-          <h2 class="css-jzIGNN">Request a ride now</h2>
+      <div >
+        <div >
+          <h2 className="text-4xl font-semibold">Request a ride now</h2>
         </div>
-        <div class="search-input ">
+        <div >
           <div className="relative">
             <InputItem type="source" />
-            <div id="current_location">
+            <div className="absolute top-2 right-9">
               <LocationButton setAddress={setAddress} />
             </div>
           </div>
