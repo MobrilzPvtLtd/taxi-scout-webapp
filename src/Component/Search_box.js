@@ -72,7 +72,7 @@ function Search_box() {
   //   setTaxi_schedule_form(false);
   // };
   return (
-    <div className="container md:border-2 border-black rounded-lg">
+    <div className="p-2 sm:container w-full  sm:px-4 border-2 border-black rounded-lg">
       {/* upper box */}
 
       <div className="flex flex-col justify-center items-center">
@@ -96,9 +96,9 @@ function Search_box() {
           <h2 className="text-2xl font-semibold">Request a ride now</h2>
         </div>
         <div >
-          <div className="relative">
+          <div className="relative h-full w-full">
             <InputItem type="source" />
-            <div className="absolute top-2 right-9">
+            <div className="absolute top-0 right-1 translate-y-3 sm:translate-y-1 lg:translate-y-[-10%] lg:right-0 translate-x-[10%]  ">
               <LocationButton setAddress={setAddress} />
             </div>
           </div>
@@ -108,15 +108,7 @@ function Search_box() {
         </div>
         <div className="flex flex-col items-center">
           <button
-            style={{
-              backgroundColor: "black",
-              borderRadius: "10px",
-              height: "70px",
-              width: "220px",
-              fontSize: "28px",
-              marginTop: "20px",
-              marginRight: "25px",
-            }}
+            
             onClick={() => calculateDistance()}
           >
             Search
@@ -140,10 +132,10 @@ function Search_box() {
           ) : null} */}
         </div>
 
-        <h2 className="text-[20px] mt-[4vw] font-bold">Prefrences : </h2>
+        <h2 className="text-xl mt-4 font-bold">Prefrences : </h2>
 
-        <div className="mt-1 d-flex justify-center gap-4">
-          <div className="d-flex gap-3 text-[16px] font-[600]">
+        <div className="mt-1 flex justify-center gap-4">
+          <div className="flex gap-3 text-sm font-[600]">
             <label>
               <input
                 type="checkbox"

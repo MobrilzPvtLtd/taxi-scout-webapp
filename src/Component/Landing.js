@@ -49,111 +49,159 @@ const Landing = () => {
     token != null || undefined ? history("/home") : history("/login");
   };
 
-  
   return (
     <>
-      <div  className="container flex justify-between items-center w-full gap-10 ">
-        <div  className="w-1/2 border-2 border-black rounded-lg">
-          <div id="upper-box">
-            <img
-              src={taxi}
-              alt="taxi"
-              className="w-10 lg:w-20 object-cover rounded-lg"
-            />
-            <span
-             className="text-2xl font-semibold"
-            >
-              Ride
-            </span>
-            <div id="outline"></div>
+      <div className="container flex justify-between items-start mt-10 w-full gap-10  ">
+        <div className="flex flex-col gap-5 items-center ">
+          <div className="flex flex-col ">
+            <h1 className="text-black font-semibold">ORDER TAXI TODAY </h1>
+            <p className="text-lg px-5">
+              With the TaxiScout app, you can travel safely from A to B –
+              wherever you are. Are you traveling by wheelchair or need help
+              elsewhere? No problem, we take your individual
+              requests into account.
+            </p>
           </div>
+          <div className="w-4/5 border-2 border-black rounded-lg bg-white">
+            <div id="upper-box">
+              <img
+                src={taxi}
+                alt="taxi"
+                className="w-10 lg:w-20 object-cover rounded-lg"
+              />
+              <span className="text-2xl font-semibold">Ride</span>
+              <div className="bg-black h-1 w-10"></div>
+            </div>
 
-          {/* main box */}
-         
-          <div id="main-box2" className="">
-           
-              <div class="text-sm sm:text-2xl lg:text-4xl font-semibold">Request a ride now</div>
-            <div class="search-input ">
-              <div className="relative">
-                <InputItem type="source" />
-                <div id="current_location">
-                  <LocationButton setAddress={setAddress} />
+            {/* main box */}
+
+            <div className="">
+              <div class="text-sm sm:text-2xl lg:text-4xl font-semibold">
+                Request a ride now
+              </div>
+              <div class="">
+                <div className="relative px-10">
+                  <InputItem type="source" />
+                  <div className="absolute top-0 right-1 translate-y-3 sm:translate-y-1 md:translate-y-10 lg:translate-y-[-20%] lg:right-0 translate-x-[-60%]  ">
+                    <LocationButton setAddress={setAddress} />
+                  </div>
+                </div>
+                <div className="relative px-10">
+                <InputItem type="destination" />
                 </div>
               </div>
-              <InputItem type="destination" />
+              <button
+                className="w-2/5 my-2 px-10 bg-black text-white "
+                onClick={handleRedirect}
+              >
+                Search
+              </button>
             </div>
-            <button className="w-4/5 my-2 px-10 "
-              onClick={handleRedirect}
-            >
-              Search
-            </button>
           </div>
         </div>
-        <div className="bg_home_right w-1/2">
-          <img src={bg_1}></img>
+
+        <div className="hidden sm:w-full sm:inline-block">
+          <img className="rounded-lg" src={bg_1}></img>
         </div>
       </div>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <div className="flex justify-around items-center px-2 gap-3 sm:px-5 bg-white pt-5">
-        <div className="w-50">
-          <img className="rounded-xl" src={bg_2}></img>
+      <div className="bg-white pt-5 rounded-2xl flex flex-col justify-center items-center ">
+        <h1 className="uppercase font-semibold ">Smart Way to Order a Taxi</h1>
+        <div className="container flex justify-center items-center  bg-white pt-5 pb-5">
+          <div className="w-50 flex justify-center">
+            <img className="rounded-xl w-96 aspect-square" src={bg_2}></img>
+          </div>
+          <div className="w-50 flex flex-col justify-center items-center">
+            <h1 className="font-bold">You do not have to call</h1>
+            <p className=" px-10 text-xs sm:px-20 sm:text-xl lg:text-xl">
+              You do not like to make phone calls or do not have time to dial
+              the number? Or maybe you currently have poor network coverage?
+              Maybe you are also in a meeting and do not want to be disturb?
+              This is not a problem! You can comfortably order your taxi with
+              just a few clicks via our app.
+            </p>
+          </div>
         </div>
-        <div className="w-50">
-          <h1 className="font-bold">
-            Be your own driver, choose <br></br> your own hours, and earn{" "}
-            <br></br> what you need.
-          </h1>
-          <p className="px-2 text-sm sm:px-20 text-xl">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unk
-          </p>
-          <button type="button" className="egFkwj mt-2">
-            Click me
-          </button>
+        <div className="container flex justify-center items-center  bg-white pt-5 pb-5">
+          <div className="w-50 flex flex-col justify-center items-center">
+            <h1 className="font-bold">
+              There is no extra <br></br>waiting time
+            </h1>
+            <p className="px-10 text-sm sm:px-20 text-xl">
+              You are in a hurry and need to get from point A to point B
+              quickly? Or are you on the road and do not have time to wait for a
+              taxi? Maybe you spontaneously decided to go out? With Taxi Scout
+              you have no extra waiting time - you can order a taxi via the app
+              and it will be at your doorstep in few minutes!
+            </p>
+          </div>
+          <div className="w-50 flex justify-center">
+            <img
+              src={bg_3}
+              width={700}
+              className="rounded-lg aspect-square w-96"
+            ></img>
+          </div>
         </div>
-      </div>
-      <div className="flex justify-around items-center ] pr-[5vw] bg-white pt-5 pb-5">
-        <div className="w-50">
-          <h1 className="font-bold">
-            Taxi Scout 24 extends its<br></br> services worldwide,<br></br>{" "}
-            catering to diverse locations.
-          </h1>
-          <p className="px-2 text-sm sm:px-20 text-xl">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unk
-          </p>
-          <button type="button" className="egFkwj mt-2">
-            Click me
-          </button>
+        <div className="container flex justify-center items-center bg-white pb-5">
+          <div className="w-50 flex justify-center">
+            <img
+              src={bg_4}
+              width={700}
+              className="rounded-xl w-96 aspect-square"
+            ></img>
+          </div>
+          <div className="w-50 flex flex-col justify-center items-center">
+            <h1 className="font-bold">
+              Everything is clear <br></br> and transparent
+            </h1>
+            <p className="px-10 text-sm sm:px-20 text-xl">
+              Probably this sounds familiar: You ordered your taxi, you've been
+              told estimated time, you are still waiting but your taxi is not
+              there yet, and nobody tells you why. With Tаxi Scout everything is
+              clear and transparent. Once you order a taxi, you will be able to
+              track its position in real time and get the estimated time of
+              arrival.
+            </p>
+          </div>
         </div>
-        <div className="w-50">
-          <img src={bg_3} width={700}className="rounded-lg"></img>
+        <div className="container flex justify-center items-center  bg-white pt-5 pb-5">
+          <div className="w-50 flex flex-col justify-center items-center">
+            <h1 className="font-bold">
+              Do you have special requests? <br></br> No problem!
+            </h1>
+            <p className="px-10 text-sm sm:px-20 text-xl">
+              You need to order a taxi to the train station or the airport? You
+              need a wheelchair accessible taxi? Whatever your situation is, we
+              fulfill your special requirements, just let us know!
+            </p>
+          </div>
+          <div className="w-50 flex justify-center">
+            <img
+              src={bg_3}
+              width={700}
+              className="rounded-lg w-96 aspect-square"
+            ></img>
+          </div>
         </div>
-      </div>
-      <div className="flex justify-around items-center ] pl-[5vw] bg-white pb-5">
-      <div className="w-50">
-          <img src={bg_4} width={700} className="rounded-xl"></img>
+        <div className="container flex justify-center items-center ] pl-20 bg-white pb-5">
+          <div className="w-50 flex justify-center">
+            <img
+              src={bg_4}
+              width={700}
+              className="rounded-xl w-96 aspect-square"
+            ></img>
+          </div>
+          <div className="w-50 flex flex-col justify-center items-center">
+            <h1 className="font-bold">
+              We accept credit cards <br></br>and cash payments
+            </h1>
+            <p className="px-10 text-sm sm:px-20 text-xl">
+              You have ordered a taxi and have no cash? No problem! You can
+              easily pay by credit card. Our paying system accepts all
+              credit cards and cash.
+            </p>
+          </div>
         </div>
-        <div className="w-50">
-          <h1 className="font-bold">
-            We Serve in ...<br></br> 
-          </h1>
-          <p className="px-2 text-sm sm:px-20 text-xl">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unk
-          </p>
-          <button type="button" className="egFkwj mt-2">
-            Click me
-          </button>
-        </div>
-       
       </div>
     </>
   );

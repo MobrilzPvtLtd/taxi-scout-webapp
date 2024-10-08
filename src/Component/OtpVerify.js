@@ -75,7 +75,7 @@ console.log("session value" ,email)
    console.log(" resend data ki value" , response)
    if (response.ok) {
     setMessage('An OTP has been resent to your email. Please check for the 6-digit code');
-    setTimer(30)
+    setTimer(60)
    
   } else {
     setMessage('Server Error');

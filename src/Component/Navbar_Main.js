@@ -60,7 +60,7 @@ function NavListMenu() {
         <MenuHandler>
           <Typography as="div" variant="small" className="font-medium">
             <ListItem
-              className="flex items-center gap-2 py-0 pr-4 font-medium text-gray-900"
+              className="flex items-center gap-2 py-0 pr-4 font-semibold text-gray-900 text-lg"
               selected={isMenuOpen || isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}
             >
@@ -118,7 +118,7 @@ function NavListMenu() {
           </Link>
         </MenuList>
       </Menu>
-      <div className="block lg:hidden">
+      <div className="block relative z-50 lg:hidden">
         <Collapse open={isMobileMenuOpen}>
           <Menu
             placement="bottom"
@@ -127,10 +127,8 @@ function NavListMenu() {
             open={openNestedMenu}
             handler={setopenNestedMenu}
           >
-            <MenuHandler className="flex items-center justify-between">
-              <MenuItem>
-                About Us
-              </MenuItem>
+            <MenuHandler className="flex items-center justify-between ">
+              <MenuItem>About Us</MenuItem>
             </MenuHandler>
             <MenuList className="block rounded-xl lg:hidden">
               {renderItems}
@@ -165,7 +163,7 @@ function NavListMenu2() {
         <MenuHandler>
           <Typography as="div" variant="small" className="font-medium">
             <ListItem
-              className="flex items-center gap-2 py-0 pr-4 font-medium text-gray-900"
+              className="flex items-center gap-2 py-0 pr-4  text-gray-900 font-bold text-lg"
               selected={isMenuOpen || isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}
             >
@@ -222,7 +220,7 @@ function NavListMenu2() {
           </Link>
         </MenuList>
       </Menu>
-      <div className="block lg:hidden">
+      <div className="block relative z-50 lg:hidden">
         <Collapse open={isMobileMenuOpen}>
           <Menu
             placement="bottom"
@@ -256,7 +254,7 @@ function NavListMenu2() {
 
 function NavList() {
   return (
-    <List className="mb-0 mt-0 p-0 lg:mb-0 lg:mt-0 lg:flex-row lg:p-1 text-gray-900">
+    <List className="mb-0 mt-0 p-0 lg:mb-0 lg:mt-0 lg:flex-row lg:p-1 text-gray-900 ">
       <Link to="/">
         <Typography
           as="a"
@@ -264,7 +262,7 @@ function NavList() {
           color="blue-gray"
           className="font-medium"
         >
-          <ListItem className="flex items-center gap-2 py-0 pr-4">
+          <ListItem className="flex items-center gap-2 py-0 pr-4 font-semibold text-lg">
             Home
           </ListItem>
         </Typography>
@@ -278,7 +276,7 @@ function NavList() {
           color="blue-gray"
           className="font-medium"
         >
-          <ListItem className="flex items-center gap-2 py-0 pr-4">
+          <ListItem className="flex items-center gap-2 py-0 pr-4 font-semibold text-lg">
             How It Works
           </ListItem>
         </Typography>
@@ -290,7 +288,7 @@ function NavList() {
           color="blue-gray"
           className="font-medium"
         >
-          <ListItem className="flex items-center gap-2 py-0 pr-4">
+          <ListItem className="flex items-center gap-2 py-0 pr-4 font-semibold text-lg">
             Blogs
           </ListItem>
         </Typography>
@@ -310,10 +308,10 @@ export function NavbarMain() {
       () => window.innerWidth >= 960 && setOpenNav(false)
     );
   }, []);
-
+  const token = sessionStorage.getItem("token");
   return (
     <Navbar className=" px-4 py-4" id="navbar_main_sticky">
-      <div className="flex items-center justify-between text-blue-gray-900 relative">
+      <div className="flex items-center justify-between text-blue-gray-900 relative ">
         {/* <Typography
           as="a"
           href="#"
@@ -323,31 +321,50 @@ export function NavbarMain() {
           Material Tailwind
         </Typography> */}
         <Link to="/">
-        <img src={logo} alt="logo" className="w-[8rem] translate-y-[-1rem] top-0 fixed"></img>
+          <img
+            src={logo}
+            alt="logo"
+            className="w-[8rem] translate-y-[-1rem] top-0 fixed"
+          ></img>
         </Link>
+        
         <div className="hidden lg:block">
           <NavList />
         </div>
-        <div className="hidden gap-2 lg:flex">
-          <Link to="/signup">
+        {token ? (
+          <div className="hidden gap-2 lg:flex">
             <Button
               variant="outlined"
               size="sm"
               className="w-[8rem] bg-black text-white font-semibold"
             >
-              Sign Up{" "}
+              Logout{" "}
             </Button>
-          </Link>
-          <Link to="/login">
-            <Button
-              variant="outlined"
-              size="sm"
-              className="w-[8rem] bg-black text-white font-semibold"
-            >
-              Log In
-            </Button>
-          </Link>
-        </div>
+          </div>
+        ) : (
+          <>
+            <div className="hidden gap-2 lg:flex">
+              <Link to="/signup">
+                <Button
+                  variant="outlined"
+                  size="sm"
+                  className="w-[8rem] bg-black text-white font-semibold"
+                >
+                  Sign Up{" "}
+                </Button>
+              </Link>
+              <Link to="/login">
+                <Button
+                  variant="outlined"
+                  size="sm"
+                  className="w-[8rem] bg-black text-white font-semibold"
+                >
+                  Log In
+                </Button>
+              </Link>
+            </div>
+          </>
+        )}
         <IconButton
           variant="text"
           className="lg:hidden w-10 h-10 flex justify-center items-center"

@@ -3,16 +3,16 @@ import logo from "../../../Images/logo.png"
  
 const LINKS = [
   {
-    title: "Product",
-    items: ["Overview", "Features", "Solutions", "Tutorials"],
-  },
-  {
     title: "Company",
-    items: ["About us", "Careers", "Press", "News"],
+    items: ["About Us", "Our Partners", "Pricing", "Our Team" , "Gallery"],
   },
   {
     title: "Resource",
-    items: ["Blog", "Newsletter", "Events", "Help center"],
+    items: ["How We Work", "Blogs"],
+  },
+  {
+    title: "Contact",
+    items: ["Contact Us", "FAQs", "Privacy Policy", "Terms Of Use" , "Terms Of Service"],
   },
 ];
  
@@ -23,24 +23,25 @@ export function Footer() {
     <footer className="relative w-full bg-[#2c2c2c]">
       <div className="mx-auto w-full max-w-7xl px-8">
         <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
-        <img src={logo} alt="logo" className="w-[5rem]"></img>
+        <img src={logo} alt="logo" className="w-48"></img>
           <div className="grid grid-cols-3 justify-between gap-4">
             {LINKS.map(({ title, items }) => (
               <ul key={title}>
                 <Typography
-                  variant="small"
-                  color="white"
-                  className="mb-3 font-medium opacity-80"
+                    as="a"
+                    href="#"
+                    color="white"
+                    className="py-2 font-semibold transition-colors hover:text-blue-gray-900"
                 >
                   {title}
                 </Typography>
                 {items.map((link) => (
                   <li key={link}>
                     <Typography
-                      as="a"
-                      href="#"
+                    
+                      variant="small"
                       color="white"
-                      className="py-1.5 font-semibold transition-colors hover:text-blue-gray-900"
+                      className="mb-1 font-medium opacity-80"
                     >
                       {link}
                     </Typography>

@@ -13,8 +13,8 @@ function GoogleMapSection() {
   const {destination ,setDestination} = useContext(DestinationContext)
 
   const containerStyle = {
-      width: '1300px',
-      height: '800px'
+      width: '100%',
+      height: '100%'
     };
     
     

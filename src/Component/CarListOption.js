@@ -20,7 +20,6 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { Axios } from "axios";
-import DriverSearchBox from "./DriverSearchBox";
 import MyTimer from "./MyTimer";
 import InputItem from "./InputItem";
 import { SourceContext } from "../Context/SourceContext";
@@ -488,7 +487,7 @@ function CarListOption({
     <>
       {create == false ? (
         <div className="mt-5 pt-7 ">
-          <h2 className="text-[22px] font-bold">Recommended</h2>
+          <h2 className="text-2xl font-bold">Recommended</h2>
           {/* panga starts */}
           {cars == true ? (
             <div>
@@ -529,12 +528,12 @@ function CarListOption({
 
           {/* select section starts */}
           <div className="flex justify-center  mt-4 bottom-5 bg-[#faf6ae]  items-center">
-            <span className="text-[18px] w-[400px] mb-2 font-bold text-md underline">
+            <span className="text-md w-full mb-2 font-bold text-md underline">
               Schedule Your Request For
             </span>
 
             <span
-              className="mb-2 w-1/2 text-[16px] font-bold underline cursor-pointer transition-all hover:scale-110"
+              className="mb-2 w-1/2 text-md font-bold underline cursor-pointer transition-all hover:scale-110"
               // handleOnClick={(()=>setCreate(true)) }
               onClick={() => {
                 setSchedule(true);
@@ -546,12 +545,12 @@ function CarListOption({
           {selectedCar?.name ? (
             <div>
               <div className="flex justify-center  mt-4 bottom-5 bg-[#faf6ae] p-3 shadow-xl rounded w-full items-center">
-                <h2 className="text-[20px] w-[400px]  mb-2 font-bold text-md">
+                <h2 className="text-md w-48  mb-2 font-bold text-md">
                   Make Request For
                 </h2>
 
                 <button
-                  className="p-3 bg-black text-white rounded-lg text-[18px] font-bold px-3"
+                  className="p-3 bg-black text-white rounded-lg text-md font-bold w-fit px-5"
                   onClick={handleOnChange}
                 >
                   {selectedCar.name}

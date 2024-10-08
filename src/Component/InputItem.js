@@ -3,7 +3,6 @@ import { SourceContext } from "../Context/SourceContext";
 import { DestinationContext } from "../Context/DestinationContext";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import LATLNG_State from "../Context/LATLNG_State";
-import DriverSearchBox from "./DriverSearchBox";
 import LocationButton from "./LocationButton";
 
 function InputItem(type, getData) {
