@@ -23,9 +23,7 @@ margin-top: 2vw;
     background-size:cover;
     /* background-position: 10% -2.5% !important; */
     background-repeat: no-repeat !important; 
-    width: 100vw;
-    min-height: 100vh;
-    height: auto;
+   
     /* margin-top: -35px; */
     /* position: relative; */
   }

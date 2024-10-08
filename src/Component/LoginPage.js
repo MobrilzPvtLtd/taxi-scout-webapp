@@ -68,7 +68,7 @@ if (userType === "user"){
 
   return (
     <div className='' id='banner_img_home'>
-    <div className="container login_page_main">
+    <div className="container flex justify-end items-center min-h-[100vh] min-w-full">
     {(otp_visible== true)?(
         <div id="otp_verify">
           <OtpVerify_Login />

@@ -219,7 +219,7 @@ function SignupPage() {
 
   return (
     <>
-      <div id="signup_page_main">
+      <div id="banner_img_home"  >
         {otp_visible == true ? (
           <div id="otp_verify">
             <OtpVerify />
@@ -227,7 +227,7 @@ function SignupPage() {
         ) : (
           <div>
             {userType === "user" ? (
-              <div className="container sign_up_page_main p-5 ">
+              <div className="container flex justify-end items-center ">
                 <div className="signup-container">
                   <h1 className="text-white">Sign Up</h1>
                   <div className="signup-options flex-row gap-3">
@@ -378,7 +378,7 @@ function SignupPage() {
                 </div>
               </div>
             ) : (
-              <div className="container sign_up_page_main">
+              <div className="container flex justify-end items-center">
                 <div className="signup-container">
                   <h1 className="text-white">Sign Up</h1>
                   <div className="signup-options flex gap-3">

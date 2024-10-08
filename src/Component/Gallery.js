@@ -16,7 +16,7 @@ useEffect(()=>{
   return (
     
     <div>
-      <div className="gallarymain">
+      <div className="container mt-16 sm:mt-10 md:mt-5 lg:mt-5 xl:mt-0">
         <div className="gallary001 container">
           <div className="gheading">
             <h2>Exploring The World</h2>

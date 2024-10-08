@@ -18,10 +18,10 @@ useEffect(()=>{
 
   return (
     <div className="container-xxl py-6 pb-5" id="team">
-      <div className="container">
+      <div className="container mt-16 sm:mt-10 lg:mt-2">
         <div className="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
           <div className="col-lg-6">
-            <h1 className="display-5 mb-0">Team Members</h1>
+            <h1 className="display-5 mb-0 font-medium">Team Members</h1>
           </div>
          
         </div>

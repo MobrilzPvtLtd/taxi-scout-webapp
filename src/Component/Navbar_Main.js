@@ -49,6 +49,7 @@ function NavListMenu() {
     </a>
   ));
 
+ 
   return (
     <React.Fragment>
       <Menu
@@ -308,7 +309,15 @@ export function NavbarMain() {
       () => window.innerWidth >= 960 && setOpenNav(false)
     );
   }, []);
-  const token = sessionStorage.getItem("token");
+  let token = sessionStorage.getItem("token");
+  const handleLogout =()=>{
+    sessionStorage.removeItem("token");
+    // token = null;
+    window.location.reload();
+
+    console.log("token " , token)
+
+  }
   return (
     <Navbar className=" px-4 py-4" id="navbar_main_sticky">
       <div className="flex items-center justify-between text-blue-gray-900 relative ">
@@ -337,6 +346,7 @@ export function NavbarMain() {
               variant="outlined"
               size="sm"
               className="w-[8rem] bg-black text-white font-semibold"
+              onClick={handleLogout}
             >
               Logout{" "}
             </Button>

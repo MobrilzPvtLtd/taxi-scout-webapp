@@ -92,7 +92,7 @@ function App() {
                 </div>
                 {showPopup && <ChatPopup />}
                 {/* <MainPage/> */}
-                <div className="container">
+                <div className="w-full">
                   <Routes>
                     {/* <Route path = "/" element = {<Login/>} /> */}
                     <Route path="/home" element={<Home />} />
