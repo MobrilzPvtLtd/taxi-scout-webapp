@@ -51,10 +51,12 @@ const Landing = () => {
 
   return (
     <>
-      <div className="py-20 sm:container flex justify-between items-start mt-10 w-full gap-10  ">
-        <div className="flex flex-col gap-5 items-center ">
+      <div className="container py-20 mt-5 px-2 sm:flex justify-between items-start mt-10 w-full gap-10  ">
+        <div className="flex flex-col gap-5 items-center justify-center">
           <div className="flex flex-col ">
-            <h1 className="text-black font-semibold text-2xl sm:text-3xl md:4xl">ORDER TAXI TODAY </h1>
+            <h1 className="text-black font-semibold text-2xl sm:text-3xl md:4xl">
+              ORDER TAXI TODAY{" "}
+            </h1>
             <p className="text-lg px-5 text-justify">
               With the TaxiScout app, you can travel safely from A to B –
               wherever you are. Are you traveling by wheelchair or need help
@@ -62,7 +64,7 @@ const Landing = () => {
               requests into account.
             </p>
           </div>
-          <div className="w-4/5 border-2 border-black rounded-lg bg-white">
+          <div className="p-3 border-2 border-black rounded-lg bg-white">
             <div id="upper-box">
               <img
                 src={taxi}
@@ -82,7 +84,7 @@ const Landing = () => {
               <div class="">
                 <div className="relative px-10">
                   <InputItem type="source" />
-                  <div className="absolute top-0 right-1 translate-y-3 sm:translate-y-1 md:translate-y-10 lg:translate-y-[-20%] lg:right-0 translate-x-[-60%]  ">
+                  <div className="absolute top-0 right-1 translate-y-2 sm:translate-y-0 md:translate-y-1 lg:translate-y-[-10%] lg:right-0 translate-x-[-60%]  ">
                     <LocationButton setAddress={setAddress} />
                   </div>
                 </div>
@@ -100,12 +102,15 @@ const Landing = () => {
           </div>
         </div>
 
-        <div className="hidden sm:w-full sm:inline-block">
-          <img className="rounded-lg" src={bg_1}></img>
+        <div className="hidden lg:flex items-center w-full h-full justify-center xl:w-2/3 2xl:w-1/3
+         ">
+          <img className="rounded-lg " src={bg_1}></img>
         </div>
       </div>
       <div className="bg-white pt-5 rounded-2xl flex flex-col justify-center items-center ">
-        <h1 className="uppercase font-semibold text-lg sm:text-xl md:text-2xl lg:text-4xl ">Smart Way to Order a Taxi</h1>
+        <h1 className="uppercase font-semibold text-lg sm:text-xl md:text-2xl lg:text-4xl ">
+          Smart Way to Order a Taxi
+        </h1>
         <div className="px-3 sm:container flex justify-center items-center  bg-white pt-5 pb-5 gap-3">
           <div className="w-50 flex justify-center">
             <img className="rounded-xl w-96 aspect-square" src={bg_2}></img>
