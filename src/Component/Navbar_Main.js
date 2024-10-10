@@ -24,18 +24,26 @@ import { Link } from "react-router-dom";
 const nestedMenuItems = [
   {
     title: "About Us",
+    link: "/about-us",
   },
   {
     title: "Our Partners",
+    link: "/our-partner",
   },
   {
     title: "Pricing",
+    link: "/pricing",
+
   },
   {
     title: "Our Team",
+    link: "/our-team",
+
   },
   {
     title: "Gallery",
+    link: "/gallery",
+
   },
 ];
 
@@ -43,10 +51,10 @@ function NavListMenu() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [openNestedMenu, setopenNestedMenu] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
-  const renderItems = nestedMenuItems.map(({ title }, key) => (
-    <a href="#" key={key}>
+  const renderItems = nestedMenuItems.map(({ title , link }, key) => (
+    <Link href={link} key={key}>
       <MenuItem>{title}</MenuItem>
-    </a>
+    </Link>
   ));
 
  
@@ -319,7 +327,7 @@ export function NavbarMain() {
 
   }
   return (
-    <Navbar className=" px-4 py-4" id="navbar_main_sticky">
+    <Navbar className="sm:px-4 py-4" id="navbar_main_sticky">
       <div className="flex items-center justify-between text-blue-gray-900 relative ">
         {/* <Typography
           as="a"
@@ -388,7 +396,9 @@ export function NavbarMain() {
         </IconButton>
       </div>
       <Collapse open={openNav}>
+      <div className="pt-3">
         <NavList />
+        </div>
         <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden text-gray-900">
           <Link to="/signup">
             {" "}
