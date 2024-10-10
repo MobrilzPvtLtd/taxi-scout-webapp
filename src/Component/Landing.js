@@ -110,6 +110,7 @@ const Landing = () => {
         </div>
       </div>
       <div className="bg-white pt-5 rounded-2xl flex flex-col justify-center items-center ">
+        <div className="px-0 sm:container">
         <h1 className="uppercase font-semibold text-lg sm:text-xl md:text-2xl lg:text-4xl ">
           Smart Way to Order a Taxi
         </h1>
@@ -210,6 +211,7 @@ const Landing = () => {
               credit cards and cash.
             </p>
           </div>
+        </div>
         </div>
       </div>
     </>
