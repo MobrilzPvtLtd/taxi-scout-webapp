@@ -51,11 +51,11 @@ const Landing = () => {
 
   return (
     <>
-      <div className="container flex justify-between items-start mt-10 w-full gap-10  ">
+      <div className="py-20 sm:container flex justify-between items-start mt-10 w-full gap-10  ">
         <div className="flex flex-col gap-5 items-center ">
           <div className="flex flex-col ">
-            <h1 className="text-black font-semibold">ORDER TAXI TODAY </h1>
-            <p className="text-lg px-5">
+            <h1 className="text-black font-semibold text-2xl sm:text-3xl md:4xl">ORDER TAXI TODAY </h1>
+            <p className="text-lg px-5 text-justify">
               With the TaxiScout app, you can travel safely from A to B –
               wherever you are. Are you traveling by wheelchair or need help
               elsewhere? No problem, we take your individual
@@ -87,7 +87,7 @@ const Landing = () => {
                   </div>
                 </div>
                 <div className="relative px-10">
-                <InputItem type="destination" />
+                  <InputItem type="destination" />
                 </div>
               </div>
               <button
@@ -105,14 +105,16 @@ const Landing = () => {
         </div>
       </div>
       <div className="bg-white pt-5 rounded-2xl flex flex-col justify-center items-center ">
-        <h1 className="uppercase font-semibold ">Smart Way to Order a Taxi</h1>
-        <div className="container flex justify-center items-center  bg-white pt-5 pb-5">
+        <h1 className="uppercase font-semibold text-lg sm:text-xl md:text-2xl lg:text-4xl ">Smart Way to Order a Taxi</h1>
+        <div className="px-3 sm:container flex justify-center items-center  bg-white pt-5 pb-5 gap-3">
           <div className="w-50 flex justify-center">
             <img className="rounded-xl w-96 aspect-square" src={bg_2}></img>
           </div>
           <div className="w-50 flex flex-col justify-center items-center">
-            <h1 className="font-bold">You do not have to call</h1>
-            <p className=" px-10 text-xs sm:px-20 sm:text-xl lg:text-xl">
+            <h1 className="font-bold text-sm sm:text-xl md:text-2xl lg:text-4xl">
+              You do not have to call
+            </h1>
+            <p className=" px-0 text-justify text-xs sm:px-20 sm:text-md  md:text-xl lg:px-10 lg:text-xl">
               You do not like to make phone calls or do not have time to dial
               the number? Or maybe you currently have poor network coverage?
               Maybe you are also in a meeting and do not want to be disturb?
@@ -121,12 +123,12 @@ const Landing = () => {
             </p>
           </div>
         </div>
-        <div className="container flex justify-center items-center  bg-white pt-5 pb-5">
+        <div className="px-3 sm:container flex justify-center items-center  bg-white pt-2 pb-2 gap-3">
           <div className="w-50 flex flex-col justify-center items-center">
-            <h1 className="font-bold">
+            <h1 className="font-bold text-sm sm:text-xl md:text-2xl lg:text-4xl">
               There is no extra <br></br>waiting time
             </h1>
-            <p className="px-10 text-sm sm:px-20 text-xl">
+            <p className="px-0 text-justify text-xs sm:px-20 sm:text-md  md:text-xl lg:px-10 lg:text-xl">
               You are in a hurry and need to get from point A to point B
               quickly? Or are you on the road and do not have time to wait for a
               taxi? Maybe you spontaneously decided to go out? With Taxi Scout
@@ -142,7 +144,7 @@ const Landing = () => {
             ></img>
           </div>
         </div>
-        <div className="container flex justify-center items-center bg-white pb-5">
+        <div className="px-3 sm:container flex justify-center items-center  bg-white pt-2 pb-2 gap-3">
           <div className="w-50 flex justify-center">
             <img
               src={bg_4}
@@ -151,10 +153,10 @@ const Landing = () => {
             ></img>
           </div>
           <div className="w-50 flex flex-col justify-center items-center">
-            <h1 className="font-bold">
+            <h1 className="font-bold text-sm sm:text-xl md:text-2xl lg:text-4xl">
               Everything is clear <br></br> and transparent
             </h1>
-            <p className="px-10 text-sm sm:px-20 text-xl">
+            <p className="px-0 text-justify text-xs sm:px-20 sm:text-md  md:text-xl lg:px-10 lg:text-xl">
               Probably this sounds familiar: You ordered your taxi, you've been
               told estimated time, you are still waiting but your taxi is not
               there yet, and nobody tells you why. With Tаxi Scout everything is
@@ -164,12 +166,12 @@ const Landing = () => {
             </p>
           </div>
         </div>
-        <div className="container flex justify-center items-center  bg-white pt-5 pb-5">
+        <div className="px-3 sm:container flex justify-center items-center  bg-white pt-2 pb-2 gap-3">
           <div className="w-50 flex flex-col justify-center items-center">
-            <h1 className="font-bold">
+            <h1 className="font-bold text-sm sm:text-xl md:text-2xl lg:text-4xl">
               Do you have special requests? <br></br> No problem!
             </h1>
-            <p className="px-10 text-sm sm:px-20 text-xl">
+            <p className="px-0 text-justify text-xs sm:px-20 sm:text-md  md:text-xl lg:px-10 lg:text-xl">
               You need to order a taxi to the train station or the airport? You
               need a wheelchair accessible taxi? Whatever your situation is, we
               fulfill your special requirements, just let us know!
@@ -183,7 +185,7 @@ const Landing = () => {
             ></img>
           </div>
         </div>
-        <div className="container flex justify-center items-center ] pl-20 bg-white pb-5">
+        <div className="px-3 sm:container flex justify-center items-center  bg-white pt-2 pb-2 gap-3">
           <div className="w-50 flex justify-center">
             <img
               src={bg_4}
@@ -192,10 +194,10 @@ const Landing = () => {
             ></img>
           </div>
           <div className="w-50 flex flex-col justify-center items-center">
-            <h1 className="font-bold">
+            <h1 className="font-bold text-sm sm:text-xl md:text-2xl lg:text-4xl">
               We accept credit cards <br></br>and cash payments
             </h1>
-            <p className="px-10 text-sm sm:px-20 text-xl">
+            <p className="px-0 text-justify text-xs sm:px-20 sm:text-md  md:text-xl lg:px-10 lg:text-xl">
               You have ordered a taxi and have no cash? No problem! You can
               easily pay by credit card. Our paying system accepts all
               credit cards and cash.
