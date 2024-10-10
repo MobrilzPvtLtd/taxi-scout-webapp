@@ -52,7 +52,7 @@ const Landing = () => {
   return (
     <>
       <div className="container py-20 mt-5 px-2 sm:flex justify-between items-start sm:mt-10 gap-10  ">
-        <div className="px-2 flex flex-col-reverse lg:container lg:flex-col gap-5 items-center justify-center">
+        <div className="px-2 flex flex-col-reverse lg:container lg:w-1/2 lg:flex-col gap-5 items-center justify-center">
           <div className="flex flex-col ">
             <h1 className="text-black font-semibold text-2xl sm:text-3xl md:4xl">
               ORDER TAXI TODAY{" "}
@@ -64,7 +64,7 @@ const Landing = () => {
               requests into account.
             </p>
           </div>
-          <div className="w-full p-3 border-2 border-black rounded-lg bg-white">
+          <div className="w-4/5 p-3 border-2 border-black rounded-lg bg-white">
             <div id="upper-box">
               <img
                 src={taxi}
@@ -103,10 +103,10 @@ const Landing = () => {
         </div>
 
         <div
-          className="hidden lg:flex items-center w-full h-full justify-center xl:w-2/3 2xl:w-2/3
+          className="hidden lg:flex items-center justify-center xl:w-1/2
          "
         >
-          <img className="rounded-lg " src={bg_1}></img>
+          <img className="rounded-lg w-3/5" src={bg_1}></img>
         </div>
       </div>
       <div className="bg-white pt-5 rounded-2xl flex flex-col justify-center items-center ">
