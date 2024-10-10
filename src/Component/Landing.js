@@ -51,20 +51,20 @@ const Landing = () => {
 
   return (
     <>
-      <div className="container py-20 mt-5 px-2 sm:flex justify-between items-start mt-10 w-full gap-10  ">
-        <div className="flex flex-col gap-5 items-center justify-center">
+      <div className="container py-20 mt-5 px-2 sm:flex justify-between items-start sm:mt-10 gap-10  ">
+        <div className="px-2 flex flex-col-reverse lg:container lg:flex-col gap-5 items-center justify-center">
           <div className="flex flex-col ">
             <h1 className="text-black font-semibold text-2xl sm:text-3xl md:4xl">
               ORDER TAXI TODAY{" "}
             </h1>
-            <p className="text-lg px-5 text-justify">
+            <p className="text-lg px-10 text-justify">
               With the TaxiScout app, you can travel safely from A to B –
               wherever you are. Are you traveling by wheelchair or need help
               elsewhere? No problem, we take your individual
               requests into account.
             </p>
           </div>
-          <div className="p-3 border-2 border-black rounded-lg bg-white">
+          <div className="w-full p-3 border-2 border-black rounded-lg bg-white">
             <div id="upper-box">
               <img
                 src={taxi}
@@ -84,7 +84,7 @@ const Landing = () => {
               <div class="">
                 <div className="relative px-10">
                   <InputItem type="source" />
-                  <div className="absolute top-0 right-1 translate-y-2 sm:translate-y-0 md:translate-y-1 lg:translate-y-[-10%] lg:right-0 translate-x-[-60%]  ">
+                  <div className="absolute top-0 right-1 translate-y-2 sm:translate-y-0 md:translate-y-1 lg:translate-y-[-10%] lg:right-0 translate-x-[-60%] ">
                     <LocationButton setAddress={setAddress} />
                   </div>
                 </div>
@@ -102,8 +102,10 @@ const Landing = () => {
           </div>
         </div>
 
-        <div className="hidden lg:flex items-center w-full h-full justify-center xl:w-2/3 2xl:w-1/3
-         ">
+        <div
+          className="hidden lg:flex items-center w-full h-full justify-center xl:w-2/3 2xl:w-2/3
+         "
+        >
           <img className="rounded-lg " src={bg_1}></img>
         </div>
       </div>
@@ -111,7 +113,7 @@ const Landing = () => {
         <h1 className="uppercase font-semibold text-lg sm:text-xl md:text-2xl lg:text-4xl ">
           Smart Way to Order a Taxi
         </h1>
-        <div className="px-3 sm:container flex justify-center items-center  bg-white pt-5 pb-5 gap-3">
+        <div className="px-3 sm:container flex justify-center items-center  bg-white pt-5 pb-5 gap-5">
           <div className="w-50 flex justify-center">
             <img className="rounded-xl w-96 aspect-square" src={bg_2}></img>
           </div>
@@ -128,7 +130,7 @@ const Landing = () => {
             </p>
           </div>
         </div>
-        <div className="px-3 sm:container flex justify-center items-center  bg-white pt-2 pb-2 gap-3">
+        <div className="px-3 sm:container flex justify-center items-center  bg-white pt-2 pb-2 gap-5">
           <div className="w-50 flex flex-col justify-center items-center">
             <h1 className="font-bold text-sm sm:text-xl md:text-2xl lg:text-4xl">
               There is no extra <br></br>waiting time
@@ -149,7 +151,7 @@ const Landing = () => {
             ></img>
           </div>
         </div>
-        <div className="px-3 sm:container flex justify-center items-center  bg-white pt-2 pb-2 gap-3">
+        <div className="px-3 sm:container flex justify-center items-center  bg-white pt-2 pb-2 gap-5">
           <div className="w-50 flex justify-center">
             <img
               src={bg_4}
@@ -171,7 +173,7 @@ const Landing = () => {
             </p>
           </div>
         </div>
-        <div className="px-3 sm:container flex justify-center items-center  bg-white pt-2 pb-2 gap-3">
+        <div className="px-3 sm:container flex justify-center items-center  bg-white pt-2 pb-2 gap-5">
           <div className="w-50 flex flex-col justify-center items-center">
             <h1 className="font-bold text-sm sm:text-xl md:text-2xl lg:text-4xl">
               Do you have special requests? <br></br> No problem!
@@ -190,7 +192,7 @@ const Landing = () => {
             ></img>
           </div>
         </div>
-        <div className="px-3 sm:container flex justify-center items-center  bg-white pt-2 pb-2 gap-3">
+        <div className="px-3 sm:container flex justify-center items-center  bg-white pt-2 pb-2 gap-5">
           <div className="w-50 flex justify-center">
             <img
               src={bg_4}
