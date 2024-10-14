@@ -1,18 +1,18 @@
 // src/ContactUs.js
-import axios from 'axios';
-import React, { useState } from 'react';
+import axios from "axios";
+import React, { useState } from "react";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    mobile: '',
-    country: '',
-    address: '',
-    state: '',
-    pincode: '',
-    subject: '',
-    message: '',
+    name: "",
+    email: "",
+    mobile: "",
+    country: "",
+    address: "",
+    state: "",
+    pincode: "",
+    subject: "",
+    message: "",
   });
 
   const [responseMessage, setResponseMessage] = useState(null);
@@ -31,44 +31,61 @@ const ContactUs = () => {
     setResponseMessage(null);
 
     try {
-      const response = await axios.post(`${url}/api/v1/contact`, formData , {
+      const response = await axios.post(`${url}/api/v1/contact`, formData, {
         headers: {
-          'Content-Type': 'application/json',
-        }
+          "Content-Type": "application/json",
+        },
       });
-console.log("response" , response)
+      console.log("response", response);
       if (response.success) {
-        setResponseMessage({ type: 'success', text: 'Your message has been sent successfully!' });
+        setResponseMessage({
+          type: "success",
+          text: "Your message has been sent successfully!",
+        });
         setFormData({
-          name: '',
-          email: '',
-          mobile: '',
-          country: '',
-          address: '',
-          state: '',
-          pincode: '',
-          subject: '',
-          message: '',
+          name: "",
+          email: "",
+          mobile: "",
+          country: "",
+          address: "",
+          state: "",
+          pincode: "",
+          subject: "",
+          message: "",
         });
       } else {
         const errorData = await response.json();
-        setResponseMessage({ type: 'error', text: errorData.message || 'Something went wrong.' });
+        setResponseMessage({
+          type: "error",
+          text: errorData.message || "Something went wrong.",
+        });
       }
     } catch (error) {
-      setResponseMessage({ type: 'error', text: error.message });
+      setResponseMessage({ type: "error", text: error.message });
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div id='banner_img_home' className="bg-gradient-to-r from-yellow-500 to-orange-500 flex items-center justify-end min-h-screen p-4 w-full ">
-      <div className="container bg-[#00000080]  shadow-lg rounded-lg p-8 w-full max-w-lg animate-fade-in ">
-        <h2 className="text-2xl font-bold mb-6 text-center text-white">Contact Us</h2>
-        <form onSubmit={handleSubmit} className="space-y-4 grid grid-cols-2 gap-3">
+    <div
+      id="banner_img_home"
+      className="bg-gradient-to-r from-yellow-500 to-orange-500 flex items-center justify-center min-h-screen py-5 w-full "
+    >
+      <div className="p-5 bg-[#00000080]  shadow-lg rounded-lg mt-5 w-full max-w-lg animate-fade-in ">
+        <h2 className="text-2xl font-bold mb-6 text-center text-white">
+          Contact Us
+        </h2>
+        <form onSubmit={handleSubmit}>
           {/* Name Field */}
+          <div className="space-y-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            
+          
           <div>
-            <label htmlFor="name" className="block text-sm font-semibold text-gray-100">
+            <label
+              htmlFor="name"
+              className="block text-sm font-semibold text-gray-100"
+            >
               Name
             </label>
             <input
@@ -82,8 +99,11 @@ console.log("response" , response)
               placeholder="Your Name"
             />
           </div>
-          <div className='mt-0'>
-            <label htmlFor="email" className="block text-sm font-semibold text-gray-100">
+          <div className="mt-0">
+            <label
+              htmlFor="email"
+              className="block text-sm font-semibold text-gray-100"
+            >
               Email
             </label>
             <input
@@ -100,7 +120,10 @@ console.log("response" , response)
 
           {/* Mobile Field */}
           <div>
-            <label htmlFor="mobile" className="block text-sm font-semibold text-gray-100">
+            <label
+              htmlFor="mobile"
+              className="block text-sm font-semibold text-gray-100"
+            >
               Mobile
             </label>
             <input
@@ -118,7 +141,10 @@ console.log("response" , response)
 
           {/* Country Field */}
           <div>
-            <label htmlFor="country" className="block text-sm font-semibold text-gray-100">
+            <label
+              htmlFor="country"
+              className="block text-sm font-semibold text-gray-100"
+            >
               Country
             </label>
             <input
@@ -135,7 +161,10 @@ console.log("response" , response)
 
           {/* Address Field */}
           <div>
-            <label htmlFor="address" className="block text-sm font-semibold text-gray-100">
+            <label
+              htmlFor="address"
+              className="block text-sm font-semibold text-gray-100"
+            >
               Address
             </label>
             <input
@@ -152,7 +181,10 @@ console.log("response" , response)
 
           {/* State Field */}
           <div>
-            <label htmlFor="state" className="block text-sm font-semibold text-gray-100">
+            <label
+              htmlFor="state"
+              className="block text-sm font-semibold text-gray-100"
+            >
               State
             </label>
             <input
@@ -169,7 +201,10 @@ console.log("response" , response)
 
           {/* Pincode Field */}
           <div>
-            <label htmlFor="pincode" className="block text-sm font-semibold text-gray-100">
+            <label
+              htmlFor="pincode"
+              className="block text-sm font-semibold text-gray-100"
+            >
               Pincode
             </label>
             <input
@@ -187,7 +222,10 @@ console.log("response" , response)
 
           {/* Subject Field */}
           <div>
-            <label htmlFor="subject" className="block text-sm font-semibold text-gray-100">
+            <label
+              htmlFor="subject"
+              className="block text-sm font-semibold text-gray-100"
+            >
               Subject
             </label>
             <input
@@ -201,43 +239,54 @@ console.log("response" , response)
               placeholder="Subject"
             />
           </div>
-<div className='flex flex-col justify-center items-center gap-3  w-96 '>
-          {/* Message Field */}
-          <div>
-            <label htmlFor="message" className="block text-sm font-semibold text-gray-100">
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows="4"
-              required
-              value={formData.message}
-              onChange={handleChange}
-              className="mt-1 block w-96 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="Message"
-            ></textarea>
+         
           </div>
+          <div className="">
+            {/* Message Field */}
+            <div className="flex flex-col justify-center items-center  my-4 ">
+              <label
+                htmlFor="message"
+                className=" text-sm font-semibold text-gray-100"
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                required
+                value={formData.message}
+                onChange={handleChange}
+                className="mt-1 w-full  px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                placeholder="Message"
+              ></textarea>
+            </div>
 
-          {/* Submit Button */}
-          <div>
-            <button
-              type="submit"
-              disabled={loading}
-              className={`w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm  text-black ${
-                loading
-                  ? 'bg-indigo-300 cursor-not-allowed'
-                  : 'bg-indigo-600 hover:bg-indigo-700'
-              } focus:outline-none focus:ring-2 focus:ring-indigo-500`}
-            >
-              {loading ? 'Sending...' : 'Send Message'}
-            </button>
-          </div>
+            {/* Submit Button */}
+            <div className="">
+              <button
+                type="submit"
+                disabled={loading}
+                className={`w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm  text-black ${
+                  loading
+                    ? "bg-indigo-300 cursor-not-allowed"
+                    : "bg-indigo-600 hover:bg-indigo-700"
+                } focus:outline-none focus:ring-2 focus:ring-indigo-500`}
+              >
+                {loading ? "Sending..." : "Send Message"}
+              </button>
+            </div>
           </div>
         </form>
         {/* Success/Error Message */}
         {responseMessage && (
-          <div className={`mt-4 text-center ${responseMessage.type === 'success' ? 'text-green-500' : 'text-red-500'}`}>
+          <div
+            className={`mt-4 text-center ${
+              responseMessage.type === "success"
+                ? "text-green-500"
+                : "text-red-500"
+            }`}
+          >
             {responseMessage.text}
           </div>
         )}

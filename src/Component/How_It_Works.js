@@ -32,14 +32,15 @@ const How_It_Works = () => {
           }
   return (
     <div id="how_it_works">
-      <div className="works-main container">
+      
+      <div className="bg-[#00000080] p-4 rounded-lg shadow-xl py-2 mt-5">
       <h1 className="mt-10 text-[50px] font-bold text-white ">How it Works ?</h1> 
         <div className="flex gap-5">
         <div className="work-left">
-          <button onClick={work} className="work-box">Type of trip</button>
-          <button onClick={work2} className="work-box">Enter your details</button>
-          <button onClick={work3} className="work-box">Choose your taxi</button>
-          <button onClick={work4} className="work-box">Make payment</button>
+          <button onClick={work} className="work-box mb-2">Type of trip</button>
+          <button onClick={work2} className="work-box mb-2">Enter your details</button>
+          <button onClick={work3} className="work-box mb-2">Choose your taxi</button>
+          <button onClick={work4} className="work-box mb-2">Make payment</button>
         </div>
         <div className="work-right">
           {(visible == 1)?(

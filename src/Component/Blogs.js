@@ -97,7 +97,8 @@ const BlogList = () => {
   }, []);
 
   return (
-    <div className="container mt-5">
+  
+    <div className="w-full mt-5">
       <Container>
         <div className="text-5xl font-semibold">Blogs</div>
         {/* <Stack direction={{ xs: 'column', xs: 'row' }} spacing={2}> */}
@@ -108,7 +109,7 @@ const BlogList = () => {
         </div>
         {/* </Stack> */}
       </Container>
-    </div>
+    </div> 
   );
 };
 

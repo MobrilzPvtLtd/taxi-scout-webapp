@@ -17,12 +17,12 @@ useEffect(()=>{
     
     <div>
       <div className="container mt-16 sm:mt-10 md:mt-5 lg:mt-5 xl:mt-0">
-        <div className="gallary001 container">
-          <div className="gheading">
-            <h2>Exploring The World</h2>
+        <div className="gallary001 container-fluid mt-5">
+          <div className="gheading text-center ">
+            <h1>Exploring The World</h1>
           </div>
           <div>
-            <p className="gtext001">
+            <p className=" text-center text-muted text-xl ">
               Far far away, behind the word mountains, far from the countries
               Vokalia and Consonantia, there live the blind texts. Separated
               they live in Bookmarksgrove right at the coast of the Semantics, a
@@ -30,7 +30,7 @@ useEffect(()=>{
             </p>
           </div>
           <div>
-            <p className="gtext002">
+            <p className="text-muted text-center text-xl">
               Far far away, behind the word mountains, far from the countries
               Vokalia and Consonantia, there live the blind texts.
             </p>
@@ -38,13 +38,26 @@ useEffect(()=>{
         </div>
       </div>
 
-      <div className="container gap-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  ">
+      {/* <div className="container gap-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  ">
        {galleryData?.map((item)=>(
         <div className="" key={item.id}>
-          <img className="w-full object-cover aspect-square rounded-3xl" src={item.image} alt={item.image}/>
+          <img className="w-100 h-50 object-cover aspect-square rounded-3xl" src={item.image} alt={item.image}/>
           </div>
        ))}
-      </div>
+      </div> */}
+
+
+<div className="mx-4 grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-2">
+  {galleryData?.map((item) => (
+    <div key={item.id} className="w-full">
+      <img 
+        className="w-full h-64 object-cover rounded-xl" 
+        src={item.image} 
+        alt={item.image}
+      />
+    </div>
+  ))}
+</div>
 
     </div>
   );

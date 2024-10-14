@@ -16,11 +16,11 @@ console.log("our price",response.data)
 },[])
 
   return (
-    <section class="bg-gradient-to-r from-yellow-500 to-orange-500 py-12 mt-12 h-[100vh]">
+    <section class="bg-gradient-to-r from-yellow-500 to-orange-500 py-12 mt-16  ">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-12">
       <div class="text-4xl font-extrabold text-black sm:text-5xl">
-        Choose Your Plan
+       <h1>  Choose Your Plan </h1>
       </div>
       <p class="mt-4 text-xl text-gray-700">
         Unlock the power of decentralized finance with our cutting-edge solutions.
@@ -59,7 +59,7 @@ console.log("our price",response.data)
             <span>Basic reporting</span>
           </li>
         </ul>
-        <a href="#" class="block w-full py-3 px-6 text-center rounded-md text-black font-semibold bg-gradient-to-r from-yellow-600 to-[#ffd91c] hover:from-purple-700 hover:to-indigo-700">
+        <a href="#" class="block w-full py-3 px-6 text-center rounded-md text-black font-semibold bg-gradient-to-r from-yellow-600 to-[#ffd91c] hover:from-yellow-700 hover:to-orange-400">
           Get Started
         </a>
       </div>))}
