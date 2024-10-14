@@ -76,7 +76,7 @@
   button:hover {
     background-color: #000 !important;
     color: #fff;
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
   }
   
   .signup-container {

@@ -42,7 +42,7 @@ const How_It_Works = () => {
           <button onClick={work3} className="work-box mb-2">Choose your taxi</button>
           <button onClick={work4} className="work-box mb-2">Make payment</button>
         </div>
-        <div className="work-right">
+        <div className="mt-5 work-right">
           {(visible == 1)?(
           <div className="text-box">Choose your trip One way, Round Trip, Airport Cabs</div>):null}
           {(visible == 2)?(
