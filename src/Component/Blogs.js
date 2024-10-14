@@ -97,10 +97,17 @@ const BlogList = () => {
   }, []);
 
   return (
-  
-    <div className="w-full mt-5">
-      <Container>
-        <div className="text-5xl font-semibold">Blogs</div>
+    <Container>
+   
+       <div className="row  mt-5  wow fadeInUp" data-wow-delay="0.1s">
+          <div className="col-lg-12">
+            <h1 className="display-5 mb-0 mt-5 text-center font-semibold">
+            Blogs
+            </h1>
+          </div>
+        </div>
+     
+        {/* <div className="text-5xl font-semibold">Blogs</div> */}
         {/* <Stack direction={{ xs: 'column', xs: 'row' }} spacing={2}> */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {blogsData?.map((blog, index) => (
@@ -109,7 +116,7 @@ const BlogList = () => {
         </div>
         {/* </Stack> */}
       </Container>
-    </div> 
+   
   );
 };
 

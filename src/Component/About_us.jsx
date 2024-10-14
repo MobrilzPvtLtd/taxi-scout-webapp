@@ -6,7 +6,7 @@ const About_us = () => {
     <div>
       <div className="">
         <div className="bg-gray-50 pt-10">
-          <div className="container mx-auto px-5">
+          <div className="container mx-auto px-2">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="flex items-center justify-center">
                 <img
