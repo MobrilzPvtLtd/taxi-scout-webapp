@@ -51,9 +51,9 @@ const Landing = () => {
 
   return (
     <>
-    <div className="pt-10">
-      <div className="pt-10 pb-2 mt-10 md:container px-2 sm:flex justify-between items-start sm:mt-0 gap-10 ">
-        <div className="px-2 flex flex-col-reverse lg:container lg:w-1/2 lg:flex-col gap-5 items-center justify-center">
+    <div className="pt-0 sm:mt-0 md:pt-10">
+      <div className="pb-2 md:container px-2 flex justify-center items-center gap-10 container ">
+        <div className="px-2 flex flex-col-reverse justify-center items-center lg:container lg:w-1/2 lg:flex-col gap-3 ">
           <div className="flex flex-col ">
             <h1 className="text-black font-semibold text-2xl sm:text-3xl md:4xl">
               ORDER TAXI TODAY{" "}
