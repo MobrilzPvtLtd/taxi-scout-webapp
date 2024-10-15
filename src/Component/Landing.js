@@ -58,7 +58,7 @@ const Landing = () => {
             <h1 className="uppercase font-semibold text-lg sm:text-xl md:text-2xl lg:text-4xl">
               ORDER TAXI TODAY{" "}
             </h1>
-            <p className="text-lg px-10 text-justify">
+            <p className="px-4 text-justify text-xs sm:px-20 sm:text-md  md:text-xl lg:px-10 lg:text-xl">
               With the TaxiScout app, you can travel safely from A to B –
               wherever you are. Are you traveling by wheelchair or need help
               elsewhere? No problem, we take your individual
