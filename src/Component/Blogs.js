@@ -97,26 +97,20 @@ const BlogList = () => {
   }, []);
 
   return (
-    <Container>
-   
-       <div className="row  mt-5  wow fadeInUp" data-wow-delay="0.1s">
-          <div className="col-lg-12">
-            <h1 className="display-5 mb-0 mt-5 text-center font-semibold">
+    <div className="flex flex-col items-center justify-center">
+      <div className="pt-10 fadeInUp" data-wow-delay="0.1s">
+        <div className="col-lg-12">
+          <h1 className="display-5 mb-0 mt-5 text-center font-semibold">
             Blogs
-            </h1>
-          </div>
+          </h1>
         </div>
-     
-        {/* <div className="text-5xl font-semibold">Blogs</div> */}
-        {/* <Stack direction={{ xs: 'column', xs: 'row' }} spacing={2}> */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {blogsData?.map((blog, index) => (
-            <BlogCard key={index} {...blog} />
-          ))}
-        </div>
-        {/* </Stack> */}
-      </Container>
-   
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        {blogsData?.map((blog, index) => (
+          <BlogCard key={index} {...blog} />
+        ))}
+      </div>
+    </div>
   );
 };
 
