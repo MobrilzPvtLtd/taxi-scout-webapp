@@ -24,32 +24,7 @@ const Our_Teams = () => {
             </h1>
           </div>
         </div>
-        {/* <div className="row g-4">
-          {team?.map((member) => (
-            <div
-              key={member.id}
-              className={`col-lg-4 col-md-6 wow fadeInUp`}
-              data-wow-delay={member.delay}
-            >
-              <div className="team-item position-relative">
-                <img className="img-fluid rounded-top w-full  h-[20rem]" src={member.image} alt="" />
-                <div className="team-text bg-white rounded-bottom p-4">
-                  <div className="flex flex-col gap-1 justify-center items-center">
-                    <h2 className="text-4xl">{member.name}</h2>
-                    <span>{member.title}</span>
-                    <span>{member.email}</span>
-                    <span>{member.mobile}</span>
-                  </div>
-                  <div className="relative">
-                  <FaArrowRight className="text-primary absolute" size={40} />
-                  <p className="pt-2">{member.description}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-         */}
+        
 
         <div className="row g-4">
           {team?.map((member) => (
@@ -61,7 +36,7 @@ const Our_Teams = () => {
               <div className=" mx-4 team-item position-relative h-full flex flex-col">
                 {/* Image Section */}
                 <img
-                  className="img-fluid rounded-t-lg w-full h-80 object-cover"
+                  className="rounded-t-lg w-full h-80 aspect-square object-fill"
                   src={member.image}
                   alt={member.name}
                 />
