@@ -78,13 +78,13 @@ const ContactUs = () => {
         </h2>
         <form onSubmit={handleSubmit}>
           {/* Name Field */}
-          <div className="space-y-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             
           
           <div>
             <label
               htmlFor="name"
-              className="block text-sm font-semibold text-gray-100"
+              className="hidden sm:block text-sm font-semibold text-gray-100"
             >
               Name
             </label>
@@ -102,7 +102,7 @@ const ContactUs = () => {
           <div className="mt-0">
             <label
               htmlFor="email"
-              className="block text-sm font-semibold text-gray-100"
+              className="hidden sm:block text-sm font-semibold text-gray-100"
             >
               Email
             </label>
@@ -122,7 +122,7 @@ const ContactUs = () => {
           <div>
             <label
               htmlFor="mobile"
-              className="block text-sm font-semibold text-gray-100"
+              className="hidden sm:block text-sm font-semibold text-gray-100"
             >
               Mobile
             </label>
@@ -143,7 +143,7 @@ const ContactUs = () => {
           <div>
             <label
               htmlFor="country"
-              className="block text-sm font-semibold text-gray-100"
+              className="hidden sm:block text-sm font-semibold text-gray-100"
             >
               Country
             </label>
@@ -163,7 +163,7 @@ const ContactUs = () => {
           <div>
             <label
               htmlFor="address"
-              className="block text-sm font-semibold text-gray-100"
+              className="hidden sm:block text-sm font-semibold text-gray-100"
             >
               Address
             </label>
@@ -183,7 +183,7 @@ const ContactUs = () => {
           <div>
             <label
               htmlFor="state"
-              className="block text-sm font-semibold text-gray-100"
+              className="hidden sm:block text-sm font-semibold text-gray-100"
             >
               State
             </label>
@@ -203,7 +203,7 @@ const ContactUs = () => {
           <div>
             <label
               htmlFor="pincode"
-              className="block text-sm font-semibold text-gray-100"
+              className="hidden sm:block text-sm font-semibold text-gray-100"
             >
               Pincode
             </label>
@@ -224,7 +224,7 @@ const ContactUs = () => {
           <div>
             <label
               htmlFor="subject"
-              className="block text-sm font-semibold text-gray-100"
+              className="hidden sm:block text-sm font-semibold text-gray-100"
             >
               Subject
             </label>
@@ -246,7 +246,7 @@ const ContactUs = () => {
             <div className="flex flex-col justify-center items-center  my-4 ">
               <label
                 htmlFor="message"
-                className=" text-sm font-semibold text-gray-100"
+                className="hidden sm:block text-sm font-semibold text-gray-100"
               >
                 Message
               </label>
