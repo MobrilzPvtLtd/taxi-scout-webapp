@@ -1,64 +1,69 @@
-import React, { useEffect, useState } from "react";
-import gimage1 from "../Images/Firefly a mexican woman booking a taxi in mexico 1920x1080 98531 (2).jpg"
-import gimage2 from "../Images/3adb4519-1285-4d49-89ac-fae6820278d2.avif"
+import React, { useState, useEffect, useRef } from 'react';
+import { Galleria } from 'primereact/galleria';
 import axios from "axios";
 const Gallery = () => {
   let url = "https://admin.taxiscout24.com";
+  const [images, setImages] = useState(null);
   const [galleryData , setGalleryData] = useState()
 useEffect(()=>{
 
   const handleGallery= async()=>{
     const response = await axios.get(`${url}/api/v1/gallery`)
     setGalleryData(response.data.data);
+    setImages(response.data.data);
   }
   handleGallery();
 },[])
+const [isOpen, setIsOpen] = useState(false);
+const [currentImage, setCurrentImage] = useState(null);
+
+const openModal = (image) => {
+  setCurrentImage(image);
+  setIsOpen(true);
+};
+
+const closeModal = () => {
+  setIsOpen(false);
+  setCurrentImage(null);
+};
+
   return (
     
-    <div>
-      <div className="container mt-16 sm:mt-10 md:mt-5 lg:mt-5 xl:mt-0">
-        <div className="gallary001 container-fluid mt-5">
-          <div className="gheading text-center ">
-            <h1>Exploring The World</h1>
+    <div className="container mx-auto px-4 py-8">
+      <h2 className="text-2xl font-bold mb-6 text-center">Image Gallery</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {galleryData?.map((image, index) => (
+          <div
+            key={index}
+            className="cursor-pointer"
+            onClick={() => openModal(image)}
+          >
+            <img
+              src={image.image}
+              alt={image.image}
+              className="w-full h-48 object-cover rounded shadow-lg hover:opacity-80 transition-opacity duration-300"
+            />
           </div>
-          <div>
-            <p className=" text-center text-muted text-xl ">
-              Far far away, behind the word mountains, far from the countries
-              Vokalia and Consonantia, there live the blind texts. Separated
-              they live in Bookmarksgrove right at the coast of the Semantics, a
-              large language ocean.
-            </p>
-          </div>
-          <div>
-            <p className="text-muted text-center text-xl">
-              Far far away, behind the word mountains, far from the countries
-              Vokalia and Consonantia, there live the blind texts.
-            </p>
-          </div>
-        </div>
+        ))}
       </div>
 
-      {/* <div className="container gap-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  ">
-       {galleryData?.map((item)=>(
-        <div className="" key={item.id}>
-          <img className="w-100 h-50 object-cover aspect-square rounded-3xl" src={item.image} alt={item.image}/>
+      {isOpen && currentImage && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+          <div className="relative">
+            <button
+              className="w-fit absolute top-0 right-0 mt-2 mr-2 text-white bg-black text-2xl font-bold"
+              onClick={closeModal}
+            >
+              x
+            </button>
+            <img
+              src={currentImage.image}
+              alt={currentImage.image}
+              className="w-full h-96 rounded"
+            />
           </div>
-       ))}
-      </div> */}
-
-
-<div className="mx-4 grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-2">
-  {galleryData?.map((item) => (
-    <div key={item.id} className="w-full">
-      <img 
-        className="w-full h-64 object-cover rounded-xl" 
-        src={item.image} 
-        alt={item.image}
-      />
-    </div>
-  ))}
-</div>
-
+        </div>
+      )}
     </div>
   );
 };

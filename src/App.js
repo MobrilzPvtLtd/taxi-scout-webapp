@@ -87,10 +87,10 @@ function App() {
               <LATLNG_State>
                 <NavbarMain id="navbar_main_sticky" />
 
-                <div className="chat-box" onClick={togglePopup}>
+                {/* <div className="chat-box" onClick={togglePopup}>
                   <div className="chat-header">Chat with us!</div>
-                </div>
-                {showPopup && <ChatPopup />}
+                </div> */}
+                {/* {showPopup && <ChatPopup />} */}
                 {/* <MainPage/> */}
                 <div className="w-full">
                   <Routes>
