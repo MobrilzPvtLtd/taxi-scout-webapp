@@ -55,7 +55,7 @@ const Landing = () => {
       <div className="pb-2 md:container px-2 flex justify-center items-center gap-10 container ">
         <div className="px-2 flex flex-col-reverse justify-center items-center lg:container lg:w-1/2 lg:flex-col gap-3 ">
           <div className="flex flex-col ">
-            <h1 className="text-black font-semibold text-2xl sm:text-3xl md:4xl">
+            <h1 className="uppercase font-semibold text-lg sm:text-xl md:text-2xl lg:text-4xl">
               ORDER TAXI TODAY{" "}
             </h1>
             <p className="text-lg px-10 text-justify">
@@ -110,12 +110,12 @@ const Landing = () => {
           <img className="rounded-lg w-3/5" src={bg_1}></img>
         </div>
       </div>
-      <div className="bg-white pt-5 rounded-2xl flex flex-col justify-center items-center ">
+      <div className="bg-white pt-3 sm:pt-4  rounded-2xl flex flex-col justify-center items-center ">
         <div className="px-0 sm:px-20">
         <h1 className="uppercase font-semibold text-lg sm:text-xl md:text-2xl lg:text-4xl ">
           Smart Way to Order a Taxi
         </h1>
-        <div className="px-3 sm:container flex justify-center items-center  bg-white pt-5 pb-5 gap-5">
+        <div className="px-3 pt-0 gap-3 sm:container flex justify-center items-center  bg-white sm:pt-3 pb-3 sm:gap-4">
           <div className="w-50 flex justify-center">
             <img className="rounded-xl w-96 aspect-square" src={bg_2}></img>
           </div>
@@ -132,7 +132,7 @@ const Landing = () => {
             </p>
           </div>
         </div>
-        <div className="px-3 sm:container flex justify-center items-center  bg-white pt-2 pb-2 gap-5">
+        <div className="px-3 pt-0 gap-3 sm:container flex justify-center items-center  bg-white sm:pt-3 pb-3 sm:gap-4">
           <div className="w-50 flex flex-col justify-center items-center">
             <h1 className="font-bold text-sm sm:text-xl md:text-2xl lg:text-4xl">
               There is no extra <br></br>waiting time
@@ -153,7 +153,7 @@ const Landing = () => {
             ></img>
           </div>
         </div>
-        <div className="px-3 sm:container flex justify-center items-center  bg-white pt-2 pb-2 gap-5">
+        <div className="px-3 pt-0 gap-3 sm:container flex justify-center items-center  bg-white sm:pt-3 pb-3 sm:gap-4">
           <div className="w-50 flex justify-center">
             <img
               src={bg_4}
@@ -175,7 +175,7 @@ const Landing = () => {
             </p>
           </div>
         </div>
-        <div className="px-3 sm:container flex justify-center items-center  bg-white pt-2 pb-2 gap-5">
+        <div className="px-3 pt-0 gap-3 sm:container flex justify-center items-center  bg-white sm:pt-3 pb-3 sm:gap-4">
           <div className="w-50 flex flex-col justify-center items-center">
             <h1 className="font-bold text-sm sm:text-xl md:text-2xl lg:text-4xl">
               Do you have special requests? <br></br> No problem!
@@ -194,7 +194,7 @@ const Landing = () => {
             ></img>
           </div>
         </div>
-        <div className="px-3 sm:container flex justify-center items-center  bg-white pt-2 pb-2 gap-5">
+        <div className="px-3 pt-0 gap-3 sm:container flex justify-center items-center  bg-white sm:pt-3 pb-3 sm:gap-4">
           <div className="w-50 flex justify-center">
             <img
               src={bg_4}
