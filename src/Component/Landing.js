@@ -51,7 +51,8 @@ const Landing = () => {
 
   return (
     <>
-      <div className="container py-20 mt-5 px-2 sm:flex justify-between items-start sm:mt-10 gap-10  ">
+    <div className="pt-10">
+      <div className="pt-10 pb-2 mt-10 md:container px-2 sm:flex justify-between items-start sm:mt-0 gap-10 ">
         <div className="px-2 flex flex-col-reverse lg:container lg:w-1/2 lg:flex-col gap-5 items-center justify-center">
           <div className="flex flex-col ">
             <h1 className="text-black font-semibold text-2xl sm:text-3xl md:4xl">
@@ -213,6 +214,7 @@ const Landing = () => {
           </div>
         </div>
         </div>
+      </div>
       </div>
     </>
   );
