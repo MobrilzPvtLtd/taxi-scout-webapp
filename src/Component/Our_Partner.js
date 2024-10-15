@@ -19,6 +19,7 @@ const Our_Partner = () => {
   }, []);
   return (
     <>
+    <div className="flex flex-col items-center justify-center">
       <div className="p-5 h-1/2 grid grid-cols-1 mt-16 sm:grid-cols-1">
         <div>
           <div className="flex flex-col justify-center gap-10">
@@ -36,32 +37,17 @@ const Our_Partner = () => {
         </div>
       </div>
 
-      {/* <div className="px-5 h-1/2 grid grid-cols-1  sm:grid-cols-1">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          {partners?.map(({ id, image }) => (
-            <div className="" key={id}>
-              <img
-                className="w-100 h-50 object-cover aspect-square rounded-3xl"
-                src={image}
-              />
-            </div>
-          ))}
-        </div>
-      </div> */}
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-2 justify-center items-center">
+      <div className="w-fit grid place-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-2 justify-center ">
         {partners?.map(({ id, image }) => (
-          <div
-            className="overflow-hidden rounded mx-4 md:mx-2  shadow-lg bg-white "
-            key={id}
-          >
+          <div className="overflow-hidden rounded md:mx-2  shadow-lg " key={id}>
             <img
-              className="w-full h-48 object-cover"
+              className="w-full h-52 aspect-square object-fill"
               src={image}
               alt="Card Image"
             />
           </div>
         ))}
+      </div>
       </div>
     </>
   );
