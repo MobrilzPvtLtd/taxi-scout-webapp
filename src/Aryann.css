@@ -594,8 +594,9 @@ button.price-btn007 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    border-radius: 20px;
+    /* padding: 20px; */
+    padding:70px 55px;
+    border-radius: 5px;
     /* width: 50%; */
 }
 .login-container h1{

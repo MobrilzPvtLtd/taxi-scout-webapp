@@ -68,13 +68,13 @@ if (userType === "user"){
 
   return (
     <div className='' id='banner_img_home'>
-    <div className="container flex justify-end items-center min-h-[100vh] min-w-full">
+    <div className="container flex justify-center items-center  md:justify-end min-h-[100vh] min-w-full">
     {(otp_visible== true)?(
         <div id="otp_verify">
           <OtpVerify_Login />
         </div>
         ):(
-      <div className="login-container">
+      <div className="login-container ">
         <h1>Login</h1>
         <div className="login-options">
           <div className={`option ${userType === 'user' ? 'active' : ''}`} onClick={() => setUserType('user')}>

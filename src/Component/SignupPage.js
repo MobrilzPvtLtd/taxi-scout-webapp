@@ -227,7 +227,7 @@ function SignupPage() {
         ) : (
           <div>
             {userType === "user" ? (
-              <div className="container flex justify-end items-start ">
+              <div className="container flex justify-center items-center   ">
                 <div className="signup-container">
                   <h1 className="text-white">Sign Up</h1>
                   <div className="signup-options flex-row gap-3">
