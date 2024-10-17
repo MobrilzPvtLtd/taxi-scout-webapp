@@ -94,7 +94,7 @@ function NavListMenu() {
             open={openNestedMenu}
             handler={setopenNestedMenu}
           >
-            <MenuHandler className="flex items-center justify-between">
+            <MenuHandler className="pt-3 flex items-center justify-between">
               <Link to="/about-us">
                 {" "}
                 <MenuItem>
@@ -209,7 +209,7 @@ function NavListMenu2() {
             open={openNestedMenu}
             handler={setopenNestedMenu}
           >
-            <MenuHandler className="flex items-center justify-between">
+            <MenuHandler className="pt-3 flex items-center justify-between">
               <Link to="/contact">
                 <MenuItem>
                   Contact Us
