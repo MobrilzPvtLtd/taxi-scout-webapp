@@ -58,8 +58,6 @@ function App() {
     "pk_test_51BTUDGJAJfZb9HEBwDg86TN1KNprHjkfipXmEDMb0gSCassK5T3ZfxsAbcgKVmAIXF7oZ6ItlZZbXO6idTHE67IM007EwQ4uN3"
   );
 
-  console.log("current path name", window.location.pathname);
-
   const [user, setUser] = useState({
     name: "John Doe",
     email: "john@example.com",

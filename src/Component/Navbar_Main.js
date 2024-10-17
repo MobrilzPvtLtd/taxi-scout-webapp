@@ -399,7 +399,7 @@ export function NavbarMain() {
         >
           Material Tailwind
         </Typography> */}
-        <Link to="/" onClick={() => setOpenNav(!openNav)}>
+        <Link to="/" onClick={() => setOpenNav(false)}>
           <img
             src={logo}
             alt="logo"

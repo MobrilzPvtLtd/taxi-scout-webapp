@@ -72,7 +72,7 @@ function Search_box() {
   //   setTaxi_schedule_form(false);
   // };
   return (
-    <div className="p-2 sm:container w-full  sm:px-4 border-2 border-black rounded-lg">
+    <div className="w-full p-3 border-2 border-black rounded-lg bg-white">
       {/* upper box */}
 
       <div className="flex flex-col justify-center items-center">

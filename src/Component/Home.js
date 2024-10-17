@@ -40,16 +40,18 @@ const Home = (createRequest, parsedResponse) => {
 
   SignupButton();
   return (
-    <div className=" sm:container w-full flex flex-col-reverse gap-5 sm:flex-row   ">
-      <div className="w-full sm:w-1/2 ">
+    <div className="flex justify-center">
+    <div className="w-full pt-20 mt-10 pb-5 flex gap-4 flex-col min-h-[100vh] sm:container sm:flex-row px-4 ">
+      <div className="w-full sm:w-1/3 ">
         <Search_box
           createRequest={createRequest}
           parsedResponse={parsedResponse}
         />
       </div>
-      <div className="w-1/2 sm:w-1/2   ">
+      <div className="w-full h-full sm:w-2/3   ">
         <GoogleMapSection />
       </div>
+    </div>
     </div>
   );
 };

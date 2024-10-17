@@ -550,7 +550,7 @@ function CarListOption({
                 </h2>
 
                 <button
-                  className="p-3 bg-black text-white rounded-lg text-md font-bold w-fit px-5"
+                  className="text-xs px-3 sm:p-3 bg-black text-white rounded-lg sm:text-lg sm:font-bold w-fit sm:px-5"
                   onClick={handleOnChange}
                 >
                   {selectedCar.name}
