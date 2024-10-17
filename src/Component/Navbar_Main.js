@@ -95,15 +95,15 @@ function NavListMenu({handleData2}) {
             </ListItem>
           </Typography>
         </MenuHandler>
-        <MenuList className="hidden lg:block   relative z ">
-          <Menu
+        <MenuList className="hidden lg:block mt-2 ">
+          {/* <Menu
             placement="right-start"
             allowHover
             offset={15}
             open={openNestedMenu}
             handler={setopenNestedMenu}
-          >
-            <MenuHandler className="pt-3 flex items-center justify-between">
+          > */}
+            {/* <MenuHandler className="pt-3 flex items-center justify-between"> */}
               <Link to="/about-us">
                 {" "}
                 <MenuItem>
@@ -116,9 +116,9 @@ function NavListMenu({handleData2}) {
                 /> */}
                 </MenuItem>
               </Link>
-            </MenuHandler>
+            {/* </MenuHandler> */}
             {/* <MenuList className="rounded-xl">{renderItems}</MenuList> */}
-          </Menu>
+          {/* </Menu> */}
           <Link to="/our-partner">
             <MenuItem>Our Partners</MenuItem>
           </Link>
@@ -219,15 +219,15 @@ function NavListMenu2({handleData2}) {
             </ListItem>
           </Typography>
         </MenuHandler>
-        <MenuList className="hidden lg:block pl-12">
-          <Menu
+        <MenuList className="hidden lg:block mt-2">
+          {/* <Menu
             placement="right-start"
             allowHover
             offset={15}
             open={openNestedMenu}
             handler={setopenNestedMenu}
           >
-            <MenuHandler className="pt-3 flex items-center justify-between">
+            <MenuHandler className="pt-3 flex items-center justify-between"> */}
               <Link to="/contact">
                 <MenuItem >
                   Contact Us
@@ -239,9 +239,9 @@ function NavListMenu2({handleData2}) {
                 /> */}
                 </MenuItem>
               </Link>
-            </MenuHandler>
+            {/* </MenuHandler> */}
             {/* <MenuList className="rounded-xl">{renderItems}</MenuList> */}
-          </Menu>
+          {/* </Menu> */}
           <Link to="/faq">
             <MenuItem>FAQs</MenuItem>
           </Link>

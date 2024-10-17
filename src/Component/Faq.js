@@ -69,7 +69,7 @@ const FAQ = () => {
 
   return (
     <div id="banner_img_home" className="flex justify-center items-center min-h-screen p-8">
-      <div className="bg-[#00000080] p-4 rounded-lg shadow-xl mt-16 w-full sm:w-full md:w-75">
+      <div className="bg-[#00000080] p-4 rounded-lg shadow-xl mt-16 w-full sm:w-full md:w-75 md:container">
         <h4 className="text-4xl font-bold text-white tracking-widest uppercase text-center">FAQ</h4>
         <p className="text-center text-white text-xl mt-2">
           Here are some of the frequently asked questions
