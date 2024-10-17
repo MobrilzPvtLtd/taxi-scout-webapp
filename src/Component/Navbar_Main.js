@@ -20,6 +20,7 @@ import {
 } from "@heroicons/react/24/outline";
 import logo from "../Images/logo.png";
 import { Link } from "react-router-dom";
+import { m } from "framer-motion";
 
 const nestedMenuItems = [
   {
@@ -44,7 +45,7 @@ const nestedMenuItems = [
   },
 ];
 
-function NavListMenu() {
+function NavListMenu({handleData2}) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [openNestedMenu, setopenNestedMenu] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
@@ -53,7 +54,15 @@ function NavListMenu() {
       <MenuItem>{title}</MenuItem>
     </Link>
   ));
-  
+  const [state , setState] = useState(null)
+  const handleCancel = (value) => {
+    setState(value);
+    if (handleData2) {
+      handleData2(value); 
+     
+    }
+   
+  };
 
   return (
     <React.Fragment>
@@ -135,7 +144,7 @@ function NavListMenu() {
           >
             <MenuHandler className="flex items-center justify-between ">
               <Link to="/about-us">
-                <MenuItem>About Us</MenuItem>
+                <MenuItem onClick={()=>handleCancel(false)}>About Us</MenuItem>
               </Link>
             </MenuHandler>
             {/* <MenuList className="block rounded-xl lg:hidden">
@@ -144,23 +153,23 @@ function NavListMenu() {
           </Menu>
 
           <Link to="/our-partner">
-            <MenuItem>Our Partners</MenuItem>
+            <MenuItem onClick={()=>handleCancel(false)}>Our Partners</MenuItem>
           </Link>
           <Link to="/pricing">
-            <MenuItem>Pricing</MenuItem>
+            <MenuItem onClick={()=>handleCancel(false)}>Pricing</MenuItem>
           </Link>
           <Link to="/our-team">
-            <MenuItem>Our Team</MenuItem>
+            <MenuItem onClick={()=>handleCancel(false)}>Our Team</MenuItem>
           </Link>
           <Link to="/gallery">
-            <MenuItem>Gallery</MenuItem>
+            <MenuItem onClick={()=>handleCancel(false)}>Gallery</MenuItem>
           </Link>
         </Collapse>
       </div>
     </React.Fragment>
   );
 }
-function NavListMenu2() {
+function NavListMenu2({handleData2}) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [openNestedMenu, setopenNestedMenu] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
@@ -169,6 +178,15 @@ function NavListMenu2() {
       <MenuItem>{title}</MenuItem>
     </a>
   ));
+  const [state , setState] = useState(null)
+  const handleCancel = (value) => {
+    setState(value);
+    if (handleData2) {
+      handleData2(value); 
+     
+    }
+   
+  };
 
   return (
     <React.Fragment>
@@ -211,7 +229,7 @@ function NavListMenu2() {
           >
             <MenuHandler className="pt-3 flex items-center justify-between">
               <Link to="/contact">
-                <MenuItem>
+                <MenuItem >
                   Contact Us
                   {/* <ChevronUpIcon
                   strokeWidth={2.5}
@@ -276,7 +294,7 @@ function NavListMenu2() {
           >
             <MenuHandler className="flex items-center justify-between ">
               <Link to="/contact">
-                <MenuItem>Contact Us</MenuItem>
+                <MenuItem onClick={()=>handleCancel(false)}>Contact Us</MenuItem>
               </Link>
             </MenuHandler>
             {/* <MenuList className="block rounded-xl lg:hidden">
@@ -285,16 +303,16 @@ function NavListMenu2() {
           </Menu>
 
           <Link to="/faq">
-            <MenuItem>FAQs</MenuItem>
+            <MenuItem onClick={()=>handleCancel(false)}>FAQs</MenuItem>
           </Link>
           <Link to="/privacy-policy">
-            <MenuItem>Privacy Policy</MenuItem>
+            <MenuItem onClick={()=>handleCancel(false)}> Privacy Policy</MenuItem>
           </Link>
           <Link to="/term-of-use">
-            <MenuItem>Terms of Use</MenuItem>
+            <MenuItem onClick={()=>handleCancel(false)}>Terms of Use</MenuItem>
           </Link>
           <Link to="/term-of-services">
-            <MenuItem>Term Of Service</MenuItem>
+            <MenuItem onClick={()=>handleCancel(false)}>Term Of Service</MenuItem>
           </Link>
         </Collapse>
       </div>
@@ -307,12 +325,15 @@ function NavList({handleData}) {
   const handleCancel = (value) => {
     setState(value);
     if (handleData) {
-      handleData(value); // Call the parent function if it exists
-      console.log("state ki value agr chla", value);
+      handleData(value); 
+     
     }
-    console.log("state ki value agr nhi chla", value);
+   
   };
- 
+  const handleNavCancel = (value) => {
+    handleData(value);
+    console.log("child ki value" , value)
+  };
   return (
     <List className="mb-0 mt-0 p-0 lg:mb-0 lg:mt-0 lg:flex-row lg:p-1 text-gray-900 ">
       <Link to="/">
@@ -328,7 +349,7 @@ function NavList({handleData}) {
         </Typography>
       </Link>
 
-      <NavListMenu />
+      <NavListMenu handleData2={handleNavCancel} />
 
       <Link to="/how-it-works">
         <Typography
@@ -353,13 +374,13 @@ function NavList({handleData}) {
           color="blue-gray"
           className="font-medium"
         >
-          <ListItem className="flex items-center gap-2 py-0 pr-4 font-semibold text-lg">
+          <ListItem className="flex items-center gap-2 py-0 pr-4 font-semibold text-lg" onClick={()=>handleCancel(false)}>
             Blogs
           </ListItem>
         </Typography>
       </Link>
 
-      <NavListMenu2 />
+      <NavListMenu2 handleData2={handleNavCancel} />
     </List>
   );
 }
@@ -368,7 +389,6 @@ export function NavbarMain() {
   const [openNav, setOpenNav] = React.useState(false);
 
   const handleNavCancel = (value) => {
-    console.log("parent ki value", value);
     setOpenNav(value);
   };
 
@@ -383,10 +403,7 @@ export function NavbarMain() {
   let token = sessionStorage.getItem("token");
   const handleLogout = () => {
     sessionStorage.removeItem("token");
-    // token = null;
     window.location.reload();
-
-    console.log("token ", token);
   };
   return (
     <Navbar className="px-0 sm:px-2 py-4" id="navbar_main_sticky">
@@ -408,7 +425,7 @@ export function NavbarMain() {
         </Link>
 
         <div className="hidden lg:block">
-          <NavList handleData={handleNavCancel} />
+          <NavList  />
         </div>
         {token ? (
           <div className="hidden gap-2 lg:flex">
@@ -461,7 +478,7 @@ export function NavbarMain() {
       </div>
       <Collapse open={openNav}>
         <div className="pt-3">
-          <NavList />
+          <NavList handleData={handleNavCancel} />
         </div>
         {token ? (
           <div className="flex justify-startgap-2 lg:hidden ">

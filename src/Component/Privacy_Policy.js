@@ -2,9 +2,15 @@ import React from "react";
 
 const Privacy_Policy = () => {
   return (
-    <div className="p-main container">
-      <div className=""><h1 className="text-center mt-3 mt-4"> Privacy Notice</h1></div>
-      <div className="div2 text-xl ">
+    <div id="banner_img_home" className=" min-h-screen p-6 mt-16 flex justify-center">
+      <div className="  bg-[#00000090] px-2 sm:container">
+      <div className="max-w-5xl mx-auto mt-2  shadow-lg rounded-lg p-8">
+        <h1 className="text-4xl font-bold text-center text-white mb-6">
+          {" "}
+          Privacy Notice
+        </h1>
+      </div>
+      <div className="text-sm text-white mb-10 text-center">
         J C Michael Holdings Ltd will be what is known as the ‘Controller’ of
         the personal data you provide to us. We are England and Wales registered
         company with registration number 14951592. Our registered address is 38
@@ -13,8 +19,12 @@ const Privacy_Policy = () => {
         privacy. This notice sets out the basis on which any personal data we
         collect from you, or that you provide us, will be processed by us.
       </div>
-      <div className="div1"><h1  className="text-center mt-3 mt-3">Who we are and what we do. </h1></div>
-      <div className="div2 text-xl">
+      <div className="space-y-8">
+        <h2 className="text-2xl font-semibold mb-4 text-white">
+          Who we are and what we do.{" "}
+        </h2>
+      </div>
+      <p className="text-white text-start mb-4">
         We are a parent company of a group of companies that provide services
         across various sectors including healthcare. Our main subsidiary JC
         Michael Groups Ltd deliver high-quality, individually tailored, and
@@ -28,9 +38,13 @@ const Privacy_Policy = () => {
         Ltd engages in similar sort of work as JC Michael Groups Ltd, but within
         the Scottish jurisdiction. The other group member is JC Michael
         Properties Ltd, which rents and manages properties. We do collect data.
+      </p>
+      <div className="">
+        <h2 className="text-2xl font-semibold mb-4 text-white">
+          Types of Data We Collect{" "}
+        </h2>
       </div>
-      <div className="div1"><h1  className="text-center  mt-3">Types of Data We Collect  </h1></div>
-      <div className="div2 text-xl">
+      <p className="text-white text-start mb-4">
         This Privacy Policy relates to our use of any personal information we
         collect from you via the following online services: Our website at
         https://jcmichaelholdings.com Our social media handles: Email you may
@@ -49,9 +63,15 @@ const Privacy_Policy = () => {
         improve your experience when using our website and to help us manage the
         services we provide. This includes information such as how you use our
         website, the most popular referrers and website responsiveness.
+      </p>
+      <div className="">
+        {" "}
+        <h2 className="text-2xl font-semibold mb-4 text-white">
+          {" "}
+          Where we obtain information
+        </h2>
       </div>
-      <div className="div1"> <h1  className="text-center mt-3"> Where we obtain information</h1></div>
-      <div className="div2 text-xl">
+      <p className="text-white text-start mb-4">
         We may obtain information from any of the below locations: When you
         correspond with us by phone, email or otherwise. When you visit our
         website When you apply for one of our jobs via a job board When we
@@ -63,9 +83,13 @@ const Privacy_Policy = () => {
         process your personal data. There are two main ways in which we collect
         client data: Directly from you, clients, and staff From third parties
         such as online job boards, LinkedIn, and networking.
+      </p>
+      <div className="div1">
+        <h2 className="text-2xl font-semibold mb-4 text-white">
+          Data Retention{" "}
+        </h2>
       </div>
-      <div className="div1"><h1  className="text-center mt-3">Data Retention </h1></div>
-      <div className="div2 sm:text-xl">
+      <p className="text-white text-start">
         We will delete personal data from our systems if we have not had any
         meaningful contact with you for seven years (or for such longer period
         as we believe, in good faith, that the law or relevant regulators
@@ -87,9 +111,14 @@ const Privacy_Policy = () => {
         readily accessed by any of our operational systems, processes, or staff.
         For a list of all data categories and retention periods, please contact
         enquiries@jcmichaelholdings.com
+      </p>
+      <div className="div1">
+        {" "}
+        <h2 className="text-2xl font-semibold mb-4 text-white">
+          Legal Basis for Processing{" "}
+        </h2>
       </div>
-      <div className="div1"> <h1  className="text-center mt-3">Legal Basis for Processing </h1></div>
-      <div className="div2 text-xl">
+      <p className="text-white text-start">
         Our legal basis for the processing of personal data is our legitimate
         business interests, described in more detail below, although we will
         also rely on contract, legal obligation, and consent for specific uses
@@ -101,15 +130,20 @@ const Privacy_Policy = () => {
         obligations. We will, in some circumstances, rely on consent for uses of
         your data and you will be asked for your express consent, if legally
         required.
+      </p>
+      <div className="div1">
+        <h2 className="text-2xl font-semibold mb-4 text-white">
+          Legitimate Interests{" "}
+        </h2>
       </div>
-      <div className="div1"><h1  className="text-center mt-3">Legitimate Interests </h1></div>
-      <div className="div2 text-xl">
+      <p className="text-white text-start">
         Here at J.C Michael Holdings, we take your privacy seriously and will
         only use your personal information to administer your account and to
         provide you with our services. We may need to use your data for our
         internal administrative activities, like payroll and invoicing where
         relevant.
-      </div>
+      </p>
+    </div>
     </div>
   );
 };
