@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Navbar,
   Collapse,
@@ -33,17 +33,14 @@ const nestedMenuItems = [
   {
     title: "Pricing",
     link: "/pricing",
-
   },
   {
     title: "Our Team",
     link: "/our-team",
-
   },
   {
     title: "Gallery",
     link: "/gallery",
-
   },
 ];
 
@@ -51,13 +48,13 @@ function NavListMenu() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [openNestedMenu, setopenNestedMenu] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
-  const renderItems = nestedMenuItems.map(({ title , link }, key) => (
+  const renderItems = nestedMenuItems.map(({ title, link }, key) => (
     <Link href={link} key={key}>
       <MenuItem>{title}</MenuItem>
     </Link>
   ));
+  
 
- 
   return (
     <React.Fragment>
       <Menu
@@ -137,8 +134,8 @@ function NavListMenu() {
             handler={setopenNestedMenu}
           >
             <MenuHandler className="flex items-center justify-between ">
-            <Link to="/about-us">
-              <MenuItem>About Us</MenuItem>
+              <Link to="/about-us">
+                <MenuItem>About Us</MenuItem>
               </Link>
             </MenuHandler>
             {/* <MenuList className="block rounded-xl lg:hidden">
@@ -278,9 +275,8 @@ function NavListMenu2() {
             handler={setopenNestedMenu}
           >
             <MenuHandler className="flex items-center justify-between ">
-            <Link to="/contact">
-                <MenuItem>
-                  Contact Us</MenuItem>
+              <Link to="/contact">
+                <MenuItem>Contact Us</MenuItem>
               </Link>
             </MenuHandler>
             {/* <MenuList className="block rounded-xl lg:hidden">
@@ -306,7 +302,17 @@ function NavListMenu2() {
   );
 }
 
-function NavList() {
+function NavList({handleData}) {
+  const [state , setState] = useState(null)
+  const handleCancel = (value) => {
+    setState(value);
+    if (handleData) {
+      handleData(value); // Call the parent function if it exists
+      console.log("state ki value agr chla", value);
+    }
+    console.log("state ki value agr nhi chla", value);
+  };
+ 
   return (
     <List className="mb-0 mt-0 p-0 lg:mb-0 lg:mt-0 lg:flex-row lg:p-1 text-gray-900 ">
       <Link to="/">
@@ -321,7 +327,7 @@ function NavList() {
           </ListItem>
         </Typography>
       </Link>
-      
+
       <NavListMenu />
 
       <Link to="/how-it-works">
@@ -332,7 +338,10 @@ function NavList() {
           color="blue-gray"
           className="font-medium"
         >
-          <ListItem className="flex items-center gap-2 py-0 pr-4 font-semibold text-lg">
+          <ListItem
+            className="flex items-center gap-2 py-0 pr-4 font-semibold text-lg"
+            onClick={()=>handleCancel(false)}
+          >
             How It Works
           </ListItem>
         </Typography>
@@ -358,6 +367,13 @@ function NavList() {
 export function NavbarMain() {
   const [openNav, setOpenNav] = React.useState(false);
 
+  const handleNavCancel = (value) => {
+    console.log("parent ki value", value);
+    setOpenNav(value);
+  };
+
+
+
   React.useEffect(() => {
     window.addEventListener(
       "resize",
@@ -365,14 +381,13 @@ export function NavbarMain() {
     );
   }, []);
   let token = sessionStorage.getItem("token");
-  const handleLogout =()=>{
+  const handleLogout = () => {
     sessionStorage.removeItem("token");
     // token = null;
     window.location.reload();
 
-    console.log("token " , token)
-
-  }
+    console.log("token ", token);
+  };
   return (
     <Navbar className="px-0 sm:px-2 py-4" id="navbar_main_sticky">
       <div className="flex items-center justify-between text-blue-gray-900 relative ">
@@ -384,16 +399,16 @@ export function NavbarMain() {
         >
           Material Tailwind
         </Typography> */}
-        <Link to="/">
+        <Link to="/" onClick={() => setOpenNav(!openNav)}>
           <img
             src={logo}
             alt="logo"
             className="w-[8rem] translate-y-[-1rem] top-0 fixed"
           ></img>
         </Link>
-        
+
         <div className="hidden lg:block">
-          <NavList />
+          <NavList handleData={handleNavCancel} />
         </div>
         {token ? (
           <div className="hidden gap-2 lg:flex">
@@ -414,6 +429,7 @@ export function NavbarMain() {
                   variant="outlined"
                   size="sm"
                   className="w-[8rem] bg-black text-white font-semibold"
+                  onClick={() => setOpenNav(!openNav)}
                 >
                   Sign Up{" "}
                 </Button>
@@ -423,6 +439,7 @@ export function NavbarMain() {
                   variant="outlined"
                   size="sm"
                   className="w-[8rem] bg-black text-white font-semibold"
+                  onClick={() => setOpenNav(!openNav)}
                 >
                   Log In
                 </Button>
@@ -443,8 +460,8 @@ export function NavbarMain() {
         </IconButton>
       </div>
       <Collapse open={openNav}>
-      <div className="pt-3">
-        <NavList />
+        <div className="pt-3">
+          <NavList />
         </div>
         <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden text-gray-900">
           <Link to="/signup">
@@ -454,12 +471,18 @@ export function NavbarMain() {
               size="sm"
               fullWidth
               className="text-gray-900"
+              onClick={() => setOpenNav(!openNav)}
             >
               Sign Up
             </Button>
           </Link>
           <Link to="/login">
-            <Button variant="outlined" size="sm" fullWidth>
+            <Button
+              variant="outlined"
+              size="sm"
+              fullWidth
+              onClick={() => setOpenNav(!openNav)}
+            >
               Log In
             </Button>
           </Link>
