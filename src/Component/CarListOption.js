@@ -527,7 +527,7 @@ function CarListOption({
           {/* panga ends */}
 
           {/* select section starts */}
-          <div className="flex justify-center  mt-4 bottom-5 bg-[#faf6ae]  items-center">
+          <div className="flex justify-center  mt-4 bottom-5 shadow-black shadow rounded-xl items-center">
             <span className="text-md w-full mb-2 font-bold text-md underline">
               Schedule Your Request For
             </span>
@@ -544,7 +544,7 @@ function CarListOption({
           </div>
           {selectedCar?.name ? (
             <div>
-              <div className="flex justify-center  mt-4 bottom-5 bg-[#faf6ae] p-3 shadow-xl rounded w-full items-center">
+              <div className="flex justify-center  mt-4 bottom-5 p-3 shadow-xl rounded w-full items-center">
                 <h2 className="text-md w-48  mb-2 font-bold text-md">
                   Make Request For
                 </h2>
@@ -599,24 +599,24 @@ function CarListOption({
         <div>
           <div>
             {fetchedUserData2?.onTripRequest?.data == null ? (
-            <div>
-              <div id="driver-searching">
-                <h2 className="text-[28px] font-bold">Available Drivers</h2>
-                <div id="search-box" className=" flex flex-col">
+         
+              <div className="w-full border-2 mt-3">
+                <h2 className="mt-2 text-2xl sm:text-4xl font-bold">Available Drivers</h2>
+                <div className=" flex flex-col items-center justify-center">
                   <p className="text-[22px] ">Searching for driver...</p>
                   <img width={150} height={150} src={driver_gif} />
                   <MyTimer expiryTimestamp={time} />
                   <button
-                    className="w-[10vw] font-bold"
+                    className="w-full font-bold"
                     onClick={handleOnCancel}
                   >
                     Cancel Request
                   </button>
                 </div>
               </div>
-            </div>
+            
           ) : ( 
-            <div>
+            <div >
               {displayComp == 1 ? (
                 <div className="relative top-5 overflow-scroll">
                   <BookingRequested
@@ -647,7 +647,7 @@ function CarListOption({
                 </div>
               ) : null}
               {displayComp == 2 ? (
-                <div className="relative top-5 overflow-scroll">
+                <div className="relative top-0 overflow-scroll">
                   <DriverArrived
                     pickup={fetchedUserData2?.onTripRequest?.data.pick_address}
                     drop_address={

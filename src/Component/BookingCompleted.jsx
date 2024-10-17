@@ -10,7 +10,7 @@ const BookingCompleted = ({pickup ,drop_address , driver_name ,car_name ,car_pic
   // console.log("deenge " , bill?.data)
   return (
     <div style={styles.container}>
-    <h1 style={styles.title}>Booking Complete</h1>
+    <h1 style={styles.title}>Booking Completed</h1>
     
     <div style={styles.card}>
       <div style={styles.driverInfo}>
@@ -55,8 +55,8 @@ const BookingCompleted = ({pickup ,drop_address , driver_name ,car_name ,car_pic
           <p><strong>Service Tax :</strong> $ {service_tax} </p>
         </div>
         <div className="" style={styles.detailRow}>
-          <FaMoneyBillWave style={styles.icon2} />
-          <h2 className="text-4xl"><strong>Trip Cost:</strong> ${total_amount}</h2>
+          <FaMoneyBillWave style={styles.icon} />
+          <h2 className=""><strong>Trip Cost:</strong> ${total_amount}</h2>
         </div>
         {/* <div style={styles.detailRow}> */}
           {/* <FaStar style={styles.icon} /> */}
@@ -75,9 +75,9 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     minHeight: '100vh',
-    backgroundColor: '#f5f5f5',
+    // backgroundColor: '#f5f5f5',
     padding: '20px',
   },
   title: {

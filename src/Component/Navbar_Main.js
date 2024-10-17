@@ -463,6 +463,18 @@ export function NavbarMain() {
         <div className="pt-3">
           <NavList />
         </div>
+        {token ? (
+          <div className="flex justify-startgap-2 lg:hidden ">
+            <Button
+              variant="outlined"
+              size="sm"
+              className="text-gray-900"
+              onClick={handleLogout}
+            >
+              Logout{" "}
+            </Button>
+          </div>
+        ) : (
         <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden text-gray-900">
           <Link to="/signup">
             {" "}
@@ -486,7 +498,7 @@ export function NavbarMain() {
               Log In
             </Button>
           </Link>
-        </div>
+        </div>)}
       </Collapse>
     </Navbar>
   );

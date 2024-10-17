@@ -8,11 +8,11 @@ const TripStarted = ({pickup ,drop_address , driver_name ,car_name ,car_pic , ot
         handleOnCancel();
     }
   return (
-    <div className="booking-completed-container">
-      <div className="icon-wrapper">
-        <FaCheckCircle className="check-icon" />
-      </div>
-      <h1 className="title">Trip Started!</h1>
+    <div className="mt-10">
+      <div className="flex justify-center items-center gap-3 ">
+        <FaCheckCircle className="w-10 h-10 fill-green-500 " />
+      <h1 className="m-0">Trip Started!</h1>
+        </div>
       <p className="subtitle">
         Have a safe journey.
       </p>
@@ -25,7 +25,7 @@ const TripStarted = ({pickup ,drop_address , driver_name ,car_name ,car_pic , ot
         <p><strong>Mobile Number:</strong> {driver_name}</p>
         <p><strong>Car:</strong> {car_name}</p>
         <img src={car_pic} alt="" />
-        <h1>OTP : {otp}</h1>
+        <p className="text-black m-0 w-fit text-center"><strong>OTP :</strong> {otp}</p>
       </div>
 
       <button className="button-primary text-red-600 " onClick={handleCancel}>Cancel Ride</button>
