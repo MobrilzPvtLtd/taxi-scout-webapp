@@ -1,21 +1,27 @@
+import { Skeleton } from 'antd';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 
 const SubscriptionPage = () => {
+  const [loading , setLoading] = useState(true); 
   let url = "https://admin.taxiscout24.com";
   const [price , setPrice] = useState();
 useEffect(()=>{
 
   const handlePrice= async()=>{
+    setLoading(true)
     const response = await axios.get(`${url}/api/v1/admin/packages`)
-    setPrice(response.data)
-console.log("our price",response.data)
+    if(response){
+      setPrice(response.data)
+      setLoading(false)
+    }
   }
   handlePrice();
 },[])
-
   return (
+  <>
+  {loading ?  <div className="container  mx-auto px-0 sm:px-2"><Skeleton active /></div> : 
     <section class="bg-gradient-to-r from-yellow-500 to-orange-500 py-12 mt-16  ">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-12">
@@ -152,7 +158,8 @@ console.log("our price",response.data)
       </div> */}
     </div>
   </div>
-</section>
+</section>}
+</>
   );
 };
 

@@ -6,19 +6,26 @@ import airbnb from "../Images/pngegg (2).png";
 import dropbox from "../Images/dropbox-logo-black-and-white-1.png";
 import netflix from "../Images/netflix-logo-black-png.png";
 import axios from "axios";
-
+import { Skeleton } from "antd";
 const Our_Partner = () => {
+  const [loading, setLoading] = useState(true);
   let url = "https://admin.taxiscout24.com";
   const [partners, setPartners] = useState();
   useEffect(() => {
     const handlePartner = async () => {
+      setLoading(true)
       const response = await axios.get(`${url}/api/v1/our-partner`);
-      setPartners(response.data.data);
+      if(response){
+
+        setPartners(response.data.data);
+        setLoading(false)
+      }
     };
     handlePartner();
   }, []);
   return (
     <>
+    {loading ? <div className="container  mx-auto px-0 sm:px-2"><Skeleton active /></div> :
     <div className="flex flex-col items-center justify-center">
       <div className="p-5 h-1/2 grid grid-cols-1 mt-16 sm:grid-cols-1">
         <div>
@@ -48,7 +55,7 @@ const Our_Partner = () => {
           </div>
         ))}
       </div>
-      </div>
+      </div>}
     </>
   );
 };

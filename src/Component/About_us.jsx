@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import img from "../Images/serve_globally2.jpg";
+import { Skeleton } from "antd";
 
 const About_us = () => {
+  const [loading, setLoading] = useState(true);
+  setTimeout(() => {
+    setLoading(false);
+  }, 1000);
   return (
     <div>
-      <div className="">
-        <div className="bg-gray-50 pt-0 lg:pt-10">
+        {loading ? (
+          <div className="container  mx-auto px-0 sm:px-2"><Skeleton active /></div>
+        ) : (
+      <div className="bg-gray-50 pt-0 lg:pt-10">
           <div className="container  mx-auto px-0 sm:px-2">
-                <h1 className="block lg:hidden"> About Us</h1>
+            <h1 className="block lg:hidden"> About Us</h1>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="flex items-center justify-center">
                 <img
@@ -39,8 +46,8 @@ const About_us = () => {
               </div>
             </div>
           </div>
-        </div>
       </div>
+        )}
     </div>
   );
 };

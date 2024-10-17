@@ -1,16 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Galleria } from 'primereact/galleria';
 import axios from "axios";
+import { Skeleton } from 'antd';
 const Gallery = () => {
+  const [loading , setLoading] = useState(true); 
   let url = "https://admin.taxiscout24.com";
   const [images, setImages] = useState(null);
   const [galleryData , setGalleryData] = useState()
 useEffect(()=>{
 
   const handleGallery= async()=>{
+    setLoading(true)
     const response = await axios.get(`${url}/api/v1/gallery`)
+    if(response){
     setGalleryData(response.data.data);
     setImages(response.data.data);
+    setLoading(false)
+  }
   }
   handleGallery();
 },[])
@@ -28,7 +34,8 @@ const closeModal = () => {
 };
 
   return (
-    
+    <>
+  {loading ?  <div className="container  mx-auto px-0 sm:px-2"><Skeleton active /></div> : 
     <div className="container mx-auto px-4 py-8">
       <h2 className="text-2xl font-bold mb-6 text-center">Image Gallery</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -65,6 +72,8 @@ const closeModal = () => {
         </div>
       )}
     </div>
+    }
+</>
   );
 };
 

@@ -11,11 +11,13 @@ import {
   Container,
   Stack,
 } from "@mui/material";
+import { Skeleton} from 'antd';
 import { styled } from "@mui/system";
 import blogs_img from "../Images/blogs.jpg";
 import { useNavigate } from "react-router-dom";
 import { id } from "date-fns/locale";
 import axios from "axios";
+import LoaderSkeleton from "./LoaderSkeleton";
 
 const StyledCard = styled(Card)(({ theme }) => ({
   maxWidth: 345,
@@ -86,9 +88,13 @@ const BlogList = () => {
   useEffect(() => {
     try {
       const handleBlogs = async () => {
+        setLoading(true)
         const response = await axios.get(`${url}/api/v1/blogs`);
-        setBlogsData(response.data.data);
-        console.log("response", response.data.data);
+        if (response){
+          setBlogsData(response.data.data);
+          setLoading(false)
+        }
+      
       };
       handleBlogs();
     } catch (error) {
@@ -105,11 +111,14 @@ const BlogList = () => {
           </h1>
         </div>
       </div>
+      {loading ? <Skeleton active />: 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {blogsData?.map((blog, index) => (
-          <BlogCard key={index} {...blog} />
-        ))}
-      </div>
+      {blogsData?.map((blog, index) => (
+        <BlogCard key={index} {...blog} />
+      ))}
+    </div>
+      }
+      
     </div>
   );
 };

@@ -2,19 +2,27 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { Skeleton } from 'antd';
 
 const Our_Teams = () => {
+  const [loading , setLoading] = useState(true); 
   let url = "https://admin.taxiscout24.com";
   const [team, setTeam] = useState();
   useEffect(() => {
     const handleTeam = async () => {
+      setLoading(true)
       const response = await axios.get(`${url}/api/v1/our-team`);
+      if(response){
       setTeam(response.data.data);
+      setLoading(false)
+    }
     };
     handleTeam();
   }, []);
 
   return (
+    <>
+    {loading ?  <div className="container  mx-auto px-0 sm:px-2"><Skeleton active /></div> : 
     <div className="container-xxl py-6 pb-5" id="team">
       <div className=" mt-16 sm:mt-10 lg:mt-2">
         <div className="row  my-5  wow fadeInUp" data-wow-delay="0.1s">
@@ -71,7 +79,8 @@ const Our_Teams = () => {
           ))}
         </div>
       </div>
-    </div>
+    </div>}
+    </>
   );
 };
 

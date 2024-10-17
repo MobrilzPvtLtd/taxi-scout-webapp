@@ -429,9 +429,9 @@ export function NavbarMain() {
                   variant="outlined"
                   size="sm"
                   className="w-[8rem] bg-black text-white font-semibold"
-                  onClick={() => setOpenNav(!openNav)}
+                 
                 >
-                  Sign Up{" "}
+                  Sign Up {" "}
                 </Button>
               </Link>
               <Link to="/login">
@@ -439,7 +439,7 @@ export function NavbarMain() {
                   variant="outlined"
                   size="sm"
                   className="w-[8rem] bg-black text-white font-semibold"
-                  onClick={() => setOpenNav(!openNav)}
+                
                 >
                   Log In
                 </Button>

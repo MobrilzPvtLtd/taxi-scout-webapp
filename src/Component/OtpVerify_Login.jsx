@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import {  useNavigate } from 'react-router';
+import loader from "../Images/Spinner@1x-1.0s-200px-200px (1).gif"
 
 const OtpVerify_Login = () => {
+  const [loading , setLoading] = useState(false); 
   let url = "https://admin.taxiscout24.com/"
     const navigate = useNavigate();
     const [otp, setOtp] = useState('');
@@ -37,7 +39,7 @@ useEffect(()=>{
 console.log("session value" ,email)
   const handleSubmit = async(e) => {
     e.preventDefault();
-
+setLoading(true)
     const response = await fetch(`${url}api/v1/user/login/validate-otp`,{
         method: "POST",
         headers:{
@@ -54,6 +56,7 @@ console.log("session value" ,email)
     // Here you would typically make an API call to verify the OTP
     // For demonstration, let's assume the OTP is 123456
     if (response.ok) {
+      setLoading(false)
       setMessage('OTP Verified Successfully!');
       navigate('/home')
       sessionStorage.setItem('token', json.access_token); 
@@ -95,9 +98,10 @@ console.log("session value" ,email)
           placeholder="Enter OTP"
          
         />
+         {loading ? <div className='flex justify-center'> <img className='w-20 ' src={loader} alt='loading...' /> </div> :
         <button type="submit">
           Verify
-        </button>
+        </button>}
       </form>
       {message && <p>{message}</p>}
       <div className='reotp-main'>
