@@ -51,7 +51,7 @@ const Landing = () => {
 
   return (
     <>
-    <div className="pt-0 sm:mt-0 md:pt-10">
+    <div className="pt-5 sm:mt-0 md:pt-10">
       <div className="pb-2 md:container px-2 flex justify-center items-center gap-10 container ">
         <div className="px-2 flex flex-col-reverse justify-center items-center lg:container lg:w-1/2 lg:flex-col gap-3 ">
           <div className="flex flex-col ">
