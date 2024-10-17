@@ -94,7 +94,7 @@ const Landing = () => {
                 </div>
               </div>
               <button
-                className="w-2/5 my-2 px-10 bg-black text-white "
+                className="w-fit my-2 px-10 bg-black text-white "
                 onClick={handleRedirect}
               >
                 Search

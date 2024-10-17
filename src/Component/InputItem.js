@@ -82,7 +82,7 @@ function InputItem(type, getData) {
   };
 
   return (
-    <div className="">
+    <div className="flex justify-center">
       <GooglePlacesAutocomplete
         // apiKey={process.env.REACT_PUBLIC_GOOGLE_API_KEY}
         //  className = "inputData"
@@ -100,7 +100,7 @@ function InputItem(type, getData) {
 
           placeholder: placeholder,
           // isClearable:true,
-          className: "w-full",
+          className: "w-60 sm:w-full text-xs  sm:text-xl",
           component: { DropDownIndicator: false },
           styles: {
             control: (provided) => ({
