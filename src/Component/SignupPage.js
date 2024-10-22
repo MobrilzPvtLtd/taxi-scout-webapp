@@ -378,7 +378,7 @@ function SignupPage() {
                 </div>
               </div>
             ) : (
-              <div className="container flex justify-end items-start">
+              <div className="container flex justify-center items-center">
                 <div className="signup-container">
                   <h1 className="text-white">Sign Up</h1>
                   <div className="signup-options flex gap-3">
@@ -424,8 +424,8 @@ function SignupPage() {
                     </button>
                   </div>
                   <form
-                    id="form"
-                    className="company_form"
+                    id=""
+                    className="w-full place-items-center grid grid-cols-1 md:grid-cols-2 gap-x-3 "
                     onSubmit={handleSubmitCompany}
                   >
                     {/* <div className="form-group">
@@ -504,7 +504,7 @@ function SignupPage() {
                         ))}
                       </select>
                     </div>
-                    <div className="flex flex-col form-group">
+                    <div className="flex flex-col w-full form-group">
                       <select
                         id="countrySelect"
                         value={selectedState}

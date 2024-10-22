@@ -37,6 +37,7 @@ margin-top: 2vw;
   
   .form-group {
     margin: 5px 0px;
+    width: 100%;
   }
   
   input[type="text"],
