@@ -1,18 +1,19 @@
 import { Typography } from "@material-tailwind/react";
 import logo from "../../../Images/logo.png"
+import { Link } from "react-router-dom";
  
 const LINKS = [
   {
     title: "Company",
-    items: ["About Us", "Our Partners", "Pricing", "Our Team" , "Gallery"],
+    items: [{name:"About Us",slug:"about-us"},{name: "Our Partners", slug:"our-partner"}, {name:"Pricing", slug:"pricing"}, {name:"Our Team" , slug:"our-team"} , {name:"Gallery", slug:"gallery"}],
   },
   {
     title: "Resource",
-    items: ["How We Work", "Blogs"],
+    items: [{name:"How We Work",slug:"how-it-works"},{name :"Blogs" , slug : "blogs"}],
   },
   {
     title: "Contact",
-    items: ["Contact Us", "FAQs", "Privacy Policy", "Terms Of Use" , "Terms Of Service"],
+    items: [{name:"Contact Us", slug: "contact"}, {name:"FAQs" , slug : "faq"},{name: "Privacy Policy" , slug:"privacy-policy"}, {name:"Terms Of Use", slug: "term-of-use"} , {name:"Terms Of Services", slug: "term-of-services"}],
   },
 ];
  
@@ -23,7 +24,7 @@ export function Footer() {
     <footer className="relative w-full bg-[#2c2c2c] ">
       <div className="mx-auto w-full max-w-7xl px-8">
         <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
-        <img src={logo} alt="logo" className="w-48"></img>
+       <Link to="/" className="w-48"><img src={logo} alt="logo" ></img></Link>
           <div className="grid grid-cols-3 justify-between gap-4">
             {LINKS.map(({ title, items }) => (
               <ul key={title}>
@@ -36,14 +37,14 @@ export function Footer() {
                   {title}
                 </Typography>
                 {items.map((link) => (
-                  <li key={link}>
+                  <li key={link.name}>
                     <Typography
                     
                       variant="small"
                       color="white"
                       className="mb-1 font-medium opacity-80"
                     >
-                      {link}
+                   <Link to ={link.slug} >   {link.name}</Link>
                     </Typography>
                   </li>
                 ))}
