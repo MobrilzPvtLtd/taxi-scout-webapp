@@ -52,6 +52,7 @@ const OtpVerify = () => {
       setMessage("OTP Verified Successfully!");
       alert("OTP Verified Successfully!");
       navigate("/login");
+
       setLoading(false);
     } else {
       setMessage("Invalid OTP. Please try again.");

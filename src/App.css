@@ -112,3 +112,14 @@ body{
   border: 1px solid grey;
 
 }
+#navbar_main_sticky button{
+  background-color: black !important;
+  color: white !important;
+  transition: all .3s ease-in-out;
+  border: 1px solid transparent;
+}
+#navbar_main_sticky button:hover{
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid grey !important;
+}

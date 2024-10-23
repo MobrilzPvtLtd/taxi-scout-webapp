@@ -108,7 +108,7 @@ function Search_box() {
         </div>
         <div className="flex flex-col items-center">
           <button
-            id="#btn_hover_main"
+        id='btn_hover_main' className= "w-full my-2 py-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2" 
             onClick={() => calculateDistance()}
           >
             Search

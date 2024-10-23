@@ -189,6 +189,7 @@ function NavListMenu2({handleData2}) {
   };
 
   return (
+    
     <React.Fragment>
       <Menu
         open={isMenuOpen}
@@ -406,16 +407,9 @@ export function NavbarMain() {
     window.location.reload();
   };
   return (
+
     <Navbar className="px-0 sm:px-2 py-4" id="navbar_main_sticky">
       <div className="flex items-center justify-between text-blue-gray-900 relative sm:px-5 ">
-        {/* <Typography
-          as="a"
-          href="#"
-          variant="h6"
-          className="mr-4 cursor-pointer py-1.5 lg:ml-2"
-        >
-          Material Tailwind
-        </Typography> */}
         <Link to="/" onClick={() => setOpenNav(false)}>
           <img
             src={logo}
@@ -518,5 +512,6 @@ export function NavbarMain() {
         </div>)}
       </Collapse>
     </Navbar>
+    
   );
 }

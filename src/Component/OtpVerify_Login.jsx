@@ -56,7 +56,8 @@ const OtpVerify_Login = () => {
     if (response.ok) {
       setLoading(false);
       setMessage("OTP Verified Successfully!");
-      navigate("/");
+      // navigate("/");
+      window.location.href = '/';
       sessionStorage.setItem("token", json.access_token);
     } else {
       setMessage("Invalid OTP. Please try again.");

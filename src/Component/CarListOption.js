@@ -607,7 +607,8 @@ function CarListOption({
                   <img width={150} height={150} src={driver_gif} />
                   <MyTimer expiryTimestamp={time} />
                   <button
-                    className="w-full font-bold"
+                     id="btn_hover_main"
+            className="w-full my-2 py-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2"
                     onClick={handleOnCancel}
                   >
                     Cancel Request
