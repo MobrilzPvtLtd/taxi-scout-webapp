@@ -68,6 +68,7 @@ function App() {
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
+  let rqstId = sessionStorage.id;
   
   return (
     <Elements stripe={stripePromise}>
@@ -80,11 +81,13 @@ function App() {
             <BrowserRouter>
               <LATLNG_State>
                 <NavbarMain />
-
-                {/* <div className="chat-box" onClick={togglePopup}>
+                {rqstId?
+                <div>
+                <div className="chat-box" onClick={togglePopup}>
                   <div className="chat-header">Chat with us!</div>
-                </div> */}
-                {/* {showPopup && <ChatPopup />} */}
+                </div>
+                {showPopup && <ChatPopup />}</div>
+                :null}
                 {/* <MainPage/> */}
                 <div className="w-full main-app-body">
                   <Routes>
