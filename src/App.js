@@ -1,4 +1,3 @@
-
 import "./App.css";
 import Home from "./Component/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -17,7 +16,6 @@ import { loadStripe } from "@stripe/stripe-js";
 import CreateRentalRequest from "./Component/CreateRentalRequest";
 import CompanyLogin from "./Component/Compnay/CompanyLogin";
 import CompanySignUp from "./Component/Compnay/CompanySignUp";
-// import DriverSearchBox from "./Component/DriverSearchBox";
 import LATLNG_State from "./Context/LATLNG_State";
 import Contact from "./Component/Contact";
 import Faq from "./Component/Faq";
@@ -43,10 +41,9 @@ import { NavbarMain } from "./Component/Navbar_Main";
 import { Footer } from "./Component/UI/Footer/Footer";
 import BlogDetail from "./Component/BlogDetails";
 import ProtectedRoute from "./Component/ProtectedRoute";
-// import firebase from 'firebase'
 
 function App() {
-  let token = sessionStorage.getItem("token")
+  let token = sessionStorage.getItem("token");
   const [source, setSource] = useState([]);
   const [destination, setDestination] = useState([]);
   const stripePromise = loadStripe(
@@ -69,44 +66,52 @@ function App() {
     setShowPopup(!showPopup);
   };
   let rqstId = sessionStorage.id;
-  
+
   return (
     <Elements stripe={stripePromise}>
       <SourceContext.Provider value={{ source, setSource }}>
         <DestinationContext.Provider value={{ destination, setDestination }}>
-          {/* <LoadScript
-   libraries={['places']} 
-   googleMapsApiKey={'AIzaSyAhZQSz7cUgNdkv1V05EjT26V_UtKSH5y4'}> */}
           <div className="App bg-gradient-to-r from-yellow-500 to-[#f99816]">
             <BrowserRouter>
               <LATLNG_State>
                 <NavbarMain />
-                {rqstId?
-                <div>
-                <div className="chat-box" onClick={togglePopup}>
-                  <div className="chat-header">Chat with us!</div>
-                </div>
-                {showPopup && <ChatPopup />}</div>
-                :null}
+                {rqstId ? (
+                  <div>
+                    <div className="chat-box" onClick={togglePopup}>
+                      <div className="chat-header">Chat with us!</div>
+                    </div>
+                    {showPopup && <ChatPopup />}
+                  </div>
+                ) : null}
                 {/* <MainPage/> */}
                 <div className="w-full main-app-body">
                   <Routes>
-                    {/* <Route path = "/" element = {<Login/>} /> */}
-                    <Route path="/" element={token?<Home />: <Landing/>} />
-                    {/* <Route path='/SIgnup' element =  {<SIgnup/>} /> */}
-                    
-                   <Route path="/signup" element={<ProtectedRoute><SignupPage /></ProtectedRoute>} />
-                  <Route path="/login" element={ <ProtectedRoute> <LoginPage /></ProtectedRoute>} />
+                    <Route path="/" element={token ? <Home /> : <Landing />} />
+
+                    <Route
+                      path="/signup"
+                      element={
+                        <ProtectedRoute>
+                          <SignupPage />
+                        </ProtectedRoute>
+                      }
+                    />
+                    <Route
+                      path="/login"
+                      element={
+                        <ProtectedRoute>
+                          {" "}
+                          <LoginPage />
+                        </ProtectedRoute>
+                      }
+                    />
 
                     <Route path="/registor" element={<Registor />} />
                     <Route path="/payment" element={<Payment />} />
                     <Route path="/checkout" element={<CheckOutForm />} />
                     <Route path="/rental" element={<CreateRentalRequest />} />
                     <Route path="/company" element={<CompanyLogin />} />
-                    {/* <Route path="/driver" element={<DriverSearchBox />} /> */}
-                    {/* <Route path='/about' element =  {<About/>} /> */}
                     <Route path="/about-us" element={<About_us />} />
-                    {/* <Route path="/" element={<ProtectedRoute><Landing /></ProtectedRoute>} /> */}
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/faq" element={<Faq />} />
                     <Route path="/how-it-works" element={<How_It_Works />} />
@@ -139,7 +144,6 @@ function App() {
               <Footer />
             </BrowserRouter>
           </div>
-          {/* </LoadScript> */}
         </DestinationContext.Provider>
       </SourceContext.Provider>
     </Elements>

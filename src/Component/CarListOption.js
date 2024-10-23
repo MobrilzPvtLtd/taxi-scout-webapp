@@ -280,7 +280,6 @@ function CarListOption({
         body: JSON.stringify({
           request_id: rqstId,
           custom_reason: "cancel",
-          // fetchedUserData[0].metaRequest.data[0].vehicle_type_id
         }),
       });
       if (response.status === 200) {

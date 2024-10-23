@@ -45,7 +45,7 @@ const nestedMenuItems = [
   },
 ];
 
-function NavListMenu({handleData2}) {
+function NavListMenu({ handleData2 }) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [openNestedMenu, setopenNestedMenu] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
@@ -54,14 +54,12 @@ function NavListMenu({handleData2}) {
       <MenuItem>{title}</MenuItem>
     </Link>
   ));
-  const [state , setState] = useState(null)
+  const [state, setState] = useState(null);
   const handleCancel = (value) => {
     setState(value);
     if (handleData2) {
-      handleData2(value); 
-     
+      handleData2(value);
     }
-   
   };
 
   return (
@@ -95,42 +93,31 @@ function NavListMenu({handleData2}) {
             </ListItem>
           </Typography>
         </MenuHandler>
-        <MenuList className="hidden lg:block mt-2 ">
-          {/* <Menu
-            placement="right-start"
-            allowHover
-            offset={15}
-            open={openNestedMenu}
-            handler={setopenNestedMenu}
-          > */}
-            {/* <MenuHandler className="pt-3 flex items-center justify-between"> */}
-              <Link to="/about-us">
-                {" "}
-                <MenuItem>
-                  About Us
-                  {/* <ChevronUpIcon
-                  strokeWidth={2.5}
-                  className={`h-3.5 w-3.5 transition-transform ${
-                    isMenuOpen ? "rotate-90" : ""
-                  }`}
-                /> */}
-                </MenuItem>
-              </Link>
-            {/* </MenuHandler> */}
-            {/* <MenuList className="rounded-xl">{renderItems}</MenuList> */}
-          {/* </Menu> */}
+        <MenuList className="hidden lg:block mt-2 about_us_hover">
+          <div className="rounded-md hover:text-white hover:bg-black">
+            <Link to="/about-us">
+              {" "}
+              <MenuItem>About Us</MenuItem>
+            </Link>
+          </div>
+          <div className="rounded-md hover:text-white hover:bg-black">
           <Link to="/our-partner">
             <MenuItem>Our Partners</MenuItem>
           </Link>
+          </div>
+          <div className="rounded-md hover:text-white hover:bg-black">
           <Link to="/pricing">
             <MenuItem>Pricing</MenuItem>
           </Link>
+          </div> <div className="rounded-md hover:text-white hover:bg-black">
           <Link to="/our-team">
             <MenuItem>Our Team</MenuItem>
           </Link>
+          </div> <div className="rounded-md hover:text-white hover:bg-black">
           <Link to="/gallery">
             <MenuItem>Gallery</MenuItem>
           </Link>
+          </div>
         </MenuList>
       </Menu>
       <div className="block relative z-50 lg:hidden">
@@ -144,32 +131,33 @@ function NavListMenu({handleData2}) {
           >
             <MenuHandler className="flex items-center justify-between ">
               <Link to="/about-us">
-                <MenuItem onClick={()=>handleCancel(false)}>About Us</MenuItem>
+                <MenuItem onClick={() => handleCancel(false)}>
+                  About Us
+                </MenuItem>
               </Link>
             </MenuHandler>
-            {/* <MenuList className="block rounded-xl lg:hidden">
-              {renderItems}
-            </MenuList> */}
           </Menu>
 
           <Link to="/our-partner">
-            <MenuItem onClick={()=>handleCancel(false)}>Our Partners</MenuItem>
+            <MenuItem onClick={() => handleCancel(false)}>
+              Our Partners
+            </MenuItem>
           </Link>
           <Link to="/pricing">
-            <MenuItem onClick={()=>handleCancel(false)}>Pricing</MenuItem>
+            <MenuItem onClick={() => handleCancel(false)}>Pricing</MenuItem>
           </Link>
           <Link to="/our-team">
-            <MenuItem onClick={()=>handleCancel(false)}>Our Team</MenuItem>
+            <MenuItem onClick={() => handleCancel(false)}>Our Team</MenuItem>
           </Link>
           <Link to="/gallery">
-            <MenuItem onClick={()=>handleCancel(false)}>Gallery</MenuItem>
+            <MenuItem onClick={() => handleCancel(false)}>Gallery</MenuItem>
           </Link>
         </Collapse>
       </div>
     </React.Fragment>
   );
 }
-function NavListMenu2({handleData2}) {
+function NavListMenu2({ handleData2 }) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [openNestedMenu, setopenNestedMenu] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
@@ -178,18 +166,15 @@ function NavListMenu2({handleData2}) {
       <MenuItem>{title}</MenuItem>
     </a>
   ));
-  const [state , setState] = useState(null)
+  const [state, setState] = useState(null);
   const handleCancel = (value) => {
     setState(value);
     if (handleData2) {
-      handleData2(value); 
-     
+      handleData2(value);
     }
-   
   };
 
   return (
-    
     <React.Fragment>
       <Menu
         open={isMenuOpen}
@@ -221,70 +206,27 @@ function NavListMenu2({handleData2}) {
           </Typography>
         </MenuHandler>
         <MenuList className="hidden lg:block mt-2">
-          {/* <Menu
-            placement="right-start"
-            allowHover
-            offset={15}
-            open={openNestedMenu}
-            handler={setopenNestedMenu}
-          >
-            <MenuHandler className="pt-3 flex items-center justify-between"> */}
-              <Link to="/contact">
-                <MenuItem >
-                  Contact Us
-                  {/* <ChevronUpIcon
-                  strokeWidth={2.5}
-                  className={`h-3.5 w-3.5 transition-transform ${
-                    isMenuOpen ? "rotate-90" : ""
-                  }`}
-                /> */}
-                </MenuItem>
-              </Link>
-            {/* </MenuHandler> */}
-            {/* <MenuList className="rounded-xl">{renderItems}</MenuList> */}
-          {/* </Menu> */}
+        <div className="rounded-md hover:text-white hover:bg-black">
+          <Link to="/contact">
+            <MenuItem>Contact Us</MenuItem>
+          </Link>
+          </div> <div className="rounded-md hover:text-white hover:bg-black">
           <Link to="/faq">
             <MenuItem>FAQs</MenuItem>
           </Link>
+          </div> <div className="rounded-md hover:text-white hover:bg-black">
           <Link to="/privacy-policy">
             <MenuItem>Privacy Policy</MenuItem>
-          </Link>
+          </Link></div> <div className="rounded-md hover:text-white hover:bg-black">
           <Link to="/term-of-use">
             <MenuItem>Terms of Use</MenuItem>
-          </Link>
+          </Link></div> <div className="rounded-md hover:text-white hover:bg-black">
           <Link to="/term-of-services">
             <MenuItem>Term Of Service</MenuItem>
-          </Link>
+          </Link></div>
         </MenuList>
       </Menu>
       <div className="block relative z-50 lg:hidden">
-        {/* <Collapse open={isMobileMenuOpen}>
-          <Menu
-            placement="bottom"
-            allowHover
-            offset={6}
-            open={openNestedMenu}
-            handler={setopenNestedMenu}
-          >
-            <MenuHandler className="flex items-center justify-between">
-              <MenuItem>
-                Figma
-                <ChevronUpIcon
-                  strokeWidth={2.5}
-                  className={`h-3.5 w-3.5 transition-transform ${
-                    isMenuOpen ? "rotate-90" : ""
-                  }`}
-                />
-              </MenuItem>
-            </MenuHandler>
-            <MenuList className="block rounded-xl lg:hidden">
-              {renderItems}
-            </MenuList>
-          </Menu>
-          <MenuItem>React</MenuItem>
-          <MenuItem>TailwindCSS</MenuItem>
-        </Collapse> */}
-
         <Collapse open={isMobileMenuOpen}>
           <Menu
             placement="bottom"
@@ -295,25 +237,31 @@ function NavListMenu2({handleData2}) {
           >
             <MenuHandler className="flex items-center justify-between ">
               <Link to="/contact">
-                <MenuItem onClick={()=>handleCancel(false)}>Contact Us</MenuItem>
+                <MenuItem onClick={() => handleCancel(false)}>
+                  Contact Us
+                </MenuItem>
               </Link>
             </MenuHandler>
-            {/* <MenuList className="block rounded-xl lg:hidden">
-              {renderItems}
-            </MenuList> */}
           </Menu>
 
           <Link to="/faq">
-            <MenuItem onClick={()=>handleCancel(false)}>FAQs</MenuItem>
+            <MenuItem onClick={() => handleCancel(false)}>FAQs</MenuItem>
           </Link>
           <Link to="/privacy-policy">
-            <MenuItem onClick={()=>handleCancel(false)}> Privacy Policy</MenuItem>
+            <MenuItem onClick={() => handleCancel(false)}>
+              {" "}
+              Privacy Policy
+            </MenuItem>
           </Link>
           <Link to="/term-of-use">
-            <MenuItem onClick={()=>handleCancel(false)}>Terms of Use</MenuItem>
+            <MenuItem onClick={() => handleCancel(false)}>
+              Terms of Use
+            </MenuItem>
           </Link>
           <Link to="/term-of-services">
-            <MenuItem onClick={()=>handleCancel(false)}>Term Of Service</MenuItem>
+            <MenuItem onClick={() => handleCancel(false)}>
+              Term Of Service
+            </MenuItem>
           </Link>
         </Collapse>
       </div>
@@ -321,19 +269,16 @@ function NavListMenu2({handleData2}) {
   );
 }
 
-function NavList({handleData}) {
-  const [state , setState] = useState(null)
+function NavList({ handleData }) {
+  const [state, setState] = useState(null);
   const handleCancel = (value) => {
     setState(value);
     if (handleData) {
-      handleData(value); 
-     
+      handleData(value);
     }
-   
   };
   const handleNavCancel = (value) => {
     handleData(value);
-    console.log("child ki value" , value)
   };
   return (
     <List className="mb-0 mt-0 p-0 lg:mb-0 lg:mt-0 lg:flex-row lg:p-1 text-gray-900 ">
@@ -362,7 +307,7 @@ function NavList({handleData}) {
         >
           <ListItem
             className="flex items-center gap-2 py-0 pr-4 font-semibold text-lg"
-            onClick={()=>handleCancel(false)}
+            onClick={() => handleCancel(false)}
           >
             How It Works
           </ListItem>
@@ -375,7 +320,10 @@ function NavList({handleData}) {
           color="blue-gray"
           className="font-medium"
         >
-          <ListItem className="flex items-center gap-2 py-0 pr-4 font-semibold text-lg" onClick={()=>handleCancel(false)}>
+          <ListItem
+            className="flex items-center gap-2 py-0 pr-4 font-semibold text-lg"
+            onClick={() => handleCancel(false)}
+          >
             Blogs
           </ListItem>
         </Typography>
@@ -393,8 +341,6 @@ export function NavbarMain() {
     setOpenNav(value);
   };
 
-
-
   React.useEffect(() => {
     window.addEventListener(
       "resize",
@@ -407,7 +353,6 @@ export function NavbarMain() {
     window.location.reload();
   };
   return (
-
     <Navbar className="px-0 sm:px-2 py-4" id="navbar_main_sticky">
       <div className="flex items-center justify-between text-blue-gray-900 relative sm:px-5 ">
         <Link to="/" onClick={() => setOpenNav(false)}>
@@ -419,7 +364,7 @@ export function NavbarMain() {
         </Link>
 
         <div className="hidden lg:block">
-          <NavList  />
+          <NavList />
         </div>
         {token ? (
           <div className="hidden gap-2 lg:flex">
@@ -440,9 +385,8 @@ export function NavbarMain() {
                   variant="outlined"
                   size="sm"
                   className="w-[8rem] bg-black text-white font-semibold"
-                 
                 >
-                  Sign Up {" "}
+                  Sign Up{" "}
                 </Button>
               </Link>
               <Link to="/login">
@@ -450,7 +394,6 @@ export function NavbarMain() {
                   variant="outlined"
                   size="sm"
                   className="w-[8rem] bg-black text-white font-semibold"
-                
                 >
                   Log In
                 </Button>
@@ -486,32 +429,32 @@ export function NavbarMain() {
             </Button>
           </div>
         ) : (
-        <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden text-gray-900">
-          <Link to="/signup">
-            {" "}
-            <Button
-              variant="outlined"
-              size="sm"
-              fullWidth
-              className="text-gray-900"
-              onClick={() => setOpenNav(!openNav)}
-            >
-              Sign Up
-            </Button>
-          </Link>
-          <Link to="/login">
-            <Button
-              variant="outlined"
-              size="sm"
-              fullWidth
-              onClick={() => setOpenNav(!openNav)}
-            >
-              Log In
-            </Button>
-          </Link>
-        </div>)}
+          <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden text-gray-900">
+            <Link to="/signup">
+              {" "}
+              <Button
+                variant="outlined"
+                size="sm"
+                fullWidth
+                className="text-gray-900"
+                onClick={() => setOpenNav(!openNav)}
+              >
+                Sign Up
+              </Button>
+            </Link>
+            <Link to="/login">
+              <Button
+                variant="outlined"
+                size="sm"
+                fullWidth
+                onClick={() => setOpenNav(!openNav)}
+              >
+                Log In
+              </Button>
+            </Link>
+          </div>
+        )}
       </Collapse>
     </Navbar>
-    
   );
 }
