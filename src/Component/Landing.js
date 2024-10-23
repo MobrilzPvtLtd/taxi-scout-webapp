@@ -95,7 +95,8 @@ const Landing = () => {
                   </div>
                 </div>
                 <button
-                  className="w-fit my-2 px-10 bg-black text-white "
+                id="btn_hover_main"
+                  className="w-fit my-2 px-10 py-2 font-semibold rounded-lg bg-black text-white hover:bg-white hover:text-black "
                   onClick={handleRedirect}
                 >
                   Search

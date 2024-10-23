@@ -73,8 +73,8 @@ if (userType === "user"){
   return (
     <div className='' id='banner_img_home'>
     <div className="container flex justify-center items-center  md:justify-end min-h-[100vh] min-w-full">
-    {loading ?  <div className="container  mx-auto px-0 sm:px-2"><Skeleton active /></div> : <div>
-      </div>}
+    {/* {loading ?  <div className="container  mx-auto px-0 sm:px-2"><Skeleton active /></div> : <div>
+      </div>} */}
     {(otp_visible== true)?(
         <div id="otp_verify">
           <OtpVerify_Login />
@@ -106,10 +106,10 @@ if (userType === "user"){
             <input type="password" placeholder="Password" required />
           </div> */}
           {loading ? <div className='flex justify-center'> <img className='w-20 ' src={loader} alt='loading...' /> </div> :
-          <button id='login_btn' type="submit">Login as {userType}</button>}
+          <button id='btn_hover_main' className= "w-full my-2 py-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2" type="submit">Login as {userType}</button>}
         </form>: <span>
        
-         <a href='https://admin.taxiscout24.com/'> <button type="submit">Login as {userType}</button></a>
+         <a href='https://admin.taxiscout24.com/'> <button id='btn_hover_main' className= "w-full my-2 py-3 px-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2"type="submit">Login as {userType}</button></a>
        </span>}
       </div>)}
     </div>

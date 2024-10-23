@@ -18,6 +18,7 @@ body{
   min-height: 100vh;
 }
 
+
 /* .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -97,5 +98,17 @@ body{
   width: 100%;
   z-index: 9999999 !important;
   border-radius: 0px !important;
+
+}
+#btn_hover_main{
+  background-color: black !important;
+  color: white !important;
+  transition: all .3s ease-in-out;
+  border: 1px solid transparent;
+}
+#btn_hover_main:hover{
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid grey;
 
 }

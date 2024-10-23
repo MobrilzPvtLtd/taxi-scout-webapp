@@ -1,13 +1,9 @@
-import logo from "./logo.svg";
+
 import "./App.css";
 import Home from "./Component/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import SIgnup from "./Component/SIgnup";
-import Login from "./Component/Login";
-import Cards from "./Component/Cards";
 import SignupPage from "./Component/SignupPage";
 import LoginPage from "./Component/LoginPage";
-import HomePage from "./Component/HomePage";
 import Registor from "./Component/Register";
 import { SourceContext } from "./Context/SourceContext";
 import { useState } from "react";
@@ -45,13 +41,12 @@ import BookingCompleted from "./Component/BookingCompleted";
 import "./Responsive.css";
 import { NavbarMain } from "./Component/Navbar_Main";
 import { Footer } from "./Component/UI/Footer/Footer";
-import Card from "./Component/Blogs";
-import Articles from "./Component/Blogs";
 import BlogDetail from "./Component/BlogDetails";
+import ProtectedRoute from "./Component/ProtectedRoute";
 // import firebase from 'firebase'
 
 function App() {
-  let token = sessionStorage.token;
+  let token = sessionStorage.getItem("token")
   const [source, setSource] = useState([]);
   const [destination, setDestination] = useState([]);
   const stripePromise = loadStripe(
@@ -73,6 +68,7 @@ function App() {
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
+  
   return (
     <Elements stripe={stripePromise}>
       <SourceContext.Provider value={{ source, setSource }}>
@@ -83,20 +79,21 @@ function App() {
           <div className="App bg-gradient-to-r from-yellow-500 to-[#f99816]">
             <BrowserRouter>
               <LATLNG_State>
-                <NavbarMain id="navbar_main_sticky" />
+                <NavbarMain />
 
                 {/* <div className="chat-box" onClick={togglePopup}>
                   <div className="chat-header">Chat with us!</div>
                 </div> */}
                 {/* {showPopup && <ChatPopup />} */}
                 {/* <MainPage/> */}
-                <div className="w-full">
+                <div className="w-full main-app-body">
                   <Routes>
                     {/* <Route path = "/" element = {<Login/>} /> */}
-                    <Route path="/home" element={<Home />} />
+                    <Route path="/" element={token?<Home />: <Landing/>} />
                     {/* <Route path='/SIgnup' element =  {<SIgnup/>} /> */}
-                    <Route path="/signup" element={<SignupPage />} />
-                    <Route path="/login" element={<LoginPage />} />
+                    
+                   <Route path="/signup" element={<ProtectedRoute><SignupPage /></ProtectedRoute>} />
+                  <Route path="/login" element={ <ProtectedRoute> <LoginPage /></ProtectedRoute>} />
 
                     <Route path="/registor" element={<Registor />} />
                     <Route path="/payment" element={<Payment />} />
@@ -106,7 +103,7 @@ function App() {
                     {/* <Route path="/driver" element={<DriverSearchBox />} /> */}
                     {/* <Route path='/about' element =  {<About/>} /> */}
                     <Route path="/about-us" element={<About_us />} />
-                    <Route path="/" element={<Landing />} />
+                    {/* <Route path="/" element={<ProtectedRoute><Landing /></ProtectedRoute>} /> */}
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/faq" element={<Faq />} />
                     <Route path="/how-it-works" element={<How_It_Works />} />

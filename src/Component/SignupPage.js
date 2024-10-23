@@ -220,6 +220,7 @@ function SignupPage() {
   return (
     <>
       <div id="banner_img_home"  >
+      <div className="container flex justify-center items-center  md:justify-end min-h-[100vh] min-w-full">
         {otp_visible == true ? (
           <div id="otp_verify">
             <OtpVerify />
@@ -267,7 +268,7 @@ function SignupPage() {
 
                     <button
                       onClick={handleClick}
-                      className="px-4 py-2 bg-blue-500 text-black rounded-lg hover:bg-blue-600 transition duration-300"
+                      id='btn_hover_main' className= "w-full my-2 py-3 px-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2"
                     >
                       Upload Logo/Profile
                     </button>
@@ -367,8 +368,7 @@ function SignupPage() {
                       </button>
                     </div> */}
                     <button
-                      id="signup_btn"
-                      className=" md:translate-x-[50%]"
+                     id='btn_hover_main' className= "w-full my-2 py-3 font-semibold rounded-lg text-sm md:translate-x-[50%] lg:px-10 md:py-2"
                       type="submit"
                       onClick={handleSubmit}
                     >
@@ -418,7 +418,7 @@ function SignupPage() {
 
                     <button
                       onClick={handleClick}
-                      className="px-4 py-2 bg-blue-500 text-black rounded-lg hover:bg-blue-600 transition duration-300"
+                     id='btn_hover_main' className= "w-full my-2 py-3 px-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2"
                     >
                       Upload Logo/Profile
                     </button>
@@ -573,19 +573,20 @@ function SignupPage() {
                         required
                       />
                     </div>
-                    <div className="flex justify-center md:translate-x-[50%]">
-                      <div className="form-group cc001">
-                        <button id="signup_btn_company" type="submit">
+                    {/* <div className="flex justify-center ">
+                      <div className="form-group cc001 "> */}
+                        <button id='btn_hover_main' className= "w-full my-2 py-3 font-semibold rounded-lg text-sm md:translate-x-[50%] lg:px-10 md:py-2"type="submit">
                           Sign Up as {userType}
                         </button>
-                      </div>
-                    </div>
+                      {/* </div>
+                    </div> */}
                   </form>
                 </div>
               </div>
             )}
           </div>
         )}
+      </div>
       </div>
     </>
   );

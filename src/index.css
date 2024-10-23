@@ -56,10 +56,10 @@ code {
   font-size: 0.7em;
 }
 
-#payment-form button{
+/* #payment-form button{
   background-color: #000;
   width: 15vw;
-}
+} */
 
 #driver-searching{
   background-color: #faf6ae;
@@ -134,7 +134,7 @@ p {
 }
 
 /* Button styles (if any) */
-.button {
+/* .button {
   display: inline-block;
   padding: 10px 20px;
   background-color: #3498db;
@@ -145,11 +145,11 @@ p {
   text-decoration: none;
   font-size: 16px;
   transition: background-color 0.3s ease;
-}
+} */
 
-.button:hover {
+/* .button:hover {
   background-color: #2980b9;
-}
+} */
 
 #profilePicture{
   font-size: 20px;

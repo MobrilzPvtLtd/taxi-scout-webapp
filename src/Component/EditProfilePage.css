@@ -28,20 +28,7 @@
     margin-bottom: 15px;
   }
   
-  button {
-    background-color: #007bff;
-    color: black !important;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600 !important;
-  }
   
-  button:hover {
-    background-color:white !important;
-    color: black !important;
-  }
   
   .profile-form label {
     display: block;
@@ -62,13 +49,13 @@
     justify-content: space-between;
   }
   
-  .profile-form .buttons button {
+  /* .profile-form .buttons button {
     width: 48%;
-  }
-  #edit_profile{
+  } */
+  /* #edit_profile{
     background-color: black !important;
     color: white !important;
-  }
+  } */
  .profile_box{
   display: flex;
   justify-content: space-around;

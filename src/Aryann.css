@@ -790,3 +790,27 @@ button.work-box:hover {
     justify-content: end;
     align-items: center;
 }
+/* .main-app-body button {
+    background-color:black ;
+
+    color: white ;
+    border: 1px solid transparent;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600 !important;
+    transition: all .3s ease-in-out;
+  }
+  
+  .main-app-body button:hover {
+    background-color:white ;
+    color: black ;
+    border: 1px solid gray;
+    
+  }
+  #locationButton svg{
+    color: black;
+  }
+  #locationButton:hover svg{
+    color: white;
+  } */

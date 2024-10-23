@@ -407,7 +407,7 @@ export function NavbarMain() {
   };
   return (
     <Navbar className="px-0 sm:px-2 py-4" id="navbar_main_sticky">
-      <div className="flex items-center justify-between text-blue-gray-900 relative ">
+      <div className="flex items-center justify-between text-blue-gray-900 relative sm:px-5 ">
         {/* <Typography
           as="a"
           href="#"
