@@ -226,7 +226,7 @@ function SignupPage() {
             <OtpVerify />
           </div>
         ) : (
-          <div>
+          <div className="pt-2">
             {userType === "user" ? (
               // <div className="container flex justify-center items-center   ">
                 <div className="signup-container flex justify-center items-center">
