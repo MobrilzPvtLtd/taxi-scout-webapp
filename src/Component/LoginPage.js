@@ -81,7 +81,7 @@ function LoginPage() {
             <OtpVerify_Login />
           </div>
         ) : (
-          <div className="login-container ">
+          <div className="login-container flex justify-center items-center">
             <h1>Login</h1>
             <div className="login-options">
               <div

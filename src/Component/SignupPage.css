@@ -1,129 +1,111 @@
-body{
-  /* background-image: url(../Images/3adb4519-1285-4d49-89ac-fae6820278d2.avif); */
-  background-size:cover;
+body {
+  background-size: cover;
   background-position: 10% -2.5% !important;
-  background-repeat: no-repeat !important; 
+  background-repeat: no-repeat !important;
 }
 
+#sign_up_page_form {
+  box-shadow: 0 0 20px -10px black;
+  background-color: #000000a9 !important;
+  border-radius: 10px;
+  position: relative;
+  z-index: 100;
+  left: 30px;
+  height: fit-content;
+  top: 100px;
+  margin-top: 2vw;
+}
+#signup_page_main {
+  background-image: url(../Images/Designer.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat !important;
+}
 
-  #sign_up_page_form{
+.signup-form h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
 
-    box-shadow: 0 0 20px -10px black;
-background-color: #000000a9 !important;
-border-radius: 10px;
-position: relative;
-z-index: 100;
-left: 30px;
-height: fit-content;
-top: 100px;
-margin-top: 2vw;
-  }
-  #signup_page_main{
-    background-image: url(../Images/Designer.jpeg);
-    background-size:cover;
-    /* background-position: 10% -2.5% !important; */
-    background-repeat: no-repeat !important; 
-   
-    /* margin-top: -35px; */
-    /* position: relative; */
-  }
-  
-  
-  
-  .signup-form h2 {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .form-group {
-    margin: 5px 0px;
-    width: 100%;
-  }
-  
-  input[type="text"],
-  input[type="email"],
-  input[type="password"] ,
-  input[type="number"]  {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #cccccc7a;
-    border-radius: 4px;
-    outline: none;
-    background-color: #ffffffc0;
-  }
-  
-  #signup-btn {
-    background-color: #000;
-    color: #fff;
-    /* border: 1px solid black; */
-    border-radius: 10px;
-    padding: 10px 40px;
-    font-weight: 700;
-    cursor: pointer;
-    /* width: 70%; */
-    transition: background-color 0.3s;
-  }
-  
-  #signup-btn:hover {
-    background-color: #fff;
-    color: #000;
-  }
-  
-  #form{
-  
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
-      grid-gap: 5px; /* Adjust the spacing between columns */
-      width: 100%;
+.form-group {
+  margin: 5px 0px;
+  width: 100%;
+}
 
-  }
-  #countrySelect{
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #cccccc7a;
-    border-radius: 4px;
-    outline: none;
-    background-color: rgb(255 255 255 / 90%);
-    padding: 10px 0;
-    
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cccccc7a;
+  border-radius: 4px;
+  outline: none;
+  background-color: #ffffffc0;
+}
 
-  }
-  #otp_verify{
-    
-      position: absolute;
-      background-color: #000000a8;
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      top: 15vh;
- 
-  }
-  .otp_input{
-    width: 50%;
-    padding: 10px;
-  }
-#upload_profile{
+#signup-btn {
+  background-color: #000;
+  color: #fff;
+  /* border: 1px solid black; */
+  border-radius: 10px;
+  padding: 10px 40px;
+  font-weight: 700;
+  cursor: pointer;
+  /* width: 70%; */
+  transition: background-color 0.3s;
+}
+
+#signup-btn:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+#form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+  grid-gap: 5px; /* Adjust the spacing between columns */
+  width: 100%;
+}
+#countrySelect {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cccccc7a;
+  border-radius: 4px;
+  outline: none;
+  background-color: rgb(255 255 255 / 90%);
+  padding: 10px 0;
+}
+#otp_verify {
+  position: absolute;
+  background-color: #000000a8;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 15vh;
+}
+.otp_input {
+  width: 50%;
+  padding: 10px;
+}
+#upload_profile {
   background-color: #fbbf13 !important;
   color: black !important;
   border: 1px solid white;
 }
-#upload_profile_btn{
+#upload_profile_btn {
   background-color: #fbbf13 !important;
   color: black !important;
   border: 1px solid white;
 }
-#signup_btn{
+#signup_btn {
   background-color: #fbbf13 !important;
   color: black !important;
   border: 1px solid white;
-  
 }
-#signup_btn_company{
+#signup_btn_company {
   background-color: #fbbf13 !important;
   color: black !important;
   border: 1px solid white;
-
-  
 }
