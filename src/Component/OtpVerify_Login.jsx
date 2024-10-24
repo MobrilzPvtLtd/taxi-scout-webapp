@@ -82,7 +82,7 @@ const OtpVerify_Login = () => {
       setMessage(
         "An OTP has been resent to your email. Please check for the 6-digit code"
       );
-      setTimer(60);
+      setTimer(90);
       setLoading2(false);
     } else {
       setMessage("Server Error");

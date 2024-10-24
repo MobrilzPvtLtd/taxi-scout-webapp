@@ -228,8 +228,8 @@ function SignupPage() {
         ) : (
           <div>
             {userType === "user" ? (
-              <div className="container flex justify-center items-center   ">
-                <div className="signup-container">
+              // <div className="container flex justify-center items-center   ">
+                <div className="signup-container flex justify-center items-center">
                   <h1 className="text-white">Sign Up</h1>
                   <div className="signup-options flex-row gap-3">
                     <div
@@ -376,10 +376,10 @@ function SignupPage() {
                     </button>
                   </form>
                 </div>
-              </div>
+              // </div>
             ) : (
-              <div className="container flex justify-center items-center">
-                <div className="signup-container">
+              // <div className="container">
+                <div className="signup-container  flex justify-center items-center">
                   <h1 className="text-white">Sign Up</h1>
                   <div className="signup-options flex gap-3">
                     <div
@@ -582,7 +582,7 @@ function SignupPage() {
                     </div> */}
                   </form>
                 </div>
-              </div>
+              // </div>
             )}
           </div>
         )}
