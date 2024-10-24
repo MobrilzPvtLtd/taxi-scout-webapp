@@ -41,6 +41,7 @@ import { NavbarMain } from "./Component/Navbar_Main";
 import { Footer } from "./Component/UI/Footer/Footer";
 import BlogDetail from "./Component/BlogDetails";
 import ProtectedRoute from "./Component/ProtectedRoute";
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
 function App() {
   let token = sessionStorage.getItem("token");
@@ -71,6 +72,25 @@ function App() {
     <Elements stripe={stripePromise}>
       <SourceContext.Provider value={{ source, setSource }}>
         <DestinationContext.Provider value={{ destination, setDestination }}>
+        <GoogleReCaptchaProvider
+    reCaptchaKey="[Your recaptcha key]"
+    language="[optional_language]"
+    useRecaptchaNet="[optional_boolean_value]"
+    useEnterprise="[optional_boolean_value]"
+    scriptProps={{
+      async: false, 
+      defer: false, 
+      appendTo: 'head',
+      nonce: undefined
+    }}
+    container={{ 
+      element: "[required_id_or_htmlelement]",
+      parameters: {
+        badge: '[inline|bottomright|bottomleft]',
+        theme: 'dark', 
+      }
+    }}
+  >
           <div className="App bg-gradient-to-r from-yellow-500 to-[#f99816]">
             <BrowserRouter>
               <LATLNG_State>
@@ -144,6 +164,7 @@ function App() {
               <Footer />
             </BrowserRouter>
           </div>
+          </GoogleReCaptchaProvider>
         </DestinationContext.Provider>
       </SourceContext.Provider>
     </Elements>

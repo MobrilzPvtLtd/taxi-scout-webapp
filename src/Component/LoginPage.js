@@ -6,6 +6,8 @@ import CarListOption from "./CarListOption";
 import OtpVerify_Login from "./OtpVerify_Login";
 import loader from "../Images/Spinner@1x-1.0s-200px-200px (1).gif";
 import { GoogleReCaptchaProvider, GoogleReCaptcha } from "react-google-recaptcha-v3";
+import ReCAPTCHA from "react-google-recaptcha";
+
 
 function LoginPage() {
   const [loading, setLoading] = useState(false);
@@ -73,6 +75,9 @@ function LoginPage() {
   const setTokenFunc = (getToken) => {
     setToken(getToken);
   };
+  function onChange(value) {
+    console.log("Captcha value:", value);
+  }
   return (
     <div className="" id="banner_img_home">
       <div className="container flex justify-center items-center  md:justify-end min-h-[100vh] min-w-full">
@@ -136,13 +141,19 @@ function LoginPage() {
                     Login as {userType}
                   </button>
                 )}
-                 <GoogleReCaptchaProvider reCaptchaKey={process.env.REACT_APP_RECAPTCHA_KEY}>
+                
+                 <GoogleReCaptchaProvider reCaptchaKey="6LeExWoqAAAAABvfj4hxT9GHLXKpeYBzAfjILAgM">
           <GoogleReCaptcha
             className="google-recaptcha-custom-class"
             onVerify={setTokenFunc}
             refreshReCaptcha={refreshReCaptcha}
           />
         </GoogleReCaptchaProvider>
+        
+        {/* <ReCAPTCHA
+    sitekey="6LeExWoqAAAAABvfj4hxT9GHLXKpeYBzAfjILAgM"
+    onChange={onChange}
+  /> */}
               </form>
             ) : (
               <span>
