@@ -103,7 +103,7 @@ const BlogList = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="relative flex flex-col items-center justify-center">
       <div className="pt-10 fadeInUp" data-wow-delay="0.1s">
         <div className="col-lg-12">
           <h1 className="display-5 mb-0 mt-5 text-center font-semibold">
