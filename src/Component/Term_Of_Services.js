@@ -3,8 +3,9 @@ import React from 'react'
 const Term_Of_Services = () => {
   return (
    
-    <div   id="banner_img_home" className="bg-[#fffa93] min-h-screen py-10 px-5 sm:px-10">
-      <div className="max-w-5xl mx-auto bg-[#00000080] shadow-lg rounded-lg p-8 mt-16 sm:p-12">
+    <div   id="banner_img_home" className="relative min-h-screen py-10 px-5 sm:px-10">
+      <div className="absolute inset-0 bg-black/20 backdrop-blur-lg"></div>
+      <div className="relative max-w-5xl mx-auto bg-[#00000080] shadow-lg rounded-lg p-8 mt-16 sm:p-12">
         <h1 className="text-4xl font-bold text-center text-white mb-4">Terms of Services</h1>
         <p className="text-sm text-white text-center mb-8">Last Updated: February 14, 2024</p>
 

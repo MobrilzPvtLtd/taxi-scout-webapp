@@ -84,10 +84,12 @@ const OtpVerify = () => {
     }
   };
   return (
+    
     <div
       className="container"
       style={{ textAlign: "center", marginTop: "50px", color: "#fff" }}
     >
+     
       <h1>OTP Verification</h1>
       <form
         onSubmit={handleSubmit}

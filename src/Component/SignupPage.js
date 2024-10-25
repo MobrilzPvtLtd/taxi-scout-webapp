@@ -3,6 +3,7 @@ import "./SignupPage.css"; // Import your CSS file for styling
 import { useNavigate } from "react-router-dom";
 import { createRenderer } from "react-dom/test-utils";
 import OtpVerify from "./OtpVerify";
+import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 function SignupPage() {
   let url = "https://admin.taxiscout24.com/";
@@ -15,6 +16,8 @@ function SignupPage() {
   const navigate = useNavigate();
   const [otp_visible, setOtp_visible] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+
+  const { executeRecaptcha } = useGoogleReCaptcha(); 
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -68,6 +71,13 @@ function SignupPage() {
   let history = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!executeRecaptcha) {
+      console.error("Execute reCAPTCHA not yet available");
+      return;
+    }
+    try {
+      // Execute the reCAPTCHA and get the token
+      const recaptchaToken = await executeRecaptcha("login");
 
     const response = await fetch(`${url}api/v1/user/register`, {
       method: "POST",
@@ -82,6 +92,7 @@ function SignupPage() {
         password_confirmation: credentials.cpassword,
         profile_picture: selectedImage,
         country: selectedCountry,
+        token : recaptchaToken
 
         //  password: credentials.password , cpassword : credentials.cpassword
       }),
@@ -98,11 +109,18 @@ function SignupPage() {
       alert(json.message);
       console.log(json.message);
     }
+  } catch (err) {
+    console.error("Registration failed", err);
+  } 
   };
 
   const handleSubmitCompany = async (e) => {
     e.preventDefault();
-
+    if (!executeRecaptcha) {
+      console.error("Execute reCAPTCHA not yet available");
+      return;
+    }
+    const recaptchaToken = await executeRecaptcha("login");
     const response = await fetch(`${url}api/v1/compnayregister`, {
       method: "POST",
       headers: {
@@ -124,6 +142,7 @@ function SignupPage() {
         profile_picture: selectedImage,
         package_id: 1,
         name: credentials.contact_name,
+        token : recaptchaToken
 
         //  password: credentials.password , cpassword : credentials.cpassword
       }),
@@ -142,26 +161,17 @@ function SignupPage() {
       let errorMessages =json.errors
 
       Object.keys(errorMessages).forEach((key) => {
-        const messages = errorMessages[key]; // Get error messages array for this key
-        alertMessage += messages.join(' ') + '\n'; // Concatenate each message
+        const messages = errorMessages[key];
+        alertMessage += messages.join(' ') + '\n'; 
       });
-
-      // Displaying error messages in an alert
       alert(alertMessage);
       console.log(json.message);
     }
-
-    //   localStorage.setItem('token', json.authtoken);
-    //   history("/home");
   };
 
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
-
-    // setSelectedCountry(e.target.value);
   };
-
-  // country method
 
   useEffect(() => {
     const countryMethod = async () => {
@@ -174,23 +184,14 @@ function SignupPage() {
           },
         });
         let data = await response.json();
-        // const countriesData = data.map(({ name }) => ({
-        //   name
-        // }));
         setCountries(data.data);
       } catch (err) {}
     };
     countryMethod();
   }, []);
-  // console.log("country code " ,countries[0].dial_code)
-  // console.log("outer country " , countries)
   const handleCountryChange = (e) => {
     setSelectedCountry(e.target.value);
-
-    console.log("is it working", e.target.value);
   };
-  // states and citiies
-  // country method
 
   useEffect(() => {
     const stateMethod = async () => {
@@ -203,10 +204,6 @@ function SignupPage() {
           },
         });
         let data = await response.json();
-        // const countriesData = data.map(({ name }) => ({
-        //   name
-        // }));
-        // console.log(data)
         setSTATE(data.data);
       } catch (err) {}
     };
@@ -219,8 +216,9 @@ function SignupPage() {
 
   return (
     <>
-      <div id="banner_img_home"  >
-      <div className="container flex justify-center items-center  md:justify-end min-h-[100vh] min-w-full">
+      <div id="banner_img_home" className="relative mt-10"  >
+      <div className="absolute inset-0 bg-black/20 backdrop-blur-lg"></div>
+      <div className="relative container flex justify-center items-center  md:justify-end min-h-[100vh] min-w-full">
         {otp_visible == true ? (
           <div id="otp_verify">
             <OtpVerify />
@@ -346,27 +344,7 @@ function SignupPage() {
                         ))}
                       </select>
                     </div>
-                    {/* <div className="flex gap-2 relative my-1 ">
-                      <div className="form-group cc001 absolute">
-                        <input
-                          type="file"
-                          name="profile"
-                          placeholder="select"
-                          value={credentials.profile}
-                          ref={fileInputRef}
-                          style={{ display: "none" }}
-                          onChange={handleChange}
-                          required
-                        />
-                      </div>
-                      <button
-                        id="upload_profile"
-                        // className="mb-3"
-                        onClick={handleButtonClick}
-                      >
-                        Upload profile pic
-                      </button>
-                    </div> */}
+
                     <button
                      id='btn_hover_main' className= "w-full my-2 py-3 font-semibold rounded-lg text-sm md:translate-x-[50%] lg:px-10 md:py-2"
                       type="submit"
@@ -592,4 +570,12 @@ function SignupPage() {
   );
 }
 
-export default SignupPage;
+
+
+export default function App() {
+  return (
+    <GoogleReCaptchaProvider reCaptchaKey="6LeExWoqAAAAABvfj4hxT9GHLXKpeYBzAfjILAgM">
+      <SignupPage />
+    </GoogleReCaptchaProvider>
+  );
+}

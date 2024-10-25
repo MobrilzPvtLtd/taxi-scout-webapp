@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       screens : {
         'sm-custom': '640px',
+        'ultraxl': '2400px',
       }
     },
   },

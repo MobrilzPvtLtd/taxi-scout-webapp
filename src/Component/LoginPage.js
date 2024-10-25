@@ -1,37 +1,17 @@
 import React, { useState } from "react";
-import { Skeleton } from "antd";
+import { Link, useNavigate } from "react-router-dom";
 import "./LoginPage.css"; // Import your CSS file for styling
-import { useNavigate } from "react-router-dom";
-import CarListOption from "./CarListOption";
-import OtpVerify_Login from "./OtpVerify_Login";
 import loader from "../Images/Spinner@1x-1.0s-200px-200px (1).gif";
-import { GoogleReCaptchaProvider, GoogleReCaptcha } from "react-google-recaptcha-v3";
-import ReCAPTCHA from "react-google-recaptcha";
-
+import OtpVerify_Login from "./OtpVerify_Login";
+import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 function LoginPage() {
   const [loading, setLoading] = useState(false);
-  const [otp_visible, setOtp_visible] = useState(false);
-  const [refreshReCaptcha, setRefreshReCaptcha] = useState(false);
-
-  const [userType, setUserType] = useState("user");
-  // Default userType is user
-
-  const handleLogin = () => {
-    // Perform login logic based on userType
-    console.log(`Logging in as ${userType}`);
-    // Add your login functionality here
-  };
-  let url = "https://admin.taxiscout24.com/";
-
-  // api call
-
-  const [credentials, setCredentials] = useState(
-    { email: "" },
-    { password: "" }
-  );
-  const [token, setToken] = useState([]);
-  let history = useNavigate();
+  const [otpVisible, setOtpVisible] = useState(false);
+  const [userType, setUserType] = useState("user"); // Default userType is user
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const navigate = useNavigate();
+  const { executeRecaptcha } = useGoogleReCaptcha(); // Use the reCAPTCHA hook
 
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -40,10 +20,21 @@ function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!executeRecaptcha) {
+      console.error("Execute reCAPTCHA not yet available");
+      return;
+    }
+
     if (userType === "user") {
       setLoading(true);
+
       try {
-        const response = await fetch(` ${url}api/v1/user/login`, {
+        
+        const recaptchaToken = await executeRecaptcha("login");
+
+        console.log("reCAPTCHA Token:", recaptchaToken); // Optional: For debugging
+
+        const response = await fetch("https://admin.taxiscout24.com/api/v1/user/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -51,37 +42,33 @@ function LoginPage() {
           body: JSON.stringify({
             email: credentials.email,
             password: credentials.password,
+            token: recaptchaToken, 
           }),
         });
 
         const json = await response.json();
 
-        setToken(json.access_token);
         if (response.ok) {
           sessionStorage.setItem("email", credentials.email);
-          setOtp_visible(true);
-          setLoading(false);
+          setOtpVisible(true);
         } else {
           alert("Invalid credentials");
         }
       } catch (err) {
-        setRefreshReCaptcha(!refreshReCaptcha);
-        console.log(err);
+        console.error("Login failed", err);
+      } finally {
+        setLoading(false);
       }
     } else if (userType === "company") {
-      history(`${url}`);
+      navigate("https://admin.taxiscout24.com/");
     }
   };
-  const setTokenFunc = (getToken) => {
-    setToken(getToken);
-  };
-  function onChange(value) {
-    console.log("Captcha value:", value);
-  }
+
   return (
-    <div className="" id="banner_img_home">
-      <div className="container flex justify-center items-center  md:justify-end min-h-[100vh] min-w-full">
-        {otp_visible == true ? (
+    <div id="banner_img_home" className="relative mt-10">
+      <div className="absolute inset-0 bg-black/20 backdrop-blur-lg"></div>
+      <div className="relative container flex justify-center items-center md:justify-end min-h-[100vh] min-w-full">
+        {otpVisible ? (
           <div id="otp_verify">
             <OtpVerify_Login />
           </div>
@@ -102,79 +89,56 @@ function LoginPage() {
                 Company
               </div>
             </div>
-            {userType === "user" ? (
-              <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <input
-                    type="email"
-                    placeholder="email"
-                    name="email"
-                    value={credentials.email}
-                    onChange={handleChange}
-                    required
-                  />
+
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <input
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  value={credentials.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  value={credentials.password}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              {loading ? (
+                <div className="flex justify-center">
+                  <img className="w-20" src={loader} alt="Loading..." />
                 </div>
-                <div className="form-group">
-                  <input
-                    type="password"
-                    placeholder="password"
-                    name="password"
-                    value={credentials.password}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                {/* <div className="form-group">
-            <input type="password" placeholder="Password" required />
-          </div> */}
-                {loading ? (
-                  <div className="flex justify-center">
-                    {" "}
-                    <img className="w-20 " src={loader} alt="loading..." />{" "}
-                  </div>
-                ) : (
-                  <button
-                    id="btn_hover_main"
-                    className="w-full my-2 py-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2"
-                    type="submit"
-                  >
-                    Login as {userType}
-                  </button>
-                )}
-                
-                 <GoogleReCaptchaProvider reCaptchaKey="6LeExWoqAAAAABvfj4hxT9GHLXKpeYBzAfjILAgM">
-          <GoogleReCaptcha
-            className="google-recaptcha-custom-class"
-            onVerify={setTokenFunc}
-            refreshReCaptcha={refreshReCaptcha}
-          />
-        </GoogleReCaptchaProvider>
-        
-        {/* <ReCAPTCHA
-    sitekey="6LeExWoqAAAAABvfj4hxT9GHLXKpeYBzAfjILAgM"
-    onChange={onChange}
-  /> */}
-              </form>
-            ) : (
-              <span>
-                <a href="https://admin.taxiscout24.com/">
-                  {" "}
-                  <button
-                    id="btn_hover_main"
-                    className="w-full my-2 py-3 px-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2"
-                    type="submit"
-                  >
-                    Login as {userType}
-                  </button>
-                </a>
-              </span>
-            )}
+              ) : (
+                <button
+                  id="btn_hover_main"
+                  className="w-full my-2 py-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2"
+                  type="submit"
+                >
+                  Login as {userType}
+                </button>
+              )}
+              
+              {(userType == "user")?<Link to = "/forget-password"><button className="text-white transition-all hover:scale-105">Forget Password ?</button> </Link>:null}
+            </form>
           </div>
         )}
       </div>
     </div>
-    // </div>
   );
 }
 
-export default LoginPage;
+export default function App() {
+  return (
+    <GoogleReCaptchaProvider reCaptchaKey="6LeExWoqAAAAABvfj4hxT9GHLXKpeYBzAfjILAgM">
+      <LoginPage />
+    </GoogleReCaptchaProvider>
+  );
+}

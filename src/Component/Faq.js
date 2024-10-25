@@ -1,5 +1,6 @@
 // src/FAQ.js
 import React, { useState } from "react";
+import bg from "../Images/Designer.jpeg"
 
 const FAQs = [
   {
@@ -68,9 +69,18 @@ const FAQ = () => {
   };
 
   return (
-    <div id="banner_img_home" className="flex justify-center items-center min-h-screen p-8">
-      <div className="bg-[#00000080] p-4 rounded-lg shadow-xl mt-16 w-full sm:w-full md:w-75 md:container">
-        <h4 className="text-4xl font-bold text-white tracking-widest uppercase text-center">FAQ</h4>
+    <div
+      className="relative transition-all min-h-screen bg-cover bg-center flex justify-center items-center py-10"
+      style={{ backgroundImage: `url(${bg})` }}
+    >
+      {/* Blurry Background Overlay */}
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-lg"></div>
+
+      {/* FAQ Container */}
+      <div className="relative  bg-[#00000099] p-4 rounded-lg shadow-xl mt-16 w-full sm:w-full md:w-3/4 md:container">
+        <h4 className="text-4xl font-bold text-white tracking-widest uppercase text-center">
+          FAQ
+        </h4>
         <p className="text-center text-white text-xl mt-2">
           Here are some of the frequently asked questions
         </p>
@@ -79,11 +89,13 @@ const FAQ = () => {
           {FAQs.map((faq, index) => (
             <div key={index} className="border-b border-gray-600">
               <button
-                className="flex justify-between items-center w-full p-4 text-left text-black hover:bg-gray-700 focus:outline-none"
+                className="flex justify-between items-center w-full p-4 text-left text-white font-semibold hover:bg-[#00000090] focus:outline-none"
                 onClick={() => toggleAccordion(index)}
               >
-                <span>{index + 1}. {faq.question}</span>
-                <span>{activeIndex === index ? '−' : '+'}</span>
+                <span>
+                  {index + 1}. {faq.question}
+                </span>
+                <span>{activeIndex === index ? "−" : "+"}</span>
               </button>
               {activeIndex === index && (
                 <div className="p-4 text-gray-300 bg-[#00000080]">
@@ -97,5 +109,6 @@ const FAQ = () => {
     </div>
   );
 };
+
 
 export default FAQ;

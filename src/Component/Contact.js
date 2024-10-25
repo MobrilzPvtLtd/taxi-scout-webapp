@@ -70,9 +70,10 @@ const ContactUs = () => {
   return (
     <div
       id="banner_img_home"
-      className="bg-gradient-to-r from-yellow-500 to-orange-500 flex items-center justify-center min-h-screen py-5 w-full "
+      className="relative bg-gradient-to-r from-yellow-500 to-orange-500 flex items-center justify-center min-h-screen py-5 w-full "
     >
-      <div className="p-5 bg-[#00000080]  shadow-lg rounded-lg mt-5 w-full max-w-lg animate-fade-in ">
+      <div className="absolute inset-0 bg-black/20 backdrop-blur-lg"></div>
+      <div className="relative p-5 bg-[#00000080]  shadow-lg rounded-lg mt-5 w-full max-w-lg animate-fade-in ">
         <h2 className="text-2xl font-bold mb-6 text-center text-white">
           Contact Us
         </h2>
@@ -267,11 +268,8 @@ const ContactUs = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className={`w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm  text-black ${
-                  loading
-                    ? "bg-indigo-300 cursor-not-allowed"
-                    : "bg-indigo-600 hover:bg-indigo-700"
-                } focus:outline-none focus:ring-2 focus:ring-indigo-500`}
+                id="btn_hover_main"
+                  className="w-fit my-2 px-10 py-2 font-semibold rounded-lg bg-black text-white hover:bg-white hover:text-black "
               >
                 {loading ? "Sending..." : "Send Message"}
               </button>

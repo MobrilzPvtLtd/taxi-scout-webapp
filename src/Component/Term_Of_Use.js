@@ -2,8 +2,9 @@ import React from 'react'
 
 const Term_Of_Use = () => {
   return (
-    <div  id="banner_img_home" className=" min-h-screen p-6 mt-16">
-      <div  className="max-w-5xl mx-auto mt-2 bg-[#00000080] shadow-lg rounded-lg p-8">
+    <div  id="banner_img_home" className="relative min-h-screen p-6 mt-16">
+      <div className="absolute inset-0 bg-black/20 backdrop-blur-lg"></div>
+      <div  className=" relative max-w-5xl mx-auto mt-2 bg-[#00000080] shadow-lg rounded-lg p-8">
         <h1 className="text-4xl font-bold text-center text-white mb-6">Terms of Use</h1>
         <p className="text-sm text-white mb-10 text-center">
           Last updated: September 27, 2024

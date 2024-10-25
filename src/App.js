@@ -41,7 +41,10 @@ import { NavbarMain } from "./Component/Navbar_Main";
 import { Footer } from "./Component/UI/Footer/Footer";
 import BlogDetail from "./Component/BlogDetails";
 import ProtectedRoute from "./Component/ProtectedRoute";
-import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
+import ForgetPassword from "./Component/Forget Password/ForgetPassword";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; 
+import CookieConsentPopup from "./Component/CookieConsentPopup";
 
 function App() {
   let token = sessionStorage.getItem("token");
@@ -70,28 +73,13 @@ function App() {
 
   return (
     <Elements stripe={stripePromise}>
+     
+      <ToastContainer position="top-center" autoClose={5000} hideProgressBar={false} />
       <SourceContext.Provider value={{ source, setSource }}>
         <DestinationContext.Provider value={{ destination, setDestination }}>
-        <GoogleReCaptchaProvider
-    reCaptchaKey="[Your recaptcha key]"
-    language="[optional_language]"
-    useRecaptchaNet="[optional_boolean_value]"
-    useEnterprise="[optional_boolean_value]"
-    scriptProps={{
-      async: false, 
-      defer: false, 
-      appendTo: 'head',
-      nonce: undefined
-    }}
-    container={{ 
-      element: "[required_id_or_htmlelement]",
-      parameters: {
-        badge: '[inline|bottomright|bottomleft]',
-        theme: 'dark', 
-      }
-    }}
-  >
+                
           <div className="App bg-gradient-to-r from-yellow-500 to-[#f99816]">
+            <CookieConsentPopup/>
             <BrowserRouter>
               <LATLNG_State>
                 <NavbarMain />
@@ -157,6 +145,9 @@ function App() {
                       element={<BookingCompleted />}
                     />
                     <Route path="/blog/:id" element={<BlogDetail />} />
+                    <Route path="/forget-password" element={<ForgetPassword />} />
+                    
+                  
                   </Routes>
                 </div>
               </LATLNG_State>
@@ -164,9 +155,10 @@ function App() {
               <Footer />
             </BrowserRouter>
           </div>
-          </GoogleReCaptchaProvider>
+         
         </DestinationContext.Provider>
       </SourceContext.Provider>
+         
     </Elements>
   );
 }
