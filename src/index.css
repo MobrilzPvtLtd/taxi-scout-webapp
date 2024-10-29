@@ -163,9 +163,13 @@ p {
   height: 30px !important; */
   /* padding: 20px; */
   background-color: transparent !important;
+  transition: transform .3s linear;
 }
 #locationButton:hover{
   background-color: #000 !important;
+  color: white !important;
+  transform: scale(1.5);
+
 }
 .css-kqfc7p-MuiCardMedia-root {
   display: block;
