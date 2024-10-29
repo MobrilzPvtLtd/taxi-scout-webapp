@@ -7,7 +7,8 @@ import { useTranslation } from "react-i18next";
 const AppDownloadButtons = () => {
   const {t} = useTranslation();
   return (
-    <div className="bg-gray-100 px-2 md:flex lg:px-10 pt-5">
+    <div className=" bg-gray-100 ">
+    <div className="container px-2 md:flex lg:px-10 pt-5">
       <div className="flex flex-col items-center justify-center px-5 w-full md:w-1/2">
         <h1 className="font-bold text-sm sm:text-xl md:text-2xl lg:text-4xl">{t('toolsandideas')}</h1>
         <p className="px-0 text-justify text-xs sm:px-20 sm:text-md  md:text-xl lg:px-10 lg:text-xl">
@@ -20,6 +21,8 @@ const AppDownloadButtons = () => {
       </div>
       <div className="hidden md:flex justify-center items-center w-1/2"><img className="w-96" src={mobileTaxi} alt={mobileTaxi} /></div>
     </div>
+    </div>
+
   );
 };
 
