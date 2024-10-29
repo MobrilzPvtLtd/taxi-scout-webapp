@@ -7,15 +7,17 @@ import taxi from "../Images/taxi.png";
 import { SourceContext } from "../Context/SourceContext";
 import { DestinationContext } from "../Context/DestinationContext";
 import CarListOption from "./CarListOption";
-import bg_1 from "../Images/bg_1.jpg";
-import bg_2 from "../Images/bg_2.jpg";
-import bg_3 from "../Images/OIG4.LOjK9uqO7Lj.OtzgY5XW.jpg";
-import bg_4 from "../Images/serve_globally.jpg";
+import bg_1 from "../Images/WhatsApp Image 2024-09-14 at 16.08.04_366d98cb.jpg";
+import bg_2 from "../Images/IMG-20241005-WA0037.jpg";
+import bg_3 from "../Images/IMG-20241005-WA0039.jpg";
+import bg_4 from "../Images/IMG-20241027-WA0004.jpg";
 import bg_5 from "../Images/serve_globally2.jpg";
 import ChatPopup from "./chatPopup";
 import AppDownloadButtons from "./AppDownloadButtons";
+import { useTranslation } from "react-i18next";
 
 const Landing = () => {
+  const { t } = useTranslation();
   const [distance, setDistance] = useState();
   const [carFetchFunc, setCarFetchFunc] = useState(null);
 
@@ -57,13 +59,10 @@ const Landing = () => {
           <div className="px-2 flex flex-col-reverse justify-center items-center lg:container lg:w-1/2 lg:flex-col gap-3 ">
             <div className="flex flex-col ">
               <h1 className="uppercase font-semibold text-lg sm:text-xl md:text-2xl lg:text-4xl">
-                ORDER TAXI TODAY{" "}
+                {t("title")}
               </h1>
-              <p className="px-4 text-justify text-xs sm:px-20 sm:text-md  md:text-xl lg:px-10 lg:text-xl">
-                With the TaxiScout app, you can travel safely from A to B –
-                wherever you are. Are you traveling by wheelchair or need help
-                elsewhere? No problem, we take your individual
-                requests into account.
+              <p className="px-4 text-justify text-xs sm:px-20 sm:text-md md:text-xl lg:px-10 lg:text-xl">
+                {t("description")}
               </p>
             </div>
             <div className="w-4/5 p-3 border-2 border-black rounded-lg bg-white">
@@ -73,15 +72,12 @@ const Landing = () => {
                   alt="taxi"
                   className="w-10 lg:w-20 object-cover rounded-lg"
                 />
-                <span className="text-2xl font-semibold">Ride</span>
+                <span className="text-2xl font-semibold">{t('ride')}</span>
                 <div className="bg-black h-1 w-10"></div>
               </div>
-
-              {/* main box */}
-
               <div className="">
                 <div class="text-sm sm:text-2xl lg:text-4xl font-semibold">
-                  Request a ride now
+                {t('requestRide')}
                 </div>
                 <div class="">
                   <div className="relative px-10">
@@ -95,18 +91,18 @@ const Landing = () => {
                   </div>
                 </div>
                 <button
-                id="btn_hover_main"
+                  id="btn_hover_main"
                   className="w-fit my-2 px-10 py-2 font-semibold rounded-lg bg-black text-white hover:bg-white hover:text-black "
                   onClick={handleRedirect}
                 >
-                  Search
+                   {t('searchButton')}
                 </button>
               </div>
             </div>
           </div>
 
           <div
-            className="hidden lg:flex items-center justify-center xl:w-1/2
+            className="hidden xl:flex items-center justify-center xl:w-1/2
          "
           >
             <img className="rounded-lg w-3/5" src={bg_1}></img>
@@ -115,7 +111,7 @@ const Landing = () => {
         <div className="bg-gray-100 pt-3 sm:pt-4  rounded-2xl flex flex-col justify-center items-center ">
           <div className="px-0 sm:px-20">
             <h1 className="uppercase font-semibold text-lg sm:text-xl md:text-2xl lg:text-4xl ">
-              Smart Way to Order a Taxi
+            {t('smart_way')}
             </h1>
             <div className="px-3 pt-0 gap-3 sm:container flex justify-center items-center  bg-gray-100 sm:pt-3 pb-3 sm:gap-4">
               <div className="w-50 flex justify-center">
@@ -123,29 +119,20 @@ const Landing = () => {
               </div>
               <div className="w-50 flex flex-col justify-center items-center">
                 <h1 className="font-bold text-sm sm:text-xl md:text-2xl lg:text-4xl">
-                  You do not have to call
+                  {t('doNotCall')}
                 </h1>
                 <p className=" px-0 text-justify text-xs sm:px-20 sm:text-md  md:text-xl lg:px-10 lg:text-xl">
-                  You do not like to make phone calls or do not have time to
-                  dial the number? Or maybe you currently have poor network
-                  coverage? Maybe you are also in a meeting and do not want to
-                  be disturb? This is not a problem! You can comfortably order
-                  your taxi with just a few clicks via our app.
+                {t('doNotCallDescription')}
                 </p>
               </div>
             </div>
             <div className="px-3 pt-0 gap-3 sm:container flex justify-center items-center  bg-gray-100 sm:pt-3 pb-3 sm:gap-4">
               <div className="w-50 flex flex-col justify-center items-center">
                 <h1 className="font-bold text-sm sm:text-xl md:text-2xl lg:text-4xl">
-                  There is no extra <br></br>waiting time
+                 {t("noExtraWaitingTime")}
                 </h1>
                 <p className="px-0 text-justify text-xs sm:px-20 sm:text-md  md:text-xl lg:px-10 lg:text-xl">
-                  You are in a hurry and need to get from point A to point B
-                  quickly? Or are you on the road and do not have time to wait
-                  for a taxi? Maybe you spontaneously decided to go out? With
-                  Taxi Scout you have no extra waiting time - you can order a
-                  taxi via the app and it will be at your doorstep in few
-                  minutes!
+                  {t('noExtraWaitingTimeDescription')}
                 </p>
               </div>
               <div className="w-50 flex justify-center">
@@ -166,32 +153,25 @@ const Landing = () => {
               </div>
               <div className="w-50 flex flex-col justify-center items-center">
                 <h1 className="font-bold text-sm sm:text-xl md:text-2xl lg:text-4xl">
-                  Everything is clear <br></br> and transparent
+                {t("clearAndTransparent")}
                 </h1>
                 <p className="px-0 text-justify text-xs sm:px-20 sm:text-md  md:text-xl lg:px-10 lg:text-xl">
-                  Probably this sounds familiar: You ordered your taxi, you've
-                  been told estimated time, you are still waiting but your taxi
-                  is not there yet, and nobody tells you why. With Tаxi Scout
-                  everything is clear and transparent. Once you order a taxi,
-                  you will be able to track its position in real time and get
-                  the estimated time of arrival.
+                 {t('clearAndTransparentDescription')}
                 </p>
               </div>
             </div>
             <div className="px-3 pt-0 gap-3 sm:container flex justify-center items-center  bg-gray-100 sm:pt-3 pb-3 sm:gap-4">
               <div className="w-50 flex flex-col justify-center items-center">
                 <h1 className="font-bold text-sm sm:text-xl md:text-2xl lg:text-4xl">
-                  Do you have special requests? <br></br> No problem!
+                {t("specialRequests")}
                 </h1>
                 <p className="px-0 text-justify text-xs sm:px-20 sm:text-md  md:text-xl lg:px-10 lg:text-xl">
-                  You need to order a taxi to the train station or the airport?
-                  You need a wheelchair accessible taxi? Whatever your situation
-                  is, we fulfill your special requirements, just let us know!
+                 {t('specialRequestsDescription')}
                 </p>
               </div>
               <div className="w-50 flex justify-center">
                 <img
-                  src={bg_3}
+                  src={bg_5}
                   width={700}
                   className="rounded-lg w-96 aspect-square"
                 ></img>
@@ -207,18 +187,16 @@ const Landing = () => {
               </div>
               <div className="w-50 flex flex-col justify-center items-center">
                 <h1 className="font-bold text-sm sm:text-xl md:text-2xl lg:text-4xl">
-                  We accept credit cards <br></br>and cash payments
+                {t("paymentOptions")}
                 </h1>
                 <p className="px-0 text-justify text-xs sm:px-20 sm:text-md  md:text-xl lg:px-10 lg:text-xl">
-                  You have ordered a taxi and have no cash? No problem! You can
-                  easily pay by credit card. Our paying system accepts all
-                  credit cards and cash.
+                 {t('paymentOptionsDescription')}
                 </p>
               </div>
             </div>
           </div>
         </div>
-        <AppDownloadButtons/>
+        <AppDownloadButtons />
       </div>
     </>
   );

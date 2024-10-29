@@ -123,6 +123,17 @@ body{
   color: black !important;
   border: 1px solid grey !important;
 }
+#mobile_menu button{
+  background-color: white !important;
+  color: black !important;
+  transition: all .3s ease-in-out;
+  border: 1px solid transparent;
+}
+#mobile_menu button:hover{
+  background-color: black !important;
+  color: white !important;
+  border: 1px solid grey !important;
+}
 .Toastify__toast-container {
   position: fixed;
   z-index: 999999 !important; /* Set your desired z-index */

@@ -1,0 +1,22 @@
+
+{ 
+  "title": "Smart Way to Order a Taxi",
+  "ride": "Ride",
+  "requestRide": "Request a ride now",
+  "smart_way" : "Smart Way to Order a Taxi",
+  "description": "With the TaxiScout app, you can travel safely from A to B – wherever you are. Are you traveling by wheelchair or need help elsewhere? No problem, we take your individual requests into account.",
+  "doNotCall": "You do not have to call",
+  "doNotCallDescription": "You do not like to make phone calls or do not have time to dial the number? Or maybe you currently have poor network coverage? Maybe you are also in a meeting and do not want to be disturbed? This is not a problem! You can comfortably order your taxi with just a few clicks via our app.",
+  "noExtraWaitingTime": "There is no extra waiting time",
+  "noExtraWaitingTimeDescription": "You are in a hurry and need to get from point A to point B quickly? Or are you on the road and do not have time to wait for a taxi? Maybe you spontaneously decided to go out? With Taxi Scout, you have no extra waiting time - you can order a taxi via the app and it will be at your doorstep in a few minutes!",
+  "clearAndTransparent": "Everything is clear and transparent",
+  "clearAndTransparentDescription": "Probably this sounds familiar: You ordered your taxi, you've been told estimated time, you are still waiting but your taxi is not there yet, and nobody tells you why. With Taxi Scout everything is clear and transparent. Once you order a taxi, you will be able to track its position in real-time and get the estimated time of arrival.",
+  "specialRequests": "Do you have special requests? No problem!",
+  "specialRequestsDescription": "You need to order a taxi to the train station or the airport? You need a wheelchair-accessible taxi? Whatever your situation is, we fulfill your special requirements, just let us know!",
+  "paymentOptions": "We accept credit cards and cash payments",
+  "paymentOptionsDescription": "You have ordered a taxi and have no cash? No problem! You can easily pay by credit card. Our payment system accepts all credit cards and cash.",
+  "toolsandideas" : "Let's create more tools and ideas that brings us together.",
+  "toolsandideasDescription" : "Flowbite helps you connect with friends and communities of people who share your interests. Connecting with your friends and family as well as discovering new ones is easy with features like Groups.",
+  "searchButton": "Search"
+  }
+  

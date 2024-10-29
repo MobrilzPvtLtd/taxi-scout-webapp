@@ -21,6 +21,7 @@ import {
 import logo from "../Images/logo.png";
 import { Link } from "react-router-dom";
 import { m } from "framer-motion";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const nestedMenuItems = [
   {
@@ -226,7 +227,7 @@ function NavListMenu2({ handleData2 }) {
           </Link></div>
         </MenuList>
       </Menu>
-      <div className="block relative z-50 lg:hidden">
+      <div id="mobile_menu" className="block relative z-50 lg:hidden">
         <Collapse open={isMobileMenuOpen}>
           <Menu
             placement="bottom"
@@ -367,7 +368,9 @@ export function NavbarMain() {
           <NavList />
         </div>
         {token ? (
-          <div className="hidden gap-2 lg:flex">
+          <div className="hidden gap-2 lg:flex items-center">
+            <LanguageSwitcher/>
+
             <Button
               variant="outlined"
               size="sm"
@@ -379,7 +382,9 @@ export function NavbarMain() {
           </div>
         ) : (
           <>
-            <div className="hidden gap-2 lg:flex">
+            <div className="hidden gap-2 lg:flex items-center">
+            <LanguageSwitcher/>
+
               <Link to="/signup">
                 <Button
                   variant="outlined"
@@ -418,7 +423,9 @@ export function NavbarMain() {
           <NavList handleData={handleNavCancel} />
         </div>
         {token ? (
-          <div className="flex justify-startgap-2 lg:hidden ">
+          <div className="flex flex-col justify-start items-center gap-2 lg:hidden ">
+            <LanguageSwitcher/>
+
             <Button
               variant="outlined"
               size="sm"
@@ -429,7 +436,9 @@ export function NavbarMain() {
             </Button>
           </div>
         ) : (
-          <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden text-gray-900">
+          <div className="flex flex-col w-full pl-4 items-start gap-2 lg:hidden text-gray-900">
+            <LanguageSwitcher/>
+            <div className="flex items-center gap-2">
             <Link to="/signup">
               {" "}
               <Button
@@ -452,9 +461,14 @@ export function NavbarMain() {
                 Log In
               </Button>
             </Link>
+            </div>
+            
           </div>
         )}
+        
       </Collapse>
+
+      
     </Navbar>
   );
 }

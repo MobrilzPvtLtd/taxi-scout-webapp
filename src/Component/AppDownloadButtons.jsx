@@ -2,16 +2,16 @@ import React from "react";
 import app_store from "../Images/app_store.png";
 import google_play from "../Images/google_play.png";
 import mobileTaxi from "../Images/Taxi-Booking-App-Development.png"
+import { useTranslation } from "react-i18next";
 
 const AppDownloadButtons = () => {
+  const {t} = useTranslation();
   return (
     <div className="bg-gray-100 px-2 md:flex lg:px-10 pt-5">
       <div className="flex flex-col items-center justify-center px-5 w-full md:w-1/2">
-        <h1 className="font-bold text-sm sm:text-xl md:text-2xl lg:text-4xl">Let's create more tools and ideas that brings us together.</h1>
+        <h1 className="font-bold text-sm sm:text-xl md:text-2xl lg:text-4xl">{t('toolsandideas')}</h1>
         <p className="px-0 text-justify text-xs sm:px-20 sm:text-md  md:text-xl lg:px-10 lg:text-xl">
-          Flowbite helps you connect with friends and communities of people who
-          share your interests. Connecting with your friends and family as well
-          as discovering new ones is easy with features like Groups.
+         {t('toolsandideasDescription')}
         </p>
         <div className="flex flex-row justify-center items-center">
           <img className=" p-0 m-0 w-40 sm:w-52 h-fit hover:cursor-pointer" src={google_play} alt={google_play} />

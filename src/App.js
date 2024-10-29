@@ -36,7 +36,6 @@ import OtpVerify from "./Component/OtpVerify";
 import EditProfilePage from "./Component/EditProfilePage";
 import ChatPopup from "./Component/chatPopup";
 import BookingCompleted from "./Component/BookingCompleted";
-import "./Responsive.css";
 import { NavbarMain } from "./Component/Navbar_Main";
 import { Footer } from "./Component/UI/Footer/Footer";
 import BlogDetail from "./Component/BlogDetails";
@@ -45,6 +44,7 @@ import ForgetPassword from "./Component/Forget Password/ForgetPassword";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; 
 import CookieConsentPopup from "./Component/CookieConsentPopup";
+import "./Component/i18n"
 
 function App() {
   let token = sessionStorage.getItem("token");

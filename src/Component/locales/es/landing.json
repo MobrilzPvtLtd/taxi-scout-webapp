@@ -1,0 +1,22 @@
+
+{
+   "title": "La forma inteligente de pedir un taxi",
+  "ride": "Viaje",
+  "requestRide": "Solicita un viaje ahora",
+  "smart_way" :"Manera inteligente de pedir un taxi",
+  "description": "Con la aplicación TaxiScout, puedes viajar de forma segura de A a B, estés donde estés. ¿Viaja en silla de ruedas o necesita ayuda en otro lugar? No hay problema, tenemos en cuenta sus solicitudes individuales.",
+  "doNotCall" : "no tienes que llamar",
+  "doNotCallDescription": "¿No te gusta hacer llamadas telefónicas o no tienes tiempo para marcar el número? ¿O tal vez tienes una cobertura de red deficiente? ¿Tal vez estás en una reunión y no quieres que te molesten? ¡Esto no es un problema! Puedes pedir tu taxi cómodamente con solo unos clics a través de nuestra aplicación.",
+  "noExtraWaitingTime": "No hay tiempo de espera extra",
+  "noExtraWaitingTimeDescription": "¿Tienes prisa y necesitas llegar rápidamente del punto A al punto B? ¿O estás en la carretera y no tienes tiempo para esperar un taxi? ¿Tal vez decidiste salir espontáneamente? Con Taxi Scout, no hay tiempo de espera adicional: puedes pedir un taxi a través de la aplicación y estará en tu puerta en pocos minutos.",
+  "clearAndTransparent": "Todo es claro y transparente",
+  "clearAndTransparentDescription": "Probablemente esto te suene familiar: Pediste tu taxi, te dijeron el tiempo estimado, sigues esperando pero tu taxi aún no ha llegado, y nadie te dice por qué. Con Taxi Scout todo es claro y transparente. Una vez que pides un taxi, podrás rastrear su posición en tiempo real y obtener la hora estimada de llegada.",
+  "specialRequests": "¿Tienes solicitudes especiales? ¡No hay problema!",
+  "specialRequestsDescription": "¿Necesitas pedir un taxi a la estación de tren o al aeropuerto? ¿Necesitas un taxi accesible para sillas de ruedas? Cualquiera que sea tu situación, cumplimos con tus requisitos especiales, ¡solo háznoslo saber!",
+  "paymentOptions": "Aceptamos tarjetas de crédito y pagos en efectivo",
+  "paymentOptionsDescription": "¿Has pedido un taxi y no tienes efectivo? ¡No hay problema! Puedes pagar fácilmente con tarjeta de crédito. Nuestro sistema de pago acepta todas las tarjetas de crédito y efectivo.",
+  "toolsandideas" : "Creemos más herramientas e ideas que nos unan.",
+  "toolsandideasDescription" : "Flowbite te ayuda a conectarte con amigos y comunidades de personas que comparten tus intereses. Conectarse con sus amigos y familiares, así como descubrir otros nuevos, es fácil con funciones como Grupos.",
+  "searchButton": "Buscar"
+  }
+  
