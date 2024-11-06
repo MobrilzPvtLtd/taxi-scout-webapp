@@ -35,9 +35,9 @@ const BlogDetail = () => {
   return (
     <div className="container mt-5 lg:mt-0">
       {/* <Container maxWidth="xl"> */}
-        <Typography variant="h3" gutterBottom>
+        <h1 className="text-lg mt-2 sm:text-xl md:text-3xl lg:text-4xl">
           {blogsData.title}
-        </Typography>
+        </h1>
         <Box display="flex" alignItems="center" marginBottom={2}>
           <Avatar
             alt={blogsData.author}
