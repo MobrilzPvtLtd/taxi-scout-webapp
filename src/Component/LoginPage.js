@@ -60,7 +60,7 @@ function LoginPage() {
         setLoading(false);
       }
     } else if (userType === "company") {
-      navigate("https://admin.taxiscout24.com/");
+      window.location ="https://admin.taxiscout24.com/";
     }
   };
 
@@ -91,6 +91,8 @@ function LoginPage() {
             </div>
 
             <form onSubmit={handleSubmit}>
+              {(userType=="company")? null :
+              <>
               <div className="form-group">
                 <input
                   type="email"
@@ -111,6 +113,7 @@ function LoginPage() {
                   required
                 />
               </div>
+              </>}
 
               {loading ? (
                 <div className="flex justify-center">

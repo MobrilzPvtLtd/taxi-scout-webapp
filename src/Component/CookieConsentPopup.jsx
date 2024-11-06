@@ -38,7 +38,7 @@ const CookieConsentPopup = () => {
         console.log("User declined cookies.");
       }}
     >
-      We use cookies to ensure the best experience on our website.{" "}
+      This site uses cookies. By continuing to use this website, you agree to our use of cookies.{" "}
       <a href="/privacy-policy" className="underline">
         Cookie Policy
       </a>.
