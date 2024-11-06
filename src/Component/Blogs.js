@@ -49,7 +49,8 @@ const BlogCard = ({
 
   return (
     <StyledCard onClick={handleReadMore}>
-      <CardMedia component="img" height="fit" image={image} alt={title} />
+      <img className="h-2/5 w-full
+       object-cover" src={image} alt={title} />
       <CardContent>
         <div className="flex flex-col min-h-[10rem]">
           <div className="text-xs sm:text-sm">
