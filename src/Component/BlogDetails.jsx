@@ -33,7 +33,7 @@ const BlogDetail = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container mt-5 lg:mt-0">
       {/* <Container maxWidth="xl"> */}
         <Typography variant="h3" gutterBottom>
           {blogsData.title}
@@ -50,23 +50,18 @@ const BlogDetail = () => {
             </Typography>
           </Box>
         </Box>
-        <div className="flex  gap-5 justify-between">
+        <div className="flex flex-col justify-center items-center lg:flex-row lg:items-start  gap-5 ">
         <img
           src={blogsData.image}
           alt={blogsData.title}
-          style={{
-            width: "30%",
-            height: "2%",
-            borderRadius: "10px",
-            marginBottom: "20px",
-          }}
+        className="w-1/2 lg:w-1/3"
         />
-        <Typography variant="body1" paragraph>
-          {(blogsData.description).slice(0,1500)}
+        <p variant="body1" paragraph className="text-justify w-full lg:w-2/3">
+          {(blogsData?.description)?.slice(0,1500)}
           <br></br>
           <br></br>
-          {(blogsData.description).slice(1500,)}
-        </Typography>
+          {(blogsData?.description)?.slice(1500,)}
+        </p>
         </div>
       {/* </Container> */}
     </div>
