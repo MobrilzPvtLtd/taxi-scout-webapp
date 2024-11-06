@@ -11,7 +11,7 @@ const LanguageSwitcher = () => {
 
   return (
     <div className='text-black '>
-        <select onChange={changeLanguage} name="" defaultValue="en" id="">
+        <select onChange={changeLanguage} name=""  id="">
 
 
       <option value ='en'>English</option>
