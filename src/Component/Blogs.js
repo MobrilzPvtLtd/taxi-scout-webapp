@@ -46,21 +46,25 @@ const BlogCard = ({
     localStorage.setItem("slug", slug);
     navigate(`/blog/${slug}`);
   };
+
   return (
     <StyledCard onClick={handleReadMore}>
-      <CardMedia component="img" height="180" image={image} alt={title} />
+      <CardMedia component="img" height="fit" image={image} alt={title} />
       <CardContent>
-        <div className="flex flex-col justify-between h-[10rem]">
-          <div>
-            <Typography gutterBottom variant="h5" component="div">
-              {title}
+        <div className="flex flex-col min-h-[10rem]">
+          <div className="text-xs sm:text-sm">
+            <Typography gutterBottom variant="h6" component="div">
+              {title.slice(0,50)} ....
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {description}
+              {description.slice(0,70)} ....
             </Typography>
           </div>
-          <div>
-            <Box display="flex" alignItems="center" marginTop={2}>
+          <div className="flex justify-center">
+          <button  id="btn_hover_main"
+                  className="w-fit my-2 py-1 px-5 sm:px-10  sm:py-2  font-semibold rounded-lg bg-black text-white hover:bg-white hover:text-black ">Know More</button></div>
+          <div className="">
+            <Box display="flex" alignItems="center" >
               <Avatar
                 alt={author}
                 src={`https://ui-avatars.com/api/?name=${author}`}
@@ -101,7 +105,6 @@ const BlogList = () => {
       console.error(error);
     }
   }, []);
-
   return (
     <div className="relative flex flex-col items-center justify-center">
       <div className="pt-10 fadeInUp" data-wow-delay="0.1s">
