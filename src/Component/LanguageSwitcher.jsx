@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
-
   const changeLanguage = (e) => {
     const selectedLanguage = e.target.value;
     i18n.changeLanguage(selectedLanguage);
@@ -11,7 +10,7 @@ const LanguageSwitcher = () => {
 
   return (
     <div className='text-black '>
-        <select onChange={changeLanguage} name=""  id="">
+        <select onChange={changeLanguage} name="" defaultValue="en" id="">
 
 
       <option value ='en'>English</option>

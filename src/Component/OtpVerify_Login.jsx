@@ -15,7 +15,7 @@ const OtpVerify_Login = () => {
     email: "",
     otp: "",
   });
-  const [timer, setTimer] = useState(30);
+  const [timer, setTimer] = useState(90);
   useEffect(() => {
     if (timer > 0) {
       const timerID = setInterval(() => {

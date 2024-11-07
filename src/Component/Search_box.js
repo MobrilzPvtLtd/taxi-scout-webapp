@@ -98,7 +98,7 @@ function Search_box() {
         <div >
           <div className="relative h-full w-full">
             <InputItem type="source" />
-            <div className="absolute top-0 right-1 translate-y-3 sm:translate-y-1 lg:translate-y-[-10%] lg:right-0 translate-x-[10%]  ">
+            <div className="flex justify-end items-center translate-y-[-240%] translate-x-0 pr-5 sm:translate-y-[-240%] sm:translate-x-1 lg:translate-y-[-230%] lg:translate-x-1 xl:translate-y-[-180%]  ">
               <LocationButton setAddress={setAddress} />
             </div>
           </div>
