@@ -3,7 +3,10 @@ import "./SignupPage.css"; // Import your CSS file for styling
 import { useNavigate } from "react-router-dom";
 import { createRenderer } from "react-dom/test-utils";
 import OtpVerify from "./OtpVerify";
-import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import {
+  GoogleReCaptchaProvider,
+  useGoogleReCaptcha,
+} from "react-google-recaptcha-v3";
 
 function SignupPage() {
   let url = "https://admin.taxiscout24.com/";
@@ -17,7 +20,7 @@ function SignupPage() {
   const [otp_visible, setOtp_visible] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const { executeRecaptcha } = useGoogleReCaptcha(); 
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -79,39 +82,39 @@ function SignupPage() {
       // Execute the reCAPTCHA and get the token
       const recaptchaToken = await executeRecaptcha("login");
 
-    const response = await fetch(`${url}api/v1/user/register`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: credentials.name,
-        mobile: credentials.mobile,
-        email: credentials.email,
-        password: credentials.password,
-        password_confirmation: credentials.cpassword,
-        profile_picture: selectedImage,
-        country: selectedCountry,
-        token : recaptchaToken
+      const response = await fetch(`${url}api/v1/user/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: credentials.name,
+          mobile: credentials.mobile,
+          email: credentials.email,
+          password: credentials.password,
+          password_confirmation: credentials.cpassword,
+          profile_picture: selectedImage,
+          country: selectedCountry,
+          token: recaptchaToken,
 
-        //  password: credentials.password , cpassword : credentials.cpassword
-      }),
-    });
+          //  password: credentials.password , cpassword : credentials.cpassword
+        }),
+      });
 
-    const json = await response.json();
-    // console.log(json);
+      const json = await response.json();
+      // console.log(json);
 
-    if (response.ok) {
-      // alert("Check Your Email");
-      localStorage.setItem(`email`, `${credentials.email}`);
-      setOtp_visible(true);
-    } else {
-      alert(json.message);
-      console.log(json.message);
+      if (response.ok) {
+        // alert("Check Your Email");
+        localStorage.setItem(`email`, `${credentials.email}`);
+        setOtp_visible(true);
+      } else {
+        alert(json.message);
+        console.log(json.message);
+      }
+    } catch (err) {
+      console.error("Registration failed", err);
     }
-  } catch (err) {
-    console.error("Registration failed", err);
-  } 
   };
 
   const handleSubmitCompany = async (e) => {
@@ -142,27 +145,26 @@ function SignupPage() {
         profile_picture: selectedImage,
         package_id: 1,
         name: credentials.contact_name,
-        token : recaptchaToken
+        token: recaptchaToken,
 
         //  password: credentials.password , cpassword : credentials.cpassword
       }),
     });
 
     const json = await response.json();
-    localStorage.setItem("email", credentials.email)
+    localStorage.setItem("email", credentials.email);
     // console.log(json);
 
     if (response.ok) {
       alert("You are Registered successfully");
       setOtp_visible(true);
-
     } else {
-      let alertMessage = '';
-      let errorMessages =json.errors
+      let alertMessage = "";
+      let errorMessages = json.errors;
 
       Object.keys(errorMessages).forEach((key) => {
         const messages = errorMessages[key];
-        alertMessage += messages.join(' ') + '\n'; 
+        alertMessage += messages.join(" ") + "\n";
       });
       alert(alertMessage);
       console.log(json.message);
@@ -192,6 +194,7 @@ function SignupPage() {
   const handleCountryChange = (e) => {
     setSelectedCountry(e.target.value);
   };
+  console.log("countries ki list ", countries);
 
   useEffect(() => {
     const stateMethod = async () => {
@@ -216,17 +219,17 @@ function SignupPage() {
 
   return (
     <>
-      <div id="banner_img_home" className="relative mt-10"  >
-      <div className="absolute inset-0 bg-black/20 backdrop-blur-lg"></div>
-      <div className="relative container flex justify-center items-center  md:justify-end min-h-[100vh] min-w-full">
-        {otp_visible == true ? (
-          <div id="otp_verify">
-            <OtpVerify />
-          </div>
-        ) : (
-          <div className="pt-2">
-            {userType === "user" ? (
-              // <div className="container flex justify-center items-center   ">
+      <div id="banner_img_home" className="relative mt-10">
+        <div className="absolute inset-0 bg-black/20 backdrop-blur-lg"></div>
+        <div className="relative container flex justify-center items-center  md:justify-end min-h-[100vh] min-w-full">
+          {otp_visible == true ? (
+            <div id="otp_verify">
+              <OtpVerify />
+            </div>
+          ) : (
+            <div className="pt-2">
+              {userType === "user" ? (
+                // <div className="container flex justify-center items-center   ">
                 <div className="signup-container flex justify-center items-center">
                   <h1 className="text-white">Sign Up</h1>
                   <div className="signup-options flex-row gap-3">
@@ -266,7 +269,8 @@ function SignupPage() {
 
                     <button
                       onClick={handleClick}
-                      id='btn_hover_main' className= "w-full my-2 py-3 px-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2"
+                      id="btn_hover_main"
+                      className="w-full my-2 py-3 px-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2"
                     >
                       Upload Logo/Profile
                     </button>
@@ -333,20 +337,23 @@ function SignupPage() {
                         onChange={handleCountryChange}
                       >
                         <option value="">Select a country:</option>
-                        {countries.map((country, index) => (
-                          <option
-                            key={index}
-                            name="country"
-                            value={country.dial_code}
-                          >
-                            {country.name}
-                          </option>
-                        ))}
+                        {[...countries] // Create a copy of the array to avoid mutating the original
+                          .sort((a, b) => a.name.localeCompare(b.name)) // Sort alphabetically by country name
+                          .map((country, index) => (
+                            <option
+                              key={index}
+                              name="country"
+                              value={country.dial_code}
+                            >
+                              {country.name}
+                            </option>
+                          ))}
                       </select>
                     </div>
 
                     <button
-                     id='btn_hover_main' className= "w-full my-2 py-3 font-semibold rounded-lg text-sm md:translate-x-[50%] lg:px-10 md:py-2"
+                      id="btn_hover_main"
+                      className="w-full my-2 py-3 font-semibold rounded-lg text-sm md:translate-x-[50%] lg:px-10 md:py-2"
                       type="submit"
                       onClick={handleSubmit}
                     >
@@ -354,9 +361,9 @@ function SignupPage() {
                     </button>
                   </form>
                 </div>
-              // </div>
-            ) : (
-              // <div className="container">
+              ) : (
+                // </div>
+                // <div className="container">
                 <div className="signup-container  flex justify-center items-center">
                   <h1 className="text-white">Sign Up</h1>
                   <div className="signup-options flex gap-3">
@@ -396,7 +403,8 @@ function SignupPage() {
 
                     <button
                       onClick={handleClick}
-                     id='btn_hover_main' className= "w-full my-2 py-3 px-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2"
+                      id="btn_hover_main"
+                      className="w-full my-2 py-3 px-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2"
                     >
                       Upload Logo/Profile
                     </button>
@@ -475,11 +483,17 @@ function SignupPage() {
                         onChange={handleCountryChange}
                       >
                         <option value="">Select a country:</option>
-                        {countries.map((country, index) => (
-                          <option key={index} name="country" value={country.id}>
-                            {country.name}
-                          </option>
-                        ))}
+                        {countries
+                          .sort((a, b) => a.name.localeCompare(b.name)) 
+                          .map((country, index) => (
+                            <option
+                              key={index}
+                              name="country"
+                              value={country.dial_code}
+                            >
+                              {country.name}
+                            </option>
+                          ))}
                       </select>
                     </div>
                     <div className="flex flex-col w-full form-group">
@@ -553,24 +567,26 @@ function SignupPage() {
                     </div>
                     {/* <div className="flex justify-center ">
                       <div className="form-group cc001 "> */}
-                        <button id='btn_hover_main' className= "w-full my-2 py-3 font-semibold rounded-lg text-sm md:translate-x-[50%] lg:px-10 md:py-2"type="submit">
-                          Sign Up as {userType}
-                        </button>
-                      {/* </div>
+                    <button
+                      id="btn_hover_main"
+                      className="w-full my-2 py-3 font-semibold rounded-lg text-sm md:translate-x-[50%] lg:px-10 md:py-2"
+                      type="submit"
+                    >
+                      Sign Up as {userType}
+                    </button>
+                    {/* </div>
                     </div> */}
                   </form>
                 </div>
-              // </div>
-            )}
-          </div>
-        )}
-      </div>
+                // </div>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
 }
-
-
 
 export default function App() {
   return (
