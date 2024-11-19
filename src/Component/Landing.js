@@ -59,7 +59,7 @@ const Landing = () => {
           <div className="px-2 flex flex-col-reverse justify-center items-center lg:container lg:w-1/2 lg:flex-col gap-3 ">
             <div className="flex flex-col ">
               <h1 className="uppercase font-semibold text-lg sm:text-xl md:text-2xl lg:text-4xl">
-                {t("title")}
+                {t(`landing.title1.1`)}
               </h1>
               <p className="px-4 text-justify text-xs sm:px-20 sm:text-md md:text-xl lg:px-10 lg:text-xl">
                 {t("description")}

@@ -1,6 +1,6 @@
 
-{ 
-  "title": "Smart Way to Order a Taxi",
+{ "landing" : {"title1.1": "Smart Way to Order a Taxi"},
+  "title1.1": "Smart Way to Order a Taxi",
   "ride": "Ride",
   "requestRide": "Request a ride now",
   "smart_way" : "Smart Way to Order a Taxi",
