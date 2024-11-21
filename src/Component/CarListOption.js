@@ -318,25 +318,14 @@ function CarListOption({
     createRequest();
     setClick(true);
     setNoDriverFound(true);
-    // setDriverWait(true);
     setSearchingDriver(true);
-    // setDisplay(true);
-    // userData();
-
-    // setTimeout(() => {
-    //   setSearchingDriver(false);
-    // }, 300000);
   }
 
   const handleOnCancel2 = () => {
     cancelRequest();
 
     setBooking(false);
-    // setSearchingDriver(false);
-    // setDriver(null);
     window.location.reload()
-    // setFetchedUserData2(null);
-    // setFetchedUserData(null);
   };
 
   // timer
@@ -344,8 +333,6 @@ function CarListOption({
   time.setSeconds(time.getSeconds() + 300); // 5 minutes timer
 
   const [finalData, setFinalData] = useState(aryann);
-  const [fullData, setFullData] = useState([]);
-  let completeData;
   useEffect(() => {
     const dataKoSet = () => {
       setFinalData(
