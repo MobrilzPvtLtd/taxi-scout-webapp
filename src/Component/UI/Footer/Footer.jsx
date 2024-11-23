@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Footer  = () => {
   const { t } = useTranslation();
 
-}
+};
 const LINKS = [
  
   {
