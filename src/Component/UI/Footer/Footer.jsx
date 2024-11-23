@@ -2,14 +2,14 @@ import { Typography } from "@material-tailwind/react";
 import logo from "../../../Images/logo.png"
 import { Link } from "react-router-dom";
  import { useTranslation } from "react-i18next";
-const Footer  = () => {
-  const { t } = useTranslation();
 
-};
+
+
+
 const LINKS = [
  
   {
-    title: "t(`company`)",
+    title: "Company",
     items: [{name:"About Us",slug:"about-us"},{name: "Our Partners", slug:"our-partner"}, {name:"Pricing", slug:"pricing"}, {name:"Our Team" , slug:"our-team"} , {name:"Gallery", slug:"gallery"}],
   },
   {
