@@ -9,7 +9,7 @@ const Footer  = () => {
 const LINKS = [
  
   {
-    title: "Company",
+    title: "t(`company`)",
     items: [{name:"About Us",slug:"about-us"},{name: "Our Partners", slug:"our-partner"}, {name:"Pricing", slug:"pricing"}, {name:"Our Team" , slug:"our-team"} , {name:"Gallery", slug:"gallery"}],
   },
   {
