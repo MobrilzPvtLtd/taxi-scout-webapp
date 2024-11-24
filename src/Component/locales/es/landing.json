@@ -1,5 +1,5 @@
-
-{"landing" : {"title1.1": "La forma inteligente de pedir un taxi"},
+{
+   "landing.title1.1": "La forma inteligente de pedir un taxi", 
    "title": "La forma inteligente de pedir un taxi",
   "ride": "Viaje",
   "requestRide": "Solicita un viaje ahora",
@@ -18,6 +18,28 @@
   "toolsandideas" : "Creemos más herramientas e ideas que nos unan.",
   "toolsandideasDescription" : "Flowbite te ayuda a conectarte con amigos y comunidades de personas que comparten tus intereses. Conectarse con sus amigos y familiares, así como descubrir otros nuevos, es fácil con funciones como Grupos.",
   "searchButton": "Buscar",
-   "company" : "Compañía"
-  }
+  "company" : "Compañía",
+  "resource" : "Recurso",
+  "contact" : "Contacto",
+  "about_us" : "Sobre Nosotros",
+  "our_partners" : "Nuestros Socios",
+  "pricing" : "Precios",
+  "our_team" : "Nuestro Equipo",
+  "gallery" : "Galería",
+  "how_we_work" : "Cómo Trabajamos",
+  "blogs" : "Blogs",
+  "contact_us" : "Contáctanos",
+  "faqs" : "Preguntas Frecuentes",
+  "privacy_policy" : "Política de Privacidad",
+  "terms_of_use" : "Términos de Uso",
+  "terms_of_services" : "Términos de Servicio",
+  "all_rights_reserved" : "Todos los Derechos Reservados.", 
+  "home" : "Hogar",
+  "about" : "Acerca de",
+"how_it_works" : "Cómo funciona",
+"log_in" : "Iniciar sesión",
+"sign_up" : "Registrarse"
+
+
+}
   
