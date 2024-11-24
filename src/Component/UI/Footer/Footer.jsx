@@ -13,7 +13,7 @@ const LINKS = [
     items: [{name:"About Us",slug:"about-us"},{name: "Our Partners", slug:"our-partner"}, {name:"Pricing", slug:"pricing"}, {name:"Our Team" , slug:"our-team"} , {name:"Gallery", slug:"gallery"}],
   },
   {
-    title: "Resource1",
+    title: "Resource",
     items: [{name:"How We Work",slug:"how-it-works"},{name :"Blogs" , slug : "blogs"}],
   },
   {
