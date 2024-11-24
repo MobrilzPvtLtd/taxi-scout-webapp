@@ -22,7 +22,9 @@ import logo from "../Images/logo.png";
 import { Link } from "react-router-dom";
 import { m } from "framer-motion";
 import LanguageSwitcher from "./LanguageSwitcher";
-
+import { useTranslation } from "react-i18next";
+export function NavbarMain() {
+  const { t } = useTranslation();
 const nestedMenuItems = [
   {
     title: "About Us",
@@ -47,6 +49,7 @@ const nestedMenuItems = [
 ];
 
 function NavListMenu({ handleData2 }) {
+ 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [openNestedMenu, setopenNestedMenu] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
@@ -78,7 +81,7 @@ function NavListMenu({ handleData2 }) {
               selected={isMenuOpen || isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}
             >
-              About
+               {t('about')}
               <ChevronDownIcon
                 strokeWidth={2.5}
                 className={`hidden h-3 w-3 transition-transform lg:block ${
@@ -98,25 +101,25 @@ function NavListMenu({ handleData2 }) {
           <div className="rounded-md hover:text-white hover:bg-black">
             <Link to="/about-us">
               {" "}
-              <MenuItem>About Us</MenuItem>
+              <MenuItem> {t('about_us')}</MenuItem>
             </Link>
           </div>
           <div className="rounded-md hover:text-white hover:bg-black">
           <Link to="/our-partner">
-            <MenuItem>Our Partners</MenuItem>
+            <MenuItem> {t('our_partners')}</MenuItem>
           </Link>
           </div>
           <div className="rounded-md hover:text-white hover:bg-black">
           <Link to="/pricing">
-            <MenuItem>Pricing</MenuItem>
+            <MenuItem>{t('pricing')}</MenuItem>
           </Link>
           </div> <div className="rounded-md hover:text-white hover:bg-black">
           <Link to="/our-team">
-            <MenuItem>Our Team</MenuItem>
+            <MenuItem>{t('our_team')}</MenuItem>
           </Link>
           </div> <div className="rounded-md hover:text-white hover:bg-black">
           <Link to="/gallery">
-            <MenuItem>Gallery</MenuItem>
+            <MenuItem>{t('gallery')}</MenuItem>
           </Link>
           </div>
         </MenuList>
@@ -133,7 +136,7 @@ function NavListMenu({ handleData2 }) {
             <MenuHandler className="flex items-center justify-between ">
               <Link to="/about-us">
                 <MenuItem onClick={() => handleCancel(false)}>
-                  About Us
+                {t('about_us')}
                 </MenuItem>
               </Link>
             </MenuHandler>
@@ -141,7 +144,7 @@ function NavListMenu({ handleData2 }) {
 
           <Link to="/our-partner">
             <MenuItem onClick={() => handleCancel(false)}>
-              Our Partners
+            {t('our_partners')}
             </MenuItem>
           </Link>
           <Link to="/pricing">
@@ -159,6 +162,7 @@ function NavListMenu({ handleData2 }) {
   );
 }
 function NavListMenu2({ handleData2 }) {
+
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [openNestedMenu, setopenNestedMenu] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
@@ -190,7 +194,7 @@ function NavListMenu2({ handleData2 }) {
               selected={isMenuOpen || isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}
             >
-              Contact
+              {t('contact')}
               <ChevronDownIcon
                 strokeWidth={2.5}
                 className={`hidden h-3 w-3 transition-transform lg:block ${
@@ -209,21 +213,21 @@ function NavListMenu2({ handleData2 }) {
         <MenuList className="hidden lg:block mt-2">
         <div className="rounded-md hover:text-white hover:bg-black">
           <Link to="/contact">
-            <MenuItem>Contact Us</MenuItem>
+            <MenuItem>{t('contact_us')}</MenuItem>
           </Link>
           </div> <div className="rounded-md hover:text-white hover:bg-black">
           <Link to="/faq">
-            <MenuItem>FAQs</MenuItem>
+            <MenuItem>{t('faqs')}</MenuItem>
           </Link>
           </div> <div className="rounded-md hover:text-white hover:bg-black">
           <Link to="/privacy-policy">
-            <MenuItem>Privacy Policy</MenuItem>
+            <MenuItem>{t('privacy_policy')}</MenuItem>
           </Link></div> <div className="rounded-md hover:text-white hover:bg-black">
           <Link to="/term-of-use">
-            <MenuItem>Terms of Use</MenuItem>
+            <MenuItem>{t('terms_of_use')}</MenuItem>
           </Link></div> <div className="rounded-md hover:text-white hover:bg-black">
           <Link to="/term-of-services">
-            <MenuItem>Term Of Service</MenuItem>
+            <MenuItem>{t('terms_of_services')}</MenuItem>
           </Link></div>
         </MenuList>
       </Menu>
@@ -239,7 +243,7 @@ function NavListMenu2({ handleData2 }) {
             <MenuHandler className="flex items-center justify-between ">
               <Link to="/contact">
                 <MenuItem onClick={() => handleCancel(false)}>
-                  Contact Us
+                {t('contact_us')}
                 </MenuItem>
               </Link>
             </MenuHandler>
@@ -251,17 +255,17 @@ function NavListMenu2({ handleData2 }) {
           <Link to="/privacy-policy">
             <MenuItem onClick={() => handleCancel(false)}>
               {" "}
-              Privacy Policy
+              {t('privacy_policy')}
             </MenuItem>
           </Link>
           <Link to="/term-of-use">
             <MenuItem onClick={() => handleCancel(false)}>
-              Terms of Use
+            {t('terms_of_use')}
             </MenuItem>
           </Link>
           <Link to="/term-of-services">
             <MenuItem onClick={() => handleCancel(false)}>
-              Term Of Service
+            {t('terms_of_services')}
             </MenuItem>
           </Link>
         </Collapse>
@@ -271,6 +275,7 @@ function NavListMenu2({ handleData2 }) {
 }
 
 function NavList({ handleData }) {
+
   const [state, setState] = useState(null);
   const handleCancel = (value) => {
     setState(value);
@@ -291,7 +296,7 @@ function NavList({ handleData }) {
           className="font-medium"
         >
           <ListItem className="flex items-center gap-2 py-0 pr-4 font-semibold text-lg">
-            Home
+            {t('home')}
           </ListItem>
         </Typography>
       </Link>
@@ -310,7 +315,7 @@ function NavList({ handleData }) {
             className="flex items-center gap-2 py-0 pr-4 font-semibold text-lg"
             onClick={() => handleCancel(false)}
           >
-            How It Works
+             {t('how_it_works')}
           </ListItem>
         </Typography>
       </Link>
@@ -325,7 +330,7 @@ function NavList({ handleData }) {
             className="flex items-center gap-2 py-0 pr-4 font-semibold text-lg"
             onClick={() => handleCancel(false)}
           >
-            Blogs
+             {t('blogs')}
           </ListItem>
         </Typography>
       </Link>
@@ -335,7 +340,7 @@ function NavList({ handleData }) {
   );
 }
 
-export function NavbarMain() {
+
   const [openNav, setOpenNav] = React.useState(false);
 
   const handleNavCancel = (value) => {
@@ -391,7 +396,7 @@ export function NavbarMain() {
                   size="sm"
                   className="w-[8rem] bg-black text-white font-semibold"
                 >
-                  Sign Up{" "}
+                  {t('sign_up')}{" "}
                 </Button>
               </Link>
               <Link to="/login">
@@ -400,7 +405,7 @@ export function NavbarMain() {
                   size="sm"
                   className="w-[8rem] bg-black text-white font-semibold"
                 >
-                  Log In
+                   {t('log_in')}
                 </Button>
               </Link>
             </div>
@@ -448,7 +453,7 @@ export function NavbarMain() {
                 className="text-gray-900"
                 onClick={() => setOpenNav(!openNav)}
               >
-                Sign Up
+                 {t('sign_up')}
               </Button>
             </Link>
             <Link to="/login">
@@ -458,7 +463,7 @@ export function NavbarMain() {
                 fullWidth
                 onClick={() => setOpenNav(!openNav)}
               >
-                Log In
+                 {t('log_in')}
               </Button>
             </Link>
             </div>
