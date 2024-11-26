@@ -472,7 +472,7 @@ function CarListOption({
   return (
     <>
       {create == false ? (
-        <div className="mt-5 pt-7 ">
+        <div className="mt-4 ">
           <h2 className="text-2xl font-bold">Recommended</h2>
           {/* panga starts */}
           {cars == true ? (
@@ -488,7 +488,7 @@ function CarListOption({
                       setSelectedCar(item);
                     }}
                   >
-                    <div className="flex items-center justify-between mt-5">
+                    <div className="flex items-center justify-between mt-2">
                       <div className="flex items-center gap-5">
                         <img src={item.icon} width={100} height={100} />
                         <div>
