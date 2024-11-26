@@ -131,7 +131,7 @@ function SignupPage() {
       },
       body: JSON.stringify({
         role: " admin",
-        service_location_id: selectedState,
+        // service_location_id: selectedState,
         company_name: credentials.cname,
         mobile: credentials.mobile,
         email: credentials.email,
@@ -496,7 +496,7 @@ function SignupPage() {
                           ))}
                       </select>
                     </div>
-                    <div className="flex flex-col w-full form-group">
+                    {/* <div className="flex flex-col w-full form-group">
                       <select
                         id="countrySelect"
                         value={selectedState}
@@ -513,7 +513,7 @@ function SignupPage() {
                           </option>
                         ))}
                       </select>
-                    </div>
+                    </div> */}
 
                     <div className="form-group">
                       <input
