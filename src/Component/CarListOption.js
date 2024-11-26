@@ -514,19 +514,19 @@ function CarListOption({
 
           {/* select section starts */}
           <div className="flex justify-center  mt-4 bottom-5 shadow-black shadow rounded-xl items-center">
-            <span className="text-md w-full mb-2 font-bold text-md underline">
+            <span className="text-md w-full mb-2 font-bold text-md ">
               Schedule Your Request For
             </span>
 
-            <span
-              className="mb-2 w-1/2 text-md font-bold underline cursor-pointer transition-all hover:scale-110"
+            <button
+              className="mb-2 w-1/2 text-md font-bold bg-black text-white rounded-lg py-1  cursor-pointer transition-all hover:scale-105"
               // handleOnClick={(()=>setCreate(true)) }
               onClick={() => {
                 setSchedule(true);
               }}
             >
               Select Date
-            </span>
+            </button>
           </div>
           {selectedCar?.name ? (
             <div>
