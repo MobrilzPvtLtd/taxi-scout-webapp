@@ -113,7 +113,7 @@ function Search_box() {
         id='btn_hover_main' className= "w-full my-2 py-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2" 
             onClick={() => calculateDistance()}
           >
-            {t(search)}
+            {t('search')}
           </button>
           {/* <button id="schedule_ride_btn" onClick={handle_schedule_taxi}>
             Schedule a ride{" "}
@@ -144,7 +144,7 @@ function Search_box() {
                 checked={options.option1}
                 onChange={() => handleCheckboxChange("option1")}
               />
-              {t(smoke)}
+              {t('smoke')}
               
             </label>
             <br />
