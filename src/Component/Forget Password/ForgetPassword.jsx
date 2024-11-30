@@ -328,7 +328,7 @@ const handleSubmit = async (e) => {
                 gutterBottom
                 sx={{ textAlign: "center" }}
               >
-                Password Recovery
+                 {t('password_recovery')}
               </Typography>
 
               <Box onSubmit={handleSubmit} component="form" sx={{ mt: 2 }}>
