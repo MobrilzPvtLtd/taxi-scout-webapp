@@ -210,7 +210,26 @@
 "schedule_ride" : "Zakažite vožnju",
 "available_drivers" : "Dostupni vozači",
 "searching_for_driver" : "Tražim vozača...",
-"cancel_request" : "Otkažite zahtev"
+"cancel_request" : "Otkažite zahtev",
+"user" : "Корисник",
+"upload_logo_profile" : "Отпреми лого/профил",
+"cpassword" : "Потврди лозинку",
+"password" : "Лозинка",
+"select_a_country" : "Изаберите земљу:",
+"sign_up_as" : "Региструјте се као",
+"company_name" : "Назив компаније",
+"contact_person" : "Контакт особа",
+"postal_code" : "Поштански број",
+"logout" : "Одјава",
+"remember" : "Запамти ме",
+"forgot_password" : "Заборавили сте лозинку?",
+"login_us" : "Пријава",
+"login" : "Пријава",
+"password_recovery" : "Опоравак лозинке",
+"new_password" : "Нова лозинка",
+"confrim_password" : "Потврда лозинке",
+"reset_my_password" : "Ресетуј моју лозинку",
+"back_to_login" : "Назад на пријаву"
 
 
 
