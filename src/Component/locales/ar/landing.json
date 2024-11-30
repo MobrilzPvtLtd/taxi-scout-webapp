@@ -210,7 +210,27 @@
 "schedule_ride" : "جدولة الرحلة",
 "available_drivers" : "السائقين المتاحين",
 "searching_for_driver" : "يتم البحث عن سائق...",
-"cancel_request" : "إلغاء الطلب"
+"cancel_request" : "إلغاء الطلب",
+    "user" : "مستخدم",
+"upload_logo_profile" : "تحميل الشعار/الملف الشخصي",
+"cpassword" : "تأكيد كلمة المرور",
+"password" : "كلمة المرور",
+"select_a_country" : "اختر دولة:",
+"sign_up_as" : "التسجيل كـ",
+"company_name" : "اسم الشركة",
+"contact_person" : "شخص الاتصال",
+"postal_code" : "الرمز البريدي",
+"logout" : "تسجيل الخروج",
+"remember" : "تذكرني",
+"forgot_password" : "هل نسيت كلمة المرور؟",
+"login_us" : "تسجيل الدخول",
+"login" : "تسجيل الدخول",
+"password_recovery" : "استعادة كلمة المرور",
+"new_password" : "كلمة المرور الجديدة",
+"confrim_password" : "تأكيد كلمة المرور",
+"reset_my_password" : "إعادة تعيين كلمة المرور الخاصة بي",
+"back_to_login" : "العودة إلى تسجيل الدخول"
+
 
 
 
