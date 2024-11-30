@@ -3,8 +3,10 @@ import React, { useEffect, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Skeleton } from 'antd';
+import { useTranslation } from "react-i18next";
 
 const Our_Teams = () => {
+  const { t } = useTranslation();
   const [loading , setLoading] = useState(true); 
   let url = "https://admin.taxiscout24.com";
   const [team, setTeam] = useState();
@@ -28,7 +30,7 @@ const Our_Teams = () => {
         <div className="row  my-5  wow fadeInUp" data-wow-delay="0.1s">
           <div className="col-lg-12">
             <h1 className="display-5 mb-0 mt-4 text-center font-medium">
-              Team Members
+            {t(`team_members`)}
             </h1>
           </div>
         </div>
