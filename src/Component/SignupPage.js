@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 function SignupPage() {
   const { t } = useTranslation();
   let url = "https://admin.taxiscout24.com/";
-  const [userType, setUserType] = useState("user"); // Default userType is user
+  const [userType, setUserType] = useState(t('user')); // Default userType is user
   const [STATE, setSTATE] = useState("");
   const [selectedState, setSelectedState] = useState("");
   const [countries, setCountries] = useState([]);
@@ -229,24 +229,24 @@ function SignupPage() {
             </div>
           ) : (
             <div className="pt-2">
-              {userType === "user" ? (
+              {userType === t('user') ? (
                 // <div className="container flex justify-center items-center   ">
                 <div className="signup-container flex justify-center items-center">
                   <h1 className="text-white">{t('sign_up')}</h1>
                   <div className="signup-options flex-row gap-3">
                     <div
                       className={`option ${
-                        userType === "user" ? "active" : ""
+                        userType === t('user') ? "active" : ""
                       }`}
-                      onClick={() => setUserType("user")}
+                      onClick={() => setUserType(t('user'))}
                     >
                       {t('user')}
                     </div>
                     <div
                       className={`option ${
-                        userType === "company" ? "active" : ""
+                        userType === t('company') ? "active" : ""
                       }`}
-                      onClick={() => setUserType("company")}
+                      onClick={() => setUserType(t('company'))}
                     >
                       {t(`company`)}
                     </div>
@@ -370,19 +370,19 @@ function SignupPage() {
                   <div className="signup-options flex gap-3">
                     <div
                       className={`option ${
-                        userType === "user" ? "active" : ""
+                        userType === t('user') ? "active" : ""
                       }`}
                       onClick={() => setUserType(t('user'))}
                     >
-                      User
+                    {t('user')}
                     </div>
                     <div
                       className={`option ${
-                        userType === "company" ? "active" : ""
+                        userType === t('company') ? "active" : ""
                       }`}
                       onClick={() => setUserType(t('company'))}
                     >
-                      Company
+                      {t('company')}
                     </div>
                   </div>
                   <div className="flex flex-col items-center">
