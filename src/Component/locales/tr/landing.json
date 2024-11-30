@@ -210,7 +210,26 @@
 "schedule_ride" : "Yolculuğu Planla",
 "available_drivers" : "Müsait Sürücüler",
 "searching_for_driver" : "Sürücü aranıyor...",
-"cancel_request" : "Talebi İptal Et"
+"cancel_request" : "Talebi İptal Et",
+"user" : "Kullanıcı",
+"upload_logo_profile" : "Logo/Profil Yükle",
+"cpassword" : "Şifreyi Onayla",
+"password" : "Şifre",
+"select_a_country" : "Bir ülke seçin:",
+"sign_up_as" : "Kaydolun",
+"company_name" : "Şirket Adı",
+"contact_person" : "İlgili Kişi",
+"postal_code" : "Posta Kodu",
+"logout" : "Çıkış Yap",
+"remember" : "Beni hatırla",
+"forgot_password" : "Şifrenizi mi unuttunuz?",
+"login_us" : "Giriş Yap",
+"login" : "Giriş Yap",
+"password_recovery" : "Şifre Kurtarma",
+"new_password" : "Yeni Şifre",
+"confrim_password" : "Şifreyi Onayla",
+"reset_my_password" : "Şifremi Sıfırla",
+"back_to_login" : "Girişe Dön"
 
 
 
