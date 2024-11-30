@@ -126,7 +126,7 @@ const ContactUs = () => {
               htmlFor="mobile"
               className="hidden sm:block text-sm font-semibold text-gray-100"
             >
-              Mobile
+             
               {t(`mobile`)}
             </label>
             <input
