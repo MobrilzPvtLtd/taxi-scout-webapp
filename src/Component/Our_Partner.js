@@ -7,7 +7,9 @@ import dropbox from "../Images/dropbox-logo-black-and-white-1.png";
 import netflix from "../Images/netflix-logo-black-png.png";
 import axios from "axios";
 import { Skeleton } from "antd";
+import { useTranslation } from "react-i18next";
 const Our_Partner = () => {
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(true);
   let url = "https://admin.taxiscout24.com";
   const [partners, setPartners] = useState();
@@ -32,13 +34,13 @@ const Our_Partner = () => {
           <div className="flex flex-col justify-center gap-10">
             <div className="font-semibold text-center   ">
               {" "}
-              <h1>Our Partners </h1>
+              <h1>{t('our_partners')} </h1>
             </div>
           </div>
 
           <div>
             <div className="font-bold text-center text-xl  ">
-              <span>Pleasure to work with </span>
+              <span>{t('partners_text1')} </span>
             </div>
           </div>
         </div>
