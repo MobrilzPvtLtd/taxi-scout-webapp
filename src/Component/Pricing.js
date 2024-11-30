@@ -1,8 +1,10 @@
 import { Skeleton } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const SubscriptionPage = () => {
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(true);
   let url = "https://admin.taxiscout24.com";
   const [price, setPrice] = useState();
@@ -28,11 +30,10 @@ const SubscriptionPage = () => {
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
               <div class="text-4xl font-extrabold text-black sm:text-5xl">
-                <h1> Choose Your Plan </h1>
+                <h1> {t(`pricing_text1`)} </h1>
               </div>
               <p class="mt-4 text-xl text-gray-700">
-                Unlock the power of decentralized finance with our cutting-edge
-                solutions.
+              {t(`pricing_text2`)}
               </p>
             </div>
 
@@ -57,7 +58,7 @@ const SubscriptionPage = () => {
                     <span class="text-5xl font-extrabold text-black">
                       ${item.amount}
                     </span>
-                    <span class="text-xl font-medium text-black-300">/mo</span>
+                    <span class="text-xl font-medium text-black-300">/{t(`pricing_text3`)}</span>
                   </div>
                   <ul class="mb-8 space-y-4 text-gray-700">
                     <li class="flex items-center">
@@ -75,7 +76,7 @@ const SubscriptionPage = () => {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span>{item.number_of_drivers} Drivers</span>
+                      <span>{item.number_of_drivers} {t(`pricing_text4`)}</span>
                     </li>
                     <li class="flex items-center">
                       <svg
@@ -92,14 +93,14 @@ const SubscriptionPage = () => {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span>Basic reporting</span>
+                      <span> {t(`pricing_text5`)}</span>
                     </li>
                   </ul>
                   <a
                     href="#"
                     class="block w-full py-3 px-6 text-center rounded-md text-black font-semibold bg-gradient-to-r from-yellow-600 to-[#ffd91c] hover:from-yellow-700 hover:to-orange-400"
                   >
-                    Get Started
+                     {t(`pricing_text6`)}
                   </a>
                 </div>
               ))}
