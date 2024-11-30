@@ -4,8 +4,10 @@ import "./LoginPage.css"; // Import your CSS file for styling
 import loader from "../Images/Spinner@1x-1.0s-200px-200px (1).gif";
 import OtpVerify_Login from "./OtpVerify_Login";
 import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { useTranslation } from "react-i18next";
 
 function LoginPage() {
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [otpVisible, setOtpVisible] = useState(false);
   const [userType, setUserType] = useState("user"); // Default userType is user
@@ -74,19 +76,19 @@ function LoginPage() {
           </div>
         ) : (
           <div className="login-container flex justify-center items-center">
-            <h1>Login</h1>
+            <h1>{t('login')}</h1>
             <div className="login-options">
               <div
                 className={`option ${userType === "user" ? "active" : ""}`}
-                onClick={() => setUserType("user")}
+                onClick={() => setUserType(t('user'))}
               >
                 User
               </div>
               <div
                 className={`option ${userType === "company" ? "active" : ""}`}
-                onClick={() => setUserType("company")}
+                onClick={() => setUserType(t('company'))}
               >
-                Company
+                {t('company')}
               </div>
             </div>
 
@@ -96,7 +98,7 @@ function LoginPage() {
               <div className="form-group">
                 <input
                   type="email"
-                  placeholder="Email"
+                  placeholder={t('email')}
                   name="email"
                   value={credentials.email}
                   onChange={handleChange}
@@ -106,7 +108,7 @@ function LoginPage() {
               <div className="form-group">
                 <input
                   type="password"
-                  placeholder="Password"
+                  placeholder={t('password')}
                   name="password"
                   value={credentials.password}
                   onChange={handleChange}
@@ -125,11 +127,11 @@ function LoginPage() {
                   className="w-full my-2 py-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2"
                   type="submit"
                 >
-                  Login as {userType}
+                  {t('login_us')} {userType}
                 </button>
               )}
               
-              {(userType == "user")?<Link to = "/forget-password"><button className="text-white transition-all hover:scale-105">Forget Password ?</button> </Link>:null}
+              {(userType == "user")?<Link to = "/forget-password"><button className="text-white transition-all hover:scale-105">{t('forgot_password')}</button> </Link>:null}
             </form>
           </div>
         )}
