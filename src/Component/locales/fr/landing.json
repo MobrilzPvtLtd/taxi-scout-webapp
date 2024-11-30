@@ -210,7 +210,26 @@
 "schedule_ride" : "Planifier la course",
 "available_drivers" : "Conducteurs disponibles",
 "searching_for_driver" : "Recherche de conducteur...",
-"cancel_request" : "Annuler la demande"
+"cancel_request" : "Annuler la demande",
+"user" : "Utilisateur",
+"upload_logo_profile" : "Télécharger logo/profil",
+"cpassword" : "Confirmer le mot de passe",
+"password" : "Mot de passe",
+"select_a_country" : "Sélectionnez un pays :",
+"sign_up_as" : "S'inscrire en tant que",
+"company_name" : "Nom de l'entreprise",
+"contact_person" : "Personne de contact",
+"postal_code" : "Code postal",
+"logout" : "Se déconnecter",
+"remember" : "Souviens-toi de moi",
+"forgot_password" : "Mot de passe oublié ?",
+"login_us" : "Connexion",
+"login" : "Connexion",
+"password_recovery" : "Récupération de mot de passe",
+"new_password" : "Nouveau mot de passe",
+"confrim_password" : "Confirmer le mot de passe",
+"reset_my_password" : "Réinitialiser mon mot de passe",
+"back_to_login" : "Retour à la connexion"
 
 
 
