@@ -10,7 +10,7 @@ function LoginPage() {
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [otpVisible, setOtpVisible] = useState(false);
-  const [userType, setUserType] = useState("user"); // Default userType is user
+  const [userType, setUserType] = useState(t('user')); // Default userType is user
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const navigate = useNavigate();
   const { executeRecaptcha } = useGoogleReCaptcha(); // Use the reCAPTCHA hook
@@ -27,7 +27,7 @@ function LoginPage() {
       return;
     }
 
-    if (userType === "user") {
+    if (userType === t('user')) {
       setLoading(true);
 
       try {
@@ -61,7 +61,7 @@ function LoginPage() {
       } finally {
         setLoading(false);
       }
-    } else if (userType === "company") {
+    } else if (userType === t('company')) {
       window.location ="https://admin.taxiscout24.com/";
     }
   };
@@ -79,13 +79,13 @@ function LoginPage() {
             <h1>{t('login')}</h1>
             <div className="login-options">
               <div
-                className={`option ${userType === "user" ? "active" : ""}`}
+                className={`option ${userType === t('user') ? "active" : ""}`}
                 onClick={() => setUserType(t('user'))}
               >
                 User
               </div>
               <div
-                className={`option ${userType === "company" ? "active" : ""}`}
+                className={`option ${userType === t('company') ? "active" : ""}`}
                 onClick={() => setUserType(t('company'))}
               >
                 {t('company')}
@@ -93,7 +93,7 @@ function LoginPage() {
             </div>
 
             <form onSubmit={handleSubmit}>
-              {(userType=="company")? null :
+              {(userType== t('company'))? null :
               <>
               <div className="form-group">
                 <input
@@ -131,7 +131,7 @@ function LoginPage() {
                 </button>
               )}
               
-              {(userType == "user")?<Link to = "/forget-password"><button className="text-white transition-all hover:scale-105">{t('forgot_password')}</button> </Link>:null}
+              {(userType == t('user'))?<Link to = "/forget-password"><button className="text-white transition-all hover:scale-105">{t('forgot_password')}</button> </Link>:null}
             </form>
           </div>
         )}
