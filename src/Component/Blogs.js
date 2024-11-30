@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 import { id } from "date-fns/locale";
 import axios from "axios";
 import LoaderSkeleton from "./LoaderSkeleton";
+import { useTranslation } from "react-i18next";
 
 const StyledCard = styled(Card)(({ theme }) => ({
   maxWidth: 345,
@@ -86,6 +87,7 @@ const BlogCard = ({
 
 // Demo blog list component using Stack for layout
 const BlogList = () => {
+  const { t } = useTranslation();
   const [blogsData, setBlogsData] = useState(null);
   const [loading, setLoading] = useState(false);
   let url = "https://admin.taxiscout24.com";
@@ -111,7 +113,7 @@ const BlogList = () => {
       <div className="pt-10 fadeInUp" data-wow-delay="0.1s">
         <div className="col-lg-12">
           <h1 className="display-5 mb-0 mt-5 text-center font-semibold">
-            Blogs
+          {t(`blogs`)}
           </h1>
         </div>
       </div>
