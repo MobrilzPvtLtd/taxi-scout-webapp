@@ -1,7 +1,7 @@
 import React from "react";
 import "./BookingCompleted.css";
 import { FaCheckCircle } from "react-icons/fa";
-
+import { useTranslation } from "react-i18next";
 const DriverArrived = ({
   pickup,
   drop_address,
@@ -11,6 +11,7 @@ const DriverArrived = ({
   otp,
   handleOnCancel,
 }) => {
+  const { t } = useTranslation();
   const handleCancel = () => {
     handleOnCancel();
   };
@@ -27,10 +28,10 @@ const DriverArrived = ({
 
       <div className="booking-details">
         <p>
-          <strong>Pickup Location:</strong> {pickup}
+          <strong>{t('pickup_location')}:</strong> {pickup}
         </p>
         <p>
-          <strong>Drop-off Location:</strong> {drop_address}
+          <strong>{t('dropoff_location')}:</strong> {drop_address}
         </p>
         {/* <p><strong>Estimated Arrival:</strong> 5 minutes</p> */}
         <p>
