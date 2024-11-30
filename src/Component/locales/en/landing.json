@@ -211,7 +211,26 @@
 "schedule_ride" : "Schedule Ride",
 "available_drivers" : "Available Drivers",
 "searching_for_driver" : "Searching for driver...",
-"cancel_request" : "Cancel Request"
+"cancel_request" : "Cancel Request",
+"user" : "User",
+"upload_logo_profile" : "Upload Logo/Profile",
+"cpassword" : "Confirm Password",
+"password" : "Password",
+"select_a_country" : "Select a country:",
+"sign_up_as" : "Sign Up as",
+"company_name" : "Company Name",
+"contact_person" : "Contact Person",
+"postal_code" : "postal code",
+"logout" : "Logout",
+"remember" : "Remember me",
+"forgot_password" : "Forgot password?",
+"login_us" : "Login Us",
+"login" :  "Login",
+"password_recovery" : "Password Recovery",
+"new_password" : "New Password",
+"confrim_password" : "Confrim Password",
+"reset_my_password" : "Reset My Password",
+"back_to_login" : "Back to Login"
 
 
 
