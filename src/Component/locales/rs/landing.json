@@ -210,7 +210,26 @@
 "schedule_ride" : "Запланировать поездку",
 "available_drivers" : "Доступные водители",
 "searching_for_driver" : "Ищем водителя...",
-"cancel_request" : "Отменить запрос"
+"cancel_request" : "Отменить запрос",
+"user" : "Пользователь",
+"upload_logo_profile" : "Загрузить логотип/профиль",
+"cpassword" : "Подтвердите пароль",
+"password" : "Пароль",
+"select_a_country" : "Выберите страну:",
+"sign_up_as" : "Зарегистрироваться как",
+"company_name" : "Название компании",
+"contact_person" : "Контактное лицо",
+"postal_code" : "Почтовый индекс",
+"logout" : "Выйти",
+"remember" : "Запомнить меня",
+"forgot_password" : "Забыли пароль?",
+"login_us" : "Войти",
+"login" : "Войти",
+"password_recovery" : "Восстановление пароля",
+"new_password" : "Новый пароль",
+"confrim_password" : "Подтвердить пароль",
+"reset_my_password" : "Сбросить пароль",
+"back_to_login" : "Вернуться к входу"
 
 
 
