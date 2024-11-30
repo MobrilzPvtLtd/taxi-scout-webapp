@@ -35,6 +35,7 @@ import BookingRequested from "./BookingRequested";
 import DriverArrived from "./DriverArrived";
 import TripStarted from "./TripStarted";
 import BookingCompleted from "./BookingCompleted";
+import { useTranslation } from "react-i18next";
 
 function CarListOption({
   option1,
@@ -44,6 +45,7 @@ function CarListOption({
   carFetchFunc,
   distance,
 }) {
+  const { t } = useTranslation();
   const { source, setSource } = useContext(SourceContext);
   const { destination, setDestination } = useContext(DestinationContext);
 
@@ -472,8 +474,8 @@ function CarListOption({
   return (
     <>
       {create == false ? (
-        <div className="mt-4 ">
-          <h2 className="text-2xl font-bold">Recommended</h2>
+        <div className="mt-5 pt-7 ">
+          <h2 className="text-2xl font-bold">{t('recommended')}</h2>
           {/* panga starts */}
           {cars == true ? (
             <div>
@@ -488,7 +490,7 @@ function CarListOption({
                       setSelectedCar(item);
                     }}
                   >
-                    <div className="flex items-center justify-between mt-2">
+                    <div className="flex items-center justify-between mt-5">
                       <div className="flex items-center gap-5">
                         <img src={item.icon} width={100} height={100} />
                         <div>
@@ -507,32 +509,32 @@ function CarListOption({
               ))}
             </div>
           ) : (
-            <div className="text-[18px] font-semibold">No Car Found</div>
+            <div className="text-[18px] font-semibold">{t('no_car_found')}</div>
           )}
 
           {/* panga ends */}
 
           {/* select section starts */}
           <div className="flex justify-center  mt-4 bottom-5 shadow-black shadow rounded-xl items-center">
-            <span className="text-md w-full mb-2 font-bold text-md ">
-              Schedule Your Request For
+            <span className="text-md w-full mb-2 font-bold text-md underline">
+              {t('schedule_your_request_for')}
             </span>
 
-            <button
-              className="mb-2 w-1/2 text-md font-bold bg-black text-white rounded-lg py-1  cursor-pointer transition-all hover:scale-105"
+            <span
+              className="mb-2 w-1/2 text-md font-bold underline cursor-pointer transition-all hover:scale-110"
               // handleOnClick={(()=>setCreate(true)) }
               onClick={() => {
                 setSchedule(true);
               }}
             >
-              Select Date
-            </button>
+              {t('select_date')}
+            </span>
           </div>
           {selectedCar?.name ? (
             <div>
               <div className="flex justify-center  mt-4 bottom-5 p-3 shadow-xl rounded w-full items-center">
                 <h2 className="text-md w-48  mb-2 font-bold text-md">
-                  Make Request For
+                  {t('make_request_for')}
                 </h2>
 
                 <button
@@ -554,10 +556,10 @@ function CarListOption({
                       X
                     </button>
                     <div className="taxi-scheduler">
-                      <h2>Schedule a Taxi Ride</h2>
+                      <h2>{t('schedule_a_taxi_ride')}</h2>
                       <form onSubmit={createRequest_schedule}>
                         <div className="flex flex-col justify-center items-center w-100">
-                          <label htmlFor="scheduledTime">Scheduled Time:</label>
+                          <label htmlFor="scheduledTime">{t('scheduled_time')}</label>
                           <DatePicker
                             selected={scheduledTime}
                             onChange={handleDateChange}
@@ -571,7 +573,7 @@ function CarListOption({
                           />
                         </div>
                         <button className="schedule_main_btn" type="submit">
-                          Schedule Ride
+                          {t('schedule_ride')}
                         </button>
                       </form>
                     </div>
@@ -587,9 +589,9 @@ function CarListOption({
             {fetchedUserData2?.onTripRequest?.data == null ? (
          
               <div className="w-full border-2 mt-3">
-                <h2 className="mt-2 text-2xl sm:text-4xl font-bold">Available Drivers</h2>
+                <h2 className="mt-2 text-2xl sm:text-4xl font-bold">{t('available_drivers')}</h2>
                 <div className=" flex flex-col items-center justify-center">
-                  <p className="text-[22px] ">Searching for driver...</p>
+                  <p className="text-[22px] ">{t('searching_for_driver')}</p>
                   <img width={150} height={150} src={driver_gif} />
                   <MyTimer expiryTimestamp={time} />
                   <button
@@ -597,7 +599,7 @@ function CarListOption({
             className="w-full my-2 py-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2"
                     onClick={handleOnCancel}
                   >
-                    Cancel Request
+                    {t('cancel_request')}
                   </button>
                 </div>
               </div>
