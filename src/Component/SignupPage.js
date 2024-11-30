@@ -366,7 +366,7 @@ function SignupPage() {
                 // </div>
                 // <div className="container">
                 <div className="signup-container  flex justify-center items-center">
-                  <h1 className="text-white">Sign Up</h1>
+                  <h1 className="text-white">{t('sign_up')}</h1>
                   <div className="signup-options flex gap-3">
                     <div
                       className={`option ${
