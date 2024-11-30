@@ -1,162 +1,164 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next';
 
 const Term_Of_Services = () => {
+  const { t } = useTranslation();
   return (
    
     <div   id="banner_img_home" className="relative min-h-screen py-10 px-5 sm:px-10">
       <div className="absolute inset-0 bg-black/20 backdrop-blur-lg"></div>
       <div className="relative max-w-5xl mx-auto bg-[#00000080] shadow-lg rounded-lg p-8 mt-16 sm:p-12">
-        <h1 className="text-4xl font-bold text-center text-white mb-4">Terms of Services</h1>
-        <p className="text-sm text-white text-center mb-8">Last Updated: February 14, 2024</p>
+        <h1 className="text-4xl font-bold text-center text-white mb-4">{t(`terms_of_services`)}</h1>
+        <p className="text-sm text-white text-center mb-8">{t(`terms_service_text1`)}</p>
 
         <div className="space-y-6">
           {/* Section 1 */}
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-2">1. Parties and Responsibilities</h2>
+            <h2 className="text-2xl font-semibold text-white mb-2">{t(`terms_service_text2`)}</h2>
             <p className="text-white text-start">
-              The parties acknowledge that neither Apple, Google Play, nor any other third-party platform are contracting parties of this License Agreement. Swissinserate GmbH, the owner of TaxiScout24.com, is solely responsible for the application and its content.
+            {t(`terms_service_text3`)}
             </p>
           </section>
 
           {/* Section 2 */}
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-2">2. Scope of the License</h2>
+            <h2 className="text-2xl font-semibold text-white mb-2">{t(`terms_service_text4`)}</h2>
             <div className="">
-              <p className="text-white text-start mb-2"><strong>2.1</strong> You are granted a non-transferable, non-exclusive license to install and use the TaxiScout24.com application on any compatible device that you own or control, subject to the terms of this Agreement.</p>
-              <p className="text-white text-start mb-2"><strong>2.2</strong> This license also applies to all updates provided by the Licensor, unless a separate license exists for such updates.</p>
-              <p className="text-white text-start mb-2"><strong>2.3</strong> You may not share, sell, rent, lease, or distribute the TaxiScout24.com application without prior written consent from Swissinserate GmbH.</p>
-              <p className="text-white text-start mb-2"><strong>2.4</strong> Reverse engineering, modification, or creation of derivative works of the application is prohibited without prior written consent from Swissinserate GmbH.</p>
-              <p className="text-white text-start mb-2"><strong>2.5</strong> You may not copy or alter the application except as expressly permitted by this license.</p>
-              <p className="text-white text-start mb-2"><strong>2.6</strong> Violations of these obligations may result in legal action and claims for damages.</p>
-              <p className="text-white text-start mb-2"><strong>2.7</strong> The Licensor reserves the right to change the terms of this license.</p>
-              <p className="text-white text-start"><strong>2.8</strong> This license does not restrict compliance with all applicable worldwide laws and regulations.</p>
+              <p className="text-white text-start mb-2"><strong>2.1</strong> {t(`terms_service_text5`)}</p>
+              <p className="text-white text-start mb-2"><strong>2.2</strong> {t(`terms_service_text6`)}</p>
+              <p className="text-white text-start mb-2"><strong>2.3</strong> {t(`terms_service_text7`)}</p>
+              <p className="text-white text-start mb-2"><strong>2.4</strong> {t(`terms_service_text8`)}</p>
+              <p className="text-white text-start mb-2"><strong>2.5</strong> {t(`terms_service_text9`)}</p>
+              <p className="text-white text-start mb-2"><strong>2.6</strong> {t(`terms_service_text10`)}</p>
+              <p className="text-white text-start mb-2"><strong>2.7</strong> {t(`terms_service_text11`)}</p>
+              <p className="text-white text-start"><strong>2.8</strong> {t(`terms_service_text12`)}</p>
             </div>
           </section>
 
           {/* Section 3 */}
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-2">3. Technical Requirements</h2>
+            <h2 className="text-2xl font-semibold text-white mb-2">{t(`terms_service_text13`)}</h2>
             <div className="">
-              <p className="text-white text-start mb-2"><strong>3.1</strong> The Licensor strives to keep the TaxiScout24.com application updated to comply with new firmware and hardware versions.</p>
-              <p className="text-white  text-start mb-2"><strong>3.2</strong> You are responsible for ensuring that your device meets the technical specifications required to use the TaxiScout24.com application.</p>
-              <p className="text-white"><strong>3.3</strong> The Licensor reserves the right to change the technical specifications at any time.</p>
+              <p className="text-white text-start mb-2"><strong>3.1</strong>{t(`terms_service_text14`)}</p>
+              <p className="text-white  text-start mb-2"><strong>3.2</strong> {t(`terms_service_text15`)}</p>
+              <p className="text-white"><strong>3.3</strong> {t(`terms_service_text16`)}</p>
             </div>
           </section>
 
           {/* Section 4 */}
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-2">4. Maintenance and Support</h2>
+            <h2 className="text-2xl font-semibold text-white mb-2">{t(`terms_service_text17`)}</h2>
             <div className="">
-              <p className="text-white text-start mb-2"><strong>4.1</strong> The Licensor is responsible for providing maintenance and support services for the TaxiScout24.com application.</p>
-              <p className="text-white text-start"><strong>4.2</strong> Third-party platforms are not obligated to provide maintenance and support services for the application.</p>
+              <p className="text-white text-start mb-2"><strong>4.1</strong> {t(`terms_service_text18`)}</p>
+              <p className="text-white text-start"><strong>4.2</strong> {t(`terms_service_text19`)}</p>
             </div>
           </section>
 
           {/* Section 5 */}
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-2">5. Data Usage</h2>
+            <h2 className="text-2xl font-semibold text-white mb-2">{t(`terms_service_text20`)}</h2>
             <p className="text-white text-start">
-              You acknowledge that the Licensor may access and modify your downloaded content and personal information, subject to the Licensor's Privacy Policy.
-            </p>
+            {t(`terms_service_text21`)}
+             </p>
           </section>
 
           {/* Section 6 */}
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-2">6. User-Generated Content</h2>
+            <h2 className="text-2xl font-semibold text-white mb-2">{t(`terms_service_text22`)}</h2>
             <p className="text-white text-start">
-              Your contributions to the TaxiScout24.com application must comply with certain guidelines and legal requirements. You grant Swissinserate GmbH a comprehensive license to use and distribute your contributions.
-            </p>
+            {t(`terms_service_text23`)}
+              </p>
           </section>
 
           {/* Section 7 */}
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-2">7. Liability</h2>
+            <h2 className="text-2xl font-semibold text-white mb-2">{t(`terms_service_text24`)}</h2>
             <p className="text-white text-start">
-              The Licensor's liability is limited to cases of intent and gross negligence. The Licensor is not liable for damages caused by unauthorized changes or modifications to the TaxiScout24.com application.
-            </p>
+            {t(`terms_service_text25`)}
+              </p>
           </section>
 
           {/* Section 8 */}
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-2">8. Warranty</h2>
+            <h2 className="text-2xl font-semibold text-white mb-2">{t(`terms_service_text26`)}</h2>
             <p className="text-white text-start">
-              The Licensor guarantees that the TaxiScout24.com application is free from malware and functions as described. No warranty is provided for unauthorized modifications or unsuitable hardware or software.
-            </p>
+            {t(`terms_service_text27`)}
+             </p>
           </section>
 
           {/* Section 9 */}
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-2">9. Product Claims</h2>
+            <h2 className="text-2xl font-semibold text-white mb-2">{t(`terms_service_text28`)}</h2>
             <p className="text-white text-start">
-              Swissinserate GmbH is responsible for handling claims related to the TaxiScout24.com application.
-            </p>
+            {t(`terms_service_text29`)}
+              </p>
           </section>
 
           {/* Section 10 */}
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-2">10. Legal Compliance</h2>
+            <h2 className="text-2xl font-semibold text-white mb-2">{t(`terms_service_text30`)}</h2>
             <p className="text-white text-start">
-              You declare and guarantee that your use of the TaxiScout24.com application complies with all applicable worldwide laws and regulations.
-            </p>
+            {t(`terms_service_text31`)}
+              </p>
           </section>
 
           {/* Section 11 */}
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-2">11. Contact Information</h2>
+            <h2 className="text-2xl font-semibold text-white mb-2">{t(`terms_service_text32`)}</h2>
             <p className="text-white text-start">
-              If you have any questions regarding the TaxiScout24.com application, please contact Swissinserate GmbH at the provided address and email address.
-            </p>
+            {t(`terms_service_text33`)}
+              </p>
           </section>
 
           {/* Section 12 */}
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-2">12. Termination</h2>
+            <h2 className="text-2xl font-semibold text-white mb-2">{t(`terms_service_text34`)}</h2>
             <p className="text-white text-start">
-              This license is valid until terminated. The Licensor may terminate the license if you do not comply with the terms. Upon termination, you must cease all use of the TaxiScout24.com application.
-            </p>
+            {t(`terms_service_text35`)}
+             </p>
           </section>
 
           {/* Section 13 */}
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-2">13. Third-Party Conditions and Beneficiaries</h2>
+            <h2 className="text-2xl font-semibold text-white mb-2">{t(`terms_service_text36`)}</h2>
             <p className="text-white text-start">
-              Third-party platforms are not contracting parties of this Agreement. Swissinserate GmbH is solely responsible for the TaxiScout24.com application.
-            </p>
+            {t(`terms_service_text37`)}
+             </p>
           </section>
 
           {/* Section 14 */}
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-2">14. Intellectual Property</h2>
+            <h2 className="text-2xl font-semibold text-white mb-2">{t(`terms_service_text38`)}</h2>
             <p className="text-white text-start">
-              Swissinserate GmbH is solely responsible for any claims of intellectual property infringement related to the TaxiScout24.com application.
-            </p>
+            {t(`terms_service_text39`)}
+             </p>
           </section>
 
           {/* Section 15 */}
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-2">15. Applicable Law</h2>
+            <h2 className="text-2xl font-semibold text-white mb-2">{t(`terms_service_text40`)}</h2>
             <p className="text-white text-start">
-              This Agreement is governed by Swiss law, excluding its conflict of laws provisions.
-            </p>
+            {t(`terms_service_text41`)}
+              </p>
           </section>
 
           {/* Section 16 */}
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-2">16. Miscellaneous</h2>
+            <h2 className="text-2xl font-semibold text-white mb-2">{t(`terms_service_text42`)}</h2>
             <p className="text-white text-start">
-              If any provision of this Agreement is found to be invalid, the remaining provisions remain in effect. Side agreements must be documented in writing to be valid.
-            </p>
+            {t(`terms_service_text43`)}
+             </p>
           </section>
 
           {/* Footer */}
           <footer className="mt-8 text-center">
             <p className="text-sm text-white">
-              End of Terms of Services.
+            {t(`terms_service_text44`)}
             </p>
             <p className="text-sm text-white mt-2">
-              If you have any questions regarding these terms of use, please feel free to{" "}
+            {t(`terms_service_text45`)}{" "}
               <a href="mailto:info@taxiscount24.com" className="text-blue-600 underline">
-                contact us
+              {t(`terms_service_text46`)}
               </a>.
             </p>
           </footer>
