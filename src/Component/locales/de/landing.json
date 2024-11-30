@@ -210,7 +210,26 @@
 "schedule_ride" : "Fahrt planen",
 "available_drivers" : "Verfügbare Fahrer",
 "searching_for_driver" : "Fahrer wird gesucht...",
-"cancel_request" : "Anfrage stornieren"
+"cancel_request" : "Anfrage stornieren",
+"user" : "Benutzer",
+"upload_logo_profile" : "Logo/Profil hochladen",
+"cpassword" : "Passwort bestätigen",
+"password" : "Passwort",
+"select_a_country" : "Wählen Sie ein Land:",
+"sign_up_as" : "Registrieren als",
+"company_name" : "Firmenname",
+"contact_person" : "Kontaktperson",
+"postal_code" : "Postleitzahl",
+"logout" : "Abmelden",
+"remember" : "Erinnere dich an mich",
+"forgot_password" : "Passwort vergessen?",
+"login_us" : "Einloggen",
+"login" : "Einloggen",
+"password_recovery" : "Passwort-Wiederherstellung",
+"new_password" : "Neues Passwort",
+"confrim_password" : "Passwort bestätigen",
+"reset_my_password" : "Mein Passwort zurücksetzen",
+"back_to_login" : "Zurück zum Login"
 
 
 
