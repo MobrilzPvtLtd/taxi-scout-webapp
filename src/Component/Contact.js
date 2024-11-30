@@ -1,8 +1,9 @@
 // src/ContactUs.js
 import axios from "axios";
 import React, { useState } from "react";
-
+import { useTranslation } from "react-i18next";
 const ContactUs = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -39,7 +40,7 @@ const ContactUs = () => {
       console.log("response", response);
       if (response.success) {
         setResponseMessage({
-          type: "success",
+          type: "Success",
           text: "Your message has been sent successfully!",
         });
         setFormData({
@@ -75,7 +76,7 @@ const ContactUs = () => {
       <div className="absolute inset-0 bg-black/20 backdrop-blur-lg"></div>
       <div className="relative p-5 bg-[#00000080]  shadow-lg rounded-lg mt-5 w-full max-w-lg animate-fade-in ">
         <h2 className="text-2xl font-bold mb-6 text-center text-white">
-          Contact Us
+          {t(`contact_us`)}
         </h2>
         <form onSubmit={handleSubmit}>
           {/* Name Field */}
@@ -87,7 +88,7 @@ const ContactUs = () => {
               htmlFor="name"
               className="hidden sm:block text-sm font-semibold text-gray-100"
             >
-              Name
+              {t(`name`)}
             </label>
             <input
               type="text"
@@ -97,7 +98,7 @@ const ContactUs = () => {
               value={formData.name}
               onChange={handleChange}
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="Your Name"
+              placeholder= {t(`your_name`)}
             />
           </div>
           <div className="mt-0">
@@ -105,7 +106,7 @@ const ContactUs = () => {
               htmlFor="email"
               className="hidden sm:block text-sm font-semibold text-gray-100"
             >
-              Email
+            {t(`email`)}
             </label>
             <input
               type="email"
@@ -126,6 +127,7 @@ const ContactUs = () => {
               className="hidden sm:block text-sm font-semibold text-gray-100"
             >
               Mobile
+              {t(`mobile`)}
             </label>
             <input
               type="tel"
@@ -136,7 +138,7 @@ const ContactUs = () => {
               value={formData.mobile}
               onChange={handleChange}
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="Mobile"
+              placeholder= {t(`mobile`)}
             />
           </div>
 
@@ -146,7 +148,7 @@ const ContactUs = () => {
               htmlFor="country"
               className="hidden sm:block text-sm font-semibold text-gray-100"
             >
-              Country
+              {t(`country`)}
             </label>
             <input
               type="text"
@@ -156,7 +158,7 @@ const ContactUs = () => {
               value={formData.country}
               onChange={handleChange}
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="Country"
+              placeholder= {t(`country`)}
             />
           </div>
 
@@ -166,7 +168,7 @@ const ContactUs = () => {
               htmlFor="address"
               className="hidden sm:block text-sm font-semibold text-gray-100"
             >
-              Address
+              {t(`address`)}
             </label>
             <input
               type="text"
@@ -176,7 +178,7 @@ const ContactUs = () => {
               value={formData.address}
               onChange={handleChange}
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="Address"
+              placeholder={t(`address`)}
             />
           </div>
 
@@ -186,7 +188,7 @@ const ContactUs = () => {
               htmlFor="state"
               className="hidden sm:block text-sm font-semibold text-gray-100"
             >
-              State
+            {t('state')}
             </label>
             <input
               type="text"
@@ -196,7 +198,7 @@ const ContactUs = () => {
               value={formData.state}
               onChange={handleChange}
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="State"
+              placeholder={t('state')}
             />
           </div>
 
@@ -206,7 +208,7 @@ const ContactUs = () => {
               htmlFor="pincode"
               className="hidden sm:block text-sm font-semibold text-gray-100"
             >
-              Pincode
+              {t('pincode')}
             </label>
             <input
               type="text"
@@ -217,7 +219,7 @@ const ContactUs = () => {
               value={formData.pincode}
               onChange={handleChange}
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="Pincode"
+              placeholder=   {t('pincode')}
             />
           </div>
 
@@ -227,7 +229,7 @@ const ContactUs = () => {
               htmlFor="subject"
               className="hidden sm:block text-sm font-semibold text-gray-100"
             >
-              Subject
+              {t('subject')}
             </label>
             <input
               type="text"
@@ -237,7 +239,7 @@ const ContactUs = () => {
               value={formData.subject}
               onChange={handleChange}
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="Subject"
+              placeholder= {t('subject')}
             />
           </div>
          
@@ -249,7 +251,7 @@ const ContactUs = () => {
                 htmlFor="message"
                 className="hidden sm:block text-sm font-semibold text-gray-100"
               >
-                Message
+                 {t('message')}
               </label>
               <textarea
                 id="message"
@@ -259,7 +261,7 @@ const ContactUs = () => {
                 value={formData.message}
                 onChange={handleChange}
                 className="mt-1 w-full  px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                placeholder="Message"
+                placeholder={t('message')}
               ></textarea>
             </div>
 
@@ -271,7 +273,7 @@ const ContactUs = () => {
                 id="btn_hover_main"
                   className="w-fit my-2 px-10 py-2 font-semibold rounded-lg bg-black text-white hover:bg-white hover:text-black "
               >
-                {loading ? "Sending..." : "Send Message"}
+                {loading ? t('sending') : t('send_message')}
               </button>
             </div>
           </div>
