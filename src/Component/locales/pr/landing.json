@@ -210,7 +210,26 @@
 "schedule_ride" : "Agendar corrida",
 "available_drivers" : "Motoristas disponíveis",
 "searching_for_driver" : "Procurando motorista...",
-"cancel_request" : "Cancelar pedido"
+"cancel_request" : "Cancelar pedido",
+"user" : "Usuário",
+"upload_logo_profile" : "Carregar logotipo/perfil",
+"cpassword" : "Confirmar senha",
+"password" : "Senha",
+"select_a_country" : "Selecione um país:",
+"sign_up_as" : "Registre-se como",
+"company_name" : "Nome da empresa",
+"contact_person" : "Pessoa de contato",
+"postal_code" : "Código postal",
+"logout" : "Sair",
+"remember" : "Lembre de mim",
+"forgot_password" : "Esqueceu a senha?",
+"login_us" : "Entrar",
+"login" : "Entrar",
+"password_recovery" : "Recuperação de senha",
+"new_password" : "Nova senha",
+"confrim_password" : "Confirmar senha",
+"reset_my_password" : "Redefinir minha senha",
+"back_to_login" : "Voltar ao login"
 
 
 
