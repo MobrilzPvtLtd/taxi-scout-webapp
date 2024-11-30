@@ -382,7 +382,7 @@ function NavList({ handleData }) {
               className="w-[8rem] bg-black text-white font-semibold"
               onClick={handleLogout}
             >
-              Logout{" "}
+               {t('logout')}{" "}
             </Button>
           </div>
         ) : (
