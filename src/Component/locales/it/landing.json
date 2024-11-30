@@ -210,7 +210,26 @@
 "schedule_ride" : "Pianifica la corsa",
 "available_drivers" : "Autisti disponibili",
 "searching_for_driver" : "Cercando un autista...",
-"cancel_request" : "Annulla richiesta"
+"cancel_request" : "Annulla richiesta",
+"user" : "Utente",
+"upload_logo_profile" : "Carica logo/profilo",
+"cpassword" : "Conferma password",
+"password" : "Password",
+"select_a_country" : "Seleziona un paese:",
+"sign_up_as" : "Registrati come",
+"company_name" : "Nome dell'azienda",
+"contact_person" : "Persona di contatto",
+"postal_code" : "CAP",
+"logout" : "Disconnettersi",
+"remember" : "Ricordami",
+"forgot_password" : "Hai dimenticato la password?",
+"login_us" : "Accedi",
+"login" : "Accedi",
+"password_recovery" : "Recupero password",
+"new_password" : "Nuova password",
+"confrim_password" : "Conferma password",
+"reset_my_password" : "Reimposta la mia password",
+"back_to_login" : "Torna al login"
 
 
 
