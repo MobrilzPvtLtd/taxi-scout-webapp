@@ -12,8 +12,10 @@ import CurrentLocation from "./CurrentLocation";
 import InputButton from "./InputButton";
 import TaxiScheduler from "./TaxiScheduler";
 // import {Loader, LoaderOptions ,google} from 'google-maps';
+import { useTranslation } from "react-i18next";
 
 function Search_box() {
+  const { t } = useTranslation();
   const { source, setSource } = useContext(SourceContext);
   const { destination, setDestination } = useContext(DestinationContext);
   const [value, setValue] = useState(null);
@@ -84,7 +86,7 @@ function Search_box() {
         <span
           className="text-xl font-semibold"
         >
-          Ride
+          {t('ride')}
         </span>
         <div className="bg-black h-1 w-10"></div>
       </div>
@@ -93,7 +95,7 @@ function Search_box() {
 
       <div >
         <div >
-          <h2 className="text-2xl font-semibold">Request a ride now</h2>
+          <h2 className="text-2xl font-semibold">{t('requestRide')}</h2>
         </div>
         <div >
           <div className="relative h-full w-full">
@@ -111,7 +113,7 @@ function Search_box() {
         id='btn_hover_main' className= "w-full my-2 py-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2" 
             onClick={() => calculateDistance()}
           >
-            Search
+            {t(search)}
           </button>
           {/* <button id="schedule_ride_btn" onClick={handle_schedule_taxi}>
             Schedule a ride{" "}
@@ -132,7 +134,7 @@ function Search_box() {
           ) : null} */}
         </div>
 
-        <h2 className="text-xl mt-4 font-bold">Prefrences : </h2>
+        <h2 className="text-xl mt-4 font-bold">{t('prefrences')} : </h2>
 
         <div className="mt-1 flex justify-center gap-4">
           <div className="flex gap-3 text-sm font-[600]">
@@ -142,7 +144,8 @@ function Search_box() {
                 checked={options.option1}
                 onChange={() => handleCheckboxChange("option1")}
               />
-              Smoke
+              {t(smoke)}
+              
             </label>
             <br />
             <label>
@@ -151,7 +154,7 @@ function Search_box() {
                 checked={options.option2}
                 onChange={() => handleCheckboxChange("option2")}
               />
-              Alchohol
+             {t('alchohol')}
             </label>
             <br />
             <label>
@@ -160,7 +163,7 @@ function Search_box() {
                 checked={options.option3}
                 onChange={() => handleCheckboxChange("option3")}
               />
-              Pet
+              {t('pet')}
             </label>
             <br />
             <label>
@@ -169,7 +172,7 @@ function Search_box() {
                 checked={options.option4}
                 onChange={() => handleCheckboxChange("option4")}
               />
-              Handicap
+              {t('handicap')}
             </label>
           </div>
         </div>
