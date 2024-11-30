@@ -17,7 +17,7 @@ import loader from "../../Images/Spinner@1x-1.0s-200px-200px (1).gif";
 import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router";
-
+import { useTranslation } from "react-i18next";
 const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: "2rem",
   maxWidth: "500px",
@@ -39,6 +39,7 @@ const StrengthMeter = styled(Box)(({ strength }) => ({
 }));
 
 const ForgetPassword = () => {
+  const { t } = useTranslation();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [password_confirmation, setPassword_confirmation] = useState("");
@@ -190,13 +191,13 @@ const handleSubmit = async (e) => {
                 gutterBottom
                 sx={{ textAlign: "center" }}
               >
-                Password Recovery
+                {t('password_recovery')}
               </Typography>
 
               <Box onSubmit={handleSubmit2} component="form" sx={{ mt: 2 }}>
                 <TextField
                   fullWidth
-                  label="Email Address"
+                  label= {t('email')}
                   variant="outlined"
                   value={email}
                   onChange={handleEmailChange}
@@ -221,7 +222,7 @@ const handleSubmit = async (e) => {
                 <Box sx={{ position: "relative",marginTop: "1rem" }}>
                   <TextField
                     fullWidth
-                    label="New Password"
+                    label={t('new_password')}
                     variant="outlined"
                     type={showPassword ? "text" : "password"}
                     value={password}
@@ -247,7 +248,8 @@ const handleSubmit = async (e) => {
                 <Box sx={{ position: "relative" , marginTop: "1rem"}}>
                   <TextField
                     fullWidth
-                    label="Confrim Password"
+
+                    label={t('confrim_password')}
                     variant="outlined"
                     type={showPassword ? "text" : "password"}
                     value={password_confirmation}
@@ -314,7 +316,7 @@ const handleSubmit = async (e) => {
                 {loading ?<div className="flex justify-center items-center"> <img className="w-10" src={loader}></img></div>:
                 <button id='btn_hover_main' className= "w-full my-2 py-3 font-semibold rounded-lg text-sm  lg:px-10 md:py-2"
                       type="submit"
-                      >Reset My Password</button>}
+                      >{t('reset_my_password')}</button>}
               </Box>
             </StyledPaper>
           </Container>
@@ -332,7 +334,7 @@ const handleSubmit = async (e) => {
               <Box onSubmit={handleSubmit} component="form" sx={{ mt: 2 }}>
                 <TextField
                   fullWidth
-                  label="Email Address"
+                  label={t('email')}
                   variant="outlined"
                   value={email}
                   onChange={handleEmailChange}
@@ -344,9 +346,9 @@ const handleSubmit = async (e) => {
                 {loading ?<div className="flex justify-center items-center"> <img className="w-10" src={loader}></img></div>:
                 <button id='btn_hover_main' className= "w-full my-2 py-3 font-semibold rounded-lg text-sm  lg:px-10 md:py-2"
                       type="submit"
-                      >Reset My Password</button>}
+                      >{t('reset_my_password')}</button>}
               </Box>
-              <button onClick={()=>navigate("/login")} className="text-black transition-all hover:scale-105">Back to login</button>
+              <button onClick={()=>navigate("/login")} className="text-black transition-all hover:scale-105">{t('back_to_login')}</button>
              
             </StyledPaper>
           </Container>
