@@ -7,8 +7,9 @@ import {
   GoogleReCaptchaProvider,
   useGoogleReCaptcha,
 } from "react-google-recaptcha-v3";
-
+import { useTranslation } from "react-i18next";
 function SignupPage() {
+  const { t } = useTranslation();
   let url = "https://admin.taxiscout24.com/";
   const [userType, setUserType] = useState("user"); // Default userType is user
   const [STATE, setSTATE] = useState("");
@@ -131,7 +132,7 @@ function SignupPage() {
       },
       body: JSON.stringify({
         role: " admin",
-        // service_location_id: selectedState,
+        service_location_id: selectedState,
         company_name: credentials.cname,
         mobile: credentials.mobile,
         email: credentials.email,
@@ -231,7 +232,7 @@ function SignupPage() {
               {userType === "user" ? (
                 // <div className="container flex justify-center items-center   ">
                 <div className="signup-container flex justify-center items-center">
-                  <h1 className="text-white">Sign Up</h1>
+                  <h1 className="text-white">{t('sign_up')}</h1>
                   <div className="signup-options flex-row gap-3">
                     <div
                       className={`option ${
@@ -239,7 +240,7 @@ function SignupPage() {
                       }`}
                       onClick={() => setUserType("user")}
                     >
-                      User
+                      {t('user')}
                     </div>
                     <div
                       className={`option ${
@@ -247,7 +248,7 @@ function SignupPage() {
                       }`}
                       onClick={() => setUserType("company")}
                     >
-                      Company
+                      {t(`company`)}
                     </div>
                   </div>
                   <div className="flex flex-col items-center">
@@ -272,7 +273,7 @@ function SignupPage() {
                       id="btn_hover_main"
                       className="w-full my-2 py-3 px-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2"
                     >
-                      Upload Logo/Profile
+                      {t('upload_logo_profile')}
                     </button>
                   </div>
                   <form
@@ -283,7 +284,7 @@ function SignupPage() {
                       <input
                         type="text"
                         name="name"
-                        placeholder="name"
+                        placeholder={t('name')}
                         value={credentials.name}
                         onChange={handleChange}
                         required
@@ -293,7 +294,7 @@ function SignupPage() {
                       <input
                         type="email"
                         name="email"
-                        placeholder="Email"
+                        placeholder= {t('email')}
                         value={credentials.email}
                         onChange={handleChange}
                         required
@@ -304,7 +305,7 @@ function SignupPage() {
                       <input
                         type="number"
                         name="mobile"
-                        placeholder="Mobile Number"
+                        placeholder={t('mobile')}
                         value={credentials.mobile}
                         onChange={handleChange}
                         required
@@ -314,7 +315,7 @@ function SignupPage() {
                       <input
                         type="password"
                         name="password"
-                        placeholder="password"
+                        placeholder={t('password')}
                         value={credentials.password}
                         onChange={handleChange}
                         required
@@ -324,7 +325,7 @@ function SignupPage() {
                       <input
                         type="password"
                         name="cpassword"
-                        placeholder="Confirm Password"
+                        placeholder={t('cpassword')}
                         value={credentials.cpassword}
                         onChange={handleChange}
                         required
@@ -336,7 +337,7 @@ function SignupPage() {
                         value={selectedCountry}
                         onChange={handleCountryChange}
                       >
-                        <option value="">Select a country:</option>
+                        <option value="">{t('select_a_country')}</option>
                         {[...countries] // Create a copy of the array to avoid mutating the original
                           .sort((a, b) => a.name.localeCompare(b.name)) // Sort alphabetically by country name
                           .map((country, index) => (
@@ -357,7 +358,7 @@ function SignupPage() {
                       type="submit"
                       onClick={handleSubmit}
                     >
-                      Sign Up as {userType}
+                      {t('sign_up_as')} {userType}
                     </button>
                   </form>
                 </div>
@@ -371,7 +372,7 @@ function SignupPage() {
                       className={`option ${
                         userType === "user" ? "active" : ""
                       }`}
-                      onClick={() => setUserType("user")}
+                      onClick={() => setUserType(t('user'))}
                     >
                       User
                     </div>
@@ -379,7 +380,7 @@ function SignupPage() {
                       className={`option ${
                         userType === "company" ? "active" : ""
                       }`}
-                      onClick={() => setUserType("company")}
+                      onClick={() => setUserType(t('company'))}
                     >
                       Company
                     </div>
@@ -406,7 +407,7 @@ function SignupPage() {
                       id="btn_hover_main"
                       className="w-full my-2 py-3 px-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2"
                     >
-                      Upload Logo/Profile
+                     {t('upload_logo_profile')}
                     </button>
                   </div>
                   <form
@@ -429,7 +430,7 @@ function SignupPage() {
                       <input
                         type="text"
                         name="cname"
-                        placeholder="company Name"
+                        placeholder={t('company_name')}
                         value={credentials.cname}
                         onChange={handleChange}
                         required
@@ -439,7 +440,7 @@ function SignupPage() {
                       <input
                         type="text"
                         name="contact_name"
-                        placeholder="Contact Person"
+                        placeholder={t('contact_person')}
                         value={credentials.contact_name}
                         onChange={handleChange}
                         required
@@ -449,7 +450,7 @@ function SignupPage() {
                       <input
                         type="email"
                         name="email"
-                        placeholder="Email"
+                        placeholder={t('email')}
                         value={credentials.email}
                         onChange={handleChange}
                         required
@@ -459,7 +460,7 @@ function SignupPage() {
                       <input
                         type="password"
                         name="password"
-                        placeholder="password"
+                        placeholder= {t("password")}
                         value={credentials.password}
                         onChange={handleChange}
                         required
@@ -469,7 +470,7 @@ function SignupPage() {
                       <input
                         type="password"
                         name="cpassword"
-                        placeholder="Confirm password"
+                        placeholder={t('cpassword')}
                         value={credentials.cpassword}
                         onChange={handleChange}
                         required
@@ -482,7 +483,7 @@ function SignupPage() {
                         value={selectedCountry}
                         onChange={handleCountryChange}
                       >
-                        <option value="">Select a country:</option>
+                        <option value="">{t('select_a_country')}</option>
                         {countries
                           .sort((a, b) => a.name.localeCompare(b.name)) 
                           .map((country, index) => (
@@ -496,7 +497,7 @@ function SignupPage() {
                           ))}
                       </select>
                     </div>
-                    {/* <div className="flex flex-col w-full form-group">
+                    <div className="flex flex-col w-full form-group">
                       <select
                         id="countrySelect"
                         value={selectedState}
@@ -513,13 +514,13 @@ function SignupPage() {
                           </option>
                         ))}
                       </select>
-                    </div> */}
+                    </div>
 
                     <div className="form-group">
                       <input
                         type="text"
                         name="address"
-                        placeholder="address"
+                        placeholder={t('address')}
                         value={credentials.address}
                         onChange={handleChange}
                         required
@@ -549,7 +550,7 @@ function SignupPage() {
                       <input
                         type="number"
                         name="mobile"
-                        placeholder="Mobile Number"
+                        placeholder={t('mobile')}
                         value={credentials.mobile}
                         onChange={handleChange}
                         required
@@ -559,13 +560,12 @@ function SignupPage() {
                       <input
                         type="number"
                         name="postal"
-                        placeholder="postal code"
+                        placeholder={t('postal_code')}
                         value={credentials.postal}
                         onChange={handleChange}
                         required
                       />
                     </div>
-                    <br></br>
                     {/* <div className="flex justify-center ">
                       <div className="form-group cc001 "> */}
                     <button
@@ -573,7 +573,7 @@ function SignupPage() {
                       className="w-full my-2 py-3 font-semibold rounded-lg text-sm md:translate-x-[50%] lg:px-10 md:py-2"
                       type="submit"
                     >
-                      Sign Up as {userType}
+                      {t('sign_up_as')} {userType}
                     </button>
                     {/* </div>
                     </div> */}
