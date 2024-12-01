@@ -382,7 +382,7 @@ function NavList({ handleData }) {
               className="w-[8rem] bg-black text-white font-semibold"
               onClick={handleLogout}
             >
-               {t('logout')}{" "}
+              {t('logout')}{" "}
             </Button>
           </div>
         ) : (
@@ -414,6 +414,8 @@ function NavList({ handleData }) {
         <IconButton
           variant="text"
           className="lg:hidden w-10 h-10 flex justify-center items-center"
+          style={{ width: '30px', marginRight: '25px' }}
+
           onClick={() => setOpenNav(!openNav)}
         >
           {openNav ? (
