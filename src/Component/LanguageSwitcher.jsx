@@ -110,6 +110,22 @@ const LanguageSwitcher = () => {
             height: 15px;
             border-radius: 3px;
           }
+          /* Stilovi za mobilne uređaje */
+          @media (max-width: 768px) {
+            .dropdown-menu {
+              position: fixed; /* Osigurava da se meni otvori iznad drugih elemenata */
+              top: auto;
+              
+              left: 0;
+              width: auto;
+              max-height: 50%; /* Pola ekrana za veće liste */
+              margin-bottom: 220px;
+            }
+    
+            .dropdown-item {
+              padding: 15px 10px;
+            }
+          }
         `}
       </style>
     </div>
