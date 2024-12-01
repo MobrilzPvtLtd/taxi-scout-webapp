@@ -95,7 +95,7 @@ body{
 #navbar_main_sticky{
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 100vw;
   z-index: 9999 !important;
   border-radius: 0px !important;
 
