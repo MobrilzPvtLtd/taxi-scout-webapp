@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "./SignupPage.css"; // Import your CSS file for styling
 import { useNavigate } from "react-router-dom";
 import { createRenderer } from "react-dom/test-utils";
@@ -8,11 +8,12 @@ import {
   useGoogleReCaptcha,
 } from "react-google-recaptcha-v3";
 import { useTranslation } from "react-i18next";
+import { UserContext } from "../Context/UserContext";
 function SignupPage() {
   const { t } = useTranslation();
   let url = "https://admin.taxiscout24.com/";
-  const [userType, setUserType] = useState(t('user')); // Default userType is user
-  const [STATE, setSTATE] = useState("");
+  const {userType, setUserType} = useContext(UserContext); // Default userType is user
+  const [STATE, setSTATE] = useState([]);
   const [selectedState, setSelectedState] = useState("");
   const [countries, setCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("");
@@ -504,7 +505,7 @@ function SignupPage() {
                         onChange={handleStateChange}
                       >
                         <option value="">Select Your Zone:</option>
-                        {STATE.map((state, index) => (
+                        {STATE?.map((state, index) => (
                           <option
                             key={index}
                             name="service_location_id"

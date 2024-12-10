@@ -1,10 +1,13 @@
 import { Skeleton } from "antd";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import { UserContext } from "../Context/UserContext";
 
 const SubscriptionPage = () => {
   const { t } = useTranslation();
+  const {userType , setUserType} = useContext(UserContext);
   const [loading, setLoading] = useState(true);
   let url = "https://admin.taxiscout24.com";
   const [price, setPrice] = useState();
@@ -96,12 +99,13 @@ const SubscriptionPage = () => {
                       <span> {t(`pricing_text5`)}</span>
                     </li>
                   </ul>
-                  <a
-                    href="#"
+                  <Link
+                    to="/signup"
+                    onClick={()=>setUserType(t('company'))}
                     class="block w-full py-3 px-6 text-center rounded-md text-black font-semibold bg-gradient-to-r from-yellow-600 to-[#ffd91c] hover:from-yellow-700 hover:to-orange-400"
                   >
                      {t(`pricing_text6`)}
-                  </a>
+                  </Link>
                 </div>
               ))}
             </div>

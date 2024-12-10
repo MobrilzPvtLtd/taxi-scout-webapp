@@ -45,8 +45,11 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; 
 import CookieConsentPopup from "./Component/CookieConsentPopup";
 import "./Component/i18n"
+import { UserContext } from "./Context/UserContext";
+import { useTranslation } from "react-i18next";
 
 function App() {
+  const { t } = useTranslation();
   let token = sessionStorage.getItem("token");
   const [source, setSource] = useState([]);
   const [destination, setDestination] = useState([]);
@@ -54,15 +57,11 @@ function App() {
     "pk_test_51BTUDGJAJfZb9HEBwDg86TN1KNprHjkfipXmEDMb0gSCassK5T3ZfxsAbcgKVmAIXF7oZ6ItlZZbXO6idTHE67IM007EwQ4uN3"
   );
 
-  const [user, setUser] = useState({
-    name: "John Doe",
-    email: "john@example.com",
-    avatar: "https://via.placeholder.com/100",
-  });
+  const [userType, setUserType] = useState(t('user'));
 
-  const updateUser = (updatedUser) => {
-    setUser(updatedUser);
-  };
+  // const updateUser = (updatedUser) => {
+  //   setUser(updatedUser);
+  // };
 
   const [showPopup, setShowPopup] = useState(false);
 
@@ -75,6 +74,7 @@ function App() {
     <Elements stripe={stripePromise}>
      
       <ToastContainer position="top-center" autoClose={5000} hideProgressBar={false} />
+      <UserContext.Provider value = {{userType ,setUserType}}>
       <SourceContext.Provider value={{ source, setSource }}>
         <DestinationContext.Provider value={{ destination, setDestination }}>
                 
@@ -158,6 +158,7 @@ function App() {
          
         </DestinationContext.Provider>
       </SourceContext.Provider>
+      </UserContext.Provider>
          
     </Elements>
   );
