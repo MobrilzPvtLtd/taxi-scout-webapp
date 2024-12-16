@@ -52,7 +52,9 @@ function LoginPage() {
 
         if (response.ok) {
           sessionStorage.setItem("email", credentials.email);
-          setOtpVisible(true);
+          // setOtpVisible(true);
+          window.location.href = '/';
+          sessionStorage.setItem("token", json.access_token);
         } else {
           alert("Invalid credentials");
         }
