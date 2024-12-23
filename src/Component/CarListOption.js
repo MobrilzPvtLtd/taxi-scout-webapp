@@ -8,7 +8,7 @@ import LATLNG_State from "../Context/LATLNG_State";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./TaxiScheduler.css";
-import { format } from "date-fns";
+import { format, set } from "date-fns";
 import {
   Await,
   BrowserRouter,
@@ -50,8 +50,22 @@ function CarListOption({
   const { destination, setDestination } = useContext(DestinationContext);
 
   let url = "https://admin.taxiscout24.com/";
-
-  let token = sessionStorage.token;
+  const getTokenFromCookie = (cookieName) => {
+    const cookies = document.cookie.split('; '); // Split cookies into an array
+    for (const cookie of cookies) {
+      const [name, value] = cookie.split('='); // Split each cookie into key and value
+      if (name === cookieName) {
+        return value; // Return the value if the name matches
+      }
+    }
+    return null; // Return null if the cookie is not found
+  };
+  
+  // Example usage
+  const token = getTokenFromCookie('token');
+  console.log(token);
+  
+  
   const [driverData, setDriverData] = useState(null);
   const [userData1, setUserData1] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -120,11 +134,17 @@ function CarListOption({
   const [id, setId] = useState(false);
   const [fetchedUserData, setFetchedUserData] = useState([]);
   const [fetchedUserData2, setFetchedUserData2] = useState([]);
+  const [apiCall , setApiCall] = useState(false)
+  setInterval(()=>{if (apiCall){
+    setApiCall(!apiCall)
+  }},5000)
   // let fetchedUserData = [];
   useEffect(() => {
-    const userData = async () => {
+    if (!token) return;
+
+    const fetchUserData = async () => {
       try {
-        let response = await fetch(` ${url}api/v1/user`, {
+        const response = await fetch(`${url}api/v1/user`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -133,39 +153,30 @@ function CarListOption({
         });
 
         if (response.ok) {
-          const DATA = await response.json();
-          const convertedData = [DATA.data];
+          const data = await response.json();
+          const convertedData = [data.data];
 
           setFetchedUserData(convertedData);
-          // if((convertedData[0].onTripRequest != null || convertedData[0].onTripRequest != undefined ) && convertedData[0].onTripRequest.data.is_completed == 0){
-          setFetchedUserData2(convertedData[0]);
-
-          // }
-
+          setFetchedUserData2(data.data);
           setId(true);
+
+          // Immediately start the next request after a successful fetch
+          setTimeout(()=>fetchUserData() , 5000);
         } else {
           console.error(`HTTP error! Status: ${response.status}`);
+          // Retry after an error with some delay
+          setTimeout(fetchUserData, 5000);
         }
       } catch (error) {
-        console.error("Error creating request:", error);
+        console.error("Error fetching data:", error);
+        // Retry after a network error with some delay
+        setTimeout(fetchUserData, 5000);
       }
     };
-
-    userData();
-  }, [fetchedUserData]);
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setKey((prevKey) => prevKey + 1); // Update the key to trigger re-render
-  //     userData();
-  //   }, 5000); // 5000 milliseconds = 5 seconds
-
-  //   return () => clearInterval(interval); // Cleanup function to clear the interval
-  // }, []); // Empty dependency array to run the effect only once
-  // },[])
-  // create driver request
-
-  // console.log("driver ki ontrip request" , fetchedUserData)
+    fetchUserData();
+    return () => fetchUserData();
+  }, [token]);
+  
   const [click, setClick] = useState(false);
   const [create, setCreate] = useState(false);
   const [cancelId, setCancelId] = useState("");

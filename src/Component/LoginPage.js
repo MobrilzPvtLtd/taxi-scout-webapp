@@ -15,6 +15,18 @@ function LoginPage() {
   const navigate = useNavigate();
   const { executeRecaptcha } = useGoogleReCaptcha(); // Use the reCAPTCHA hook
 
+  // const setCookie = (name, value, seconds) => {
+  //   const expires = new Date();
+  //   expires.setTime(expires.getTime() + seconds * 1000);
+  //   document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+  // };
+  const setCookie=(name, value, seconds)=> {
+    const date = new Date();
+    date.setTime(date.getTime() + (seconds*1000));
+    let expires = "expires="+ date.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+
+  }
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
@@ -31,7 +43,6 @@ function LoginPage() {
       setLoading(true);
 
       try {
-        
         const recaptchaToken = await executeRecaptcha("login");
 
         console.log("reCAPTCHA Token:", recaptchaToken); // Optional: For debugging
@@ -51,10 +62,9 @@ function LoginPage() {
         const json = await response.json();
 
         if (response.ok) {
-          sessionStorage.setItem("email", credentials.email);
-          // setOtpVisible(true);
-          window.location.href = '/';
-          sessionStorage.setItem("token", json.access_token);
+          setCookie("email", credentials.email, 86400);
+          setCookie("token", json.access_token, 86400); 
+          navigate('/');
         } else {
           alert("Invalid credentials");
         }
@@ -64,7 +74,7 @@ function LoginPage() {
         setLoading(false);
       }
     } else if (userType === t('company')) {
-      window.location ="https://admin.taxiscout24.com/";
+      window.location = "https://admin.taxiscout24.com/";
     }
   };
 
@@ -95,29 +105,30 @@ function LoginPage() {
             </div>
 
             <form onSubmit={handleSubmit}>
-              {(userType== t('company'))? null :
-              <>
-              <div className="form-group">
-                <input
-                  type="email"
-                  placeholder={t('email')}
-                  name="email"
-                  value={credentials.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  type="password"
-                  placeholder={t('password')}
-                  name="password"
-                  value={credentials.password}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              </>}
+              {(userType == t('company')) ? null : (
+                <>
+                  <div className="form-group">
+                    <input
+                      type="email"
+                      placeholder={t('email')}
+                      name="email"
+                      value={credentials.email}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="password"
+                      placeholder={t('password')}
+                      name="password"
+                      value={credentials.password}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                </>
+              )}
 
               {loading ? (
                 <div className="flex justify-center">
@@ -132,8 +143,14 @@ function LoginPage() {
                   {t('login_us')} {userType}
                 </button>
               )}
-              
-              {(userType == t('user'))?<Link to = "/forget-password"><button className="text-white transition-all hover:scale-105">{t('forgot_password')}</button> </Link>:null}
+
+              {(userType == t('user')) ? (
+                <Link to="/forget-password">
+                  <button className="text-white transition-all hover:scale-105">
+                    {t('forgot_password')}
+                  </button>
+                </Link>
+              ) : null}
             </form>
           </div>
         )}

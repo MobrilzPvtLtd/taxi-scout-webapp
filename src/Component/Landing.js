@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import InputItem from "./InputItem";
 import LocationButton from "./LocationButton";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +15,8 @@ import bg_5 from "../Images/serve_globally2.jpg";
 import ChatPopup from "./chatPopup";
 import AppDownloadButtons from "./AppDownloadButtons";
 import { useTranslation } from "react-i18next";
+import { toast, ToastContainer } from "react-toastify";
+import LoginPopup from "./LoginPopup";
 
 const Landing = () => {
   const { t } = useTranslation();
@@ -33,7 +35,7 @@ const Landing = () => {
       [option]: !options[option],
     });
   };
-
+  const [showPopup, setShowPopup] = useState(true);
   const { source, setSource } = useContext(SourceContext);
   const { destination, setDestination } = useContext(DestinationContext);
   const [address, setAddress] = useState("");
@@ -54,6 +56,7 @@ const Landing = () => {
 
   return (
     <>
+     {showPopup && <LoginPopup onClose={() => setShowPopup(false)} />}
       <div className="pt-3 sm:pt-5 sm:mt-0 md:py-1">
         <div className="pb-5 sm:pb-6 md:container px-2 flex justify-center items-center gap-10 container ">
           <div className="px-2 flex flex-col-reverse justify-center items-center lg:container lg:w-1/2 lg:flex-col gap-3 ">
@@ -79,20 +82,32 @@ const Landing = () => {
                 <div class="text-sm sm:text-2xl lg:text-4xl font-semibold">
                 {t('requestRide')}
                 </div>
-                <div class="">
-                  <div className="relative px-10">
-                    <InputItem type="source" />
-                    <div className=" flex justify-end items-center translate-y-[-240%] translate-x-0 pr-5 sm:translate-y-[-240%] sm:translate-x-1 lg:translate-y-[-230%] lg:translate-x-1 xl:translate-y-[-180%] ">
-                      <LocationButton setAddress={setAddress} />
-                    </div>
-                  </div>
-                  <div className="relative px-10">
-                    <InputItem type="destination" />
-                  </div>
-                </div>
+                <div>
+          <div className="flex flex-col h-full w-full gap-2">
+            {/* Source Input Field */}
+            <div className="flex flex-row items-center gap-2">
+              <div className="flex-1">
+                <InputItem type="source" />
+              </div>
+              <div className="translate-x-[-2.5rem]">
+                <LocationButton setAddress={setAddress} />
+              </div>
+            </div>
+
+            {/* Destination Input Field */}
+            <div className="flex flex-row items-center gap-2">
+              <div className="flex-1">
+                <InputItem type="destination" />
+              </div>
+              <div className="opacity-0 invisible ">
+                <LocationButton setAddress={setAddress} />
+              </div>
+            </div>
+          </div>
+        </div>
                 <button
                   id="btn_hover_main"
-                  className="w-fit my-2 px-10 py-2 font-semibold rounded-lg bg-black text-white hover:bg-white hover:text-black "
+                  className="w-1/2 my-2 px-10 py-2 font-semibold rounded-lg bg-black text-white hover:bg-white hover:text-black "
                   onClick={handleRedirect}
                 >
                    {t('searchButton')}

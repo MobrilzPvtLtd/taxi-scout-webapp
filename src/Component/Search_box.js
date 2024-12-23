@@ -27,7 +27,6 @@ function Search_box() {
   const [taxi_schedule_form, setTaxi_schedule_form] = useState(false);
 
   const calculateDistance = () => {
-    
     const distance =
       window.google.maps.geometry.spherical.computeDistanceBetween(
         { lat: source.lat, lng: source.lng },
@@ -78,42 +77,47 @@ function Search_box() {
       {/* upper box */}
 
       <div className="flex flex-col justify-center items-center">
-        <img
-          src={taxi}
-          alt="taxi"
-          className="w-10"
-        />
-        <span
-          className="text-xl font-semibold"
-        >
-          {t('ride')}
-        </span>
+        <img src={taxi} alt="taxi" className="w-10" />
+        <span className="text-xl font-semibold">{t("ride")}</span>
         <div className="bg-black h-1 w-10"></div>
       </div>
 
       {/* main box */}
 
-      <div >
-        <div >
-          <h2 className="text-2xl font-semibold">{t('requestRide')}</h2>
+      <div>
+        <div>
+          <h2 className="text-2xl font-semibold">{t("requestRide")}</h2>
         </div>
-        <div >
-          <div className="relative h-full w-full">
-            <InputItem type="source" />
-            <div className="flex justify-end items-center translate-y-[-240%] translate-x-0 pr-5 sm:translate-y-[-240%] sm:translate-x-1 lg:translate-y-[-230%] lg:translate-x-1 xl:translate-y-[-180%]  ">
-              <LocationButton setAddress={setAddress} />
+        <div>
+          <div className="flex flex-col h-full w-full gap-2">
+            {/* Source Input Field */}
+            <div className="flex flex-row items-center gap-2">
+              <div className="flex-1">
+                <InputItem type="source" />
+              </div>
+              <div className="translate-x-[-2.5rem]">
+                <LocationButton setAddress={setAddress} />
+              </div>
+            </div>
+
+            {/* Destination Input Field */}
+            <div className="flex flex-row items-center gap-2">
+              <div className="flex-1">
+                <InputItem type="destination" />
+              </div>
+              <div className="opacity-0 invisible ">
+                <LocationButton setAddress={setAddress} />
+              </div>
             </div>
           </div>
-          <InputItem type="destination" />
-          {/* <InputButton/> */}
-          {/* </div> */}
         </div>
         <div className="flex flex-col items-center">
           <button
-        id='btn_hover_main' className= "w-full my-2 py-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2" 
+            id="btn_hover_main"
+            className="w-1/2 my-2 py-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2"
             onClick={() => calculateDistance()}
           >
-            {t('search')}
+            {t("search")}
           </button>
           {/* <button id="schedule_ride_btn" onClick={handle_schedule_taxi}>
             Schedule a ride{" "}
@@ -134,7 +138,7 @@ function Search_box() {
           ) : null} */}
         </div>
 
-        <h2 className="text-xl mt-4 font-bold">{t('prefrences')} : </h2>
+        <h2 className="text-xl mt-4 font-bold">{t("prefrences")} : </h2>
 
         <div className="mt-1 flex justify-center gap-4">
           <div className="flex gap-3 text-sm font-[600]">
@@ -144,8 +148,7 @@ function Search_box() {
                 checked={options.option1}
                 onChange={() => handleCheckboxChange("option1")}
               />
-              {t('smoke')}
-              
+              {t("smoke")}
             </label>
             <br />
             <label>
@@ -154,7 +157,7 @@ function Search_box() {
                 checked={options.option2}
                 onChange={() => handleCheckboxChange("option2")}
               />
-             {t('alchohol')}
+              {t("alchohol")}
             </label>
             <br />
             <label>
@@ -163,7 +166,7 @@ function Search_box() {
                 checked={options.option3}
                 onChange={() => handleCheckboxChange("option3")}
               />
-              {t('pet')}
+              {t("pet")}
             </label>
             <br />
             <label>
@@ -172,7 +175,7 @@ function Search_box() {
                 checked={options.option4}
                 onChange={() => handleCheckboxChange("option4")}
               />
-              {t('handicap')}
+              {t("handicap")}
             </label>
           </div>
         </div>
