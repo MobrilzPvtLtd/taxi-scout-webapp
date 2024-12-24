@@ -99,7 +99,7 @@ export function NavbarMain() {
               </ListItem>
             </Typography>
           </MenuHandler>
-          <MenuList className="hidden lg:block mt-2 about_us_hover">
+          <MenuList className="hidden lg:block mt-4 about_us_hover">
             <div className="rounded-md hover:text-white hover:bg-black">
               <Link to="/about-us">
                 {" "}
@@ -170,7 +170,7 @@ export function NavbarMain() {
     const [openNestedMenu, setopenNestedMenu] = React.useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
     const renderItems = nestedMenuItems.map(({ title }, key) => (
-      <a href="#" key={key}>
+      <a href="#"  key={key}>
         <MenuItem>{title}</MenuItem>
       </a>
     ));
@@ -213,7 +213,7 @@ export function NavbarMain() {
               </ListItem>
             </Typography>
           </MenuHandler>
-          <MenuList className="hidden lg:block mt-2">
+          <MenuList className="hidden lg:block mt-4">
             <div className="rounded-md hover:text-white hover:bg-black">
               <Link to="/contact">
                 <MenuItem>{t("contact_us")}</MenuItem>
