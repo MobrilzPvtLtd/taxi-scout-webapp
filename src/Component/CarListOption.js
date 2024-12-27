@@ -51,21 +51,20 @@ function CarListOption({
 
   let url = "https://admin.taxiscout24.com/";
   const getTokenFromCookie = (cookieName) => {
-    const cookies = document.cookie.split('; '); // Split cookies into an array
+    const cookies = document.cookie.split("; "); // Split cookies into an array
     for (const cookie of cookies) {
-      const [name, value] = cookie.split('='); // Split each cookie into key and value
+      const [name, value] = cookie.split("="); // Split each cookie into key and value
       if (name === cookieName) {
         return value; // Return the value if the name matches
       }
     }
     return null; // Return null if the cookie is not found
   };
-  
+
   // Example usage
-  const token = getTokenFromCookie('token');
+  const token = getTokenFromCookie("token");
   console.log(token);
-  
-  
+
   const [driverData, setDriverData] = useState(null);
   const [userData1, setUserData1] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -87,9 +86,9 @@ function CarListOption({
   const [nodriverFound, setNoDriverFound] = useState(null);
 
   useEffect(() => {
-    const carFetch = async (e) => {
+    const carFetch = async () => {
       try {
-        let response = await fetch(` ${url}api/v1/request/eta`, {
+        const response = await fetch(`${url}api/v1/request/eta`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -105,40 +104,32 @@ function CarListOption({
           }),
         });
 
-        let parsedResponse = await response.json();
-
-        if (response.status === 200) {
-          setAryann(parsedResponse.data);
-          setDemo(true);
+        // Check if the response status is successful
+        if (!response.ok) {
+          throw new Error(`Request failed with status: ${response.status}`);
         }
+
+        const parsedResponse = await response.json();
+
+        setAryann(parsedResponse.data);
+        setDemo(true);
       } catch (err) {
-        console.error(err);
+        console.error("Error fetching car data:", err);
       }
     };
 
     carFetch();
   }, [option1, option2, option3, option4]);
+
   // alert(distance)
   // console.log("car fetch data" , aryann)
   //   carFetch ends here
 
-  const navigate = useNavigate();
-  const handleOnClick = () => {
-    // navigate("/payment?amount" + selectedCar.ride_fare);
-    setProceed(true);
-  };
-
-  // user data
   const [driver, setDriver] = useState([]);
-
   const [id, setId] = useState(false);
   const [fetchedUserData, setFetchedUserData] = useState([]);
   const [fetchedUserData2, setFetchedUserData2] = useState([]);
-  const [apiCall , setApiCall] = useState(false)
-  setInterval(()=>{if (apiCall){
-    setApiCall(!apiCall)
-  }},5000)
-  // let fetchedUserData = [];
+
   useEffect(() => {
     if (!token) return;
 
@@ -159,100 +150,95 @@ function CarListOption({
           setFetchedUserData(convertedData);
           setFetchedUserData2(data.data);
           setId(true);
-
-          // Immediately start the next request after a successful fetch
-          setTimeout(()=>fetchUserData() , 5000);
         } else {
           console.error(`HTTP error! Status: ${response.status}`);
-          // Retry after an error with some delay
-          setTimeout(fetchUserData, 5000);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
-        // Retry after a network error with some delay
-        setTimeout(fetchUserData, 5000);
       }
     };
-    fetchUserData();
-    return () => fetchUserData();
+
+    fetchUserData(); // Initial fetch
+
+    const intervalId = setInterval(() => {
+      fetchUserData(); // Fetch periodically after the initial request
+    }, 5000);
+
+    return () => clearInterval(intervalId); // Cleanup on component unmount
   }, [token]);
-  
+
   const [click, setClick] = useState(false);
   const [create, setCreate] = useState(false);
   const [cancelId, setCancelId] = useState("");
   const [isHidden, setIsHidden] = useState(false);
+  // const [checkDriver, setCheckDriver] = useState(0);
 
-  // useEffect(() => {
-  const abortController = new AbortController();
-  const { signal } = abortController;
+  // useEffect for Timer Logic
   useEffect(() => {
     if (checkDriver < 300) {
       const timerID = setInterval(() => {
-        setCheckDriver((checkDriver) => checkDriver + 1);
-        // console.log("timer ki value " , timer)
+        setCheckDriver((prevCheckDriver) => prevCheckDriver + 1);
       }, 1000);
 
+      // Cleanup the interval when component unmounts or checkDriver changes
       return () => clearInterval(timerID);
     }
   }, [checkDriver]);
+
+  // Create request function
   const createRequest = async () => {
     setCheckDriver(1);
-    setCreate(true)
+    setCreate(true);
+
+    const abortController = new AbortController();
+    const { signal } = abortController;
 
     try {
-      let URL = ` ${url}api/v1/request/create`;
-      let response = await fetch(
-        URL,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            pick_lat: source.lat,
-            pick_lng: source.lng,
-            drop_lat: destination.lat,
-            drop_lng: destination.lng,
-            vehicle_type: selectedCar.zone_type_id,
-            ride_type: "1",
-            payment_opt: "1",
-            pick_address: source.name,
-            drop_address: destination.name,
-            request_eta_amount: data.total,
-          }),
+      let URL = `${url}api/v1/request/create`;
+      let response = await fetch(URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
         },
-        { signal }
-      );
-      // userData();
-      // if (!signal.aborted) {
-        
+        body: JSON.stringify({
+          pick_lat: source.lat,
+          pick_lng: source.lng,
+          drop_lat: destination.lat,
+          drop_lng: destination.lng,
+          vehicle_type: selectedCar.zone_type_id,
+          ride_type: "1",
+          payment_opt: "1",
+          pick_address: source.name,
+          drop_address: destination.name,
+          request_eta_amount: data.total,
+        }),
+        signal, // Attach abort signal to fetch request
+      });
+
       if (response.ok) {
         const DATA = await response.json();
         const convertedData = [DATA.data];
-        sessionStorage.setItem("id", convertedData[0].id);
-        cancelRqstBtn(convertedData);
-        setCancelId(convertedData.id);
-        setDriver(convertedData);
-        // setCreate(convertedData)
 
-        // console.log("sbse naya create rqst api data", convertedData);
-        // setId(true);
-        // console.log("Request creation successful");
+        sessionStorage.setItem("id", convertedData[0].id);
+        cancelRqstBtn(convertedData); // Assuming this is another function you're using
+        setCancelId(convertedData[0].id);
+        setDriver(convertedData[0]);
+        // console.log("Request creation successful:", convertedData);
       } else {
         console.error(`HTTP error! Status: ${response.message}`);
         alert(
-          `Error : ${response.message} , please hit on Cancel to make a new request`
+          `Error: ${response.message}, please hit Cancel to make a new request`
         );
       }
-      // }
     } catch (error) {
-      // if (!signal.aborted) {
       console.error("Error creating request:", error);
-
-      // }
     }
+
+    // Cleanup fetch abort on unmount
+    return () => abortController.abort();
   };
+
   useEffect(() => {
     if (
       fetchedUserData2?.onTripRequest !== undefined &&
@@ -271,111 +257,102 @@ function CarListOption({
   // }, );
   //
 
-  // cancel request
   const [userCancelled, setUserCancelled] = useState(false);
-  const [userRequestData, setUserRequestData] = useState([]);
-  const [internet, setInternet] = useState([]);
-  const [result, setResult] = useState("");
-  const [driverWait, setDriverWait] = useState(null);
-  const [display, setDisplay] = useState(null);
-  const [driverFound, setDriverFound] = useState(null);
-  const [searchingDriver, setSearchingDriver] = useState(null);
-  const [proceed, setProceed] = useState(null);
-  const cancelRequest = async () => {
-    let rqstId = sessionStorage.id;
-    try {
-      var response = await fetch(`${url}api/v1/request/cancel`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          request_id: rqstId,
-          custom_reason: "cancel",
-        }),
-      });
-      if (response.status === 200) {
-        setUserCancelled(true);
-        window.location.reload();
+const [userRequestData, setUserRequestData] = useState([]);
+const [internet, setInternet] = useState([]);
+const [result, setResult] = useState("");
+const [driverWait, setDriverWait] = useState(null);
+const [display, setDisplay] = useState(null);
+const [driverFound, setDriverFound] = useState(null);
+const [searchingDriver, setSearchingDriver] = useState(null);
+const [proceed, setProceed] = useState(null);
 
-        setResult("success");
-      } else {
-        console.error(await response.text());
+const cancelRequest = async () => {
+  const rqstId = sessionStorage.id;
+  try {
+    const response = await fetch(`${url}api/v1/request/cancel`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        request_id: rqstId,
+        custom_reason: "cancel",
+      }),
+    });
 
-        setResult("failed");
-      }
-    } catch (error) {
-      console.error(error);
-    }
-    return result;
-  };
-  const handleReloadClick = () => {
-    window.location.reload();
-  };
-  const handleOnCancel = () => {
-    // e.preventDefault();
-    cancelRequest();
-    setClick(false);
-    setSearchingDriver(false);
-    setDriverFound(false);
-    // handleReloadClick()
-    setDriver(null);
-    window.location.reload()
-    // setFetchedUserData2(null);
-    // setFetchedUserData(null);
-  };
-
-  function handleOnChange(e) {
-    e.preventDefault();
-    createRequest();
-    setClick(true);
-    setNoDriverFound(true);
-    setSearchingDriver(true);
-  }
-
-  const handleOnCancel2 = () => {
-    cancelRequest();
-
-    setBooking(false);
-    window.location.reload()
-  };
-
-  // timer
-  const time = new Date();
-  time.setSeconds(time.getSeconds() + 300); // 5 minutes timer
-
-  const [finalData, setFinalData] = useState(aryann);
-  useEffect(() => {
-    const dataKoSet = () => {
-      setFinalData(
-        aryann?.map((item) => {
-          if (
-            (!option1 || item.smoking === 1) &&
-            (!option2 || item.drinking === 1) &&
-            (!option3 || item.pets === 1) &&
-            (!option4 || item.handicaped === 1)
-          ) {
-            return item;
-          }
-        })
-      );
-    };
-
-    dataKoSet();
-  }, [checkDriver]);
-
-  const abcd = finalData?.filter((element) => element !== undefined);
-
-  useEffect(() => {
-    if (abcd?.length > 0) {
-      setCars(true);
-    } else if (fetchedUserData2?.onTripRequest?.data?.is_driver_started == 1) {
-      setRideStarted(true);
+    if (response.ok) {
+      setUserCancelled(true);
+      setResult("success");
     } else {
-      setCars(false);
+      const errorText = await response.text();
+      console.error(errorText);
+      setResult("failed");
     }
-  }, [option1, option2, option3, option4, abcd, checkDriver]);
+  } catch (error) {
+    console.error("Error cancelling request:", error);
+  }
+};
+
+const handleReloadClick = () => window.location.reload();
+
+const handleOnCancel = () => {
+  cancelRequest();
+  setClick(false);
+  setSearchingDriver(false);
+  setDriverFound(false);
+  setDriver(null);
+  handleReloadClick();
+};
+
+const handleOnCancel2 = () => {
+  cancelRequest();
+  setBooking(false);
+  handleReloadClick();
+};
+
+const handleOnChange = (e) => {
+  e.preventDefault();
+  createRequest();
+  setClick(true);
+  setNoDriverFound(true);
+  setSearchingDriver(true);
+};
+
+const time = new Date();
+time.setSeconds(time.getSeconds() + 300); // 5 minutes timer
+
+const [finalData, setFinalData] = useState(aryann);
+
+useEffect(() => {
+  const filterData = () => {
+    setFinalData(
+      aryann?.filter((item) => {
+        return (
+          (!option1 || item.smoking === 1) &&
+          (!option2 || item.drinking === 1) &&
+          (!option3 || item.pets === 1) &&
+          (!option4 || item.handicaped === 1)
+        );
+      })
+    );
+  };
+
+  filterData();
+}, [aryann, option1, option2, option3, option4]);
+
+useEffect(() => {
+  if (finalData?.length > 0) {
+    setCars(true);
+  } else if (fetchedUserData2?.onTripRequest?.data?.is_driver_started === 1) {
+    setRideStarted(true);
+  } else {
+    setCars(false);
+  }
+}, [finalData, fetchedUserData2, checkDriver]);
+
+
 
   const [scheduledTime, setScheduledTime] = useState(new Date());
 
@@ -398,51 +375,63 @@ function CarListOption({
   };
   const createRequest_schedule = async (e) => {
     e.preventDefault();
+  
+    const abortController = new AbortController();
+    const { signal } = abortController;
+  
     try {
-      let URL = ` ${url}api/v1/request/create`;
-      let response = await fetch(
-        URL,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            pick_lat: source.lat,
-            pick_lng: source.lng,
-            drop_lat: destination.lat,
-            drop_lng: destination.lng,
-            vehicle_type: selectedCar.zone_type_id,
-            ride_type: "1",
-            payment_opt: "1",
-            pick_address: source.name,
-            drop_address: destination.name,
-            request_eta_amount: data.total,
-            is_later: "1",
-            trip_start_time:  formatDate(scheduledTime)
-          }),
+      let URL = `${url}api/v1/request/create`;
+  
+      const response = await fetch(URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
         },
-        { signal }
-      );
-      if (response.ok) {
-        setSchedule(false)
-        alert("Your Ride Has Been successfully Scheduled")
-        const DATA = await response.json();
-        const convertedData = [DATA.data];
-        cancelRqstBtn(convertedData);
-        setCancelId(convertedData.id);
-        setDriver(convertedData);
-      } else {
-        console.error(`HTTP error! Status: ${response.message}`);
-        alert(
-          `Error : ${response.message} , please hit on Cancel to make a new request`
-        );
+        body: JSON.stringify({
+          pick_lat: source.lat,
+          pick_lng: source.lng,
+          drop_lat: destination.lat,
+          drop_lng: destination.lng,
+          vehicle_type: selectedCar.zone_type_id,
+          ride_type: "1",
+          payment_opt: "1",
+          pick_address: source.name,
+          drop_address: destination.name,
+          request_eta_amount: data.total,
+          is_later: "1",
+          trip_start_time: formatDate(scheduledTime),
+        }),
+        signal, // Attach abort signal to the fetch
+      });
+  
+      if (!response.ok) {
+        const errorMessage = `Error: ${response.statusText || response.message}`;
+        console.error(errorMessage);
+        alert(`${errorMessage}, please hit on Cancel to make a new request`);
+        return; // Exit early if response is not OK
       }
+  
+      const DATA = await response.json();
+      const convertedData = [DATA.data];
+  
+      sessionStorage.setItem("id", convertedData[0].id);
+      cancelRqstBtn(convertedData); // Assuming this is a function you're using
+      setCancelId(convertedData[0].id);
+      setDriver(convertedData[0]);
+      setSchedule(false);
+  
+      alert("Your Ride Has Been Successfully Scheduled");
+  
     } catch (error) {
       console.error("Error creating request:", error);
+      alert("There was an error scheduling your ride. Please try again.");
+    } finally {
+      // Cleanup abortController when done or if there's an error
+      return () => abortController.abort();
     }
   };
+  
 
   // firebase real time data fetching starts here
 
@@ -452,7 +441,7 @@ function CarListOption({
 
   useEffect(() => {
     if (fetchedUserData2) {
-      if (fetchedUserData2?.onTripRequest ) {
+      if (fetchedUserData2?.onTripRequest) {
         setBooking(true);
         setDisplayComp(1);
         if (fetchedUserData2?.onTripRequest?.data.is_driver_arrived) {
@@ -486,11 +475,11 @@ function CarListOption({
     <>
       {create == false ? (
         <div className="mt-5 pt-7 ">
-          <h2 className="text-2xl font-bold">{t('recommended')}</h2>
+          <h2 className="text-2xl font-bold">{t("recommended")}</h2>
           {/* panga starts */}
           {cars == true ? (
             <div>
-              {abcd?.map((item, index, arr) => (
+              {finalData?.map((item, index, arr) => (
                 <div>
                   <div
                     className={`cursor-pointer p-2 px-4 rounded-md border-black ${
@@ -520,7 +509,7 @@ function CarListOption({
               ))}
             </div>
           ) : (
-            <div className="text-[18px] font-semibold">{t('no_car_found')}</div>
+            <div className="text-[18px] font-semibold">{t("no_car_found")}</div>
           )}
 
           {/* panga ends */}
@@ -528,7 +517,7 @@ function CarListOption({
           {/* select section starts */}
           <div className="flex justify-center  mt-4 bottom-5 shadow-black shadow rounded-xl items-center">
             <span className="text-md w-full mb-2 font-bold text-md underline">
-              {t('schedule_your_request_for')}
+              {t("schedule_your_request_for")}
             </span>
 
             <span
@@ -538,14 +527,14 @@ function CarListOption({
                 setSchedule(true);
               }}
             >
-              {t('select_date')}
+              {t("select_date")}
             </span>
           </div>
           {selectedCar?.name ? (
             <div>
               <div className="flex justify-center  mt-4 bottom-5 p-3 shadow-xl rounded w-full items-center">
                 <h2 className="text-md w-48  mb-2 font-bold text-md">
-                  {t('make_request_for')}
+                  {t("make_request_for")}
                 </h2>
 
                 <button
@@ -567,10 +556,12 @@ function CarListOption({
                       X
                     </button>
                     <div className="taxi-scheduler">
-                      <h2>{t('schedule_a_taxi_ride')}</h2>
+                      <h2>{t("schedule_a_taxi_ride")}</h2>
                       <form onSubmit={createRequest_schedule}>
                         <div className="flex flex-col justify-center items-center w-100">
-                          <label htmlFor="scheduledTime">{t('scheduled_time')}</label>
+                          <label htmlFor="scheduledTime">
+                            {t("scheduled_time")}
+                          </label>
                           <DatePicker
                             selected={scheduledTime}
                             onChange={handleDateChange}
@@ -584,7 +575,7 @@ function CarListOption({
                           />
                         </div>
                         <button className="schedule_main_btn" type="submit">
-                          {t('schedule_ride')}
+                          {t("schedule_ride")}
                         </button>
                       </form>
                     </div>
@@ -598,144 +589,148 @@ function CarListOption({
         <div>
           <div>
             {fetchedUserData2?.onTripRequest?.data == null ? (
-         
               <div className="w-full border-2 mt-3">
-                <h2 className="mt-2 text-2xl sm:text-4xl font-bold">{t('available_drivers')}</h2>
+                <h2 className="mt-2 text-2xl sm:text-4xl font-bold">
+                  {t("available_drivers")}
+                </h2>
                 <div className=" flex flex-col items-center justify-center">
-                  <p className="text-[22px] ">{t('searching_for_driver')}</p>
+                  <p className="text-[22px] ">{t("searching_for_driver")}</p>
                   <img width={150} height={150} src={driver_gif} />
                   <MyTimer expiryTimestamp={time} />
                   <button
-                     id="btn_hover_main"
-            className="w-full my-2 py-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2"
+                    id="btn_hover_main"
+                    className="w-full my-2 py-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2"
                     onClick={handleOnCancel}
                   >
-                    {t('cancel_request')}
+                    {t("cancel_request")}
                   </button>
                 </div>
               </div>
-            
-          ) : ( 
-            <div >
-              {displayComp == 1 ? (
-                <div className="relative top-5 overflow-scroll">
-                  <BookingRequested
-                    pickup={fetchedUserData2?.onTripRequest?.data.pick_address}
-                    drop_address={
-                      fetchedUserData2?.onTripRequest?.data.drop_address
-                    }
-                    driver_name={
-                      fetchedUserData2?.onTripRequest?.data.driverDetail.data.name
-                    }
-                    car_name={
-                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
-                        .vehicle_type_name
-                    }
-                    car_pic={
-                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
-                        .vehicle_type_icon
-                    }
-                    otp={fetchedUserData2?.onTripRequest?.data.ride_otp}
-                    handleOnCancel={cancelRequest}
-
-                    mobile = {
-                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
-                        .mobile
-                    }
-
-                  />
-                </div>
-              ) : null}
-              {displayComp == 2 ? (
-                <div className="relative top-0 overflow-scroll">
-                  <DriverArrived
-                    pickup={fetchedUserData2?.onTripRequest?.data.pick_address}
-                    drop_address={
-                      fetchedUserData2?.onTripRequest?.data.drop_address
-                    }
-                    driver_name={
-                      fetchedUserData2?.onTripRequest?.data.driverDetail.data.name
-                    }
-                    car_name={
-                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
-                        .vehicle_type_name
-                    }
-                    car_pic={
-                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
-                        .vehicle_type_icon
-                    }
-                    otp={fetchedUserData2?.onTripRequest?.data.ride_otp}
-                    handleOnCancel={cancelRequest}
-
-                    mobile = {
-                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
-                        .mobile
-                    }
-
-                  />
-                </div>
-              ) : null}
-              {displayComp == 3 ? (
-                <div className="relative top-5 overflow-scroll">
-                  <TripStarted
-                    pickup={fetchedUserData2?.onTripRequest?.data.pick_address}
-                    drop_address={
-                      fetchedUserData2?.onTripRequest?.data.drop_address
-                    }
-                    driver_name={
-                      fetchedUserData2?.onTripRequest?.data.driverDetail.data.name
-                    }
-                    car_name={
-                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
-                        .vehicle_type_name
-                    }
-                    car_pic={
-                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
-                        .vehicle_type_icon
-                    }
-                    otp={fetchedUserData2?.onTripRequest?.data.ride_otp}
-                    handleOnCancel={cancelRequest}
-
-                  />
-                </div>
-              ) : null}
-              {displayComp == 4 ? (
-                <div className="relative top-5 overflow-scroll">
-                  <BookingCompleted
-                    pickup={fetchedUserData2?.onTripRequest?.data.pick_address}
-                    drop_address={
-                      fetchedUserData2?.onTripRequest?.data.drop_address
-                    }
-                    driver_name={
-                      fetchedUserData2?.onTripRequest?.data.driverDetail.data.name
-                    }
-                    car_name={
-                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
-                        .vehicle_type_name
-                    }
-                    car_pic={
-                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
-                        .vehicle_type_icon
-                    }
-                    otp={fetchedUserData2?.onTripRequest?.data.ride_otp}
-                    handleOnCancel={cancelRequest}
-
-                    bill = {fetchedUserData2?.onTripRequest?.data?.requestBill}
-
-                    driverProfile = {
-                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
-                        .profile_picture
-                    }
-
-                    car_number = {
-                      fetchedUserData2?.onTripRequest?.data.driverDetail.data
-                        .car_number
-                    }
-                  />
-                </div>
-              ) : null}
-            </div>
-            )} 
+            ) : (
+              <div>
+                {displayComp == 1 ? (
+                  <div className="relative top-5 overflow-scroll">
+                    <BookingRequested
+                      pickup={
+                        fetchedUserData2?.onTripRequest?.data.pick_address
+                      }
+                      drop_address={
+                        fetchedUserData2?.onTripRequest?.data.drop_address
+                      }
+                      driver_name={
+                        fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                          .name
+                      }
+                      car_name={
+                        fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                          .vehicle_type_name
+                      }
+                      car_pic={
+                        fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                          .vehicle_type_icon
+                      }
+                      otp={fetchedUserData2?.onTripRequest?.data.ride_otp}
+                      handleOnCancel={cancelRequest}
+                      mobile={
+                        fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                          .mobile
+                      }
+                    />
+                  </div>
+                ) : null}
+                {displayComp == 2 ? (
+                  <div className="relative top-0 overflow-scroll">
+                    <DriverArrived
+                      pickup={
+                        fetchedUserData2?.onTripRequest?.data.pick_address
+                      }
+                      drop_address={
+                        fetchedUserData2?.onTripRequest?.data.drop_address
+                      }
+                      driver_name={
+                        fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                          .name
+                      }
+                      car_name={
+                        fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                          .vehicle_type_name
+                      }
+                      car_pic={
+                        fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                          .vehicle_type_icon
+                      }
+                      otp={fetchedUserData2?.onTripRequest?.data.ride_otp}
+                      handleOnCancel={cancelRequest}
+                      mobile={
+                        fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                          .mobile
+                      }
+                    />
+                  </div>
+                ) : null}
+                {displayComp == 3 ? (
+                  <div className="relative top-5 overflow-scroll">
+                    <TripStarted
+                      pickup={
+                        fetchedUserData2?.onTripRequest?.data.pick_address
+                      }
+                      drop_address={
+                        fetchedUserData2?.onTripRequest?.data.drop_address
+                      }
+                      driver_name={
+                        fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                          .name
+                      }
+                      car_name={
+                        fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                          .vehicle_type_name
+                      }
+                      car_pic={
+                        fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                          .vehicle_type_icon
+                      }
+                      otp={fetchedUserData2?.onTripRequest?.data.ride_otp}
+                      handleOnCancel={cancelRequest}
+                    />
+                  </div>
+                ) : null}
+                {displayComp == 4 ? (
+                  <div className="relative top-5 overflow-scroll">
+                    <BookingCompleted
+                      pickup={
+                        fetchedUserData2?.onTripRequest?.data.pick_address
+                      }
+                      drop_address={
+                        fetchedUserData2?.onTripRequest?.data.drop_address
+                      }
+                      driver_name={
+                        fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                          .name
+                      }
+                      car_name={
+                        fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                          .vehicle_type_name
+                      }
+                      car_pic={
+                        fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                          .vehicle_type_icon
+                      }
+                      otp={fetchedUserData2?.onTripRequest?.data.ride_otp}
+                      handleOnCancel={cancelRequest}
+                      bill={fetchedUserData2?.onTripRequest?.data?.requestBill}
+                      driverProfile={
+                        fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                          .profile_picture
+                      }
+                      car_number={
+                        fetchedUserData2?.onTripRequest?.data.driverDetail.data
+                          .car_number
+                      }
+                    />
+                  </div>
+                ) : null}
+              </div>
+            )}
           </div>
         </div>
       )}
