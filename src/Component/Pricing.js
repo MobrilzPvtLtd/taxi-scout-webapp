@@ -35,9 +35,7 @@ const SubscriptionPage = () => {
               <div class="text-4xl font-extrabold text-black sm:text-5xl">
                 <h1> {t(`pricing_text1`)} </h1>
               </div>
-              <p class="mt-4 text-xl text-gray-700">
-              {t(`pricing_text2`)}
-              </p>
+            
             </div>
 
             <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
