@@ -5,6 +5,7 @@ import { SourceContext } from "../Context/SourceContext";
 import { DestinationContext } from "../Context/DestinationContext";
 
 const LocationButton = ({ setAddress }) => {
+  
   const [loading, setLoading] = useState(false);
   const { source, setSource } = useContext(SourceContext);
   const { destination, setDestination } = useContext(DestinationContext);
@@ -87,6 +88,7 @@ const LocationButton = ({ setAddress }) => {
 
  
   };
+  
   return (
     <button id="locationButton" type="button" onClick={handleOnClick}>
       <svg

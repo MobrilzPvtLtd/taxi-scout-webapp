@@ -182,3 +182,13 @@ p {
   object-fit: cover;
   height: 45%;
 }
+
+.css-1jqq78o-placeholder{
+  
+    grid-area: 1 / 1 / 2 / 3;
+    color: hsl(0, 0%, 20%) !important;
+    margin-left: 2px;
+    margin-right: 2px;
+    box-sizing: border-box;
+
+}

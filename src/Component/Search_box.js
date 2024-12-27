@@ -26,16 +26,37 @@ function Search_box() {
   const [carFetchFunc, setCarFetchFunc] = useState(null);
   const [taxi_schedule_form, setTaxi_schedule_form] = useState(false);
 
-  const calculateDistance = () => {
-    const distance =
-      window.google.maps.geometry.spherical.computeDistanceBetween(
-        { lat: source.lat, lng: source.lng },
-        { lat: destination.lat, lng: destination.lng }
-      );
-    setDistance(distance * 0.000621374);
-    setCarFetchFunc(true);
+  const calculateDistance = async () => {
+    const apiKey = "AIzaSyAL0hd3a2l1k1uLSAxQNN511PWkguNxzE4"; // Replace with your actual Google API key
+    const origin = `${source.lat},${source.lng}`;
+    const realDestination = `${destination.lat},${destination.lng}`;
+  
+    // Construct the Distance Matrix API URL
+    const url = `https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=${origin}&destinations=${realDestination}&mode=driving&key=AIzaSyAL0hd3a2l1k1uLSAxQNN511PWkguNxzE4`;
+  
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+  
+      if (data.status === "OK") {
+        const element = data.rows[0].elements[0];
+        if (element.status === "OK") {
+          const distanceKm = element.distance.value / 1000; // Convert meters to kilometers
+          setDistance(distanceKm);
+          console.log(`Driving Distance: ${distanceKm} km`);
+        } else {
+          console.error("Error in element status:", element.status);
+        }
+      } else {
+        console.error("Error in API response:", data.status);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  
+    setCarFetchFunc(true); // Assuming this needs to be called after calculating the distance
   };
-
+  
   // console.log("source and destination" , source ,  destination)
   const google = window.google;
 
@@ -93,7 +114,7 @@ function Search_box() {
             {/* Source Input Field */}
             <div className="flex flex-row items-center gap-2">
               <div className="flex-1">
-                <InputItem type="source" />
+                <InputItem type="source" currentAddress={setAddress} />
               </div>
               <div className="translate-x-[-2.5rem]">
                 <LocationButton setAddress={setAddress} />

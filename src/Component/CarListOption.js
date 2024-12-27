@@ -48,7 +48,7 @@ function CarListOption({
   const { t } = useTranslation();
   const { source, setSource } = useContext(SourceContext);
   const { destination, setDestination } = useContext(DestinationContext);
-
+console.log("carFetchFunc",distance)
   let url = "https://admin.taxiscout24.com/";
   const getTokenFromCookie = (cookieName) => {
     const cookies = document.cookie.split("; "); // Split cookies into an array
@@ -119,14 +119,14 @@ function CarListOption({
     };
 
     carFetch();
-  }, [option1, option2, option3, option4]);
+  }, [option1, option2, option3, option4 ,distance]);
 
   // alert(distance)
   // console.log("car fetch data" , aryann)
   //   carFetch ends here
 
   const [driver, setDriver] = useState([]);
-  const [id, setId] = useState(false);
+  const [id, setId] = useState("");
   const [fetchedUserData, setFetchedUserData] = useState([]);
   const [fetchedUserData2, setFetchedUserData2] = useState([]);
 
@@ -149,7 +149,7 @@ function CarListOption({
 
           setFetchedUserData(convertedData);
           setFetchedUserData2(data.data);
-          setId(true);
+          setId(data.data.id);
         } else {
           console.error(`HTTP error! Status: ${response.status}`);
         }
@@ -220,7 +220,9 @@ function CarListOption({
         const DATA = await response.json();
         const convertedData = [DATA.data];
 
-        sessionStorage.setItem("id", convertedData[0].id);
+        const expirationDate = new Date();
+expirationDate.setDate(expirationDate.getDate() + 7); // Cookie will expire in 7 days
+document.cookie = `id=${convertedData[0].id}; path=/; secure; samesite=strict; expires=${expirationDate.toUTCString()}`;
         cancelRqstBtn(convertedData); // Assuming this is another function you're using
         setCancelId(convertedData[0].id);
         setDriver(convertedData[0]);
@@ -266,9 +268,20 @@ const [display, setDisplay] = useState(null);
 const [driverFound, setDriverFound] = useState(null);
 const [searchingDriver, setSearchingDriver] = useState(null);
 const [proceed, setProceed] = useState(null);
+const getCookie = (name) => {
+  const cookieArr = document.cookie.split("; ");
+  for (let cookie of cookieArr) {
+    const [key, value] = cookie.split("=");
+    if (key === name) return value;
+  }
+  return null;
+};
+const handleReloadClick = () => window.location.reload();
+const rqstId = getCookie("id");
+console.log("Retrieved ID from cookie:", rqstId);
 
 const cancelRequest = async () => {
-  const rqstId = sessionStorage.id;
+ 
   try {
     const response = await fetch(`${url}api/v1/request/cancel`, {
       method: "POST",
@@ -285,6 +298,7 @@ const cancelRequest = async () => {
     if (response.ok) {
       setUserCancelled(true);
       setResult("success");
+      handleReloadClick();
     } else {
       const errorText = await response.text();
       console.error(errorText);
@@ -295,7 +309,7 @@ const cancelRequest = async () => {
   }
 };
 
-const handleReloadClick = () => window.location.reload();
+
 
 const handleOnCancel = () => {
   cancelRequest();
@@ -303,7 +317,7 @@ const handleOnCancel = () => {
   setSearchingDriver(false);
   setDriverFound(false);
   setDriver(null);
-  handleReloadClick();
+  
 };
 
 const handleOnCancel2 = () => {
