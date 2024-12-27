@@ -10,38 +10,15 @@ const history = useNavigate();
     const handleSubmit = () => {
 
         history ('/login')
-        console.log("hariom", history)
     }
-    
-//   const calculateDistance = () => {
-//     const distance =
-//       window.google.maps.geometry.spherical.computeDistanceBetween(
-//         { lat: source.lat, lng: source.lng },
-//         { lat: destination.lat, lng: destination.lng }
-//       );
-//     setDistance(distance * 0.000621374);
-//     setCarFetchFunc(true);
-//   };
-//   const [address, setAddress] = useState("");
   return (
     <div><div id="main-box">
     <div class="css-hPnljU">
       <h2 class="css-jzIGNN">Request a ride now</h2>
     </div>
     <div class="search-input ">
-      {/* <div className="flex justify-center"> */}
-      {/* <InputButton ></InputButton> */}
       <InputItem type="source" />
-
-      {/* <LocationButton setAddress={setAddress} /> */}
-      
-      {/* </div> */}
-      {/* <LocationButton onClick ={(()=> set(address))} /> */}
-      {/* <div className="flex justify-center mr-9"> */}
-
       <InputItem type="destination" />
-      {/* <InputButton/> */}
-      {/* </div> */}
     </div>
     <button
       style={{

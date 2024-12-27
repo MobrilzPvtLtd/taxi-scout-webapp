@@ -32,8 +32,6 @@ function Payment() {
         setPaymentError(error.message);
         setPaymentSuccess(false);
       } else {
-        // Send paymentMethod.id to your server to complete the payment
-        console.log('Payment Method ID:', paymentMethod.id);
         setPaymentError(null);
         setPaymentSuccess(true);
       }

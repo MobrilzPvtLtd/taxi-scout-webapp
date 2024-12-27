@@ -31,11 +31,8 @@ const CookieConsentPopup = () => {
         padding: "8px 16px",
       }}
       onAccept={() => {
-        console.log("User accepted all cookies.");
-        // You can store this consent in a cookie or localStorage
       }}
       onDecline={() => {
-        console.log("User declined cookies.");
       }}
     >
       This site uses cookies. By continuing to use this website, you agree to our use of cookies.{" "}

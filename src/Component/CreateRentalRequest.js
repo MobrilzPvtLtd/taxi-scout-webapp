@@ -34,7 +34,6 @@ import React, { useState } from 'react'
   
       if (response.ok) {
         const  data2 = await response.json();
-        console.log(data2.data)
        setData(data2.data);
         result = 'success';
         // Perform actions or state updates as needed

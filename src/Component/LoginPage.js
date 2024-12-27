@@ -45,7 +45,6 @@ function LoginPage() {
       try {
         const recaptchaToken = await executeRecaptcha("login");
 
-        console.log("reCAPTCHA Token:", recaptchaToken); // Optional: For debugging
 
         const response = await fetch("https://admin.taxiscout24.com/api/v1/user/login", {
           method: "POST",

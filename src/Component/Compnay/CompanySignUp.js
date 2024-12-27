@@ -7,9 +7,6 @@ function CompanySignUp() {
     const [userType, setUserType] = useState('user'); // Default userType is user
 
     const handleSignUp = () => {
-      // Perform sign-up logic based on userType
-      console.log(`Signing up as ${userType}`);
-      // Add your sign-up functionality here
     };
 //   sign up api
 
@@ -31,13 +28,13 @@ const [credentials, setCredentials] = useState({
     }); 
     
     const json = await response.json()
-    // console.log(json);
     
         if (response.ok) {
           alert('You are Registered successfully');
         }
        else {alert(json.message) 
-    console.log(json.message)}
+  
+  }
 
    
   
@@ -47,7 +44,6 @@ const [credentials, setCredentials] = useState({
        }
        else if (userType === "company"){
         history("/rental")
-        console.log("bhai ye finally chl gya")
     }
   }
   const handleChange = (e)=>{

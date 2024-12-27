@@ -45,7 +45,6 @@ const ChatPopup = () => {
         });
 
         const json = await response.json();
-        console.log('API Response:', json);
 
         // Add the message to Firestore after successful API response
         await addDoc(collection(firestore, 'messages'), {
@@ -60,7 +59,6 @@ const ChatPopup = () => {
       }
     }
   };
-console.log("message" , messages)
   return (
     <div className="chat-popup">
       <div className="popup-header">Live Chat</div>

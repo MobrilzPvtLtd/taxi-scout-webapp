@@ -86,7 +86,6 @@ const handleSubmit = async (e) => {
     try {
       const response = await axios.post(`${url}api/v1/password/forgot`, { email });
   
-      console.log("Response data:", response.data);
   
       if (response.data.success) {
         setLoading(false);
@@ -130,7 +129,6 @@ const handleSubmit = async (e) => {
     try {
       const response = await axios.post(`${url}api/v1/password/reset`, { email ,password , password_confirmation , otp} );
   
-      console.log("Response data:", response.data);
   
       if (response.data.success) {
         setLoading(false);

@@ -11,13 +11,6 @@ const TaxiScheduler = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically handle the form submission,
-    // e.g., send the data to a server or API
-    console.log({
-      pickupLocation,
-      dropoffLocation,
-      scheduledTime,
-    });
     alert("Taxi ride scheduled successfully!");
   };
 

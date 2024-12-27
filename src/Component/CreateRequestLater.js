@@ -45,7 +45,7 @@ function CreateRequestLater() {
       const val = {}; // Replace {} with your request payload
       const api = '/your_endpoint'; // Replace with your API endpoint
       const requestResult = await createRequestLater(val, api);
-      console.log('Request Result:', requestResult);
+      
     };
   return (
     <div>

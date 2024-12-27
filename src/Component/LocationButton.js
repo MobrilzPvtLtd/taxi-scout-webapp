@@ -73,7 +73,7 @@ const LocationButton = ({ setAddress }) => {
   
 
   if (loading) {
-    return <p>Loading your current address...</p>;
+    return <p >Loading your current address...</p>;
   }
 
   const handleOnClick = () => {
@@ -88,7 +88,6 @@ const LocationButton = ({ setAddress }) => {
 
  
   };
-  
   return (
     <button id="locationButton" type="button" onClick={handleOnClick}>
       <svg

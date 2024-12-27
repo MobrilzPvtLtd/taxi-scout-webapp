@@ -30,7 +30,6 @@ const CountriesDropdown = () => {
   const handleCountryChange = (e) => {
     setSelectedCountry(e.target.value);
   };
-console.log("outer countries" , countries)
   return (
     <div>
       <label htmlFor="countrySelect">Select a country:</label>

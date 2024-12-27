@@ -37,7 +37,6 @@ const ContactUs = () => {
           "Content-Type": "application/json",
         },
       });
-      console.log("response", response);
       if (response.success) {
         setResponseMessage({
           type: "Success",

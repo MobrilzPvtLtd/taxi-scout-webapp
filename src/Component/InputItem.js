@@ -32,21 +32,14 @@ function InputItem(type, getData) {
         address: "",
       });
 
-      // console.log(place)
     });
 
-    // const getLatAndLngAddress = async(place)=>{
-    //   const placeId = await place.value.place_id
-    //   console.log("placeId" , placeId)
-    //   }
-    //   getLatAndLngAddress()
   }, []);
 
   const google = window.google;
  
 
   const getLatAndLng = async (place, type) => {
-    // console.log(place,type)
     const placeId = await place.value.place_id;
     const service = new google.maps.places.PlacesService(
       document.createElement("div")

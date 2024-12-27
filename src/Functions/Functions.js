@@ -14,7 +14,6 @@ function Functions() {
     const checkInternetConnection =()=> {
         connectivity(function (online) {
             if (online) {
-              console.log('connected to the internet!')
             } else {
               console.error('sorry, not connected!')
             }

@@ -16,7 +16,7 @@ const BlogDetail = () => {
       const response = await axios.get(`${url}/api/v1/blog-details/${slug}`);
       setBlogsData(response.data.data);
 
-      console.log("new response", response.data.data);
+      
     };
     handleBlogData();
   }, slug);

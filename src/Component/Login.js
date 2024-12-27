@@ -32,7 +32,6 @@ const Login = () => {
     }); 
     
     const json = await response.json()
-    console.log(json);
     if (json){
       // Save the auth token and redirect
       sessionStorage.setItem('token', json.authtoken); 

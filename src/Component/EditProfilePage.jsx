@@ -85,7 +85,6 @@ const EditProfilePage = () => {
       console.error("Error creating request:", error);
     }
   };
-  console.log("user profile data", fetchedUserData[0]?.name);
 
   const handleSave = (e) => {
     e.preventDefault();
@@ -138,7 +137,7 @@ const EditProfilePage = () => {
       },
     })
     .then((response) => {
-      console.log('Data uploaded successfully:', response.data);
+      
     })
     .catch((error) => {
       console.error('There was an error uploading the data!', error);

@@ -48,27 +48,19 @@ function CarListOption({
   const { t } = useTranslation();
   const { source, setSource } = useContext(SourceContext);
   const { destination, setDestination } = useContext(DestinationContext);
-console.log("carFetchFunc",distance)
   let url = "https://admin.taxiscout24.com/";
   const getTokenFromCookie = (cookieName) => {
     const cookies = document.cookie.split("; "); // Split cookies into an array
     for (const cookie of cookies) {
-      const [name, value] = cookie.split("="); // Split each cookie into key and value
+      const [name, value] = cookie.split("=");
       if (name === cookieName) {
-        return value; // Return the value if the name matches
+        return value;
       }
     }
-    return null; // Return null if the cookie is not found
+    return null;
   };
-
-  // Example usage
   const token = getTokenFromCookie("token");
-  console.log(token);
-
-  const [driverData, setDriverData] = useState(null);
-  const [userData1, setUserData1] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [rideStarted, setRideStarted] = useState(false);
 
   const [data, setData] = useState([]);
@@ -119,12 +111,7 @@ console.log("carFetchFunc",distance)
     };
 
     carFetch();
-  }, [option1, option2, option3, option4 ,distance]);
-
-  // alert(distance)
-  // console.log("car fetch data" , aryann)
-  //   carFetch ends here
-
+  }, [option1, option2, option3, option4, distance]);
   const [driver, setDriver] = useState([]);
   const [id, setId] = useState("");
   const [fetchedUserData, setFetchedUserData] = useState([]);
@@ -158,29 +145,24 @@ console.log("carFetchFunc",distance)
       }
     };
 
-    fetchUserData(); // Initial fetch
+    // fetchUserData(); // Initial fetch
 
     const intervalId = setInterval(() => {
       fetchUserData(); // Fetch periodically after the initial request
     }, 5000);
 
     return () => clearInterval(intervalId); // Cleanup on component unmount
-  }, [token]);
+  }, [id]);
 
   const [click, setClick] = useState(false);
   const [create, setCreate] = useState(false);
   const [cancelId, setCancelId] = useState("");
   const [isHidden, setIsHidden] = useState(false);
-  // const [checkDriver, setCheckDriver] = useState(0);
-
-  // useEffect for Timer Logic
   useEffect(() => {
     if (checkDriver < 300) {
       const timerID = setInterval(() => {
         setCheckDriver((prevCheckDriver) => prevCheckDriver + 1);
       }, 1000);
-
-      // Cleanup the interval when component unmounts or checkDriver changes
       return () => clearInterval(timerID);
     }
   }, [checkDriver]);
@@ -221,12 +203,13 @@ console.log("carFetchFunc",distance)
         const convertedData = [DATA.data];
 
         const expirationDate = new Date();
-expirationDate.setDate(expirationDate.getDate() + 7); // Cookie will expire in 7 days
-document.cookie = `id=${convertedData[0].id}; path=/; secure; samesite=strict; expires=${expirationDate.toUTCString()}`;
+        expirationDate.setDate(expirationDate.getDate() + 7); // Cookie will expire in 7 days
+        document.cookie = `id=${
+          convertedData[0].id
+        }; path=/; secure; samesite=strict; expires=${expirationDate.toUTCString()}`;
         cancelRqstBtn(convertedData); // Assuming this is another function you're using
         setCancelId(convertedData[0].id);
         setDriver(convertedData[0]);
-        // console.log("Request creation successful:", convertedData);
       } else {
         console.error(`HTTP error! Status: ${response.message}`);
         alert(
@@ -247,12 +230,9 @@ document.cookie = `id=${convertedData[0].id}; path=/; secure; samesite=strict; e
       fetchedUserData2?.onTripRequest !== null
     ) {
       setNoDriverFound(false);
-      // setSearchingDriver(false);
-      // console.log("the key is " , fetchedUserData.map((item)=>{return item.onTripRequest}))
     }
   }, [checkDriver, fetchedUserData]);
 
-  // console.log("create rqst data" , driver)
   const cancelRqstBtn = (id) => {
     return id;
   };
@@ -260,113 +240,106 @@ document.cookie = `id=${convertedData[0].id}; path=/; secure; samesite=strict; e
   //
 
   const [userCancelled, setUserCancelled] = useState(false);
-const [userRequestData, setUserRequestData] = useState([]);
-const [internet, setInternet] = useState([]);
-const [result, setResult] = useState("");
-const [driverWait, setDriverWait] = useState(null);
-const [display, setDisplay] = useState(null);
-const [driverFound, setDriverFound] = useState(null);
-const [searchingDriver, setSearchingDriver] = useState(null);
-const [proceed, setProceed] = useState(null);
-const getCookie = (name) => {
-  const cookieArr = document.cookie.split("; ");
-  for (let cookie of cookieArr) {
-    const [key, value] = cookie.split("=");
-    if (key === name) return value;
-  }
-  return null;
-};
-const handleReloadClick = () => window.location.reload();
-const rqstId = getCookie("id");
-console.log("Retrieved ID from cookie:", rqstId);
-
-const cancelRequest = async () => {
- 
-  try {
-    const response = await fetch(`${url}api/v1/request/cancel`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        request_id: rqstId,
-        custom_reason: "cancel",
-      }),
-    });
-
-    if (response.ok) {
-      setUserCancelled(true);
-      setResult("success");
-      handleReloadClick();
-    } else {
-      const errorText = await response.text();
-      console.error(errorText);
-      setResult("failed");
+  const [userRequestData, setUserRequestData] = useState([]);
+  const [internet, setInternet] = useState([]);
+  const [result, setResult] = useState("");
+  const [driverWait, setDriverWait] = useState(null);
+  const [display, setDisplay] = useState(null);
+  const [driverFound, setDriverFound] = useState(null);
+  const [searchingDriver, setSearchingDriver] = useState(null);
+  const [proceed, setProceed] = useState(null);
+  const getCookie = (name) => {
+    const cookieArr = document.cookie.split("; ");
+    for (let cookie of cookieArr) {
+      const [key, value] = cookie.split("=");
+      if (key === name) return value;
     }
-  } catch (error) {
-    console.error("Error cancelling request:", error);
-  }
-};
+    return null;
+  };
+  const handleReloadClick = () => window.location.reload();
+  const rqstId = getCookie("id");
 
+  const cancelRequest = async () => {
+    try {
+      const response = await fetch(`${url}api/v1/request/cancel`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          request_id: rqstId,
+          custom_reason: "cancel",
+        }),
+      });
 
-
-const handleOnCancel = () => {
-  cancelRequest();
-  setClick(false);
-  setSearchingDriver(false);
-  setDriverFound(false);
-  setDriver(null);
-  
-};
-
-const handleOnCancel2 = () => {
-  cancelRequest();
-  setBooking(false);
-  handleReloadClick();
-};
-
-const handleOnChange = (e) => {
-  e.preventDefault();
-  createRequest();
-  setClick(true);
-  setNoDriverFound(true);
-  setSearchingDriver(true);
-};
-
-const time = new Date();
-time.setSeconds(time.getSeconds() + 300); // 5 minutes timer
-
-const [finalData, setFinalData] = useState(aryann);
-
-useEffect(() => {
-  const filterData = () => {
-    setFinalData(
-      aryann?.filter((item) => {
-        return (
-          (!option1 || item.smoking === 1) &&
-          (!option2 || item.drinking === 1) &&
-          (!option3 || item.pets === 1) &&
-          (!option4 || item.handicaped === 1)
-        );
-      })
-    );
+      if (response.ok) {
+        setUserCancelled(true);
+        setResult("success");
+        handleReloadClick();
+      } else {
+        const errorText = await response.text();
+        console.error(errorText);
+        setResult("failed");
+      }
+    } catch (error) {
+      console.error("Error cancelling request:", error);
+    }
   };
 
-  filterData();
-}, [aryann, option1, option2, option3, option4]);
+  const handleOnCancel = () => {
+    cancelRequest();
+    setClick(false);
+    setSearchingDriver(false);
+    setDriverFound(false);
+    setDriver(null);
+  };
 
-useEffect(() => {
-  if (finalData?.length > 0) {
-    setCars(true);
-  } else if (fetchedUserData2?.onTripRequest?.data?.is_driver_started === 1) {
-    setRideStarted(true);
-  } else {
-    setCars(false);
-  }
-}, [finalData, fetchedUserData2, checkDriver]);
+  const handleOnCancel2 = () => {
+    cancelRequest();
+    setBooking(false);
+    handleReloadClick();
+  };
 
+  const handleOnChange = (e) => {
+    e.preventDefault();
+    createRequest();
+    setClick(true);
+    setNoDriverFound(true);
+    setSearchingDriver(true);
+  };
 
+  const time = new Date();
+  time.setSeconds(time.getSeconds() + 300); // 5 minutes timer
+
+  const [finalData, setFinalData] = useState(aryann);
+
+  useEffect(() => {
+    const filterData = () => {
+      setFinalData(
+        aryann?.filter((item) => {
+          return (
+            (!option1 || item.smoking === 1) &&
+            (!option2 || item.drinking === 1) &&
+            (!option3 || item.pets === 1) &&
+            (!option4 || item.handicaped === 1)
+          );
+        })
+      );
+    };
+
+    filterData();
+  }, [aryann, option1, option2, option3, option4]);
+
+  useEffect(() => {
+    if (finalData?.length > 0) {
+      setCars(true);
+    } else if (fetchedUserData2?.onTripRequest?.data?.is_driver_started === 1) {
+      setRideStarted(true);
+    } else {
+      setCars(false);
+    }
+  }, [finalData, fetchedUserData2, checkDriver]);
 
   const [scheduledTime, setScheduledTime] = useState(new Date());
 
@@ -384,18 +357,16 @@ useEffect(() => {
 
   const handle_schedule_taxi = (e) => {
     e.preventDefault();
-
-    console.log(formatDate(scheduledTime));
   };
   const createRequest_schedule = async (e) => {
     e.preventDefault();
-  
+
     const abortController = new AbortController();
     const { signal } = abortController;
-  
+
     try {
       let URL = `${url}api/v1/request/create`;
-  
+
       const response = await fetch(URL, {
         method: "POST",
         headers: {
@@ -418,25 +389,26 @@ useEffect(() => {
         }),
         signal, // Attach abort signal to the fetch
       });
-  
+
       if (!response.ok) {
-        const errorMessage = `Error: ${response.statusText || response.message}`;
+        const errorMessage = `Error: ${
+          response.statusText || response.message
+        }`;
         console.error(errorMessage);
         alert(`${errorMessage}, please hit on Cancel to make a new request`);
         return; // Exit early if response is not OK
       }
-  
+
       const DATA = await response.json();
       const convertedData = [DATA.data];
-  
+
       sessionStorage.setItem("id", convertedData[0].id);
       cancelRqstBtn(convertedData); // Assuming this is a function you're using
       setCancelId(convertedData[0].id);
       setDriver(convertedData[0]);
       setSchedule(false);
-  
+
       alert("Your Ride Has Been Successfully Scheduled");
-  
     } catch (error) {
       console.error("Error creating request:", error);
       alert("There was an error scheduling your ride. Please try again.");
@@ -445,7 +417,6 @@ useEffect(() => {
       return () => abortController.abort();
     }
   };
-  
 
   // firebase real time data fetching starts here
 
@@ -473,11 +444,9 @@ useEffect(() => {
       }
     }
   }, [fetchedUserData2]);
-  console.log("firebase data", driver);
   const resetValue = (val) => {
     setDisplayComp(null);
     setFetchedUserData(null);
-    console.log("props data", fetchedUserData2);
     window.location.reload();
   };
 

@@ -7,7 +7,6 @@ const BookingCompleted = ({pickup ,drop_address , driver_name ,car_name ,car_pic
     handleOnCancel()
   }
   const {base_price ,distance_price ,time_price ,waiting_charge ,cancellation_fee ,promo_discount ,service_tax ,total_amount} = bill?.data ; 
-  // console.log("deenge " , bill?.data)
   return (
     <div style={styles.container}>
     <h1 style={styles.title}>Booking Completed</h1>

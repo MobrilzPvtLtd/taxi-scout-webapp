@@ -20,7 +20,6 @@ function Registor() {
     }); 
     
     const json = await response.json()
-    console.log(json);
   
     sessionStorage.setItem('token', json.authtoken); 
       history("/home");

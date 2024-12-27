@@ -27,52 +27,39 @@ function Search_box() {
   const [taxi_schedule_form, setTaxi_schedule_form] = useState(false);
 
   const calculateDistance = async () => {
-    const apiKey = "AIzaSyAL0hd3a2l1k1uLSAxQNN511PWkguNxzE4"; // Replace with your actual Google API key
     const origin = `${source.lat},${source.lng}`;
     const realDestination = `${destination.lat},${destination.lng}`;
   
-    // Construct the Distance Matrix API URL
-    const url = `https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=${origin}&destinations=${realDestination}&mode=driving&key=AIzaSyAL0hd3a2l1k1uLSAxQNN511PWkguNxzE4`;
-  
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-  
-      if (data.status === "OK") {
-        const element = data.rows[0].elements[0];
-        if (element.status === "OK") {
+    const service = new google.maps.DistanceMatrixService();
+    service.getDistanceMatrix(
+      {
+        origins: [origin],
+        destinations: [realDestination],
+        travelMode: 'DRIVING',
+      },
+      (response, status) => {
+        if (status === 'OK') {
+          console.log("distance matrix", response);
+          const element = response.rows[0].elements[0];
           const distanceKm = element.distance.value / 1000; // Convert meters to kilometers
           setDistance(distanceKm);
-          console.log(`Driving Distance: ${distanceKm} km`);
         } else {
-          console.error("Error in element status:", element.status);
+          console.error(status);
         }
-      } else {
-        console.error("Error in API response:", data.status);
       }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
+    );
   
-    setCarFetchFunc(true); // Assuming this needs to be called after calculating the distance
+    setCarFetchFunc(true); 
   };
   
-  // console.log("source and destination" , source ,  destination)
   const google = window.google;
-
-  const [data, setData] = useState([]);
 
   const [selectedOption, setSelectedOption] = useState(null);
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
-
-  const [isChecked, setIsChecked] = useState(false);
   const [address, setAddress] = useState("");
-  useEffect(() => {
-    // setSource(address)
-  }, []);
 
   const [options, setOptions] = useState({
     option1: null,
@@ -87,12 +74,6 @@ function Search_box() {
       [option]: !options[option],
     });
   };
-  // const handle_schedule_taxi = () => {
-  //   setTaxi_schedule_form(true);
-  // };
-  // const handle_taxi_schedule_cancel = () => {
-  //   setTaxi_schedule_form(false);
-  // };
   return (
     <div className="w-full p-3 border-2 border-black rounded-lg bg-white">
       {/* upper box */}
@@ -140,23 +121,6 @@ function Search_box() {
           >
             {t("search")}
           </button>
-          {/* <button id="schedule_ride_btn" onClick={handle_schedule_taxi}>
-            Schedule a ride{" "}
-          </button>
-          {taxi_schedule_form == true ? (
-            <div id="taxi_scheduler">
-              <div id="taxi_scheduler_overley"></div>
-              <div id="taxi_scheduler_overley_lifter">
-                <button
-                  id="taxi_schedule_cancel"
-                  onClick={handle_taxi_schedule_cancel}
-                >
-                  X
-                </button>
-                <TaxiScheduler />
-              </div>
-            </div>
-          ) : null} */}
         </div>
 
         <h2 className="text-xl mt-4 font-bold">{t("prefrences")} : </h2>
@@ -210,7 +174,6 @@ function Search_box() {
           option3={options.option3}
           option4={options.option4}
           distance={distance}
-          // token = {token}
         />
       ) : null}
     </div>

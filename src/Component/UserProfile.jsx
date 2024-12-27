@@ -55,7 +55,6 @@ const UserProfile = () => {
     };
     userData();
   }, [window]);
-  // console.log("user profile data", fetchedUserData[0].profile_picture);
   return (
     <>
       

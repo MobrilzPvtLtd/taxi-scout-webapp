@@ -82,8 +82,6 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-  console.log("cookies", document.cookie);
-
   const [source, setSource] = useState([]);
   const [destination, setDestination] = useState([]);
   const stripePromise = loadStripe(

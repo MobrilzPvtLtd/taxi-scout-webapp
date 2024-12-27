@@ -19,7 +19,6 @@ const OtpVerify = () => {
     if (timer > 0) {
       const timerID = setInterval(() => {
         setTimer((timer) => timer - 1);
-        // console.log("timer ki value " , timer)
       }, 1000);
 
       return () => clearInterval(timerID);

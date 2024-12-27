@@ -88,7 +88,6 @@ function SignupPage() {
         setOtp_visible(true);
       } else {
         alert(json.message);
-        console.log(json.message);
       }
     } catch (err) {
       console.error("Registration failed", err);
@@ -183,7 +182,6 @@ function SignupPage() {
   const handleStateChange = (e) => {
     setSelectedState(e.target.value);
   };
-console.log("selected image" , imagePreview)
 useEffect(() => {
   return () => {
     if (imagePreview) {

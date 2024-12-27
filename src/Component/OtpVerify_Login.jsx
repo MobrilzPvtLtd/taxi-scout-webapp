@@ -20,7 +20,6 @@ const OtpVerify_Login = () => {
     if (timer > 0) {
       const timerID = setInterval(() => {
         setTimer((timer) => timer - 1);
-        console.log("timer ki value ", timer);
       }, 1000);
 
       return () => clearInterval(timerID);
@@ -34,10 +33,8 @@ const OtpVerify_Login = () => {
   // const value = sessionStorage.getItem("email")
   useEffect(() => {
     const value = sessionStorage.getItem("email");
-    console.log("session inside", value);
     setEmail(value);
   }, [handleChange]);
-  console.log("session value", email);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);

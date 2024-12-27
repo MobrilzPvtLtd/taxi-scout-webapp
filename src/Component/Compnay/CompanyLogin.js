@@ -7,9 +7,6 @@ function CompanyLogin() {
     const [userType, setUserType] = useState(''); // Default userType is user
 
     const handleLogin = () => {
-      // Perform login logic based on userType
-      console.log(`Logging in as ${userType}`);
-      // Add your login functionality here
     };
 
 
@@ -35,7 +32,6 @@ if (userType === "user"){
           },
           body: JSON.stringify({mobile: credentials.mobile})
         }); 
-        console.log(credentials.mobile)
       
 
       // Json Web Token condition
@@ -44,7 +40,6 @@ if (userType === "user"){
 
       setToken(json.access_token)
 
-      // console.log(json);
       if (response.ok){
         // Save the auth token and redirect
         sessionStorage.setItem('token', json.access_token); 
@@ -57,7 +52,6 @@ if (userType === "user"){
 
     else if (userType === "company"){
         history("/rental")
-        console.log("bhai ye finally chl gya")
     }
 }
   
