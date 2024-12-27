@@ -86,7 +86,7 @@ const OtpVerify = () => {
   return (
     
     <div
-      className="container"
+      className="bg-[#00000080] p-5 inset-0 backdrop-blur-lg"
       style={{ textAlign: "center", marginTop: "50px", color: "#fff" }}
     >
      

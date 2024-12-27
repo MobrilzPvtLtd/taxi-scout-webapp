@@ -193,7 +193,7 @@ useEffect(() => {
     <>
       <div id="banner_img_home" className="relative mt-10">
         <div className="absolute inset-0 bg-black/20 backdrop-blur-lg"></div>
-        <div className="relative container flex justify-center items-center md:justify-end min-h-[100vh] min-w-full">
+        <div className="relative container flex justify-center items-center md:justify-end min-h-[100vh]">
           {otp_visible ? (
             <OtpVerify />
           ) : (
