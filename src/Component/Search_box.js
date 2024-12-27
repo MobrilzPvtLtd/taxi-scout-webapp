@@ -93,11 +93,11 @@ function Search_box() {
         <div>
           <div className="flex flex-col h-full w-full gap-2">
             {/* Source Input Field */}
-            <div className="flex flex-row items-center gap-2">
+            <div className="flex flex-row items-center justify-between">
               <div className="flex-1">
                 <InputItem type="source" currentAddress={setAddress} />
               </div>
-              <div className="translate-x-[-2.5rem]">
+              <div className="translate-x-[-4rem] lg:translate-x-[-2.5rem] ">
                 <LocationButton setAddress={setAddress} />
               </div>
             </div>
