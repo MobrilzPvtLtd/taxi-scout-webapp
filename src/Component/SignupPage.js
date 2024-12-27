@@ -19,22 +19,24 @@ function SignupPage() {
   const [selectedCountry, setSelectedCountry] = useState("");
   const navigate = useNavigate();
   const [otp_visible, setOtp_visible] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [imagePreview ,setImagePreview] = useState(null);
 
   const { executeRecaptcha } = useGoogleReCaptcha();
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
+  const [selectedImage, setSelectedImage] = useState(null); // State to store the selected image
+  const [imagePreview, setImagePreview] = useState(null);   // State to store the preview URL
+
+  // Handle file input change
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
     if (file) {
-      setSelectedImage(file); // Directly store the file object
-      const imageUrl = URL.createObjectURL(file);
-      setImagePreview(imageUrl);
+      setSelectedImage(file);
+      setImagePreview(URL.createObjectURL(file)); // Create a preview URL for the selected image
     }
   };
 
+  // Trigger the hidden file input when the button is clicked
   const handleClick = () => {
-    document.getElementById("fileInput").click();
+    document.getElementById('fileInput').click();
   };
 
   const [credentials, setCredentials] = useState({
@@ -220,30 +222,33 @@ useEffect(() => {
                     </div>
                   </div>
                   <div className="flex flex-col items-center">
-                    {selectedImage ? (
-                      <img
-                        src={imagePreview}
-                        alt="Profile"
-                        className="w-20 h-20 rounded-full object-cover mb-4"
-                      />
-                    ) : null}
+      {/* Display selected image preview */}
+      {imagePreview ? (
+        <img
+          src={imagePreview}
+          alt="Profile"
+          className="w-20 h-20 rounded-full object-cover mb-4"
+        />
+      ) : null}
 
-                    <input
-                      id="fileInput"
-                      type="file"
-                      accept="image/*"
-                      className="hidden"
-                      onChange={handleImageChange}
-                    />
+      {/* Hidden file input */}
+      <input
+        id="fileInput"
+        type="file"
+        accept="image/*"
+        className="hidden"
+        onChange={handleImageChange}
+      />
 
-                    <button
-                      onClick={handleClick}
-                      id="btn_hover_main"
-                      className="w-full my-2 py-3 px-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2"
-                    >
-                      {t('upload_logo_profile')}
-                    </button>
-                  </div>
+      {/* Button to trigger file input */}
+      <button
+        onClick={handleClick}
+        id="btn_hover_main"
+        className="w-full my-2 py-3 px-3 font-semibold rounded-lg text-sm lg:px-10 md:py-2"
+      >
+        {t('upload_logo_profile')}
+      </button>
+    </div>
                   <form
                     className=" w-fit  grid gird-cols-1 md:grid-cols-2 gap-x-2 "
                     onSubmit={handleSubmit}
@@ -354,7 +359,7 @@ useEffect(() => {
                   <div className="flex flex-col items-center">
                     {selectedImage ? (
                       <img
-                        src={selectedImage}
+                        src={imagePreview}
                         alt="Profile"
                         className="w-20 h-20 rounded-full object-cover mb-4"
                       />
