@@ -93,8 +93,8 @@ function SignupPage() {
       console.error("Registration failed", err);
     }
   };
-
   const handleSubmitCompany = async (e) => {
+    try{
     e.preventDefault();
     if (!executeRecaptcha) {
       console.error("Execute reCAPTCHA not yet available");
@@ -130,6 +130,7 @@ function SignupPage() {
 
     if (response.ok) {
       alert("You are Registered successfully");
+      localStorage.setItem(`email`, `${credentials.email}`);
       setOtp_visible(true);
     } else {
       let alertMessage = "";
@@ -140,8 +141,11 @@ function SignupPage() {
         alertMessage += messages.join(" ") + "\n";
       });
       alert(alertMessage);
+    };}
+    catch(err){
+      console.error(err)
     }
-  };
+    }
 
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
