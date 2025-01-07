@@ -27,35 +27,35 @@ const BookingCompleted = ({pickup ,drop_address , driver_name ,car_name ,car_pic
         </div>
         <div style={styles.detailRow}>
           <FaMoneyBillWave style={styles.icon} />
-          <p><strong>Base Price:</strong> $ {base_price} </p>
+          <p><strong>Base Price:</strong> {base_price} </p>
         </div>
         <div style={styles.detailRow}>
           <FaMoneyBillWave style={styles.icon} />
-          <p><strong>Distance Price:</strong> $ {distance_price} </p>
+          <p><strong>Distance Price:</strong> {distance_price} </p>
         </div>
         <div style={styles.detailRow}>
           <FaMoneyBillWave style={styles.icon} />
-          <p><strong>Time Price:</strong> $ {time_price} </p>
+          <p><strong>Time Price:</strong> {time_price} </p>
         </div>
         <div style={styles.detailRow}>
           <FaMoneyBillWave style={styles.icon} />
-          <p><strong>Waiting Price:</strong> $ {waiting_charge} </p>
+          <p><strong>Waiting Price:</strong> {waiting_charge} </p>
         </div>
         <div style={styles.detailRow}>
           <FaMoneyBillWave style={styles.icon} />
-          <p><strong>Cancellation Fees:</strong> $ {cancellation_fee} </p>
+          <p><strong>Cancellation Fees:</strong> {cancellation_fee} </p>
         </div>
         <div style={styles.detailRow}>
           <FaMoneyBillWave style={styles.icon} />
-          <p><strong>Discount :</strong> $ {promo_discount} </p>
+          <p><strong>Discount :</strong> {promo_discount} </p>
         </div>
         <div style={styles.detailRow}>
           <FaMoneyBillWave style={styles.icon} />
-          <p><strong>Service Tax :</strong> $ {service_tax} </p>
+          <p><strong>Service Tax :</strong> {service_tax} </p>
         </div>
         <div className="" style={styles.detailRow}>
           <FaMoneyBillWave style={styles.icon} />
-          <h2 className=""><strong>Trip Cost:</strong> ${total_amount}</h2>
+          <h2 className=""><strong>Trip Cost:</strong> {total_amount}</h2>
         </div>
         {/* <div style={styles.detailRow}> */}
           {/* <FaStar style={styles.icon} /> */}

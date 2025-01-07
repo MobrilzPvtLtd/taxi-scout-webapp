@@ -37,7 +37,8 @@ const ContactUs = () => {
           "Content-Type": "application/json",
         },
       });
-      if (response.success) {
+      
+      if (response.status == 200) {
         setResponseMessage({
           type: "Success",
           text: "Your message has been sent successfully!",
@@ -54,7 +55,7 @@ const ContactUs = () => {
           message: "",
         });
       } else {
-        const errorData = await response.json();
+        const errorData = await response;
         setResponseMessage({
           type: "error",
           text: errorData.message || "Something went wrong.",
@@ -66,7 +67,7 @@ const ContactUs = () => {
       setLoading(false);
     }
   };
-
+  console.log("contact us ", responseMessage)
   return (
     <div
       id="banner_img_home"
@@ -281,7 +282,7 @@ const ContactUs = () => {
         {responseMessage && (
           <div
             className={`mt-4 text-center ${
-              responseMessage.type === "success"
+              responseMessage.type == 'Success'
                 ? "text-green-500"
                 : "text-red-500"
             }`}

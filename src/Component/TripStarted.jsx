@@ -28,7 +28,7 @@ const TripStarted = ({pickup ,drop_address , driver_name ,car_name ,car_pic , ot
         <p className="text-black m-0 w-fit text-center"><strong>OTP :</strong> {otp}</p>
       </div>
 
-      <button className="button-primary text-red-600 " onClick={handleCancel}>Cancel Ride</button>
+      {/* <button className="button-primary text-red-600 " onClick={handleCancel}>Cancel Ride</button> */}
       <button className="button-secondary">Go To Home</button>
     </div>
   );

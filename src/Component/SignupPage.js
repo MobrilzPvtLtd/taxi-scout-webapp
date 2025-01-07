@@ -8,6 +8,7 @@ import {
 } from "react-google-recaptcha-v3";
 import { useTranslation } from "react-i18next";
 import { UserContext } from "../Context/UserContext";
+import loader from "../Images/Spinner@1x-1.0s-200px-200px (1).gif";
 
 function SignupPage() {
   const { t } = useTranslation();
@@ -19,6 +20,7 @@ function SignupPage() {
   const [selectedCountry, setSelectedCountry] = useState("");
   const navigate = useNavigate();
   const [otp_visible, setOtp_visible] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const { executeRecaptcha } = useGoogleReCaptcha();
 
@@ -64,7 +66,7 @@ function SignupPage() {
     try {
       // Execute the reCAPTCHA and get the token
       const recaptchaToken = await executeRecaptcha("login");
-
+      setLoading(true);
       // Create form data
       const formData = new FormData();
       formData.append("name", credentials.name);
@@ -86,11 +88,14 @@ function SignupPage() {
       if (response.ok) {
         localStorage.setItem(`email`, `${credentials.email}`);
         setOtp_visible(true);
+        setLoading(false);
       } else {
         alert(json.message);
+        setLoading(false);
       }
     } catch (err) {
       console.error("Registration failed", err);
+      setLoading(false);
     }
   };
   const handleSubmitCompany = async (e) => {
@@ -326,7 +331,11 @@ useEffect(() => {
                           ))}
                       </select>
                     </div>
-
+                    {loading ? (
+                <div className="flex justify-center w-full my-2 py-3 font-semibold rounded-lg text-sm md:translate-x-[50%] lg:px-10 md:py-2 ">
+                  <img className="w-20" src={loader} alt="Loading..." />
+                </div>
+              ) : (
                     <button
                       id="btn_hover_main"
                       className="w-full my-2 py-3 font-semibold rounded-lg text-sm md:translate-x-[50%] lg:px-10 md:py-2"
@@ -334,7 +343,7 @@ useEffect(() => {
                       onClick={handleSubmit}
                     >
                       {t('sign_up_as')} {userType}
-                    </button>
+                    </button>)}
                   </form>
                 </div>
               ) : (
@@ -489,13 +498,18 @@ useEffect(() => {
                       />
                     </div>
                       <br></br>
+                      {loading ? (
+                <div className="flex justify-center w-full my-2 py-3 font-semibold rounded-lg text-sm md:translate-x-[50%] lg:px-10 md:py-2 ">
+                  <img className="w-20" src={loader} alt="Loading..." />
+                </div>
+              ) : (
                     <button
                       id="btn_hover_main"
                       className="w-full my-2 py-3 font-semibold rounded-lg text-sm md:translate-x-[50%] lg:px-10 md:py-2"
                       type="submit"
                     >
                       {t('sign_up_as')} {userType}
-                    </button>
+                    </button>)}
                     {/* </div>
                     </div> */}
                   </form>
