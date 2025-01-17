@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import loader from "../Images/Spinner@1x-1.0s-200px-200px (1).gif";
+import { toast } from "react-toastify";
 
 const OtpVerify = () => {
   const [loading, setLoading] = useState(false);
@@ -47,15 +48,38 @@ const OtpVerify = () => {
         otp: parseInt(state.otp),
       }),
     });
+    const json = await response.json(); 
+    console.log("otp verify" , json)
     if (response.ok) {
-      setMessage("OTP Verified Successfully!");
-      alert("OTP Verified Successfully!");
+      // setMessage("OTP Verified Successfully!");
+       toast.success(json.data, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
       navigate("/login");
 
       setLoading(false);
     } else {
       setMessage("Invalid OTP. Please try again.");
+      toast.error(json.message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
       setLoading(false);
+     
+
     }
   };
 
@@ -71,15 +95,34 @@ const OtpVerify = () => {
         email: email,
       }),
     });
+    const json = await response.json();
     if (response.ok) {
-      setMessage(
-        "An OTP has been resent to your email. Please check for the 6-digit code"
-      );
+      
+      toast.success(json.data, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
       setTimer(90);
       setLoading2(false);
     } else {
-      setMessage("Server Error");
+   
       setLoading2(false);
+      toast.success(json.message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
   };
   return (
