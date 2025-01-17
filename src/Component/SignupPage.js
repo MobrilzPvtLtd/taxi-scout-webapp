@@ -9,6 +9,7 @@ import {
 import { useTranslation } from "react-i18next";
 import { UserContext } from "../Context/UserContext";
 import loader from "../Images/Spinner@1x-1.0s-200px-200px (1).gif";
+import { toast } from "react-toastify";
 
 function SignupPage() {
   const { t } = useTranslation();
@@ -26,6 +27,7 @@ function SignupPage() {
 
   const [selectedImage, setSelectedImage] = useState(null); // State to store the selected image
   const [imagePreview, setImagePreview] = useState(null);   // State to store the preview URL
+  const [errorMessage , setErrorMessage] = useState("");
 
   // Handle file input change
   const handleImageChange = (event) => {
@@ -84,21 +86,52 @@ function SignupPage() {
       });
 
       const json = await response.json();
+      setErrorMessage(json.message)
 
       if (response.ok) {
         localStorage.setItem(`email`, `${credentials.email}`);
         setOtp_visible(true);
         setLoading(false);
+        toast.success(json.data, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
       } else {
-        alert(json.message);
+        toast.error(json.message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
         setLoading(false);
       }
     } catch (err) {
       console.error("Registration failed", err);
       setLoading(false);
+      toast.error(errorMessage, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
   };
   const handleSubmitCompany = async (e) => {
+    setLoading(true);
     try{
     e.preventDefault();
     if (!executeRecaptcha) {
@@ -132,9 +165,20 @@ function SignupPage() {
     });
 
     const json = await response.json();
-
-    if (response.ok) {
-      alert("You are Registered successfully");
+    setErrorMessage(json.message);
+   if (response.ok) {
+      const message = await json.data;
+      toast.success(message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      setLoading(false);
       localStorage.setItem(`email`, `${credentials.email}`);
       setOtp_visible(true);
     } else {
@@ -145,10 +189,32 @@ function SignupPage() {
         const messages = errorMessages[key];
         alertMessage += messages.join(" ") + "\n";
       });
-      alert(alertMessage);
+      const message = await json.message;
+      toast.error(message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      setLoading(false);
     };}
     catch(err){
-      console.error(err)
+      console.error(errorMessage)
+       toast.error(errorMessage, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      setLoading(false);
     }
     }
 

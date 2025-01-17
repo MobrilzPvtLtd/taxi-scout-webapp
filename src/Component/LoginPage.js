@@ -15,11 +15,6 @@ function LoginPage() {
   const navigate = useNavigate();
   const { executeRecaptcha } = useGoogleReCaptcha(); // Use the reCAPTCHA hook
 
-  // const setCookie = (name, value, seconds) => {
-  //   const expires = new Date();
-  //   expires.setTime(expires.getTime() + seconds * 1000);
-  //   document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
-  // };
   const setCookie=(name, value, seconds)=> {
     const date = new Date();
     date.setTime(date.getTime() + (seconds*1000));
