@@ -37,14 +37,7 @@ import TripStarted from "./TripStarted";
 import BookingCompleted from "./BookingCompleted";
 import { useTranslation } from "react-i18next";
 
-function CarListOption({
-  option1,
-  option2,
-  option3,
-  option4,
-  carFetchFunc,
-  distance,
-}) {
+function CarListOption({ capacity, option3, option4, carFetchFunc, distance }) {
   const { t } = useTranslation();
   const { source, setSource } = useContext(SourceContext);
   const { destination, setDestination } = useContext(DestinationContext);
@@ -111,7 +104,7 @@ function CarListOption({
     };
 
     carFetch();
-  }, [option1, option2, option3, option4, distance]);
+  }, [capacity, option3, option4, distance]);
   const [driver, setDriver] = useState([]);
   const [id, setId] = useState("");
   const [fetchedUserData, setFetchedUserData] = useState([]);
@@ -318,18 +311,26 @@ function CarListOption({
     const filterData = () => {
       setFinalData(
         aryann?.filter((item) => {
-          return (
-            (!option1 || item.smoking === 1) &&
-            (!option2 || item.drinking === 1) &&
-            (!option3 || item.pets === 1) &&
-            (!option4 || item.handicaped === 1)
-          );
+          if (capacity <= 4) {
+            return (
+              (!capacity || item.capacity <= 4) &&
+              (!option3 || item.pets === 1) &&
+              (!option4 || item.handicaped === 1)
+            );
+          }
+          else if (capacity >= 5) {
+            return (
+              (!capacity || item.capacity >= 5) &&
+              (!option3 || item.pets === 1) &&
+              (!option4 || item.handicaped === 1)
+            );
+          }
         })
       );
     };
 
     filterData();
-  }, [aryann, option1, option2, option3, option4]);
+  }, [aryann, capacity, option3, option4]);
 
   useEffect(() => {
     if (finalData?.length > 0) {
@@ -349,7 +350,7 @@ function CarListOption({
   const handleDateChange = (date) => {
     setScheduledTime(date);
   };
-
+  console.log("final data", finalData, "capacity", capacity);
   const formatDate = (date) => {
     if (!date) return "";
     return format(date, "yyyy-MM-dd HH:mm:ss");

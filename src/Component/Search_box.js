@@ -67,6 +67,7 @@ function Search_box() {
     option3: null,
     option4: null,
   });
+  const [capacity, setCapacity] = useState(null);
 
   const handleCheckboxChange = (option) => {
     setOptions({
@@ -74,6 +75,10 @@ function Search_box() {
       [option]: !options[option],
     });
   };
+  const handleCapacityChange = (event) => {
+    setCapacity(event.target.value); // Update the capacity state
+  };
+  console.log("capacity" , capacity)
   return (
     <div className="w-full p-3 border-2 border-black rounded-lg bg-white">
       {/* upper box */}
@@ -127,7 +132,7 @@ function Search_box() {
 
         <div className="mt-1 flex justify-center gap-4">
           <div className="flex gap-3 text-sm font-[600]">
-            <label>
+            {/* <label>
               <input
                 type="checkbox"
                 checked={options.option1}
@@ -144,8 +149,8 @@ function Search_box() {
               />
               {t("alchohol")}
             </label>
-            <br />
-            <label>
+            <br /> */}
+            <label className="flex items-center gap-2">
               <input
                 type="checkbox"
                 checked={options.option3}
@@ -154,7 +159,7 @@ function Search_box() {
               {t("pet")}
             </label>
             <br />
-            <label>
+            <label className="flex items-center gap-2">
               <input
                 type="checkbox"
                 checked={options.option4}
@@ -164,13 +169,47 @@ function Search_box() {
             </label>
           </div>
         </div>
+        <h2 className="text-xl mt-4 font-bold">{t("capacity")} : </h2>
+
+        <div className="mt-1 flex justify-center gap-4">
+          <div className="flex gap-3 text-sm font-[600]">
+
+            <label className="flex items-center gap-2">
+              <select
+              className="flex justify-center items-center p-2 border rounded-lg"
+                type="select"
+                value={capacity} // Bind the state to the select element
+                onChange={handleCapacityChange}
+                >
+                  <option value="">Select Number of People</option>
+                  <option value = "1" >1 {t("persons").slice(0, 6)}</option>
+                  <option value="2" >2 {t("persons")}</option>
+                  <option value="3" >3 {t("persons")}</option>
+                  <option value="4" >4 {t("persons")}</option>
+                  <option value="5" >5 {t("persons")}</option>
+                  <option value="6" >6 {t("persons")}</option>
+                  <option value="7" >7 {t("persons")}</option>
+                </select>
+              
+          
+            </label>
+            <br />
+            {/* <label className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                checked={capacity.option2}
+                onChange={() => handleCapacityChange("option2")}
+              />
+             6-8 {t("persons")}
+            </label> */}
+          </div>
+        </div>
       </div>
 
       {distance ? (
         <CarListOption
           carFetchFunc={calculateDistance}
-          option1={options.option1}
-          option2={options.option2}
+          capacity={capacity}
           option3={options.option3}
           option4={options.option4}
           distance={distance}
