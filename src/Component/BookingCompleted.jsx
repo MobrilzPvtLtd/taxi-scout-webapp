@@ -1,12 +1,25 @@
 import React from "react";
 import "./BookingCompleted.css"; 
+import { useNavigate } from "react-router-dom";
 import { FaStar, FaMapMarkerAlt, FaClock, FaMoneyBillWave } from 'react-icons/fa';
 
-const BookingCompleted = ({pickup ,drop_address , driver_name ,car_name ,car_pic , otp , handleOnCancel , bill ,driverProfile ,car_number}) => {
-  const sendData = ()=>{
-    handleOnCancel()
-  }
-  const {base_price ,distance_price ,time_price ,waiting_charge ,cancellation_fee ,promo_discount ,service_tax ,total_amount} = bill?.data ; 
+const BookingCompleted = ({pickup ,drop_address , driver_name ,car_name ,car_pic , otp , handleOnCancels , bill ,driverProfile ,car_number}) => {
+  const navigate = useNavigate();
+  const sendData = () => {
+    navigate(0);
+  };
+  // Ensure bill and bill.data are defined before destructuring
+const {
+  base_price = 0,
+  distance_price = 0,
+  time_price = 0,
+  waiting_charge = 0,
+  cancellation_fee = 0,
+  promo_discount = 0,
+  service_tax = 0,
+  total_amount = 0
+} = bill?.data ?? {}; // Use nullish coalescing to prevent undefined error
+
   return (
     <div style={styles.container}>
     <h1 style={styles.title}>Booking Completed</h1>

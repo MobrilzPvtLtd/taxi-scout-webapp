@@ -147,7 +147,7 @@ useEffect(() => {
 
   const intervalId = setInterval(() => {
     fetchUserData(); // Fetch data every 5 seconds
-  }, 10000);
+  }, 2000);
 
   return () => clearInterval(intervalId); // Cleanup interval on component unmount
 }, [token]); // Run effect whenever token changes
@@ -461,7 +461,7 @@ const handleOnCancels = () => {
           setDisplayComp(2);
           if (fetchedUserData2?.onTripRequest?.data.is_trip_start===1) {
             setDisplayComp(3);
-            if (fetchedUserData2?.onTripRequest?.data.is_completed === 1) {
+            if (fetchedUserData2?.onTripRequest?.data.is_completed) {
               setDisplayComp(4);
             }
           }
@@ -699,41 +699,23 @@ const handleOnCancels = () => {
                     />
                   </div>
                 ) : null}
-                {displayComp == 4 ? (
-                  <div className="relative top-5 overflow-scroll">
-                    <BookingCompleted
-                      pickup={
-                        fetchedUserData2?.onTripRequest?.data.pick_address
-                      }
-                      drop_address={
-                        fetchedUserData2?.onTripRequest?.data.drop_address
-                      }
-                      driver_name={
-                        fetchedUserData2?.onTripRequest?.data.driverDetail.data
-                          .name
-                      }
-                      car_name={
-                        fetchedUserData2?.onTripRequest?.data.driverDetail.data
-                          .vehicle_type_name
-                      }
-                      car_pic={
-                        fetchedUserData2?.onTripRequest?.data.driverDetail.data
-                          .vehicle_type_icon
-                      }
-                      otp={fetchedUserData2?.onTripRequest?.data.ride_otp}
-                      handleOnCancels={cancelRequests}
-                      bill={fetchedUserData2?.onTripRequest?.data?.requestBill}
-                      driverProfile={
-                        fetchedUserData2?.onTripRequest?.data.driverDetail.data
-                          .profile_picture
-                      }
-                      car_number={
-                        fetchedUserData2?.onTripRequest?.data.driverDetail.data
-                          .car_number
-                      }
-                    />
-                  </div>
-                ) : null}
+                {displayComp === 4 ? (
+  <div className="relative top-5 overflow-scroll">
+    <BookingCompleted
+      pickup={fetchedUserData2?.onTripRequest?.data?.pick_address ?? "N/A"}
+      drop_address={fetchedUserData2?.onTripRequest?.data?.drop_address ?? "N/A"}
+      driver_name={fetchedUserData2?.onTripRequest?.data?.driverDetail?.data?.name ?? "Unknown"}
+      car_name={fetchedUserData2?.onTripRequest?.data?.driverDetail?.data?.vehicle_type_name ?? "Unknown"}
+      car_pic={fetchedUserData2?.onTripRequest?.data?.driverDetail?.data?.vehicle_type_icon ?? ""}
+      otp={fetchedUserData2?.onTripRequest?.data?.ride_otp ?? "0000"}
+      handleOnCancels={cancelRequests}
+      bill={fetchedUserData2?.onTripRequest?.data?.requestBill?.data ?? {}}
+      driverProfile={fetchedUserData2?.onTripRequest?.data?.driverDetail?.data?.profile_picture ?? ""}
+      car_number={fetchedUserData2?.onTripRequest?.data?.driverDetail?.data?.car_number ?? "N/A"}
+    />
+  </div>
+) : null}
+
               </div>
             )}
           </div>
