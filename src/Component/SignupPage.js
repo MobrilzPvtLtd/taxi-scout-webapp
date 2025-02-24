@@ -349,16 +349,6 @@ useEffect(() => {
 
                     <div className="form-group">
                       <input
-                        type="number"
-                        name="mobile"
-                        placeholder={t('mobile')}
-                        value={credentials.mobile}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                    <div className="form-group">
-                      <input
                         type="password"
                         name="password"
                         placeholder={t('password')}
@@ -396,6 +386,17 @@ useEffect(() => {
                             </option>
                           ))}
                       </select>
+                    </div>
+
+                    <div className="form-group">
+                      <input
+                        type="number"
+                        name="mobile"
+                        placeholder={t('mobile')}
+                        value={credentials.mobile}
+                        onChange={handleChange}
+                        required
+                      />
                     </div>
                     {loading ? (
                 <div className="flex justify-center w-full my-2 py-3 font-semibold rounded-lg text-sm md:translate-x-[50%] lg:px-10 md:py-2 ">
