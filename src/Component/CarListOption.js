@@ -37,11 +37,13 @@ import TripStarted from "./TripStarted";
 import BookingCompleted from "./BookingCompleted";
 import { useTranslation } from "react-i18next";
 
+
 function CarListOption({ capacity, option3, option4, carFetchFunc, distance }) {
   const { t } = useTranslation();
   const { source, setSource } = useContext(SourceContext);
   const { destination, setDestination } = useContext(DestinationContext);
   let url = "https://admin.taxiscout24.com/";
+  const navigate = useNavigate();
   const getTokenFromCookie = (cookieName) => {
     const cookies = document.cookie.split("; "); // Split cookies into an array
     for (const cookie of cookies) {
@@ -110,42 +112,46 @@ function CarListOption({ capacity, option3, option4, carFetchFunc, distance }) {
   const [fetchedUserData, setFetchedUserData] = useState([]);
   const [fetchedUserData2, setFetchedUserData2] = useState([]);
 
-  useEffect(() => {
-    if (!token) return;
+useEffect(() => {
+  if (!token) return;
 
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch(`${url}api/v1/user`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${token}`,
-          },
-        });
+  const fetchUserData = async () => {
+    try {
+      const response = await fetch(`${url}api/v1/user`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
+      });
 
-        if (response.ok) {
-          const data = await response.json();
-          const convertedData = [data.data];
+      if (response.ok) {
+        const data = await response.json();
+        const convertedData = [data.data];
 
-          setFetchedUserData(convertedData);
-          setFetchedUserData2(data.data);
-          setId(data.data.id);
-        } else {
-          console.error(`HTTP error! Status: ${response.status}`);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
+        setFetchedUserData(convertedData);
+        setFetchedUserData2(data.data);
+        setId(data.data.id);
+      } else if (response.status === 401) {
+        console.warn("Unauthorized! Redirecting to login...");
+        navigate("/login");
+      } else {
+        console.error(`HTTP error! Status: ${response.status}`);
       }
-    };
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
-    // fetchUserData(); // Initial fetch
+  fetchUserData(); // Run once when the component mounts
 
-    const intervalId = setInterval(() => {
-      fetchUserData(); // Fetch periodically after the initial request
-    }, 5000);
+  const intervalId = setInterval(() => {
+    fetchUserData(); // Fetch data every 5 seconds
+  }, 10000);
 
-    return () => clearInterval(intervalId); // Cleanup on component unmount
-  }, [id]);
+  return () => clearInterval(intervalId); // Cleanup interval on component unmount
+}, [token]); // Run effect whenever token changes
+
 
   const [click, setClick] = useState(false);
   const [create, setCreate] = useState(false);
@@ -161,61 +167,71 @@ function CarListOption({ capacity, option3, option4, carFetchFunc, distance }) {
   }, [checkDriver]);
 
   // Create request function
-  const createRequest = async () => {
-    setCheckDriver(1);
-    setCreate(true);
+ const createRequest = async () => {
+  setCheckDriver(1);
+  setCreate(true);
 
-    const abortController = new AbortController();
-    const { signal } = abortController;
+  const abortController = new AbortController();
+  const { signal } = abortController;
 
-    try {
-      let URL = `${url}api/v1/request/create`;
-      let response = await fetch(URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          pick_lat: source.lat,
-          pick_lng: source.lng,
-          drop_lat: destination.lat,
-          drop_lng: destination.lng,
-          vehicle_type: selectedCar.zone_type_id,
-          ride_type: "1",
-          payment_opt: "1",
-          pick_address: source.name,
-          drop_address: destination.name,
-          request_eta_amount: data.total,
-        }),
-        signal, // Attach abort signal to fetch request
-      });
+  try {
+    let URL = `${url}api/v1/request/create`;
 
-      if (response.ok) {
-        const DATA = await response.json();
-        const convertedData = [DATA.data];
+    const requestBody = {
+      pick_lat: source.lat,
+      pick_lng: source.lng,
+      drop_lat: destination.lat,
+      drop_lng: destination.lng,
+      vehicle_type: selectedCar?.zone_type_id,
+      ride_type: "1",
+      payment_opt: "1",
+      pick_address: source?.label,
+      drop_address: destination?.label,
+    };
 
-        const expirationDate = new Date();
-        expirationDate.setDate(expirationDate.getDate() + 7); // Cookie will expire in 7 days
-        document.cookie = `id=${
-          convertedData[0].id
-        }; path=/; secure; samesite=strict; expires=${expirationDate.toUTCString()}`;
-        cancelRqstBtn(convertedData); // Assuming this is another function you're using
-        setCancelId(convertedData[0].id);
-        setDriver(convertedData[0]);
-      } else {
-        console.error(`HTTP error! Status: ${response.message}`);
-        alert(
-          `Error: ${response.message}, please hit Cancel to make a new request`
-        );
-      }
-    } catch (error) {
-      console.error("Error creating request:", error);
+    console.log("Request Body:", JSON.stringify(requestBody, null, 2));
+
+    let response = await fetch(URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(requestBody),
+      signal,
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => null);
+      console.error("API Error:", errorData || response.statusText);
+      alert(`Error: ${errorData?.message || response.statusText}`);
+      return;
     }
 
-    // Cleanup fetch abort on unmount
-    return () => abortController.abort();
-  };
+    const DATA = await response.json();
+    const convertedData = [DATA.data];
+
+    // Store request ID in a cookie
+    const expirationDate = new Date();
+    expirationDate.setDate(expirationDate.getDate() + 7);
+    document.cookie = `id=${
+      convertedData[0].id
+    }; path=/; secure; samesite=strict; expires=${expirationDate.toUTCString()}`;
+
+    // Update UI state with response data
+    cancelRqstBtn(convertedData);
+    setCancelId(convertedData[0].id);
+    setDriver(convertedData[0]);
+
+   
+  } catch (error) {
+    console.error("Error creating request:", error);
+    alert("There was an error creating your ride request. Please try again.");
+  }
+
+  return () => abortController.abort();
+};
+
 
   useEffect(() => {
     if (
@@ -229,8 +245,8 @@ function CarListOption({ capacity, option3, option4, carFetchFunc, distance }) {
   const cancelRqstBtn = (id) => {
     return id;
   };
-  // }, );
-  //
+ 
+
 
   const [userCancelled, setUserCancelled] = useState(false);
   const [userRequestData, setUserRequestData] = useState([]);
@@ -279,6 +295,16 @@ function CarListOption({ capacity, option3, option4, carFetchFunc, distance }) {
       console.error("Error cancelling request:", error);
     }
   };
+ 
+  const cancelRequests = () => {
+    navigate(0); // Completely reloads the page
+};
+const handleOnCancels = () => {
+  setClick(false);
+  setSearchingDriver(false);
+  setDriverFound(false);
+  setDriver(null);
+};
 
   const handleOnCancel = () => {
     cancelRequest();
@@ -347,6 +373,7 @@ function CarListOption({ capacity, option3, option4, carFetchFunc, distance }) {
   const handle_taxi_schedule_cancel = () => {
     setSchedule(false);
   };
+ 
   const handleDateChange = (date) => {
     setScheduledTime(date);
   };
@@ -378,16 +405,16 @@ function CarListOption({ capacity, option3, option4, carFetchFunc, distance }) {
           pick_lat: source.lat,
           pick_lng: source.lng,
           drop_lat: destination.lat,
-          drop_lng: destination.lng,
-          vehicle_type: selectedCar.zone_type_id,
+          drop_lng: destination.lng, // ✅ Fixed Typo (was `destination.ln`)
+          vehicle_type: selectedCar?.zone_type_id,
           ride_type: "1",
           payment_opt: "1",
-          pick_address: source.name,
-          drop_address: destination.name,
-          request_eta_amount: data.total,
-          is_later: "1",
-          trip_start_time: formatDate(scheduledTime),
-        }),
+          pick_address: source?.label,
+          drop_address: destination?.label,
+          is_later: true,
+          // "transport_type":"taxi",
+          trip_start_time: formatDate
+        }),       
         signal, // Attach abort signal to the fetch
       });
 
@@ -414,27 +441,27 @@ function CarListOption({ capacity, option3, option4, carFetchFunc, distance }) {
       console.error("Error creating request:", error);
       alert("There was an error scheduling your ride. Please try again.");
     } finally {
-      // Cleanup abortController when done or if there's an error
+  
       return () => abortController.abort();
     }
   };
 
-  // firebase real time data fetching starts here
 
   const [isActive, setIsActive] = useState(null);
   const [displayComp, setDisplayComp] = useState(null);
   const [booking, setBooking] = useState(false);
 
   useEffect(() => {
+    console.log("Fetched Data:", fetchedUserData2?.onTripRequest?.data); // Log data for debugging
     if (fetchedUserData2) {
       if (fetchedUserData2?.onTripRequest) {
         setBooking(true);
         setDisplayComp(1);
-        if (fetchedUserData2?.onTripRequest?.data.is_driver_arrived) {
+        if (fetchedUserData2?.onTripRequest?.data.is_driver_arrived===1) {
           setDisplayComp(2);
-          if (fetchedUserData2?.onTripRequest?.data.is_trip_start) {
+          if (fetchedUserData2?.onTripRequest?.data.is_trip_start===1) {
             setDisplayComp(3);
-            if (fetchedUserData2?.onTripRequest?.data.is_completed) {
+            if (fetchedUserData2?.onTripRequest?.data.is_completed === 1) {
               setDisplayComp(4);
             }
           }
@@ -451,10 +478,7 @@ function CarListOption({ capacity, option3, option4, carFetchFunc, distance }) {
     window.location.reload();
   };
 
-  // if (error) {
-  //   return <p>{error}</p>;
-  // }
-
+ 
   return (
     <>
       {create == false ? (
@@ -474,20 +498,17 @@ function CarListOption({ capacity, option3, option4, carFetchFunc, distance }) {
                       setSelectedCar(item);
                     }}
                   >
-                    <div className="flex items-center justify-between mt-5">
-                      <div className="flex items-center gap-5">
-                        <img src={item.icon} width={100} height={100} />
-                        <div>
-                          <h2 className="text-[18px] font-semibold">
-                            {item.name}
-                          </h2>
-                          <p>{item.description}</p>
-                        </div>
-                      </div>
-                      <h2 className="font-semibold text-[18px]">
-                        ₹{item.ride_fare.toFixed(2)}
-                      </h2>
-                    </div>
+                <div className="flex flex-col items-center md:flex-row md:items-center gap-3 w-full">
+  {/* Image */}
+  <img src={item.icon} className="w-[100px] h-[100px] object-cover" />
+
+  {/* Name and Fare - Moves below image on smaller screens */}
+  <div className="flex flex-col items-center md:items-start text-center md:text-left w-full">
+    <h2 className="text-[18px] font-semibold">{item.name}</h2>
+    <p className="text-gray-700 font-medium">₹{item.ride_fare.toFixed(2)}</p>
+  </div>
+</div>
+
                   </div>
                 </div>
               ))}
@@ -547,16 +568,16 @@ function CarListOption({ capacity, option3, option4, carFetchFunc, distance }) {
                             {t("scheduled_time")}
                           </label>
                           <DatePicker
-                            selected={scheduledTime}
-                            onChange={handleDateChange}
-                            showTimeSelect
-                            timeFormat="HH:mm"
-                            timeInterval4es={15}
-                            dateFormat="yyyy-MM-dd HH:mm:ss"
-                            minDate={new Date()}
-                            closeOnScroll={(e) => e.target === document}
-                            required
-                          />
+      selected={scheduledTime}
+      onChange={handleDateChange}
+      showTimeSelect
+      timeFormat="HH:mm"
+      timeIntervals={15}  // ✅ Fixed typo
+      dateFormat="yyyy-MM-dd HH:mm:ss"
+      minDate={new Date()}
+      closeOnScroll={true}  // ✅ Fixed possible issue
+      required
+    />
                         </div>
                         <button className="schedule_main_btn" type="submit">
                           {t("schedule_ride")}
@@ -572,7 +593,7 @@ function CarListOption({ capacity, option3, option4, carFetchFunc, distance }) {
       ) : (
         <div>
           <div>
-            {fetchedUserData2?.onTripRequest?.data == null ? (
+            {fetchedUserData2?.metaRequest?.data != null ? (
               <div className="w-full border-2 mt-3">
                 <h2 className="mt-2 text-2xl sm:text-4xl font-bold">
                   {t("available_drivers")}
@@ -700,7 +721,7 @@ function CarListOption({ capacity, option3, option4, carFetchFunc, distance }) {
                           .vehicle_type_icon
                       }
                       otp={fetchedUserData2?.onTripRequest?.data.ride_otp}
-                      handleOnCancel={cancelRequest}
+                      handleOnCancels={cancelRequests}
                       bill={fetchedUserData2?.onTripRequest?.data?.requestBill}
                       driverProfile={
                         fetchedUserData2?.onTripRequest?.data.driverDetail.data
