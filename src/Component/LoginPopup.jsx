@@ -6,7 +6,7 @@ const LoginPopup = ({ onClose }) => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    // Animate in the popup after the component mounts
+    // Animate in the popup after the comment has been added to the DOM
     setTimeout(() => setShow(true), 100);
   }, []);
 
