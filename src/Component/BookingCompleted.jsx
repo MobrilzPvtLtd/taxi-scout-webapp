@@ -2,84 +2,123 @@ import React from "react";
 import "./BookingCompleted.css"; 
 import { useNavigate } from "react-router-dom";
 import { FaStar, FaMapMarkerAlt, FaClock, FaMoneyBillWave } from 'react-icons/fa';
+import axios from "axios"; // Import axios
 
-const BookingCompleted = ({pickup ,drop_address , driver_name ,car_name ,car_pic , otp , handleOnCancels , bill ,driverProfile ,car_number}) => {
+const BookingCompleted = ({
+  pickup, drop_address, driver_name, car_name, car_pic, otp, 
+  handleOnCancels, bill, driverProfile, car_number,request_id
+}) => {
   const navigate = useNavigate();
-  const sendData = () => {
-    navigate(0);
+  console.log("API Response:", request_id);
+  const getTokenFromCookie = (cookieName) => {
+    const cookies = document.cookie.split("; "); // Split cookies into an array
+    for (const cookie of cookies) {
+      const [name, value] = cookie.split("=");
+      if (name === cookieName) {
+        return value;
+      }
+    }
+    return null;
   };
+  const token = getTokenFromCookie("token");
+  const sendData = async () => {
+    try {
+      const response = await axios.post(
+        "https://admin.taxiscout24.com/api/v1/request/rating",
+        {
+          request_id: request_id,
+          rating: 5,
+          comment: "Great service!",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+  
+      console.log("API Response:", response.data);
+  
+      if (response.status === 200) {
+        alert("Booking data sent successfully!");
+        navigate(0); // Navigate to home page after successful API call
+      }
+    } catch (error) {
+      console.error("Error sending data:", error);
+      alert("Failed to send data. Please try again.");
+    }
+  };
+  
+
   // Ensure bill and bill.data are defined before destructuring
-const {
-  base_price = 0,
-  distance_price = 0,
-  time_price = 0,
-  waiting_charge = 0,
-  cancellation_fee = 0,
-  promo_discount = 0,
-  service_tax = 0,
-  total_amount = 0
-} = bill?.data ?? {}; // Use nullish coalescing to prevent undefined error
+  const {
+    base_price = 0,
+    distance_price = 0,
+    time_price = 0,
+    waiting_charge = 0,
+    cancellation_fee = 0,
+    promo_discount = 0,
+    service_tax = 0,
+    total_amount = 0
+  } = bill?.data ?? {}; 
 
   return (
     <div style={styles.container}>
-    <h1 style={styles.title}>Booking Completed</h1>
-    
-    <div style={styles.card}>
-      <div style={styles.driverInfo}>
-        <img src={driverProfile} alt="Driver" style={styles.driverPhoto} />
-        <div>
-          <h2 style={styles.driverName}>{driver_name}</h2>
-          <p style={styles.carInfo}>{car_name} - {car_number}</p>
+      <h1 style={styles.title}>Booking Completed</h1>
+      
+      <div style={styles.card}>
+        <div style={styles.driverInfo}>
+          <img src={driverProfile} alt="Driver" style={styles.driverPhoto} />
+          <div>
+            <h2 style={styles.driverName}>{driver_name}</h2>
+            <p style={styles.carInfo}>{car_name} - {car_number}</p>
+          </div>
         </div>
-      </div>
 
-      <div style={styles.tripDetails}>
-        <div style={styles.detailRow}>
-          <FaMapMarkerAlt style={styles.icon1} />
-          <p className="text-left"><strong>Drop-off Location:</strong> {drop_address}</p>
+        <div style={styles.tripDetails}>
+          <div style={styles.detailRow}>
+            <FaMapMarkerAlt style={styles.icon1} />
+            <p className="text-left"><strong>Drop-off Location:</strong> {drop_address}</p>
+          </div>
+          <div style={styles.detailRow}>
+            <FaMoneyBillWave style={styles.icon} />
+            <p><strong>Base Price:</strong> {base_price} </p>
+          </div>
+          <div style={styles.detailRow}>
+            <FaMoneyBillWave style={styles.icon} />
+            <p><strong>Distance Price:</strong> {distance_price} </p>
+          </div>
+          <div style={styles.detailRow}>
+            <FaMoneyBillWave style={styles.icon} />
+            <p><strong>Time Price:</strong> {time_price} </p>
+          </div>
+          <div style={styles.detailRow}>
+            <FaMoneyBillWave style={styles.icon} />
+            <p><strong>Waiting Price:</strong> {waiting_charge} </p>
+          </div>
+          <div style={styles.detailRow}>
+            <FaMoneyBillWave style={styles.icon} />
+            <p><strong>Cancellation Fees:</strong> {cancellation_fee} </p>
+          </div>
+          <div style={styles.detailRow}>
+            <FaMoneyBillWave style={styles.icon} />
+            <p><strong>Discount :</strong> {promo_discount} </p>
+          </div>
+          <div style={styles.detailRow}>
+            <FaMoneyBillWave style={styles.icon} />
+            <p><strong>Service Tax :</strong> {service_tax} </p>
+          </div>
+          <div className="" style={styles.detailRow}>
+            <FaMoneyBillWave style={styles.icon} />
+            <h2 className=""><strong>Trip Cost:</strong> {total_amount}</h2>
+          </div>
         </div>
-        <div style={styles.detailRow}>
-          <FaMoneyBillWave style={styles.icon} />
-          <p><strong>Base Price:</strong> {base_price} </p>
-        </div>
-        <div style={styles.detailRow}>
-          <FaMoneyBillWave style={styles.icon} />
-          <p><strong>Distance Price:</strong> {distance_price} </p>
-        </div>
-        <div style={styles.detailRow}>
-          <FaMoneyBillWave style={styles.icon} />
-          <p><strong>Time Price:</strong> {time_price} </p>
-        </div>
-        <div style={styles.detailRow}>
-          <FaMoneyBillWave style={styles.icon} />
-          <p><strong>Waiting Price:</strong> {waiting_charge} </p>
-        </div>
-        <div style={styles.detailRow}>
-          <FaMoneyBillWave style={styles.icon} />
-          <p><strong>Cancellation Fees:</strong> {cancellation_fee} </p>
-        </div>
-        <div style={styles.detailRow}>
-          <FaMoneyBillWave style={styles.icon} />
-          <p><strong>Discount :</strong> {promo_discount} </p>
-        </div>
-        <div style={styles.detailRow}>
-          <FaMoneyBillWave style={styles.icon} />
-          <p><strong>Service Tax :</strong> {service_tax} </p>
-        </div>
-        <div className="" style={styles.detailRow}>
-          <FaMoneyBillWave style={styles.icon} />
-          <h2 className=""><strong>Trip Cost:</strong> {total_amount}</h2>
-        </div>
-        {/* <div style={styles.detailRow}> */}
-          {/* <FaStar style={styles.icon} /> */}
-          {/* <p><strong>Payment Method:</strong> {paymentMethod}</p> */}
-        {/* </div> */}
-      </div>
 
-      <button style={styles.button} onClick={sendData} >Go to home</button>
+        <button style={styles.button} onClick={sendData} >Go to home</button>
+      </div>
     </div>
-  </div>
-);
+  );
 };
 
 const styles = {
@@ -89,7 +128,6 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'flex-start',
     minHeight: '100vh',
-    // backgroundColor: '#f5f5f5',
     padding: '20px',
   },
   title: {
@@ -142,11 +180,6 @@ const styles = {
     color: '#555',
     fontSize: '3rem',
   },
-  icon2: {
-    marginRight: '10px',
-    color: '#555',
-    fontSize: '3rem',
-  },
   icon: {
     marginRight: '10px',
     color: '#555',
@@ -161,9 +194,6 @@ const styles = {
     cursor: 'pointer',
     fontSize: '1.2rem',
     transition: 'background-color 0.3s ease',
-  },
-  buttonHover: {
-    backgroundColor: '#333',
   },
 };
 

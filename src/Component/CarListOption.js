@@ -712,6 +712,7 @@ const handleOnCancels = () => {
       bill={fetchedUserData2?.onTripRequest?.data?.requestBill?.data ?? {}}
       driverProfile={fetchedUserData2?.onTripRequest?.data?.driverDetail?.data?.profile_picture ?? ""}
       car_number={fetchedUserData2?.onTripRequest?.data?.driverDetail?.data?.car_number ?? "N/A"}
+      request_id={fetchedUserData2?.onTripRequest?.data?.id ?? "N/A"}
     />
   </div>
 ) : null}
