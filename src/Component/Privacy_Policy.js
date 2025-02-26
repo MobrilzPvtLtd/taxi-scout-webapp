@@ -84,7 +84,7 @@ const Privacy_Policy = () => {
           </div>
 
           <div>
-            <h2 className="text-xl font-semibold text-white mb-2">1 {t(`policy_text26`)}</h2>
+            <h2 className="text-xl font-semibold text-white mb-2"> {t(`policy_text26`)}</h2>
             <p className="text-[#d1d1d1]">
             {t(`policy_text27`)} </p>
             <address className="not-italic text-[#d1d1d1]">
