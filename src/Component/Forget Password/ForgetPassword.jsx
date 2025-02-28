@@ -80,35 +80,49 @@ const validateEmail = (email) => {
 };
 
 const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-  
-    try {
-      const response = await axios.post(`${url}api/v1/password/forgot`, { email });
-  
-  
-      if (response.data.success) {
-        setLoading(false);
-        setOtpVerify(true);
-        const successMessage = response.data.message || "OTP sent successfully.";
-        toast.success(successMessage, {
-          position: "top-right",
-        });
-      } else {
-        setLoading(false);
-        const errorMessage = response.data.message || "Registration failed.";
-        toast.error(errorMessage, {
-          position: "top-right",
-        });
-      }
-    } catch (err) {
+  e.preventDefault();
+  setLoading(true);
+
+  try {
+    const response = await axios.post(`${url}api/v1/password/forgot`, {
+      email: email, // ✅ Correct way to send email
+      user_type: "user", // ✅ Sending user_type correctly
+    });
+
+    if (response.data.success) {
       setLoading(false);
-      toast.error("Something went wrong. Please try again.", {
-        position: "top-right",
-      });
-      console.error("Error:", err);
+      setOtpVerify(true);
+      const successMessage = response.data.message || "OTP sent successfully.";
+      toast.success(successMessage, { position: "top-right" });
+    } else {
+      setLoading(false);
+      const errorMessage = response.data.message || "Something went wrong.";
+      toast.error(errorMessage, { position: "top-right" });
     }
-  };
+  } catch (err) {
+    setLoading(false);
+
+    // ✅ Extracting API error message
+    let errorMessage = "Something went wrong. Please try again.";
+
+    if (err.response) {
+      // ✅ API responded with an error status
+      errorMessage = err.response.data.message || errorMessage;
+    } else if (err.request) {
+      // ✅ Request was made but no response received
+      errorMessage = "No response from server. Please check your connection.";
+    } else {
+      // ✅ Something else went wrong
+      errorMessage = err.message;
+    }
+
+    // ✅ Show error message
+    toast.error(errorMessage, { position: "top-right" });
+    console.error("Error:", err);
+  }
+};
+
+
   useEffect(() => {
     const newStrength = calculatePasswordStrength(password);
     setStrength(newStrength);
