@@ -53,14 +53,14 @@ const BookingCompleted = ({
 
   // Ensure bill and bill.data are defined before destructuring
   const {
-    base_price = 0,
-    distance_price = 0,
-    time_price = 0,
-    waiting_charge = 0,
-    cancellation_fee = 0,
-    promo_discount = 0,
-    service_tax = 0,
-    total_amount = 0
+    base_price,
+    distance_price,
+    time_price,
+    waiting_charge,
+    cancellation_fee,
+    promo_discount,
+    service_tax,
+    total_amount
   } = bill?.data ?? {}; 
 
   return (

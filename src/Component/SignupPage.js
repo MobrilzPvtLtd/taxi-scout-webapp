@@ -60,16 +60,34 @@ function SignupPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
+    // ✅ Check if reCAPTCHA is available
     if (!executeRecaptcha) {
       console.error("Execute reCAPTCHA not yet available");
       return;
     }
-
+  
+    // ✅ Validate password length
+    if (credentials.password.length < 8) {
+      toast.error("Password must be at least 8 characters long.", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      return; // ❌ Stop form submission if password is too short
+    }
+  
     try {
-      // Execute the reCAPTCHA and get the token
+      // ✅ Execute the reCAPTCHA and get the token
       const recaptchaToken = await executeRecaptcha("login");
       setLoading(true);
-      // Create form data
+  
+      // ✅ Create form data
       const formData = new FormData();
       formData.append("name", credentials.name);
       formData.append("mobile", credentials.mobile);
@@ -79,17 +97,17 @@ function SignupPage() {
       formData.append("country", selectedCountry);
       if (selectedImage) formData.append("profile_picture", selectedImage);
       formData.append("token", recaptchaToken);
-
+  
       const response = await fetch(`${url}api/v1/user/register`, {
         method: "POST",
         body: formData, // Send as FormData
       });
-
+  
       const json = await response.json();
-      setErrorMessage(json.message)
-
+      setErrorMessage(json.message);
+  
       if (response.ok) {
-        localStorage.setItem(`email`, `${credentials.email}`);
+        localStorage.setItem("email", credentials.email);
         setOtp_visible(true);
         setLoading(false);
         toast.success(json.data, {
@@ -118,7 +136,7 @@ function SignupPage() {
     } catch (err) {
       console.error("Registration failed", err);
       setLoading(false);
-      toast.error(errorMessage, {
+      toast.error("An error occurred. Please try again.", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -130,6 +148,7 @@ function SignupPage() {
       });
     }
   };
+  
   const handleSubmitCompany = async (e) => {
     setLoading(true);
     try{

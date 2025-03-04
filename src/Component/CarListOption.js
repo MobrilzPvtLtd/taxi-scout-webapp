@@ -99,6 +99,7 @@ function CarListOption({ capacity, option3, option4, carFetchFunc, distance }) {
         const parsedResponse = await response.json();
 
         setAryann(parsedResponse.data);
+        console.log(parsedResponse.data)
         setDemo(true);
       } catch (err) {
         console.error("Error fetching car data:", err);
@@ -187,6 +188,7 @@ useEffect(() => {
       payment_opt: "1",
       pick_address: source?.label,
       drop_address: destination?.label,
+      request_eta_amount:selectedCar?.total,
     };
 
     console.log("Request Body:", JSON.stringify(requestBody, null, 2));
@@ -700,7 +702,9 @@ const handleOnCancels = () => {
                   </div>
                 ) : null}
                 {displayComp === 4 ? (
+                  
   <div className="relative top-5 overflow-scroll">
+  console.log("Bill Data:", bill);
     <BookingCompleted
       pickup={fetchedUserData2?.onTripRequest?.data?.pick_address ?? "N/A"}
       drop_address={fetchedUserData2?.onTripRequest?.data?.drop_address ?? "N/A"}
@@ -709,7 +713,7 @@ const handleOnCancels = () => {
       car_pic={fetchedUserData2?.onTripRequest?.data?.driverDetail?.data?.vehicle_type_icon ?? ""}
       otp={fetchedUserData2?.onTripRequest?.data?.ride_otp ?? "0000"}
       handleOnCancels={cancelRequests}
-      bill={fetchedUserData2?.onTripRequest?.data?.requestBill?.data ?? {}}
+      bill={fetchedUserData2?.onTripRequest?.data?.requestBill}
       driverProfile={fetchedUserData2?.onTripRequest?.data?.driverDetail?.data?.profile_picture ?? ""}
       car_number={fetchedUserData2?.onTripRequest?.data?.driverDetail?.data?.car_number ?? "N/A"}
       request_id={fetchedUserData2?.onTripRequest?.data?.id ?? "N/A"}
