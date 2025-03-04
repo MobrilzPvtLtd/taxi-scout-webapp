@@ -388,15 +388,27 @@ const handleOnCancels = () => {
   const handle_schedule_taxi = (e) => {
     e.preventDefault();
   };
+  const formatDateTime = (date) => {
+    const pad = (num) => (num < 10 ? `0${num}` : num); // Ensures double-digit formatting
+    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
+  };
+  
   const createRequest_schedule = async (e) => {
     e.preventDefault();
-
+  
+    if (!scheduledTime) {
+      alert("Please select a valid scheduled time.");
+      return;
+    }
+  
+    const formattedDateTime = formatDateTime(scheduledTime); // ✅ Format date
+  
     const abortController = new AbortController();
     const { signal } = abortController;
-
+  
     try {
       let URL = `${url}api/v1/request/create`;
-
+  
       const response = await fetch(URL, {
         method: "POST",
         headers: {
@@ -407,47 +419,43 @@ const handleOnCancels = () => {
           pick_lat: source.lat,
           pick_lng: source.lng,
           drop_lat: destination.lat,
-          drop_lng: destination.lng, // ✅ Fixed Typo (was `destination.ln`)
+          drop_lng: destination.lng,
           vehicle_type: selectedCar?.zone_type_id,
           ride_type: "1",
           payment_opt: "1",
           pick_address: source?.label,
           drop_address: destination?.label,
           is_later: true,
-          // "transport_type":"taxi",
-          trip_start_time: formatDate
-        }),       
-        signal, // Attach abort signal to the fetch
+          trip_start_time: formattedDateTime, // ✅ Send formatted date
+        }),
+        signal,
       });
-
+  
       if (!response.ok) {
-        const errorMessage = `Error: ${
-          response.statusText || response.message
-        }`;
+        const errorMessage = `Error: ${response.statusText || response.message}`;
         console.error(errorMessage);
         alert(`${errorMessage}, please hit on Cancel to make a new request`);
-        return; // Exit early if response is not OK
+        return;
       }
-
+  
       const DATA = await response.json();
       const convertedData = [DATA.data];
-
+  
       sessionStorage.setItem("id", convertedData[0].id);
-      cancelRqstBtn(convertedData); // Assuming this is a function you're using
+      cancelRqstBtn(convertedData);
       setCancelId(convertedData[0].id);
       setDriver(convertedData[0]);
       setSchedule(false);
-
+  
       alert("Your Ride Has Been Successfully Scheduled");
     } catch (error) {
       console.error("Error creating request:", error);
       alert("There was an error scheduling your ride. Please try again.");
     } finally {
-  
       return () => abortController.abort();
     }
   };
-
+  
 
   const [isActive, setIsActive] = useState(null);
   const [displayComp, setDisplayComp] = useState(null);
@@ -570,16 +578,17 @@ const handleOnCancels = () => {
                             {t("scheduled_time")}
                           </label>
                           <DatePicker
-      selected={scheduledTime}
-      onChange={handleDateChange}
-      showTimeSelect
-      timeFormat="HH:mm"
-      timeIntervals={15}  // ✅ Fixed typo
-      dateFormat="yyyy-MM-dd HH:mm:ss"
-      minDate={new Date()}
-      closeOnScroll={true}  // ✅ Fixed possible issue
-      required
-    />
+  selected={scheduledTime}
+  onChange={handleDateChange}
+  showTimeSelect
+  timeFormat="HH:mm"
+  timeIntervals={15}
+  dateFormat="yyyy-MM-dd HH:mm:ss"
+  minDate={new Date()} // Prevent past dates
+  closeOnScroll={true}
+  required
+/>
+
                         </div>
                         <button className="schedule_main_btn" type="submit">
                           {t("schedule_ride")}
