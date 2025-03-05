@@ -100,28 +100,28 @@ export function NavbarMain() {
             </Typography>
           </MenuHandler>
           <MenuList className="hidden lg:block mt-4 about_us_hover">
-            <div className="rounded-md hover:text-white hover:bg-black">
+            <div className="rounded-md hover:text-white">
               <Link to="/about-us">
                 {" "}
                 <MenuItem> {t("about_us")}</MenuItem>
               </Link>
             </div>
-            <div className="rounded-md hover:text-white hover:bg-black">
+            <div className="rounded-md hover:text-white">
               <Link to="/our-partner">
                 <MenuItem> {t("our_partners")}</MenuItem>
               </Link>
             </div>
-            <div className="rounded-md hover:text-white hover:bg-black">
+            <div className="rounded-md hover:text-white">
               <Link to="/pricing">
                 <MenuItem>{t("pricing")}</MenuItem>
               </Link>
             </div>{" "}
-            <div className="rounded-md hover:text-white hover:bg-black">
+            <div className="rounded-md hover:text-white">
               <Link to="/our-team">
                 <MenuItem>{t("our_team")}</MenuItem>
               </Link>
             </div>{" "}
-            <div className="rounded-md hover:text-white hover:bg-black">
+            <div className="rounded-md hover:text-white">
               <Link to="/gallery">
                 <MenuItem>{t("gallery")}</MenuItem>
               </Link>
