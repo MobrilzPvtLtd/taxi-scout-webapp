@@ -6,7 +6,7 @@ function Rides() {
   const [selectedRide, setSelectedRide] = useState(null);
 
   const getTokenFromCookie = (cookieName) => {
-    const cookies = document.cookie.split("; "); // Split cookies into an array
+    const cookies = document.cookie.split("; "); 
     for (const cookie of cookies) {
       const [name, value] = cookie.split("=");
       if (name === cookieName) {
