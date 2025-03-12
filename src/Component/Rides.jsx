@@ -8,7 +8,7 @@ function Rides() {
   const getTokenFromCookie = (cookieName) => {
     const cookies = document.cookie.split("; "); 
     for (const cookie of cookies) {
-      const [name, value] = cookie.split("=");
+      const [name, value] = cookie?.split("=");
       if (name === cookieName) {
         return value;
       }
@@ -17,9 +17,10 @@ function Rides() {
   };
   const authToken = getTokenFromCookie("token");
   useEffect(() => {
-    window.location.href = "/";
-  }
-  )
+    if(!authToken){
+      window.location.href = "/";
+    }
+  }, [])
 
   useEffect(() => {
     fetch('https://admin.taxiscout24.com/api/v1/request/history', {
@@ -38,7 +39,7 @@ function Rides() {
       });
   }, [authToken]);
 
-  const filteredRides = rides.filter(ride => {
+  const filteredRides = rides?.filter(ride => {
     if (filter === 'all') return true;
     if (filter === 'completed') return ride.is_completed;
     if (filter === 'upcoming') return ride.is_later;
@@ -46,10 +47,10 @@ function Rides() {
     return false;
   });
 
-  const allCount = rides.length;
-  const completedCount = rides?.filter(ride => ride.is_completed).length;
-  const upcomingCount = rides?.filter(ride => ride.is_later).length;
-  const cancelledCount = rides?.filter(ride => !ride.is_completed && !ride.is_later).length;
+  const allCount = rides?.length || 0;
+  const completedCount = rides?.filter(ride => ride.is_completed)?.length || 0;
+  const upcomingCount = rides?.filter(ride => ride.is_later)?.length || 0;
+  const cancelledCount = rides?.filter(ride => !ride.is_completed && !ride.is_later)?.length || 0;
 
   const handleRowClick = (ride) => {
     setSelectedRide(ride);
@@ -142,6 +143,7 @@ function Rides() {
                 <div className="mb-4 text-sm text-left">
                   <p><strong>Request Number:</strong> {selectedRide.request_number}</p>
                   <p><strong>Transport Type:</strong> {selectedRide.transport_type}</p>
+                  <p><strong>Otp:</strong> {selectedRide.ride_otp}</p>
                   <p><strong>Status:</strong> {selectedRide.is_completed ? 'Completed' : selectedRide.is_cancelled ? 'Cancelled' : 'Upcoming'}</p>
                   <p><strong>Pickup Address:</strong> {selectedRide.pick_address}</p>
                   <p><strong>Drop Address:</strong> {selectedRide.drop_address}</p>
