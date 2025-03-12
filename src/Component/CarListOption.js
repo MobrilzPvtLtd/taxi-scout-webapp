@@ -446,8 +446,8 @@ const handleOnCancels = () => {
       setCancelId(convertedData[0].id);
       setDriver(convertedData[0]);
       setSchedule(false);
-  
-      alert("Your Ride Has Been Successfully Scheduled");
+      window.location.href = "/rides";
+      // alert("Your Ride Has Been Successfully Scheduled");
     } catch (error) {
       console.error("Error creating request:", error);
       alert("There was an error scheduling your ride. Please try again.");

@@ -46,6 +46,7 @@ import CookieConsentPopup from "./Component/CookieConsentPopup";
 import "./Component/i18n";
 import { UserContext } from "./Context/UserContext";
 import { useTranslation } from "react-i18next";
+import Rides from "./Component/Rides";
 
 function App() {
   const { t } = useTranslation();
@@ -148,6 +149,7 @@ function App() {
                       <Route path="/booking-completed" element={<BookingCompleted />} />
                       <Route path="/blog/:id" element={<BlogDetail />} />
                       <Route path="/forget-password" element={<ForgetPassword />} />
+                      <Route path="/rides" element={<Rides />} />
                     </Routes>
                   </div>
                 </LATLNG_State>

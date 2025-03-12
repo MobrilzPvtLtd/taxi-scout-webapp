@@ -255,7 +255,7 @@ export function NavbarMain() {
                   <MenuItem onClick={() => handleCancel(false)}>
                     {t("contact_us")}
                   </MenuItem>
-                </Link>
+                </Link> 
               </MenuHandler>
             </Menu>
 
@@ -345,6 +345,22 @@ export function NavbarMain() {
         </Link>
 
         <NavListMenu2 handleData2={handleNavCancel} />
+        <Link to="/rides">
+          <Typography
+            as="a"
+            href="/"
+            variant="small"
+            color="blue-gray"
+            className="font-medium"
+          >
+            <ListItem
+              className="flex items-center gap-2 py-0 pr-4 font-semibold text-lg"
+              onClick={() => handleCancel(false)}
+            >
+              {t("Rides")}
+            </ListItem>
+          </Typography>
+        </Link>
       </List>
     );
   }
