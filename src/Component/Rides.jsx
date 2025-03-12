@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'; 
 
 function Rides() {
-  const [rides, setRides] = useState([]);
+  const [rides, setRides] = useState([]); 
   const [filter, setFilter] = useState('all');
   const [selectedRide, setSelectedRide] = useState(null);
 
@@ -16,6 +16,10 @@ function Rides() {
     return null;
   };
   const authToken = getTokenFromCookie("token");
+  useEffect(() => {
+    window.location.href = "/";
+  }
+  )
 
   useEffect(() => {
     fetch('https://admin.taxiscout24.com/api/v1/request/history', {
