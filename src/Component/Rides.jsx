@@ -98,11 +98,11 @@ function Rides() {
           </li>
         </ul>
       </div>
-      <div className="overflow-y-auto mt-4 md:mx-10 h-full">
+      <div className="overflow-y-auto md:mx-10 h-full">
         <table className="min-w-full bg-white text-sm">
           <thead>
             <tr>
-              <th className="py-3 px-2 md:px-4 border-b whitespace-nowrap">Request Number</th>
+              <th className="py-3 px-2 md:pr-4 border-b whitespace-nowrap">Trip time</th>
               <th className="py-3 px-2 md:px-4 border-b whitespace-nowrap">Transport Type</th>
               <th className="py-3 px-2 md:px-4 border-b">Status</th>
               <th className="py-3 px-2 md:px-4 border-b">Pickup Address</th>
@@ -112,7 +112,7 @@ function Rides() {
           <tbody>
             {filteredRides?.map(ride => (
               <tr key={ride.id} onClick={() => handleRowClick(ride)} className="cursor-pointer">
-                <td className="py-2 px-2 md:px-4 border-b">{ride.request_number}</td>
+                <td className="py-2 px-2 md:pr-4 border-b">{ride.trip_start_time ? ride.trip_start_time : "Un available"}</td>
                 <td className="py-2 px-2 md:px-4 border-b">{ride.transport_type}</td>
                 <td className="py-2 px-2 md:px-4 border-b">{ride.is_completed ? 'Completed' : ride.is_cancelled ? 'Cancelled' : 'Upcoming'}</td>
                 <td className="py-2 px-2 md:px-4 border-b truncate max-w-xs">{ride.pick_address}</td>
@@ -141,7 +141,7 @@ function Rides() {
  
                 <h3 className="mb-2 text-lg font-normal text-gray-500 dark:text-gray-400">Ride Details</h3>
                 <div className="mb-4 text-sm text-left">
-                  <p><strong>Request Number:</strong> {selectedRide.request_number}</p>
+                  <p><strong>Trip time:</strong> {selectedRide.trip_start_time ? selectedRide.trip_start_time : "Un available"}</p>
                   <p><strong>Transport Type:</strong> {selectedRide.transport_type}</p>
                   <p><strong>Otp:</strong> {selectedRide.ride_otp}</p>
                   <p><strong>Status:</strong> {selectedRide.is_completed ? 'Completed' : selectedRide.is_cancelled ? 'Cancelled' : 'Upcoming'}</p>
