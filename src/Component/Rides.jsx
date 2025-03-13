@@ -21,7 +21,7 @@ function Rides() {
       window.location.href = "/";
     }
   }, [])
-
+// api call
   useEffect(() => {
     fetch('https://admin.taxiscout24.com/api/v1/request/history', {
       method: "GET",
