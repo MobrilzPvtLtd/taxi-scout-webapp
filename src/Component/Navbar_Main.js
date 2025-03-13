@@ -193,7 +193,7 @@ export function NavbarMain() {
           <MenuHandler>
             <Typography as="div" variant="small" className="font-medium">
               <ListItem
-                className="flex items-center gap-2 py-0 pr-4  text-gray-900 font-bold text-lg"
+                className="flex items-center gap-2 py-0 pr-4  text-gray-900 text-lg"
                 selected={isMenuOpen || isMobileMenuOpen}
                 onClick={() => setIsMobileMenuOpen((cur) => !cur)}
               >
