@@ -11,7 +11,7 @@ import {
   MenuHandler,
   MenuList,
   MenuItem,
-} from "@material-tailwind/react";
+} from "@material-tailwind/react"; 
 import {
   ChevronDownIcon,
   Bars3Icon,
@@ -19,11 +19,13 @@ import {
   ChevronUpIcon,
 } from "@heroicons/react/24/outline";
 import logo from "../Images/logo.png";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { m } from "framer-motion";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslation } from "react-i18next";
 import { UserContext } from "../Context/UserContext";
+import axios from "axios";
+
 export function NavbarMain() {
   const { t } = useTranslation();
   
@@ -50,6 +52,8 @@ export function NavbarMain() {
       link: "/gallery",
     },
   ];
+
+ 
 
   function NavListMenu({ handleData2 }) {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -393,6 +397,9 @@ export function NavbarMain() {
     }
     return "";
   }
+  const removeTokenFromCookie = () => {
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname + ";";
+  };
 
   useEffect(() => {
     const updateToken = () => {
@@ -407,6 +414,36 @@ export function NavbarMain() {
     const interval = setInterval(updateToken, 1000);
     return () => clearInterval(interval);
   }, []);
+  useEffect(() => {
+    if (!token) return; // If no token, skip this effect
+
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get('https://admin.taxiscout24.com/api/v1/user', {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+
+        // If status is 401, remove the token and clear the cookie
+        console.log(response.data, "response");
+        if (response.status === 401) {
+          handleLogout();
+        } else {
+          // If the response is successful, call the endpoint again after 10 seconds
+          setTimeout(fetchUser, 10000);
+        }
+      } catch (error) {
+        // Handle error if needed
+        console.error("Error fetching user data", error);
+        handleLogout();
+      }
+    };
+
+    // Call fetchUser initially
+    fetchUser();
+  }, [token]); 
+ 
   const handleLogout = () => {
     document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     window.location.reload();
