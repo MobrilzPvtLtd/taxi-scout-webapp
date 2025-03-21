@@ -515,7 +515,7 @@ const handleOnCancels = () => {
   {/* Name and Fare - Moves below image on smaller screens */}
   <div className="flex flex-col items-center md:items-start text-center md:text-left w-full">
     <h2 className="text-[18px] font-semibold">{item.name}</h2>
-    <p className="text-gray-700 font-medium">₹{item.ride_fare.toFixed(2)}</p>
+    <p className="text-gray-700 font-medium">{item.ride_fare.toFixed(2)}</p>
   </div>
 </div>
 
@@ -713,7 +713,7 @@ const handleOnCancels = () => {
                 {displayComp === 4 ? (
                   
   <div className="relative top-5 overflow-scroll">
-  console.log("Bill Data:", bill);
+  {/* console.log("Bill Data:", bill); */}
     <BookingCompleted
       pickup={fetchedUserData2?.onTripRequest?.data?.pick_address ?? "N/A"}
       drop_address={fetchedUserData2?.onTripRequest?.data?.drop_address ?? "N/A"}
