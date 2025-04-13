@@ -1,7 +1,7 @@
 <?php
 // Handle CORS preflight request
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    header("Access-Control-Allow-Origin: http://localhost:3000");
+    header("Access-Control-Allow-Origin: https://taxiscout24.com");
     header("Access-Control-Allow-Methods: POST, OPTIONS");
     header("Access-Control-Allow-Headers: Content-Type");
     header("Access-Control-Max-Age: 86400"); // Cache preflight response for 24 hours
@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 // Set CORS headers for actual request
-header("Access-Control-Allow-Origin: http://localhost:3000");
+header("Access-Control-Allow-Origin:https://taxiscout24.com");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
