@@ -567,7 +567,7 @@ useEffect(() => {
                       <input
                         type="number"
                         name="mobile"
-                        placeholder={t('mobile')}
+                        placeholder={t('mobile')}1111
                         value={credentials.mobile}
                         onChange={handleChange}
                         required
