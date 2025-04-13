@@ -310,7 +310,7 @@ useEffect(() => {
                       }`}
                       onClick={() => setUserType(t('company'))}
                     >
-                      {t(`company`)} 111111
+                      {t(`company`)} 
                     </div>
                   </div>
                   <div className="flex flex-col items-center">
