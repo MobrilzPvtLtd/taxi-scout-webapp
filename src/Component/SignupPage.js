@@ -310,7 +310,7 @@ useEffect(() => {
                       }`}
                       onClick={() => setUserType(t('company'))}
                     >
-                      {t(`company`)}
+                      {t(`company`)} 111111
                     </div>
                   </div>
                   <div className="flex flex-col items-center">
@@ -567,7 +567,7 @@ useEffect(() => {
                       <input
                         type="number"
                         name="mobile"
-                        placeholder={t('mobile')}1111
+                        placeholder={t('mobile')}
                         value={credentials.mobile}
                         onChange={handleChange}
                         required
