@@ -1,5 +1,5 @@
 import React from "react";
-
+// delete account request component
 const DeleteAccountRequest = () => {
   return (
     <div
