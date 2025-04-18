@@ -47,6 +47,7 @@ import "./Component/i18n";
 import { UserContext } from "./Context/UserContext";
 import { useTranslation } from "react-i18next";
 import Rides from "./Component/Rides";
+import DeleteAccountRequest from "./Component/Delete";
 
 function App() {
   const { t } = useTranslation();
@@ -150,6 +151,7 @@ function App() {
                       <Route path="/blog/:id" element={<BlogDetail />} />
                       <Route path="/forget-password" element={<ForgetPassword />} />
                       <Route path="/rides" element={<Rides />} />
+                      <Route path="/delete-account" element={<DeleteAccountRequest />} />
                     </Routes>
                   </div>
                 </LATLNG_State>
