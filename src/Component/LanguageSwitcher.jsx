@@ -17,7 +17,7 @@ const LanguageSwitcher = () => {
     { code: "tr", name: "Turkish", flag: "https://flagcdn.com/w40/tr.png" },
   ];
 
-  const [selectedLanguage, setSelectedLanguage] = useState("ge");
+  const [selectedLanguage, setSelectedLanguage] = useState("de");
 
   const changeLanguage = (code) => {
     setSelectedLanguage(code);
