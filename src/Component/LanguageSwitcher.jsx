@@ -5,9 +5,9 @@ const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
 
   const languages = [
+      { code: "de", name: "German", flag: "https://flagcdn.com/w40/de.png" },
     { code: "en", name: "English", flag: "https://flagcdn.com/w40/us.png" },
     { code: "es", name: "Español", flag: "https://flagcdn.com/w40/es.png" },
-    { code: "de", name: "German", flag: "https://flagcdn.com/w40/de.png" },
     { code: "ar", name: "Arabic", flag: "https://flagcdn.com/w40/sa.png" },
     { code: "fr", name: "French", flag: "https://flagcdn.com/w40/fr.png" },
     { code: "it", name: "Italian", flag: "https://flagcdn.com/w40/it.png" },
